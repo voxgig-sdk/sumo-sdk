@@ -1,0 +1,50 @@
+# BasicBashoFlow
+
+main: kit: flow: BasicBashoFlow:
+{
+  entity: "basho",
+  kind: "basic",
+  name: "BasicBashoFlow",
+  step: [
+    {
+      match: {
+        basho_id: "basho01",
+        day: "day01",
+        division: "division01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "basho_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "basho_ref01",
+        srcdatavar: "basho_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "basho01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-basho_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBashoFlow"
+}

@@ -1,0 +1,53 @@
+# Entity: measurement
+
+main: kit: entity: measurement: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "height"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "recorded_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "weight"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "measurement"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/measurements"
+          parts: [
+            "api"
+            "measurements"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

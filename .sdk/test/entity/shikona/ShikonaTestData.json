@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "shikona": {
+      "SHIKONA00": {
+        "end_date": "s28",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s2a",
+        "start_date": "s2b"
+      },
+      "SHIKONA01": {
+        "end_date": "s50",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s52",
+        "start_date": "s53"
+      },
+      "SHIKONA02": {
+        "end_date": "s78",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s7a",
+        "start_date": "s7b"
+      }
+    }
+  },
+  "new": {
+    "shikona": {
+      "shikona_ref01": {
+        "end_date": "sa0",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "sa2",
+        "start_date": "sa3"
+      }
+    }
+  }
+}

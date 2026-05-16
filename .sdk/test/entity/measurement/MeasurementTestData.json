@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "measurement": {
+      "MEASUREMENT00": {
+        "height": 40,
+        "recorded_date": "s29",
+        "rikishi_id": "RIKISHI01",
+        "weight": 43
+      },
+      "MEASUREMENT01": {
+        "height": 80,
+        "recorded_date": "s51",
+        "rikishi_id": "RIKISHI01",
+        "weight": 83
+      },
+      "MEASUREMENT02": {
+        "height": 120,
+        "recorded_date": "s79",
+        "rikishi_id": "RIKISHI01",
+        "weight": 123
+      }
+    }
+  },
+  "new": {
+    "measurement": {
+      "measurement_ref01": {
+        "height": 160,
+        "recorded_date": "sa1",
+        "rikishi_id": "RIKISHI01",
+        "weight": 163
+      }
+    }
+  }
+}

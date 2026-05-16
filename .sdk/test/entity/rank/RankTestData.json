@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "rank": {
+      "RANK00": {
+        "division": "s28",
+        "id": "RANK00",
+        "level": "s2a",
+        "name": "s2b"
+      },
+      "RANK01": {
+        "division": "s50",
+        "id": "RANK01",
+        "level": "s52",
+        "name": "s53"
+      },
+      "RANK02": {
+        "division": "s78",
+        "id": "RANK02",
+        "level": "s7a",
+        "name": "s7b"
+      }
+    }
+  },
+  "new": {
+    "rank": {
+      "rank_ref01": {
+        "division": "sa0",
+        "level": "sa2",
+        "name": "sa3"
+      }
+    }
+  }
+}

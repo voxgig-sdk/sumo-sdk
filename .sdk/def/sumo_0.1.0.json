@@ -1,0 +1,886 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sumo API",
+    "description": "Free API for accessing sumo database including rikishi, basho, banzuke, torikumi, hoshitori, matches, and more. Explore sumo data, learn about sumo history, and check match results.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.sumo-api.com/api-guide"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.sumo-api.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/rikishis": {
+      "get": {
+        "summary": "Get all rikishi",
+        "description": "Retrieve a list of all sumo wrestlers (rikishi) in the database",
+        "operationId": "getRikishis",
+        "tags": [
+          "Rikishi"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of rikishi",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rikishi"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/rikishi/{rikishiId}": {
+      "get": {
+        "summary": "Get rikishi by ID",
+        "description": "Retrieve detailed information about a specific sumo wrestler by their ID",
+        "operationId": "getRikishiById",
+        "tags": [
+          "Rikishi"
+        ],
+        "parameters": [
+          {
+            "name": "rikishiId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rikishi",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with rikishi details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RikishiDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rikishi not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/rikishi/{rikishiId}/stats": {
+      "get": {
+        "summary": "Get rikishi statistics",
+        "description": "Retrieve career statistics for a specific rikishi",
+        "operationId": "getRikishiStats",
+        "tags": [
+          "Rikishi"
+        ],
+        "parameters": [
+          {
+            "name": "rikishiId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rikishi",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with rikishi statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RikishiStats"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rikishi not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/rikishi/{rikishiId}/matches": {
+      "get": {
+        "summary": "Get rikishi matches",
+        "description": "Retrieve all match history for a specific rikishi",
+        "operationId": "getRikishiMatches",
+        "tags": [
+          "Rikishi",
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "rikishiId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rikishi",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with match history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rikishi not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/rikishi/{rikishiId}/matches/{opponentId}": {
+      "get": {
+        "summary": "Get matches between two rikishi",
+        "description": "Retrieve match history between two specific rikishi",
+        "operationId": "getRikishiMatchesAgainstOpponent",
+        "tags": [
+          "Rikishi",
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "rikishiId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rikishi",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "opponentId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the opponent rikishi",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with match history between two rikishi",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rikishi or opponent not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/basho/{bashoId}": {
+      "get": {
+        "summary": "Get basho by ID",
+        "description": "Retrieve information about a specific sumo tournament (basho)",
+        "operationId": "getBashoById",
+        "tags": [
+          "Basho"
+        ],
+        "parameters": [
+          {
+            "name": "bashoId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the basho tournament",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with basho details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Basho"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Basho not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/basho/{bashoId}/banzuke/{division}": {
+      "get": {
+        "summary": "Get banzuke for basho division",
+        "description": "Retrieve the official ranking list (banzuke) for a specific division in a basho",
+        "operationId": "getBashoBanzuke",
+        "tags": [
+          "Basho",
+          "Banzuke"
+        ],
+        "parameters": [
+          {
+            "name": "bashoId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the basho tournament",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "division",
+            "in": "path",
+            "required": true,
+            "description": "Sumo division (e.g., makuuchi, juryo, makushita)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with banzuke rankings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BanzukeEntry"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Basho or division not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/basho/{bashoId}/torikumi/{division}/{day}": {
+      "get": {
+        "summary": "Get torikumi for basho day",
+        "description": "Retrieve the match schedule (torikumi) for a specific day and division of a basho",
+        "operationId": "getBashoTorikumi",
+        "tags": [
+          "Basho",
+          "Torikumi"
+        ],
+        "parameters": [
+          {
+            "name": "bashoId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the basho tournament",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "division",
+            "in": "path",
+            "required": true,
+            "description": "Sumo division (e.g., makuuchi, juryo, makushita)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "day",
+            "in": "path",
+            "required": true,
+            "description": "Day of the tournament (typically 1-15)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with torikumi schedule",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TorikumiMatch"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Basho, division, or day not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/kimarite": {
+      "get": {
+        "summary": "Get all kimarite",
+        "description": "Retrieve a list of all sumo winning techniques (kimarite)",
+        "operationId": "getKimarite",
+        "tags": [
+          "Kimarite"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of kimarite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kimarite"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/kimarite/{kimarite}": {
+      "get": {
+        "summary": "Get kimarite details",
+        "description": "Retrieve detailed information about a specific winning technique (kimarite)",
+        "operationId": "getKimariteByName",
+        "tags": [
+          "Kimarite"
+        ],
+        "parameters": [
+          {
+            "name": "kimarite",
+            "in": "path",
+            "required": true,
+            "description": "Name of the kimarite technique",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with kimarite details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KimariteDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Kimarite not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/measurements": {
+      "get": {
+        "summary": "Get measurements",
+        "description": "Retrieve measurement data for rikishi (height, weight, etc.)",
+        "operationId": "getMeasurements",
+        "tags": [
+          "Measurements"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with measurements data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Measurement"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/ranks": {
+      "get": {
+        "summary": "Get all ranks",
+        "description": "Retrieve a list of all sumo ranks and divisions",
+        "operationId": "getRanks",
+        "tags": [
+          "Ranks"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of ranks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rank"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/shikonas": {
+      "get": {
+        "summary": "Get all shikonas",
+        "description": "Retrieve a list of all sumo ring names (shikonas)",
+        "operationId": "getShikonas",
+        "tags": [
+          "Shikonas"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of shikonas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Shikona"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Rikishi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the rikishi"
+          },
+          "shikona": {
+            "type": "string",
+            "description": "Ring name of the rikishi"
+          },
+          "currentRank": {
+            "type": "string",
+            "description": "Current rank of the rikishi"
+          }
+        }
+      },
+      "RikishiDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the rikishi"
+          },
+          "shikona": {
+            "type": "string",
+            "description": "Ring name of the rikishi"
+          },
+          "realName": {
+            "type": "string",
+            "description": "Real name of the rikishi"
+          },
+          "currentRank": {
+            "type": "string",
+            "description": "Current rank of the rikishi"
+          },
+          "heya": {
+            "type": "string",
+            "description": "Stable (heya) the rikishi belongs to"
+          },
+          "birthplace": {
+            "type": "string",
+            "description": "Birthplace of the rikishi"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of birth"
+          },
+          "height": {
+            "type": "number",
+            "description": "Height in centimeters"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Weight in kilograms"
+          },
+          "debut": {
+            "type": "string",
+            "description": "Debut date or basho"
+          }
+        }
+      },
+      "RikishiStats": {
+        "type": "object",
+        "properties": {
+          "rikishiId": {
+            "type": "string",
+            "description": "Unique identifier for the rikishi"
+          },
+          "totalWins": {
+            "type": "integer",
+            "description": "Total number of wins"
+          },
+          "totalLosses": {
+            "type": "integer",
+            "description": "Total number of losses"
+          },
+          "winRate": {
+            "type": "number",
+            "format": "float",
+            "description": "Win rate percentage"
+          },
+          "championships": {
+            "type": "integer",
+            "description": "Number of championships won"
+          },
+          "highestRank": {
+            "type": "string",
+            "description": "Highest rank achieved"
+          }
+        }
+      },
+      "Match": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the match"
+          },
+          "bashoId": {
+            "type": "string",
+            "description": "Identifier of the basho where match took place"
+          },
+          "day": {
+            "type": "integer",
+            "description": "Day of the tournament"
+          },
+          "division": {
+            "type": "string",
+            "description": "Division of the match"
+          },
+          "rikishi1Id": {
+            "type": "string",
+            "description": "First rikishi identifier"
+          },
+          "rikishi2Id": {
+            "type": "string",
+            "description": "Second rikishi identifier"
+          },
+          "winnerId": {
+            "type": "string",
+            "description": "Winner rikishi identifier"
+          },
+          "kimarite": {
+            "type": "string",
+            "description": "Winning technique used"
+          }
+        }
+      },
+      "Basho": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the basho"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of the tournament"
+          },
+          "month": {
+            "type": "integer",
+            "description": "Month of the tournament"
+          },
+          "venue": {
+            "type": "string",
+            "description": "Tournament venue"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Start date of the tournament"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of the tournament"
+          }
+        }
+      },
+      "BanzukeEntry": {
+        "type": "object",
+        "properties": {
+          "rikishiId": {
+            "type": "string",
+            "description": "Unique identifier for the rikishi"
+          },
+          "shikona": {
+            "type": "string",
+            "description": "Ring name of the rikishi"
+          },
+          "rank": {
+            "type": "string",
+            "description": "Rank in the banzuke"
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "east",
+              "west"
+            ],
+            "description": "Side of the banzuke (east or west)"
+          }
+        }
+      },
+      "TorikumiMatch": {
+        "type": "object",
+        "properties": {
+          "matchNumber": {
+            "type": "integer",
+            "description": "Match number in the day's schedule"
+          },
+          "rikishi1Id": {
+            "type": "string",
+            "description": "First rikishi identifier"
+          },
+          "rikishi2Id": {
+            "type": "string",
+            "description": "Second rikishi identifier"
+          },
+          "winnerId": {
+            "type": "string",
+            "description": "Winner rikishi identifier (if match completed)"
+          },
+          "kimarite": {
+            "type": "string",
+            "description": "Winning technique used (if match completed)"
+          }
+        }
+      },
+      "Kimarite": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the kimarite technique"
+          },
+          "englishName": {
+            "type": "string",
+            "description": "English translation of the technique name"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the technique"
+          }
+        }
+      },
+      "KimariteDetail": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the kimarite technique"
+          },
+          "englishName": {
+            "type": "string",
+            "description": "English translation of the technique name"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the technique"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the technique"
+          },
+          "frequency": {
+            "type": "integer",
+            "description": "Number of times this technique has been used"
+          }
+        }
+      },
+      "Measurement": {
+        "type": "object",
+        "properties": {
+          "rikishiId": {
+            "type": "string",
+            "description": "Unique identifier for the rikishi"
+          },
+          "height": {
+            "type": "number",
+            "description": "Height in centimeters"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Weight in kilograms"
+          },
+          "recordedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when measurement was recorded"
+          }
+        }
+      },
+      "Rank": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the rank"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the rank"
+          },
+          "division": {
+            "type": "string",
+            "description": "Division the rank belongs to"
+          },
+          "level": {
+            "type": "integer",
+            "description": "Hierarchical level of the rank"
+          }
+        }
+      },
+      "Shikona": {
+        "type": "object",
+        "properties": {
+          "shikona": {
+            "type": "string",
+            "description": "Ring name (shikona)"
+          },
+          "rikishiId": {
+            "type": "string",
+            "description": "Identifier of the rikishi using this shikona"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when rikishi started using this shikona"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when rikishi stopped using this shikona"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Rikishi",
+      "description": "Operations related to sumo wrestlers"
+    },
+    {
+      "name": "Basho",
+      "description": "Operations related to sumo tournaments"
+    },
+    {
+      "name": "Banzuke",
+      "description": "Operations related to official ranking lists"
+    },
+    {
+      "name": "Torikumi",
+      "description": "Operations related to match schedules"
+    },
+    {
+      "name": "Matches",
+      "description": "Operations related to match results"
+    },
+    {
+      "name": "Kimarite",
+      "description": "Operations related to winning techniques"
+    },
+    {
+      "name": "Measurements",
+      "description": "Operations related to rikishi measurements"
+    },
+    {
+      "name": "Ranks",
+      "description": "Operations related to sumo ranks"
+    },
+    {
+      "name": "Shikonas",
+      "description": "Operations related to ring names"
+    }
+  ]
+}

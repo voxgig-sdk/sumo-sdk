@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "kimarite": {
+      "KIMARITE00": {
+        "category": "s32",
+        "description": "s33",
+        "english_name": "s34",
+        "frequency": "s35",
+        "name": "s36"
+      },
+      "KIMARITE01": {
+        "category": "s64",
+        "description": "s65",
+        "english_name": "s66",
+        "frequency": "s67",
+        "name": "s68"
+      },
+      "KIMARITE02": {
+        "category": "s96",
+        "description": "s97",
+        "english_name": "s98",
+        "frequency": "s99",
+        "name": "s9a"
+      }
+    }
+  },
+  "new": {
+    "kimarite": {
+      "kimarite_ref01": {
+        "category": "sc8",
+        "description": "sc9",
+        "english_name": "sca",
+        "frequency": "scb",
+        "name": "scc"
+      }
+    }
+  }
+}

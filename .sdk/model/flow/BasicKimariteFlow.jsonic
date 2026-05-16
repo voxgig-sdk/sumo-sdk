@@ -1,0 +1,44 @@
+# BasicKimariteFlow
+
+main: kit: flow: BasicKimariteFlow:
+{
+  entity: "kimarite",
+  kind: "basic",
+  name: "BasicKimariteFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "kimarite_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "kimarite_ref01",
+        srcdatavar: "kimarite_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "kimarite01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kimarite_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicKimariteFlow"
+}

@@ -1,0 +1,22 @@
+# BasicMeasurementFlow
+
+main: kit: flow: BasicMeasurementFlow:
+{
+  entity: "measurement",
+  kind: "basic",
+  name: "BasicMeasurementFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "measurement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMeasurementFlow"
+}

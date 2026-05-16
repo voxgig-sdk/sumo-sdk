@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.sumo-api.com/api-guide"
+      }
+      description: "Free API for accessing sumo database including rikishi, basho, banzuke, torikumi, hoshitori, matches, and more. Explore sumo data, learn about sumo history, and check match results."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.sumo-api.com"
+        }
+      ]
+      title: "Sumo API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

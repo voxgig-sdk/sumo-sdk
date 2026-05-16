@@ -1,0 +1,76 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 13
+  metrics: count: method: 13
+
+  entity: basho: {
+    path: "/api/basho/{bashoId}": {
+      rename: param: "bashoId": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/basho/{bashoId}/banzuke/{division}": {
+      rename: param: "bashoId": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/basho/{bashoId}/torikumi/{division}/{day}": {
+      rename: param: "bashoId": *"basho_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: kimarite: {
+    path: "/api/kimarite": {
+      op: list: method: *GET
+    }
+    path: "/api/kimarite/{kimarite}": {
+      rename: param: "kimarite": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: measurement: {
+    path: "/api/measurements": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rank: {
+    path: "/api/ranks": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rikishi: {
+    path: "/api/rikishi/{rikishiId}": {
+      rename: param: "rikishiId": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/rikishi/{rikishiId}/matches": {
+      action: "match": {}
+      rename: param: "rikishiId": *"id"
+      op: list: method: *GET
+    }
+    path: "/api/rikishi/{rikishiId}/matches/{opponentId}": {
+      rename: param: "opponentId": *"opponent_id"
+      rename: param: "rikishiId": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/rikishi/{rikishiId}/stats": {
+      action: "stat": {}
+      rename: param: "rikishiId": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/rikishis": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: shikona: {
+    path: "/api/shikonas": {
+      op: list: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+# BasicShikonaFlow
+
+main: kit: flow: BasicShikonaFlow:
+{
+  entity: "shikona",
+  kind: "basic",
+  name: "BasicShikonaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "shikona_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicShikonaFlow"
+}

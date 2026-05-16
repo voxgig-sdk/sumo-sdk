@@ -1,0 +1,22 @@
+# BasicRankFlow
+
+main: kit: flow: BasicRankFlow:
+{
+  entity: "rank",
+  kind: "basic",
+  name: "BasicRankFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rank_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRankFlow"
+}

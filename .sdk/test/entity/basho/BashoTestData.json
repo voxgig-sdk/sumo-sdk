@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "basho": {
+      "BASHO00": {
+        "end_date": "s96",
+        "id": "BASHO00",
+        "kimarite": "s98",
+        "match_number": "s99",
+        "month": "s9a",
+        "rank": "s9b",
+        "rikishi1_id": "RIKISHI101",
+        "rikishi2_id": "RIKISHI201",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s9f",
+        "side": "sa0",
+        "start_date": "sa1",
+        "venue": "sa2",
+        "winner_id": "WINNER01",
+        "year": "sa4",
+        "basho_id": "BASHO01",
+        "day": "DAY01",
+        "division": "DIVISION01"
+      },
+      "BASHO01": {
+        "end_date": "s12c",
+        "id": "BASHO01",
+        "kimarite": "s12e",
+        "match_number": "s12f",
+        "month": "s130",
+        "rank": "s131",
+        "rikishi1_id": "RIKISHI101",
+        "rikishi2_id": "RIKISHI201",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s135",
+        "side": "s136",
+        "start_date": "s137",
+        "venue": "s138",
+        "winner_id": "WINNER01",
+        "year": "s13a",
+        "basho_id": "BASHO01",
+        "day": "DAY01",
+        "division": "DIVISION01"
+      },
+      "BASHO02": {
+        "end_date": "s1c2",
+        "id": "BASHO02",
+        "kimarite": "s1c4",
+        "match_number": "s1c5",
+        "month": "s1c6",
+        "rank": "s1c7",
+        "rikishi1_id": "RIKISHI101",
+        "rikishi2_id": "RIKISHI201",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s1cb",
+        "side": "s1cc",
+        "start_date": "s1cd",
+        "venue": "s1ce",
+        "winner_id": "WINNER01",
+        "year": "s1d0",
+        "basho_id": "BASHO01",
+        "day": "DAY01",
+        "division": "DIVISION01"
+      }
+    }
+  },
+  "new": {
+    "basho": {
+      "basho_ref01": {
+        "end_date": "s258",
+        "kimarite": "s25a",
+        "match_number": "s25b",
+        "month": "s25c",
+        "rank": "s25d",
+        "rikishi1_id": "RIKISHI101",
+        "rikishi2_id": "RIKISHI201",
+        "rikishi_id": "RIKISHI01",
+        "shikona": "s261",
+        "side": "s262",
+        "start_date": "s263",
+        "venue": "s264",
+        "winner_id": "WINNER01",
+        "year": "s266"
+      }
+    }
+  }
+}

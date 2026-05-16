@@ -1,0 +1,249 @@
+# Entity: basho
+
+main: kit: entity: basho: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "end_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "kimarite"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "match_number"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "month"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi1_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi2_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "shikona"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "side"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "start_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "venue"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "winner_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "basho"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "basho_id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "day"
+                orig: "day"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "division"
+                orig: "division"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}/torikumi/{division}/{day}"
+          parts: [
+            "api"
+            "basho"
+            "{basho_id}"
+            "torikumi"
+            "{division}"
+            "{day}"
+          ]
+          rename: {
+            param: {
+              bashoId: "basho_id"
+            }
+          }
+          select: {
+            exist: [
+              "basho_id"
+              "day"
+              "division"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "division"
+                orig: "division"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}/banzuke/{division}"
+          parts: [
+            "api"
+            "basho"
+            "{id}"
+            "banzuke"
+            "{division}"
+          ]
+          rename: {
+            param: {
+              bashoId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "division"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}"
+          parts: [
+            "api"
+            "basho"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              bashoId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "banzuke"
+      ]
+      [
+        "basho"
+        "torikumi"
+      ]
+    ]
+  }
+
+
+
+}

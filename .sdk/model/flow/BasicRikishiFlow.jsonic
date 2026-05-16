@@ -1,0 +1,44 @@
+# BasicRikishiFlow
+
+main: kit: flow: BasicRikishiFlow:
+{
+  entity: "rikishi",
+  kind: "basic",
+  name: "BasicRikishiFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rikishi_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "rikishi_ref01",
+        srcdatavar: "rikishi_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "rikishi01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rikishi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRikishiFlow"
+}
