@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/sumo-sdk/core"
+	"github.com/voxgig-sdk/sumo-sdk/go/core"
 )
 
 type BaseFeature struct {

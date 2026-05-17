@@ -1,10 +1,10 @@
 package voxgigsumosdk
 
 import (
-	"github.com/voxgig-sdk/sumo-sdk/core"
-	"github.com/voxgig-sdk/sumo-sdk/entity"
-	"github.com/voxgig-sdk/sumo-sdk/feature"
-	_ "github.com/voxgig-sdk/sumo-sdk/utility"
+	"github.com/voxgig-sdk/sumo-sdk/go/core"
+	"github.com/voxgig-sdk/sumo-sdk/go/entity"
+	"github.com/voxgig-sdk/sumo-sdk/go/feature"
+	_ "github.com/voxgig-sdk/sumo-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

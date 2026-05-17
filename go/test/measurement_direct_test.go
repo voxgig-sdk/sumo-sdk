@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/sumo-sdk"
-	"github.com/voxgig-sdk/sumo-sdk/core"
+	sdk "github.com/voxgig-sdk/sumo-sdk/go"
+	"github.com/voxgig-sdk/sumo-sdk/go/core"
 )
 
 func TestMeasurementDirect(t *testing.T) {

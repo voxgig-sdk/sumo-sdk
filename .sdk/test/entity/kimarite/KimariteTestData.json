@@ -6,21 +6,24 @@
         "description": "s33",
         "english_name": "s34",
         "frequency": "s35",
-        "name": "s36"
+        "name": "s36",
+        "id": "KIMARITE00"
       },
       "KIMARITE01": {
         "category": "s64",
         "description": "s65",
         "english_name": "s66",
         "frequency": "s67",
-        "name": "s68"
+        "name": "s68",
+        "id": "KIMARITE01"
       },
       "KIMARITE02": {
         "category": "s96",
         "description": "s97",
         "english_name": "s98",
         "frequency": "s99",
-        "name": "s9a"
+        "name": "s9a",
+        "id": "KIMARITE02"
       }
     }
   },
