@@ -16,7 +16,20 @@
           }
         ],
         "title": "Sumo API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Query a comprehensive sumo database covering rikishi, basho, matches, and ranks from 1958 to today",
+        "homepage": "https://www.sumo-api.com",
+        "docs_url": "https://www.sumo-api.com/api-guide",
+        "about_md": "[Sumo-API](https://www.sumo-api.com) is a free, community-maintained REST API offering a comprehensive database of sumo statistics spanning from 1958 to the present day. The service is continually updated with the latest results from Grand Sumo tournaments and powers a number of fantasy sumo games.\n\nWhat you get from the API:\n\n- **Rikishi** records, per-wrestler stats, and head-to-head match histories\n- **Basho** tournament details, **banzuke** (ranking lists) by division, and **torikumi** (daily match pairings)\n- **Kimarite** (winning technique) reference data and per-technique usage\n- Historical **measurements**, **ranks**, and **shikona** (ring names) tracked over a rikishi's career\n\nThe API is free to use without authentication. The maintainer asks users to access it responsibly, and contributions help cover operating costs (contact: thesumoapi@gmail.com).",
+        "entity_desc": {
+          "basho": "A grand sumo tournament; fetched via `GET /api/basho/:bashoId`, with division banzuke at `GET /api/basho/:bashoId/banzuke/:division` and daily match pairings at `GET /api/basho/:bashoId/torikumi/:division/:day`.",
+          "kimarite": "A winning technique used to end a bout; listed via `GET /api/kimarite` and detailed at `GET /api/kimarite/:kimarite`.",
+          "measurement": "Historical body measurements (height, weight) recorded for rikishi over their careers; available via `GET /api/measurements`.",
+          "rank": "A rikishi's ranking on the banzuke at a given basho, with its full history available via `GET /api/ranks`.",
+          "rikishi": "A sumo wrestler; listed via `GET /api/rikishis` (paginated with limit/skip), with details at `GET /api/rikishi/:rikishiId`, career stats at `/stats`, and match histories at `/matches` and `/matches/:opponentId`.",
+          "shikona": "The ring name a rikishi competes under, with all historical names tracked via `GET /api/shikonas`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +37,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "basho": {

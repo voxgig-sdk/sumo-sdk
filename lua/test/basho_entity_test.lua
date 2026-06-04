@@ -106,7 +106,6 @@ function basho_basic_setup(extra)
     ["SUMO_TEST_BASHO_ENTID"] = idmap,
     ["SUMO_TEST_LIVE"] = "FALSE",
     ["SUMO_TEST_EXPLAIN"] = "FALSE",
-    ["SUMO_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -118,7 +117,6 @@ function basho_basic_setup(extra)
   if env["SUMO_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["SUMO_APIKEY"],
       },
       extra or {},
     })

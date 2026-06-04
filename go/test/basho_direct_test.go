@@ -251,14 +251,12 @@ func bashoDirectSetup(mockres any) *bashoDirectSetupResult {
 	env := envOverride(map[string]any{
 		"SUMO_TEST_BASHO_ENTID": map[string]any{},
 		"SUMO_TEST_LIVE":    "FALSE",
-		"SUMO_APIKEY":       "NONE",
 	})
 
 	live := env["SUMO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["SUMO_APIKEY"],
 		}
 		client := sdk.NewSumoSDK(mergedOpts)
 

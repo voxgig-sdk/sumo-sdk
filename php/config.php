@@ -20,9 +20,6 @@ class SumoConfig
             ],
             "options" => [
                 "base" => "https://www.sumo-api.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

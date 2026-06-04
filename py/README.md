@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from sumo_sdk import SumoSDK
 
-client = SumoSDK({
-    "apikey": os.environ.get("SUMO_APIKEY"),
-})
+client = SumoSDK({})
 ```
 
 ### 2. List bashos
@@ -130,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

@@ -119,7 +119,6 @@ func shikonaBasicSetup(extra map[string]any) *entityTestSetup {
 		"SUMO_TEST_SHIKONA_ENTID": idmap,
 		"SUMO_TEST_LIVE":      "FALSE",
 		"SUMO_TEST_EXPLAIN":   "FALSE",
-		"SUMO_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SUMO_TEST_SHIKONA_ENTID"])
@@ -130,7 +129,6 @@ func shikonaBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SUMO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["SUMO_APIKEY"],
 			},
 			extra,
 		})

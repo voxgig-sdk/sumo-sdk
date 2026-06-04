@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'SUMO_TEST_SHIKONA_ENTID': {},
     'SUMO_TEST_LIVE': 'FALSE',
-    'SUMO_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.SUMO_TEST_LIVE
 
   if (live) {
     const client = new SumoSDK({
-      apikey: env.SUMO_APIKEY,
     })
 
     let idmap: any = env['SUMO_TEST_SHIKONA_ENTID']

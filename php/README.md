@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'sumo_sdk.php';
 
-$client = new SumoSDK([
-    "apikey" => getenv("SUMO_APIKEY"),
-]);
+$client = new SumoSDK([]);
 ```
 
 ### 2. List bashos
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

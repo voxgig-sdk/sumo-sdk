@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/sumo-sdk/go"
     "github.com/voxgig-sdk/sumo-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewSumoSDK(map[string]any{
-        "apikey": os.Getenv("SUMO_APIKEY"),
-    })
+    client := sdk.NewSumoSDK(map[string]any{})
 ```
 
 ### 2. List bashos
@@ -157,7 +154,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -179,7 +175,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |
