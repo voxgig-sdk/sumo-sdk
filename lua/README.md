@@ -10,7 +10,7 @@ The Lua SDK for the Sumo API — an entity-oriented client using Lua conventions
 
 ## Install
 ```bash
-luarocks install sumo-sdk
+luarocks install voxgig-sdk-sumo
 ```
 
 If the module is not yet published, add the source directory to

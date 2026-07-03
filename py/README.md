@@ -10,7 +10,7 @@ The Python SDK for the Sumo API — an entity-oriented client following Pythonic
 
 ## Install
 ```bash
-pip install sumo-sdk
+pip install voxgig-sdk-sumo
 ```
 
 Or install from source:

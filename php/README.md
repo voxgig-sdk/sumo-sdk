@@ -10,7 +10,7 @@ The PHP SDK for the Sumo API — an entity-oriented client using PHP conventions
 
 ## Install
 ```bash
-composer require voxgig/sumo-sdk
+composer require voxgig-sdk/sumo
 ```
 
 

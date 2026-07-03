@@ -10,7 +10,7 @@ The TypeScript SDK for the Sumo API — a type-safe, entity-oriented client with
 
 ## Install
 ```bash
-npm install sumo
+npm install @voxgig-sdk/sumo
 ```
 ## Tutorial: your first API call
 

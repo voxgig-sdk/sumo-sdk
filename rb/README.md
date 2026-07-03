@@ -10,13 +10,13 @@ The Ruby SDK for the Sumo API — an entity-oriented client using idiomatic Ruby
 
 ## Install
 ```bash
-gem install sumo-sdk
+gem install voxgig-sdk-sumo
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "sumo-sdk"
+gem "voxgig-sdk-sumo"
 ```
 
 Then run:
