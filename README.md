@@ -1,21 +1,8 @@
 # Sumo SDK
 
-Query a comprehensive sumo database covering rikishi, basho, matches, and ranks from 1958 to today
+Sumo API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Sumo API
-
-[Sumo-API](https://www.sumo-api.com) is a free, community-maintained REST API offering a comprehensive database of sumo statistics spanning from 1958 to the present day. The service is continually updated with the latest results from Grand Sumo tournaments and powers a number of fantasy sumo games.
-
-What you get from the API:
-
-- **Rikishi** records, per-wrestler stats, and head-to-head match histories
-- **Basho** tournament details, **banzuke** (ranking lists) by division, and **torikumi** (daily match pairings)
-- **Kimarite** (winning technique) reference data and per-technique usage
-- Historical **measurements**, **ranks**, and **shikona** (ring names) tracked over a rikishi's career
-
-The API is free to use without authentication. The maintainer asks users to access it responsibly, and contributions help cover operating costs (contact: thesumoapi@gmail.com).
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install sumo-sdk
 luarocks install sumo-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { SumoSDK } from 'sumo'
 
-const client = new SumoSDK({})
+const client = new SumoSDK({
+  apikey: process.env.SUMO_APIKEY,
+})
 
 // List all bashos
 const bashos = await client.Basho().list()
+console.log(bashos.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,12 +90,12 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Basho** | A grand sumo tournament; fetched via `GET /api/basho/:bashoId`, with division banzuke at `GET /api/basho/:bashoId/banzuke/:division` and daily match pairings at `GET /api/basho/:bashoId/torikumi/:division/:day`. | `/api/basho/{bashoId}/torikumi/{division}/{day}` |
-| **Kimarite** | A winning technique used to end a bout; listed via `GET /api/kimarite` and detailed at `GET /api/kimarite/:kimarite`. | `/api/kimarite` |
-| **Measurement** | Historical body measurements (height, weight) recorded for rikishi over their careers; available via `GET /api/measurements`. | `/api/measurements` |
-| **Rank** | A rikishi's ranking on the banzuke at a given basho, with its full history available via `GET /api/ranks`. | `/api/ranks` |
-| **Rikishi** | A sumo wrestler; listed via `GET /api/rikishis` (paginated with limit/skip), with details at `GET /api/rikishi/:rikishiId`, career stats at `/stats`, and match histories at `/matches` and `/matches/:opponentId`. | `/api/rikishi/{rikishiId}/matches` |
-| **Shikona** | The ring name a rikishi competes under, with all historical names tracked via `GET /api/shikonas`. | `/api/shikonas` |
+| **Basho** |  | `/api/basho/{bashoId}/torikumi/{division}/{day}` |
+| **Kimarite** |  | `/api/kimarite` |
+| **Measurement** |  | `/api/measurements` |
+| **Rank** |  | `/api/ranks` |
+| **Rikishi** |  | `/api/rikishi/{rikishiId}/matches` |
+| **Shikona** |  | `/api/shikonas` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,17 +105,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from sumo_sdk import SumoSDK
 
-client = SumoSDK({})
+client = SumoSDK({
+    "apikey": os.environ.get("SUMO_APIKEY"),
+})
 
 # List all bashos
-bashos, err = client.Basho(None).list(None, None)
+bashos, err = client.Basho().list()
+print(bashos)
 
 # Load a specific basho
-basho, err = client.Basho(None).load(
-    {"id": "example_id"}, None
-)
+basho, err = client.Basho().load({"id": "example_id"})
+print(basho)
 ```
 
 ### PHP
@@ -135,15 +127,17 @@ basho, err = client.Basho(None).load(
 <?php
 require_once 'sumo_sdk.php';
 
-$client = new SumoSDK([]);
+$client = new SumoSDK([
+    "apikey" => getenv("SUMO_APIKEY"),
+]);
 
 // List all bashos
-[$bashos, $err] = $client->Basho(null)->list(null, null);
+[$bashos, $err] = $client->Basho()->list();
+print_r($bashos);
 
 // Load a specific basho
-[$basho, $err] = $client->Basho(null)->load(
-    ["id" => "example_id"], null
-);
+[$basho, $err] = $client->Basho()->load(["id" => "example_id"]);
+print_r($basho);
 ```
 
 ### Golang
@@ -151,10 +145,13 @@ $client = new SumoSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/sumo-sdk/go"
 
-client := sdk.NewSumoSDK(map[string]any{})
+client := sdk.NewSumoSDK(map[string]any{
+    "apikey": os.Getenv("SUMO_APIKEY"),
+})
 
 // List all bashos
 bashos, err := client.Basho(nil).List(nil, nil)
+fmt.Println(bashos)
 ```
 
 ### Ruby
@@ -162,15 +159,17 @@ bashos, err := client.Basho(nil).List(nil, nil)
 ```ruby
 require_relative "Sumo_sdk"
 
-client = SumoSDK.new({})
+client = SumoSDK.new({
+  "apikey" => ENV["SUMO_APIKEY"],
+})
 
 # List all bashos
-bashos, err = client.Basho(nil).list(nil, nil)
+bashos, err = client.Basho().list
+puts bashos
 
 # Load a specific basho
-basho, err = client.Basho(nil).load(
-  { "id" => "example_id" }, nil
-)
+basho, err = client.Basho().load({ "id" => "example_id" })
+puts basho
 ```
 
 ### Lua
@@ -178,15 +177,17 @@ basho, err = client.Basho(nil).load(
 ```lua
 local sdk = require("sumo_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SUMO_APIKEY"),
+})
 
 -- List all bashos
-local bashos, err = client:Basho(nil):list(nil, nil)
+local bashos, err = client:Basho():list()
+print(bashos)
 
 -- Load a specific basho
-local basho, err = client:Basho(nil):load(
-  { id = "example_id" }, nil
-)
+local basho, err = client:Basho():load({ id = "example_id" })
+print(basho)
 ```
 
 ## Unit testing in offline mode
@@ -205,25 +206,21 @@ const result = await client.Basho().load({ id: 'test01' })
 ### Python
 
 ```python
-client = SumoSDK.test(None, None)
-result, err = client.Basho(None).load(
-    {"id": "test01"}, None
-)
+client = SumoSDK.test()
+result, err = client.Basho().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = SumoSDK::test(null, null);
-[$result, $err] = $client->Basho(null)->load(
-    ["id" => "test01"], null
-);
+$client = SumoSDK::test();
+[$result, $err] = $client->Basho()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Basho(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -232,19 +229,15 @@ result, err := client.Basho(nil).Load(
 ### Ruby
 
 ```ruby
-client = SumoSDK.test(nil, nil)
-result, err = client.Basho(nil).load(
-  { "id" => "test01" }, nil
-)
+client = SumoSDK.test
+result, err = client.Basho().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Basho(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Basho():load({ id = "test01" })
 ```
 
 ## How it works
@@ -348,11 +341,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Sumo API
-
-- Upstream: [https://www.sumo-api.com](https://www.sumo-api.com)
-- API docs: [https://www.sumo-api.com/api-guide](https://www.sumo-api.com/api-guide)
 
 ---
 

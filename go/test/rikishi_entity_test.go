@@ -135,6 +135,7 @@ func rikishiBasicSetup(extra map[string]any) *entityTestSetup {
 		"SUMO_TEST_RIKISHI_ENTID": idmap,
 		"SUMO_TEST_LIVE":      "FALSE",
 		"SUMO_TEST_EXPLAIN":   "FALSE",
+		"SUMO_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SUMO_TEST_RIKISHI_ENTID"])
@@ -145,6 +146,7 @@ func rikishiBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SUMO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["SUMO_APIKEY"],
 			},
 			extra,
 		})

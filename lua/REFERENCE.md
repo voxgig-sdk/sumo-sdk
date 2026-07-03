@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -134,7 +134,7 @@ local basho = client:Basho(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Basho(nil):list(nil, nil)
+local results, err = client:Basho():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -142,7 +142,7 @@ local results, err = client:Basho(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Basho(nil):load({ id = "basho_id" }, nil)
+local result, err = client:Basho():load({ id = "basho_id" })
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ local kimarite = client:Kimarite(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Kimarite(nil):list(nil, nil)
+local results, err = client:Kimarite():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -206,7 +206,7 @@ local results, err = client:Kimarite(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Kimarite(nil):load({ id = "kimarite_id" }, nil)
+local result, err = client:Kimarite():load({ id = "kimarite_id" })
 ```
 
 ### Common Methods
@@ -261,7 +261,7 @@ local measurement = client:Measurement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Measurement(nil):list(nil, nil)
+local results, err = client:Measurement():list()
 ```
 
 ### Common Methods
@@ -316,7 +316,7 @@ local rank = client:Rank(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rank(nil):list(nil, nil)
+local results, err = client:Rank():list()
 ```
 
 ### Common Methods
@@ -390,7 +390,7 @@ local rikishi = client:Rikishi(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rikishi(nil):list(nil, nil)
+local results, err = client:Rikishi():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -398,7 +398,7 @@ local results, err = client:Rikishi(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Rikishi(nil):load({ id = "rikishi_id" }, nil)
+local result, err = client:Rikishi():load({ id = "rikishi_id" })
 ```
 
 ### Common Methods
@@ -453,7 +453,7 @@ local shikona = client:Shikona(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Shikona(nil):list(nil, nil)
+local results, err = client:Shikona():list()
 ```
 
 ### Common Methods

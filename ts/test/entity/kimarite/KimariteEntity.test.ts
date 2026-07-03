@@ -114,6 +114,7 @@ function basicSetup(extra?: any) {
     'SUMO_TEST_KIMARITE_ENTID': idmap,
     'SUMO_TEST_LIVE': 'FALSE',
     'SUMO_TEST_EXPLAIN': 'FALSE',
+    'SUMO_APIKEY': 'NONE',
   })
 
   idmap = env['SUMO_TEST_KIMARITE_ENTID']
@@ -123,6 +124,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new SumoSDK(merge([
       {
+        apikey: env.SUMO_APIKEY,
       },
       extra
     ]))

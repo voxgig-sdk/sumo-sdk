@@ -141,12 +141,14 @@ def basho_direct_setup(mockres)
   env = Runner.env_override({
     "SUMO_TEST_BASHO_ENTID" => {},
     "SUMO_TEST_LIVE" => "FALSE",
+    "SUMO_APIKEY" => "NONE",
   })
 
   live = env["SUMO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["SUMO_APIKEY"],
     }
     client = SumoSDK.new(merged_opts)
     return {

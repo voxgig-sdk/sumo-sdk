@@ -98,6 +98,7 @@ def _kimarite_basic_setup(extra):
         "SUMO_TEST_KIMARITE_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
+        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -108,6 +109,7 @@ def _kimarite_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

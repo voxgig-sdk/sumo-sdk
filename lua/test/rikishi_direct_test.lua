@@ -132,12 +132,14 @@ function rikishi_direct_setup(mockres)
   local env = runner.env_override({
     ["SUMO_TEST_RIKISHI_ENTID"] = {},
     ["SUMO_TEST_LIVE"] = "FALSE",
+    ["SUMO_APIKEY"] = "NONE",
   })
 
   local live = env["SUMO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["SUMO_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
