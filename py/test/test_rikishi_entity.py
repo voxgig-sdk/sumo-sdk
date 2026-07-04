@@ -50,16 +50,14 @@ class TestRikishiEntity:
         rikishi_ref01_ent = client.Rikishi(None)
         rikishi_ref01_match = {}
 
-        rikishi_ref01_list_result, err = rikishi_ref01_ent.list(rikishi_ref01_match, None)
-        assert err is None
+        rikishi_ref01_list_result = rikishi_ref01_ent.list(rikishi_ref01_match, None)
         assert isinstance(rikishi_ref01_list_result, list)
 
         # LOAD
         rikishi_ref01_match_dt0 = {
             "id": rikishi_ref01_data["id"],
         }
-        rikishi_ref01_data_dt0_loaded, err = rikishi_ref01_ent.load(rikishi_ref01_match_dt0, None)
-        assert err is None
+        rikishi_ref01_data_dt0_loaded = rikishi_ref01_ent.load(rikishi_ref01_match_dt0, None)
         rikishi_ref01_data_dt0_load_result = helpers.to_map(rikishi_ref01_data_dt0_loaded)
         assert rikishi_ref01_data_dt0_load_result is not None
         assert rikishi_ref01_data_dt0_load_result["id"] == rikishi_ref01_data["id"]
@@ -102,7 +100,6 @@ def _rikishi_basic_setup(extra):
         "SUMO_TEST_RIKISHI_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _rikishi_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

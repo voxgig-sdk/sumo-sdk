@@ -55,6 +55,9 @@ class KimariteEntity
         return new KimariteEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Kimarite|array $args Kimarite data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class KimariteEntity
         }
     }
 
+    /**
+     * @return Kimarite|array The current Kimarite data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Kimarite fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class KimariteEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Kimarite fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class KimariteEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Kimarite.
+     *
+     * @param KimariteLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed KimariteLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Kimarite|array The loaded Kimarite as an assoc-array at the
+     *   SDK boundary; throws SumoError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class KimariteEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Kimarite items matching the given filter.
+     *
+     * @param KimariteListMatch|array|null $reqmatch Match filter (any subset
+     *   of Kimarite fields) as an assoc-array; KimariteListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Kimarite[]|array A list of Kimarite items as assoc-arrays at
+     *   the SDK boundary; throws SumoError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class KimariteEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

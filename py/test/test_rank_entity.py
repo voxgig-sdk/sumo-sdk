@@ -50,8 +50,7 @@ class TestRankEntity:
         rank_ref01_ent = client.Rank(None)
         rank_ref01_match = {}
 
-        rank_ref01_list_result, err = rank_ref01_ent.list(rank_ref01_match, None)
-        assert err is None
+        rank_ref01_list_result = rank_ref01_ent.list(rank_ref01_match, None)
         assert isinstance(rank_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _rank_basic_setup(extra):
         "SUMO_TEST_RANK_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _rank_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

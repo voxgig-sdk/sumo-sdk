@@ -43,8 +43,7 @@ class MeasurementEntityTest < Minitest::Test
     measurement_ref01_ent = client.Measurement(nil)
     measurement_ref01_match = {}
 
-    measurement_ref01_list_result, err = measurement_ref01_ent.list(measurement_ref01_match, nil)
-    assert_nil err
+    measurement_ref01_list_result = measurement_ref01_ent.list(measurement_ref01_match, nil)
     assert measurement_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def measurement_basic_setup(extra)
     "SUMO_TEST_MEASUREMENT_ENTID" => idmap,
     "SUMO_TEST_LIVE" => "FALSE",
     "SUMO_TEST_EXPLAIN" => "FALSE",
-    "SUMO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def measurement_basic_setup(extra)
   if env["SUMO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SUMO_APIKEY"],
       },
       extra || {},
     ])

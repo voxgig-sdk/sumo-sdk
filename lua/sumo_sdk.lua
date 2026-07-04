@@ -244,36 +244,114 @@ end
 
 
 
+-- Idiomatic facade: client:basho():list() / client:basho():load({ id = ... })
+function SumoSDK:basho(data)
+  local EntityMod = require("entity.basho_entity")
+  if data == nil then
+    if self._basho == nil then
+      self._basho = EntityMod.new(self, nil)
+    end
+    return self._basho
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:basho() instead.
 function SumoSDK:Basho(data)
   local EntityMod = require("entity.basho_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:kimarite():list() / client:kimarite():load({ id = ... })
+function SumoSDK:kimarite(data)
+  local EntityMod = require("entity.kimarite_entity")
+  if data == nil then
+    if self._kimarite == nil then
+      self._kimarite = EntityMod.new(self, nil)
+    end
+    return self._kimarite
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:kimarite() instead.
 function SumoSDK:Kimarite(data)
   local EntityMod = require("entity.kimarite_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:measurement():list() / client:measurement():load({ id = ... })
+function SumoSDK:measurement(data)
+  local EntityMod = require("entity.measurement_entity")
+  if data == nil then
+    if self._measurement == nil then
+      self._measurement = EntityMod.new(self, nil)
+    end
+    return self._measurement
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:measurement() instead.
 function SumoSDK:Measurement(data)
   local EntityMod = require("entity.measurement_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:rank():list() / client:rank():load({ id = ... })
+function SumoSDK:rank(data)
+  local EntityMod = require("entity.rank_entity")
+  if data == nil then
+    if self._rank == nil then
+      self._rank = EntityMod.new(self, nil)
+    end
+    return self._rank
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:rank() instead.
 function SumoSDK:Rank(data)
   local EntityMod = require("entity.rank_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:rikishi():list() / client:rikishi():load({ id = ... })
+function SumoSDK:rikishi(data)
+  local EntityMod = require("entity.rikishi_entity")
+  if data == nil then
+    if self._rikishi == nil then
+      self._rikishi = EntityMod.new(self, nil)
+    end
+    return self._rikishi
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:rikishi() instead.
 function SumoSDK:Rikishi(data)
   local EntityMod = require("entity.rikishi_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:shikona():list() / client:shikona():load({ id = ... })
+function SumoSDK:shikona(data)
+  local EntityMod = require("entity.shikona_entity")
+  if data == nil then
+    if self._shikona == nil then
+      self._shikona = EntityMod.new(self, nil)
+    end
+    return self._shikona
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:shikona() instead.
 function SumoSDK:Shikona(data)
   local EntityMod = require("entity.shikona_entity")
   return EntityMod.new(self, data)

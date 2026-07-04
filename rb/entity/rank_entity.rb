@@ -45,6 +45,7 @@ class RankEntity
     end
   end
 
+  # @return [Rank, Hash] the current Rank data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class RankEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Rank fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class RankEntity
   
 
   
+  # List Rank items matching the given filter.
+  #
+  # @param reqmatch [RankListMatch, Hash, nil] match filter (any subset of Rank fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Rank>, Array] the matching Rank items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

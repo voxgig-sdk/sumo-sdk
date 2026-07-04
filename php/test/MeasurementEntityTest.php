@@ -50,8 +50,7 @@ class MeasurementEntityTest extends TestCase
         $measurement_ref01_ent = $client->Measurement(null);
         $measurement_ref01_match = [];
 
-        [$measurement_ref01_list_result, $err] = $measurement_ref01_ent->list($measurement_ref01_match, null);
-        $this->assertNull($err);
+        $measurement_ref01_list_result = $measurement_ref01_ent->list($measurement_ref01_match, null);
         $this->assertIsArray($measurement_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function measurement_basic_setup($extra)
         "SUMO_TEST_MEASUREMENT_ENTID" => $idmap,
         "SUMO_TEST_LIVE" => "FALSE",
         "SUMO_TEST_EXPLAIN" => "FALSE",
-        "SUMO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function measurement_basic_setup($extra)
     if ($env["SUMO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SUMO_APIKEY"],
             ],
             $extra ?? [],
         ]);

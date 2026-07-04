@@ -54,16 +54,14 @@ class BashoEntityTest extends TestCase
             "division" => $setup["idmap"]["division01"],
         ];
 
-        [$basho_ref01_list_result, $err] = $basho_ref01_ent->list($basho_ref01_match, null);
-        $this->assertNull($err);
+        $basho_ref01_list_result = $basho_ref01_ent->list($basho_ref01_match, null);
         $this->assertIsArray($basho_ref01_list_result);
 
         // LOAD
         $basho_ref01_match_dt0 = [
             "id" => $basho_ref01_data["id"],
         ];
-        [$basho_ref01_data_dt0_loaded, $err] = $basho_ref01_ent->load($basho_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $basho_ref01_data_dt0_loaded = $basho_ref01_ent->load($basho_ref01_match_dt0, null);
         $basho_ref01_data_dt0_load_result = Helpers::to_map($basho_ref01_data_dt0_loaded);
         $this->assertNotNull($basho_ref01_data_dt0_load_result);
         $this->assertEquals($basho_ref01_data_dt0_load_result["id"], $basho_ref01_data["id"]);
@@ -100,7 +98,6 @@ function basho_basic_setup($extra)
         "SUMO_TEST_BASHO_ENTID" => $idmap,
         "SUMO_TEST_LIVE" => "FALSE",
         "SUMO_TEST_EXPLAIN" => "FALSE",
-        "SUMO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -112,7 +109,6 @@ function basho_basic_setup($extra)
     if ($env["SUMO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SUMO_APIKEY"],
             ],
             $extra ?? [],
         ]);

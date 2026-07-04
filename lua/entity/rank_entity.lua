@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch RankListMatch
+---@param ctrl? table
+---@return Rank[]
+---@return string? err
 function RankEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

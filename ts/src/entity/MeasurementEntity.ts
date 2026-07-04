@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Measurement,
+  MeasurementListMatch,
+} from '../SumoTypes'
 
 // TODO: needs Entity superclass
-class MeasurementEntity extends SumoEntityBase {
+class MeasurementEntity extends SumoEntityBase<Measurement> {
 
   constructor(client: SumoSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class MeasurementEntity extends SumoEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: MeasurementListMatch, ctrl?: Control): Promise<Measurement[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class MeasurementEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Measurement[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Shikona,
+  ShikonaListMatch,
+} from '../SumoTypes'
 
 // TODO: needs Entity superclass
-class ShikonaEntity extends SumoEntityBase {
+class ShikonaEntity extends SumoEntityBase<Shikona> {
 
   constructor(client: SumoSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ShikonaEntity extends SumoEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ShikonaListMatch, ctrl?: Control): Promise<Shikona[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ShikonaEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Shikona[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

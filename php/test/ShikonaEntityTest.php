@@ -50,8 +50,7 @@ class ShikonaEntityTest extends TestCase
         $shikona_ref01_ent = $client->Shikona(null);
         $shikona_ref01_match = [];
 
-        [$shikona_ref01_list_result, $err] = $shikona_ref01_ent->list($shikona_ref01_match, null);
-        $this->assertNull($err);
+        $shikona_ref01_list_result = $shikona_ref01_ent->list($shikona_ref01_match, null);
         $this->assertIsArray($shikona_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function shikona_basic_setup($extra)
         "SUMO_TEST_SHIKONA_ENTID" => $idmap,
         "SUMO_TEST_LIVE" => "FALSE",
         "SUMO_TEST_EXPLAIN" => "FALSE",
-        "SUMO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function shikona_basic_setup($extra)
     if ($env["SUMO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SUMO_APIKEY"],
             ],
             $extra ?? [],
         ]);

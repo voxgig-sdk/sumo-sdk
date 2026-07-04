@@ -85,6 +85,27 @@ func (e *RikishiEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Rikishi; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *RikishiEntity) DataTyped(data ...Rikishi) Rikishi {
+	if len(data) > 0 {
+		return typedFrom[Rikishi](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Rikishi](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Rikishi (all fields
+// optional at the wire level).
+func (e *RikishiEntity) MatchTyped(match ...Rikishi) Rikishi {
+	if len(match) > 0 {
+		return typedFrom[Rikishi](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Rikishi](e.Match())
+}
+
 
 func (e *RikishiEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *RikishiEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// RikishiLoadMatch and returns an Rikishi. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *RikishiEntity) LoadTyped(reqmatch RikishiLoadMatch, ctrl map[string]any) (Rikishi, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Rikishi{}, err
+	}
+	return typedFrom[Rikishi](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *RikishiEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// RikishiListMatch and returns []Rikishi. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *RikishiEntity) ListTyped(reqmatch RikishiListMatch, ctrl map[string]any) ([]Rikishi, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Rikishi](res), nil
 }
 
 

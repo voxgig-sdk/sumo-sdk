@@ -54,16 +54,14 @@ class TestBashoEntity:
             "division": setup["idmap"]["division01"],
         }
 
-        basho_ref01_list_result, err = basho_ref01_ent.list(basho_ref01_match, None)
-        assert err is None
+        basho_ref01_list_result = basho_ref01_ent.list(basho_ref01_match, None)
         assert isinstance(basho_ref01_list_result, list)
 
         # LOAD
         basho_ref01_match_dt0 = {
             "id": basho_ref01_data["id"],
         }
-        basho_ref01_data_dt0_loaded, err = basho_ref01_ent.load(basho_ref01_match_dt0, None)
-        assert err is None
+        basho_ref01_data_dt0_loaded = basho_ref01_ent.load(basho_ref01_match_dt0, None)
         basho_ref01_data_dt0_load_result = helpers.to_map(basho_ref01_data_dt0_loaded)
         assert basho_ref01_data_dt0_load_result is not None
         assert basho_ref01_data_dt0_load_result["id"] == basho_ref01_data["id"]
@@ -106,7 +104,6 @@ def _basho_basic_setup(extra):
         "SUMO_TEST_BASHO_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -117,7 +114,6 @@ def _basho_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

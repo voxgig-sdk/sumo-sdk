@@ -45,6 +45,7 @@ class ShikonaEntity
     end
   end
 
+  # @return [Shikona, Hash] the current Shikona data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ShikonaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Shikona fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ShikonaEntity
   
 
   
+  # List Shikona items matching the given filter.
+  #
+  # @param reqmatch [ShikonaListMatch, Hash, nil] match filter (any subset of Shikona fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Shikona>, Array] the matching Shikona items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -50,16 +50,14 @@ class RikishiEntityTest extends TestCase
         $rikishi_ref01_ent = $client->Rikishi(null);
         $rikishi_ref01_match = [];
 
-        [$rikishi_ref01_list_result, $err] = $rikishi_ref01_ent->list($rikishi_ref01_match, null);
-        $this->assertNull($err);
+        $rikishi_ref01_list_result = $rikishi_ref01_ent->list($rikishi_ref01_match, null);
         $this->assertIsArray($rikishi_ref01_list_result);
 
         // LOAD
         $rikishi_ref01_match_dt0 = [
             "id" => $rikishi_ref01_data["id"],
         ];
-        [$rikishi_ref01_data_dt0_loaded, $err] = $rikishi_ref01_ent->load($rikishi_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $rikishi_ref01_data_dt0_loaded = $rikishi_ref01_ent->load($rikishi_ref01_match_dt0, null);
         $rikishi_ref01_data_dt0_load_result = Helpers::to_map($rikishi_ref01_data_dt0_loaded);
         $this->assertNotNull($rikishi_ref01_data_dt0_load_result);
         $this->assertEquals($rikishi_ref01_data_dt0_load_result["id"], $rikishi_ref01_data["id"]);
@@ -96,7 +94,6 @@ function rikishi_basic_setup($extra)
         "SUMO_TEST_RIKISHI_ENTID" => $idmap,
         "SUMO_TEST_LIVE" => "FALSE",
         "SUMO_TEST_EXPLAIN" => "FALSE",
-        "SUMO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function rikishi_basic_setup($extra)
     if ($env["SUMO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SUMO_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.sumo-api.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -195,7 +191,8 @@ class Config {
                     "name": "basho_id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -203,7 +200,8 @@ class Config {
                     "name": "day",
                     "orig": "day",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   },
                   {
                     "active": true,
@@ -211,7 +209,8 @@ class Config {
                     "name": "division",
                     "orig": "division",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 2
                   }
                 ]
               },
@@ -260,7 +259,8 @@ class Config {
                     "name": "division",
                     "orig": "division",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -268,7 +268,8 @@ class Config {
                     "name": "id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -308,7 +309,8 @@ class Config {
                     "name": "id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -428,7 +430,8 @@ class Config {
                     "name": "id",
                     "orig": "kimarite",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -765,7 +768,8 @@ class Config {
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -827,7 +831,8 @@ class Config {
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -835,7 +840,8 @@ class Config {
                     "name": "opponent_id",
                     "orig": "opponent_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -876,7 +882,8 @@ class Config {
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -913,7 +920,8 @@ class Config {
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

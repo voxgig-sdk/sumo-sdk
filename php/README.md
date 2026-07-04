@@ -9,9 +9,10 @@ The PHP SDK for the Sumo API — an entity-oriented client using PHP conventions
 
 
 ## Install
-```bash
-composer require voxgig-sdk/sumo
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/sumo-sdk/releases](https://github.com/voxgig-sdk/sumo-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'sumo_sdk.php';
 
-$client = new SumoSDK([
-    "apikey" => getenv("SUMO_APIKEY"),
-]);
+$client = new SumoSDK();
 ```
 
 ### 2. List bashos
 
 ```php
-[$result, $err] = $client->Basho()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->basho()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a basho
 
 ```php
-[$result, $err] = $client->Basho()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->basho()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = SumoSDK::test();
 
-[$result, $err] = $client->Sumo()->load(["id" => "test01"]);
+$result = $client->basho()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -130,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -204,8 +209,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -334,7 +343,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.Basho()`
+Create an instance: `const basho = client.basho`
 
 #### Operations
 
@@ -366,19 +375,19 @@ Create an instance: `const basho = client.Basho()`
 #### Example: Load
 
 ```ts
-const basho = await client.Basho().load({ id: 'basho_id' })
+const basho = await client.basho.load({ id: 'basho_id' })
 ```
 
 #### Example: List
 
 ```ts
-const bashos = await client.Basho().list()
+const bashos = await client.basho.list()
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.Kimarite()`
+Create an instance: `const kimarite = client.kimarite`
 
 #### Operations
 
@@ -400,19 +409,19 @@ Create an instance: `const kimarite = client.Kimarite()`
 #### Example: Load
 
 ```ts
-const kimarite = await client.Kimarite().load({ id: 'kimarite_id' })
+const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
 ```
 
 #### Example: List
 
 ```ts
-const kimarites = await client.Kimarite().list()
+const kimarites = await client.kimarite.list()
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.Measurement()`
+Create an instance: `const measurement = client.measurement`
 
 #### Operations
 
@@ -432,13 +441,13 @@ Create an instance: `const measurement = client.Measurement()`
 #### Example: List
 
 ```ts
-const measurements = await client.Measurement().list()
+const measurements = await client.measurement.list()
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.Rank()`
+Create an instance: `const rank = client.rank`
 
 #### Operations
 
@@ -458,13 +467,13 @@ Create an instance: `const rank = client.Rank()`
 #### Example: List
 
 ```ts
-const ranks = await client.Rank().list()
+const ranks = await client.rank.list()
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.Rikishi()`
+Create an instance: `const rikishi = client.rikishi`
 
 #### Operations
 
@@ -504,19 +513,19 @@ Create an instance: `const rikishi = client.Rikishi()`
 #### Example: Load
 
 ```ts
-const rikishi = await client.Rikishi().load({ id: 'rikishi_id' })
+const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
 ```
 
 #### Example: List
 
 ```ts
-const rikishis = await client.Rikishi().list()
+const rikishis = await client.rikishi.list()
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.Shikona()`
+Create an instance: `const shikona = client.shikona`
 
 #### Operations
 
@@ -536,7 +545,7 @@ Create an instance: `const shikona = client.Shikona()`
 #### Example: List
 
 ```ts
-const shikonas = await client.Shikona().list()
+const shikonas = await client.shikona.list()
 ```
 
 
@@ -611,11 +620,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$basho = $client->basho();
+$basho->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $basho->dataGet() now returns the loaded basho data
+// $basho->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

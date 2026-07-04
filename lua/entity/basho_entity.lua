@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BashoLoadMatch
+---@param ctrl? table
+---@return Basho
+---@return string? err
 function BashoEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch BashoListMatch
+---@param ctrl? table
+---@return Basho[]
+---@return string? err
 function BashoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

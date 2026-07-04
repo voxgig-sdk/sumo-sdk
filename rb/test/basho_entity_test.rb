@@ -47,16 +47,14 @@ class BashoEntityTest < Minitest::Test
       "division" => setup[:idmap]["division01"],
     }
 
-    basho_ref01_list_result, err = basho_ref01_ent.list(basho_ref01_match, nil)
-    assert_nil err
+    basho_ref01_list_result = basho_ref01_ent.list(basho_ref01_match, nil)
     assert basho_ref01_list_result.is_a?(Array)
 
     # LOAD
     basho_ref01_match_dt0 = {
       "id" => basho_ref01_data["id"],
     }
-    basho_ref01_data_dt0_loaded, err = basho_ref01_ent.load(basho_ref01_match_dt0, nil)
-    assert_nil err
+    basho_ref01_data_dt0_loaded = basho_ref01_ent.load(basho_ref01_match_dt0, nil)
     basho_ref01_data_dt0_load_result = Helpers.to_map(basho_ref01_data_dt0_loaded)
     assert !basho_ref01_data_dt0_load_result.nil?
     assert_equal basho_ref01_data_dt0_load_result["id"], basho_ref01_data["id"]
@@ -97,7 +95,6 @@ def basho_basic_setup(extra)
     "SUMO_TEST_BASHO_ENTID" => idmap,
     "SUMO_TEST_LIVE" => "FALSE",
     "SUMO_TEST_EXPLAIN" => "FALSE",
-    "SUMO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -109,7 +106,6 @@ def basho_basic_setup(extra)
   if env["SUMO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SUMO_APIKEY"],
       },
       extra || {},
     ])

@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -76,7 +75,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -90,11 +92,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -102,7 +105,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## BashoEntity
 
 ```php
-$basho = $client->Basho();
+$basho = $client->basho();
 ```
 
 ### Fields
@@ -127,20 +130,20 @@ $basho = $client->Basho();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Basho()->list([]);
+$results = $client->basho()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Basho()->load(["id" => "basho_id"]);
+$result = $client->basho()->load(["id" => "basho_id"]);
 ```
 
 ### Common Methods
@@ -176,7 +179,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```php
-$kimarite = $client->Kimarite();
+$kimarite = $client->kimarite();
 ```
 
 ### Fields
@@ -191,20 +194,20 @@ $kimarite = $client->Kimarite();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Kimarite()->list([]);
+$results = $client->kimarite()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Kimarite()->load(["id" => "kimarite_id"]);
+$result = $client->kimarite()->load(["id" => "kimarite_id"]);
 ```
 
 ### Common Methods
@@ -240,7 +243,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```php
-$measurement = $client->Measurement();
+$measurement = $client->measurement();
 ```
 
 ### Fields
@@ -254,12 +257,12 @@ $measurement = $client->Measurement();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Measurement()->list([]);
+$results = $client->measurement()->list([]);
 ```
 
 ### Common Methods
@@ -295,7 +298,7 @@ Return the entity name.
 ## RankEntity
 
 ```php
-$rank = $client->Rank();
+$rank = $client->rank();
 ```
 
 ### Fields
@@ -309,12 +312,12 @@ $rank = $client->Rank();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Rank()->list([]);
+$results = $client->rank()->list([]);
 ```
 
 ### Common Methods
@@ -350,7 +353,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```php
-$rikishi = $client->Rikishi();
+$rikishi = $client->rikishi();
 ```
 
 ### Fields
@@ -383,20 +386,20 @@ $rikishi = $client->Rikishi();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Rikishi()->list([]);
+$results = $client->rikishi()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Rikishi()->load(["id" => "rikishi_id"]);
+$result = $client->rikishi()->load(["id" => "rikishi_id"]);
 ```
 
 ### Common Methods
@@ -432,7 +435,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```php
-$shikona = $client->Shikona();
+$shikona = $client->shikona();
 ```
 
 ### Fields
@@ -446,12 +449,12 @@ $shikona = $client->Shikona();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Shikona()->list([]);
+$results = $client->shikona()->list([]);
 ```
 
 ### Common Methods

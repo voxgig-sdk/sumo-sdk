@@ -45,6 +45,7 @@ class RikishiEntity
     end
   end
 
+  # @return [Rikishi, Hash] the current Rikishi data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class RikishiEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Rikishi fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Rikishi.
+  #
+  # @param reqmatch [RikishiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Rikishi, Hash] the loaded Rikishi; raises SumoError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class RikishiEntity
 
 
   
+  # List Rikishi items matching the given filter.
+  #
+  # @param reqmatch [RikishiListMatch, Hash, nil] match filter (any subset of Rikishi fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Rikishi>, Array] the matching Rikishi items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

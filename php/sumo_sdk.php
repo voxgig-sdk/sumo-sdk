@@ -103,7 +103,7 @@ class SumoSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class SumoSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class SumoSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,59 +216,125 @@ class SumoSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Basho($data = null)
+    private $_basho = null;
+
+    // Idiomatic facade: $client->basho()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Basho() (PHP method
+    // names are case-insensitive).
+    public function basho($data = null)
     {
         require_once __DIR__ . '/entity/basho_entity.php';
+        if ($data === null) {
+            if ($this->_basho === null) {
+                $this->_basho = new BashoEntity($this, null);
+            }
+            return $this->_basho;
+        }
         return new BashoEntity($this, $data);
     }
 
 
-    public function Kimarite($data = null)
+    private $_kimarite = null;
+
+    // Idiomatic facade: $client->kimarite()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Kimarite() (PHP method
+    // names are case-insensitive).
+    public function kimarite($data = null)
     {
         require_once __DIR__ . '/entity/kimarite_entity.php';
+        if ($data === null) {
+            if ($this->_kimarite === null) {
+                $this->_kimarite = new KimariteEntity($this, null);
+            }
+            return $this->_kimarite;
+        }
         return new KimariteEntity($this, $data);
     }
 
 
-    public function Measurement($data = null)
+    private $_measurement = null;
+
+    // Idiomatic facade: $client->measurement()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Measurement() (PHP method
+    // names are case-insensitive).
+    public function measurement($data = null)
     {
         require_once __DIR__ . '/entity/measurement_entity.php';
+        if ($data === null) {
+            if ($this->_measurement === null) {
+                $this->_measurement = new MeasurementEntity($this, null);
+            }
+            return $this->_measurement;
+        }
         return new MeasurementEntity($this, $data);
     }
 
 
-    public function Rank($data = null)
+    private $_rank = null;
+
+    // Idiomatic facade: $client->rank()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Rank() (PHP method
+    // names are case-insensitive).
+    public function rank($data = null)
     {
         require_once __DIR__ . '/entity/rank_entity.php';
+        if ($data === null) {
+            if ($this->_rank === null) {
+                $this->_rank = new RankEntity($this, null);
+            }
+            return $this->_rank;
+        }
         return new RankEntity($this, $data);
     }
 
 
-    public function Rikishi($data = null)
+    private $_rikishi = null;
+
+    // Idiomatic facade: $client->rikishi()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Rikishi() (PHP method
+    // names are case-insensitive).
+    public function rikishi($data = null)
     {
         require_once __DIR__ . '/entity/rikishi_entity.php';
+        if ($data === null) {
+            if ($this->_rikishi === null) {
+                $this->_rikishi = new RikishiEntity($this, null);
+            }
+            return $this->_rikishi;
+        }
         return new RikishiEntity($this, $data);
     }
 
 
-    public function Shikona($data = null)
+    private $_shikona = null;
+
+    // Idiomatic facade: $client->shikona()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Shikona() (PHP method
+    // names are case-insensitive).
+    public function shikona($data = null)
     {
         require_once __DIR__ . '/entity/shikona_entity.php';
+        if ($data === null) {
+            if ($this->_shikona === null) {
+                $this->_shikona = new ShikonaEntity($this, null);
+            }
+            return $this->_shikona;
+        }
         return new ShikonaEntity($this, $data);
     }
 

@@ -7,6 +7,8 @@ import { RankEntity } from './entity/RankEntity'
 import { RikishiEntity } from './entity/RikishiEntity'
 import { ShikonaEntity } from './entity/ShikonaEntity'
 
+export type * from './SumoTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -207,36 +209,84 @@ class SumoSDK {
 
 
 
+  _basho?: BashoEntity
+
+  // Idiomatic facade: `client.basho.list()` / `client.basho.load({ id })`.
+  get basho(): BashoEntity {
+    return (this._basho ??= new BashoEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.basho` instead. */
   Basho(data?: any) {
     const self = this
     return new BashoEntity(self,data)
   }
 
 
+  _kimarite?: KimariteEntity
+
+  // Idiomatic facade: `client.kimarite.list()` / `client.kimarite.load({ id })`.
+  get kimarite(): KimariteEntity {
+    return (this._kimarite ??= new KimariteEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.kimarite` instead. */
   Kimarite(data?: any) {
     const self = this
     return new KimariteEntity(self,data)
   }
 
 
+  _measurement?: MeasurementEntity
+
+  // Idiomatic facade: `client.measurement.list()` / `client.measurement.load({ id })`.
+  get measurement(): MeasurementEntity {
+    return (this._measurement ??= new MeasurementEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.measurement` instead. */
   Measurement(data?: any) {
     const self = this
     return new MeasurementEntity(self,data)
   }
 
 
+  _rank?: RankEntity
+
+  // Idiomatic facade: `client.rank.list()` / `client.rank.load({ id })`.
+  get rank(): RankEntity {
+    return (this._rank ??= new RankEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.rank` instead. */
   Rank(data?: any) {
     const self = this
     return new RankEntity(self,data)
   }
 
 
+  _rikishi?: RikishiEntity
+
+  // Idiomatic facade: `client.rikishi.list()` / `client.rikishi.load({ id })`.
+  get rikishi(): RikishiEntity {
+    return (this._rikishi ??= new RikishiEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.rikishi` instead. */
   Rikishi(data?: any) {
     const self = this
     return new RikishiEntity(self,data)
   }
 
 
+  _shikona?: ShikonaEntity
+
+  // Idiomatic facade: `client.shikona.list()` / `client.shikona.load({ id })`.
+  get shikona(): ShikonaEntity {
+    return (this._shikona ??= new ShikonaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.shikona` instead. */
   Shikona(data?: any) {
     const self = this
     return new ShikonaEntity(self,data)

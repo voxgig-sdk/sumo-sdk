@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RikishiLoadMatch
+---@param ctrl? table
+---@return Rikishi
+---@return string? err
 function RikishiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RikishiListMatch
+---@param ctrl? table
+---@return Rikishi[]
+---@return string? err
 function RikishiEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

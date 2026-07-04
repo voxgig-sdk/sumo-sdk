@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Kimarite,
+  KimariteLoadMatch,
+  KimariteListMatch,
+} from '../SumoTypes'
 
 // TODO: needs Entity superclass
-class KimariteEntity extends SumoEntityBase {
+class KimariteEntity extends SumoEntityBase<Kimarite> {
 
   constructor(client: SumoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class KimariteEntity extends SumoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: KimariteLoadMatch, ctrl?: Control): Promise<Kimarite> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class KimariteEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Kimarite> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: KimariteListMatch, ctrl?: Control): Promise<Kimarite[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class KimariteEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Kimarite[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

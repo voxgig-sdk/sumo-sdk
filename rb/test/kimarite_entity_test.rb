@@ -43,14 +43,12 @@ class KimariteEntityTest < Minitest::Test
     kimarite_ref01_ent = client.Kimarite(nil)
     kimarite_ref01_match = {}
 
-    kimarite_ref01_list_result, err = kimarite_ref01_ent.list(kimarite_ref01_match, nil)
-    assert_nil err
+    kimarite_ref01_list_result = kimarite_ref01_ent.list(kimarite_ref01_match, nil)
     assert kimarite_ref01_list_result.is_a?(Array)
 
     # LOAD
     kimarite_ref01_match_dt0 = {}
-    kimarite_ref01_data_dt0_loaded, err = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, nil)
-    assert_nil err
+    kimarite_ref01_data_dt0_loaded = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, nil)
     assert !kimarite_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def kimarite_basic_setup(extra)
     "SUMO_TEST_KIMARITE_ENTID" => idmap,
     "SUMO_TEST_LIVE" => "FALSE",
     "SUMO_TEST_EXPLAIN" => "FALSE",
-    "SUMO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def kimarite_basic_setup(extra)
   if env["SUMO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SUMO_APIKEY"],
       },
       extra || {},
     ])

@@ -9,12 +9,9 @@ The Lua SDK for the Sumo API — an entity-oriented client using Lua conventions
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-sumo
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/sumo-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("sumo_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("SUMO_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List bashos
 
 ```lua
-local result, err = client:Basho():list()
+local result, err = client:basho():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a basho
 
 ```lua
-local result, err = client:Basho():load({ id = "example_id" })
+local result, err = client:basho():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Sumo():load({ id = "test01" })
+local result, err = client:basho():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -135,7 +130,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -339,7 +332,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.Basho()`
+Create an instance: `const basho = client.basho`
 
 #### Operations
 
@@ -371,19 +364,19 @@ Create an instance: `const basho = client.Basho()`
 #### Example: Load
 
 ```ts
-const basho = await client.Basho().load({ id: 'basho_id' })
+const basho = await client.basho.load({ id: 'basho_id' })
 ```
 
 #### Example: List
 
 ```ts
-const bashos = await client.Basho().list()
+const bashos = await client.basho.list()
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.Kimarite()`
+Create an instance: `const kimarite = client.kimarite`
 
 #### Operations
 
@@ -405,19 +398,19 @@ Create an instance: `const kimarite = client.Kimarite()`
 #### Example: Load
 
 ```ts
-const kimarite = await client.Kimarite().load({ id: 'kimarite_id' })
+const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
 ```
 
 #### Example: List
 
 ```ts
-const kimarites = await client.Kimarite().list()
+const kimarites = await client.kimarite.list()
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.Measurement()`
+Create an instance: `const measurement = client.measurement`
 
 #### Operations
 
@@ -437,13 +430,13 @@ Create an instance: `const measurement = client.Measurement()`
 #### Example: List
 
 ```ts
-const measurements = await client.Measurement().list()
+const measurements = await client.measurement.list()
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.Rank()`
+Create an instance: `const rank = client.rank`
 
 #### Operations
 
@@ -463,13 +456,13 @@ Create an instance: `const rank = client.Rank()`
 #### Example: List
 
 ```ts
-const ranks = await client.Rank().list()
+const ranks = await client.rank.list()
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.Rikishi()`
+Create an instance: `const rikishi = client.rikishi`
 
 #### Operations
 
@@ -509,19 +502,19 @@ Create an instance: `const rikishi = client.Rikishi()`
 #### Example: Load
 
 ```ts
-const rikishi = await client.Rikishi().load({ id: 'rikishi_id' })
+const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
 ```
 
 #### Example: List
 
 ```ts
-const rikishis = await client.Rikishi().list()
+const rikishis = await client.rikishi.list()
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.Shikona()`
+Create an instance: `const shikona = client.shikona`
 
 #### Operations
 
@@ -541,7 +534,7 @@ Create an instance: `const shikona = client.Shikona()`
 #### Example: List
 
 ```ts
-const shikonas = await client.Shikona().list()
+const shikonas = await client.shikona.list()
 ```
 
 
@@ -616,11 +609,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local basho = client:basho()
+basho:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- basho:data_get() now returns the loaded basho data
+-- basho:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

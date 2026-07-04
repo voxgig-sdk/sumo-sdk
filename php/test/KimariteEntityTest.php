@@ -50,14 +50,12 @@ class KimariteEntityTest extends TestCase
         $kimarite_ref01_ent = $client->Kimarite(null);
         $kimarite_ref01_match = [];
 
-        [$kimarite_ref01_list_result, $err] = $kimarite_ref01_ent->list($kimarite_ref01_match, null);
-        $this->assertNull($err);
+        $kimarite_ref01_list_result = $kimarite_ref01_ent->list($kimarite_ref01_match, null);
         $this->assertIsArray($kimarite_ref01_list_result);
 
         // LOAD
         $kimarite_ref01_match_dt0 = [];
-        [$kimarite_ref01_data_dt0_loaded, $err] = $kimarite_ref01_ent->load($kimarite_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $kimarite_ref01_data_dt0_loaded = $kimarite_ref01_ent->load($kimarite_ref01_match_dt0, null);
         $this->assertNotNull($kimarite_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function kimarite_basic_setup($extra)
         "SUMO_TEST_KIMARITE_ENTID" => $idmap,
         "SUMO_TEST_LIVE" => "FALSE",
         "SUMO_TEST_EXPLAIN" => "FALSE",
-        "SUMO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function kimarite_basic_setup($extra)
     if ($env["SUMO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SUMO_APIKEY"],
             ],
             $extra ?? [],
         ]);

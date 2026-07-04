@@ -245,31 +245,49 @@ func (sdk *SumoSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Basho returns a Basho entity bound to this client.
+// Idiomatic usage: client.Basho(nil).List(nil, nil) or
+// client.Basho(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Basho(data map[string]any) SumoEntity {
 	return NewBashoEntityFunc(sdk, data)
 }
 
 
+// Kimarite returns a Kimarite entity bound to this client.
+// Idiomatic usage: client.Kimarite(nil).List(nil, nil) or
+// client.Kimarite(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Kimarite(data map[string]any) SumoEntity {
 	return NewKimariteEntityFunc(sdk, data)
 }
 
 
+// Measurement returns a Measurement entity bound to this client.
+// Idiomatic usage: client.Measurement(nil).List(nil, nil) or
+// client.Measurement(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Measurement(data map[string]any) SumoEntity {
 	return NewMeasurementEntityFunc(sdk, data)
 }
 
 
+// Rank returns a Rank entity bound to this client.
+// Idiomatic usage: client.Rank(nil).List(nil, nil) or
+// client.Rank(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Rank(data map[string]any) SumoEntity {
 	return NewRankEntityFunc(sdk, data)
 }
 
 
+// Rikishi returns a Rikishi entity bound to this client.
+// Idiomatic usage: client.Rikishi(nil).List(nil, nil) or
+// client.Rikishi(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Rikishi(data map[string]any) SumoEntity {
 	return NewRikishiEntityFunc(sdk, data)
 }
 
 
+// Shikona returns a Shikona entity bound to this client.
+// Idiomatic usage: client.Shikona(nil).List(nil, nil) or
+// client.Shikona(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SumoSDK) Shikona(data map[string]any) SumoEntity {
 	return NewShikonaEntityFunc(sdk, data)
 }

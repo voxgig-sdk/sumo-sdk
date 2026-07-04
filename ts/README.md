@@ -9,9 +9,12 @@ The TypeScript SDK for the Sumo API — a type-safe, entity-oriented client with
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/sumo
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/sumo-sdk/releases](https://github.com/voxgig-sdk/sumo-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SumoSDK } from 'sumo'
+import { SumoSDK } from '@voxgig-sdk/sumo'
 
-const client = new SumoSDK({
-  apikey: process.env.SUMO_APIKEY,
-})
+const client = new SumoSDK()
 ```
 
 ### 2. List bashos
 
 ```ts
-const result = await client.Basho().list()
+const result = await client.basho.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a basho
 
 ```ts
-const result = await client.Basho().load({ id: 'example_id' })
+const result = await client.basho.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SumoSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.basho.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new SumoSDK({ apikey: '...' })
+const client = new SumoSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.basho
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new SumoSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -146,7 +146,6 @@ Create a `.env.local` file at the project root:
 
 ```
 SUMO_TEST_LIVE=TRUE
-SUMO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new SumoSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new SumoSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -382,7 +379,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.Basho()`
+Create an instance: `const basho = client.basho`
 
 #### Operations
 
@@ -414,19 +411,19 @@ Create an instance: `const basho = client.Basho()`
 #### Example: Load
 
 ```ts
-const basho = await client.Basho().load({ id: 'basho_id' })
+const basho = await client.basho.load({ id: 'basho_id' })
 ```
 
 #### Example: List
 
 ```ts
-const bashos = await client.Basho().list()
+const bashos = await client.basho.list()
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.Kimarite()`
+Create an instance: `const kimarite = client.kimarite`
 
 #### Operations
 
@@ -448,19 +445,19 @@ Create an instance: `const kimarite = client.Kimarite()`
 #### Example: Load
 
 ```ts
-const kimarite = await client.Kimarite().load({ id: 'kimarite_id' })
+const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
 ```
 
 #### Example: List
 
 ```ts
-const kimarites = await client.Kimarite().list()
+const kimarites = await client.kimarite.list()
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.Measurement()`
+Create an instance: `const measurement = client.measurement`
 
 #### Operations
 
@@ -480,13 +477,13 @@ Create an instance: `const measurement = client.Measurement()`
 #### Example: List
 
 ```ts
-const measurements = await client.Measurement().list()
+const measurements = await client.measurement.list()
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.Rank()`
+Create an instance: `const rank = client.rank`
 
 #### Operations
 
@@ -506,13 +503,13 @@ Create an instance: `const rank = client.Rank()`
 #### Example: List
 
 ```ts
-const ranks = await client.Rank().list()
+const ranks = await client.rank.list()
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.Rikishi()`
+Create an instance: `const rikishi = client.rikishi`
 
 #### Operations
 
@@ -552,19 +549,19 @@ Create an instance: `const rikishi = client.Rikishi()`
 #### Example: Load
 
 ```ts
-const rikishi = await client.Rikishi().load({ id: 'rikishi_id' })
+const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
 ```
 
 #### Example: List
 
 ```ts
-const rikishis = await client.Rikishi().list()
+const rikishis = await client.rikishi.list()
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.Shikona()`
+Create an instance: `const shikona = client.shikona`
 
 #### Operations
 
@@ -584,7 +581,7 @@ Create an instance: `const shikona = client.Shikona()`
 #### Example: List
 
 ```ts
-const shikonas = await client.Shikona().list()
+const shikonas = await client.shikona.list()
 ```
 
 
@@ -645,7 +642,7 @@ sumo/
 Import the SDK from the package root:
 
 ```ts
-import { SumoSDK } from 'sumo'
+import { SumoSDK } from '@voxgig-sdk/sumo'
 ```
 
 ### Entity state
@@ -655,11 +652,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const basho = client.basho
+await basho.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// basho.data() now returns the loaded basho data
+// basho.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

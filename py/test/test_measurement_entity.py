@@ -50,8 +50,7 @@ class TestMeasurementEntity:
         measurement_ref01_ent = client.Measurement(None)
         measurement_ref01_match = {}
 
-        measurement_ref01_list_result, err = measurement_ref01_ent.list(measurement_ref01_match, None)
-        assert err is None
+        measurement_ref01_list_result = measurement_ref01_ent.list(measurement_ref01_match, None)
         assert isinstance(measurement_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _measurement_basic_setup(extra):
         "SUMO_TEST_MEASUREMENT_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _measurement_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -104,7 +103,7 @@ same parameters as `direct()`.
 ## BashoEntity
 
 ```lua
-local basho = client:Basho(nil)
+local basho = client:basho(nil)
 ```
 
 ### Fields
@@ -134,7 +133,7 @@ local basho = client:Basho(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Basho():list()
+local results, err = client:basho():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -142,7 +141,7 @@ local results, err = client:Basho():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Basho():load({ id = "basho_id" })
+local result, err = client:basho():load({ id = "basho_id" })
 ```
 
 ### Common Methods
@@ -178,7 +177,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```lua
-local kimarite = client:Kimarite(nil)
+local kimarite = client:kimarite(nil)
 ```
 
 ### Fields
@@ -198,7 +197,7 @@ local kimarite = client:Kimarite(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Kimarite():list()
+local results, err = client:kimarite():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -206,7 +205,7 @@ local results, err = client:Kimarite():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Kimarite():load({ id = "kimarite_id" })
+local result, err = client:kimarite():load({ id = "kimarite_id" })
 ```
 
 ### Common Methods
@@ -242,7 +241,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```lua
-local measurement = client:Measurement(nil)
+local measurement = client:measurement(nil)
 ```
 
 ### Fields
@@ -261,7 +260,7 @@ local measurement = client:Measurement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Measurement():list()
+local results, err = client:measurement():list()
 ```
 
 ### Common Methods
@@ -297,7 +296,7 @@ Return the entity name.
 ## RankEntity
 
 ```lua
-local rank = client:Rank(nil)
+local rank = client:rank(nil)
 ```
 
 ### Fields
@@ -316,7 +315,7 @@ local rank = client:Rank(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rank():list()
+local results, err = client:rank():list()
 ```
 
 ### Common Methods
@@ -352,7 +351,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```lua
-local rikishi = client:Rikishi(nil)
+local rikishi = client:rikishi(nil)
 ```
 
 ### Fields
@@ -390,7 +389,7 @@ local rikishi = client:Rikishi(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rikishi():list()
+local results, err = client:rikishi():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -398,7 +397,7 @@ local results, err = client:Rikishi():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Rikishi():load({ id = "rikishi_id" })
+local result, err = client:rikishi():load({ id = "rikishi_id" })
 ```
 
 ### Common Methods
@@ -434,7 +433,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```lua
-local shikona = client:Shikona(nil)
+local shikona = client:shikona(nil)
 ```
 
 ### Fields
@@ -453,7 +452,7 @@ local shikona = client:Shikona(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Shikona():list()
+local results, err = client:shikona():list()
 ```
 
 ### Common Methods

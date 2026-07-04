@@ -43,16 +43,14 @@ class RikishiEntityTest < Minitest::Test
     rikishi_ref01_ent = client.Rikishi(nil)
     rikishi_ref01_match = {}
 
-    rikishi_ref01_list_result, err = rikishi_ref01_ent.list(rikishi_ref01_match, nil)
-    assert_nil err
+    rikishi_ref01_list_result = rikishi_ref01_ent.list(rikishi_ref01_match, nil)
     assert rikishi_ref01_list_result.is_a?(Array)
 
     # LOAD
     rikishi_ref01_match_dt0 = {
       "id" => rikishi_ref01_data["id"],
     }
-    rikishi_ref01_data_dt0_loaded, err = rikishi_ref01_ent.load(rikishi_ref01_match_dt0, nil)
-    assert_nil err
+    rikishi_ref01_data_dt0_loaded = rikishi_ref01_ent.load(rikishi_ref01_match_dt0, nil)
     rikishi_ref01_data_dt0_load_result = Helpers.to_map(rikishi_ref01_data_dt0_loaded)
     assert !rikishi_ref01_data_dt0_load_result.nil?
     assert_equal rikishi_ref01_data_dt0_load_result["id"], rikishi_ref01_data["id"]
@@ -93,7 +91,6 @@ def rikishi_basic_setup(extra)
     "SUMO_TEST_RIKISHI_ENTID" => idmap,
     "SUMO_TEST_LIVE" => "FALSE",
     "SUMO_TEST_EXPLAIN" => "FALSE",
-    "SUMO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def rikishi_basic_setup(extra)
   if env["SUMO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SUMO_APIKEY"],
       },
       extra || {},
     ])

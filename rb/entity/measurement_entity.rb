@@ -45,6 +45,7 @@ class MeasurementEntity
     end
   end
 
+  # @return [Measurement, Hash] the current Measurement data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class MeasurementEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Measurement fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class MeasurementEntity
   
 
   
+  # List Measurement items matching the given filter.
+  #
+  # @param reqmatch [MeasurementListMatch, Hash, nil] match filter (any subset of Measurement fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Measurement>, Array] the matching Measurement items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

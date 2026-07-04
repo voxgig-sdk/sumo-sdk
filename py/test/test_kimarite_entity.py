@@ -50,14 +50,12 @@ class TestKimariteEntity:
         kimarite_ref01_ent = client.Kimarite(None)
         kimarite_ref01_match = {}
 
-        kimarite_ref01_list_result, err = kimarite_ref01_ent.list(kimarite_ref01_match, None)
-        assert err is None
+        kimarite_ref01_list_result = kimarite_ref01_ent.list(kimarite_ref01_match, None)
         assert isinstance(kimarite_ref01_list_result, list)
 
         # LOAD
         kimarite_ref01_match_dt0 = {}
-        kimarite_ref01_data_dt0_loaded, err = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, None)
-        assert err is None
+        kimarite_ref01_data_dt0_loaded = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, None)
         assert kimarite_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _kimarite_basic_setup(extra):
         "SUMO_TEST_KIMARITE_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _kimarite_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

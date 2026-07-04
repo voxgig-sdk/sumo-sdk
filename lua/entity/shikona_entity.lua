@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ShikonaListMatch
+---@param ctrl? table
+---@return Shikona[]
+---@return string? err
 function ShikonaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

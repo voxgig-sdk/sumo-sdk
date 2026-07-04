@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch KimariteLoadMatch
+---@param ctrl? table
+---@return Kimarite
+---@return string? err
 function KimariteEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch KimariteListMatch
+---@param ctrl? table
+---@return Kimarite[]
+---@return string? err
 function KimariteEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

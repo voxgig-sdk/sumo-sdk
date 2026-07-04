@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -74,9 +73,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -90,14 +91,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -105,7 +106,7 @@ same parameters as `direct()`.
 ## BashoEntity
 
 ```ruby
-basho = client.Basho
+basho = client.basho
 ```
 
 ### Fields
@@ -130,20 +131,20 @@ basho = client.Basho
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Basho.list(nil)
+results = client.basho.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Basho.load({ "id" => "basho_id" })
+result = client.basho.load({ "id" => "basho_id" })
 ```
 
 ### Common Methods
@@ -179,7 +180,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```ruby
-kimarite = client.Kimarite
+kimarite = client.kimarite
 ```
 
 ### Fields
@@ -194,20 +195,20 @@ kimarite = client.Kimarite
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Kimarite.list(nil)
+results = client.kimarite.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Kimarite.load({ "id" => "kimarite_id" })
+result = client.kimarite.load({ "id" => "kimarite_id" })
 ```
 
 ### Common Methods
@@ -243,7 +244,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```ruby
-measurement = client.Measurement
+measurement = client.measurement
 ```
 
 ### Fields
@@ -257,12 +258,12 @@ measurement = client.Measurement
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Measurement.list(nil)
+results = client.measurement.list(nil)
 ```
 
 ### Common Methods
@@ -298,7 +299,7 @@ Return the entity name.
 ## RankEntity
 
 ```ruby
-rank = client.Rank
+rank = client.rank
 ```
 
 ### Fields
@@ -312,12 +313,12 @@ rank = client.Rank
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Rank.list(nil)
+results = client.rank.list(nil)
 ```
 
 ### Common Methods
@@ -353,7 +354,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```ruby
-rikishi = client.Rikishi
+rikishi = client.rikishi
 ```
 
 ### Fields
@@ -386,20 +387,20 @@ rikishi = client.Rikishi
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Rikishi.list(nil)
+results = client.rikishi.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Rikishi.load({ "id" => "rikishi_id" })
+result = client.rikishi.load({ "id" => "rikishi_id" })
 ```
 
 ### Common Methods
@@ -435,7 +436,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```ruby
-shikona = client.Shikona
+shikona = client.shikona
 ```
 
 ### Fields
@@ -449,12 +450,12 @@ shikona = client.Shikona
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Shikona.list(nil)
+results = client.shikona.list(nil)
 ```
 
 ### Common Methods

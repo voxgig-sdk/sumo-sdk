@@ -45,6 +45,7 @@ class KimariteEntity
     end
   end
 
+  # @return [Kimarite, Hash] the current Kimarite data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class KimariteEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Kimarite fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Kimarite.
+  #
+  # @param reqmatch [KimariteLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Kimarite, Hash] the loaded Kimarite; raises SumoError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class KimariteEntity
 
 
   
+  # List Kimarite items matching the given filter.
+  #
+  # @param reqmatch [KimariteListMatch, Hash, nil] match filter (any subset of Kimarite fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Kimarite>, Array] the matching Kimarite items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

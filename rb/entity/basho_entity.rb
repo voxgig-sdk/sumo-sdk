@@ -45,6 +45,7 @@ class BashoEntity
     end
   end
 
+  # @return [Basho, Hash] the current Basho data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BashoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Basho fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Basho.
+  #
+  # @param reqmatch [BashoLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Basho, Hash] the loaded Basho; raises SumoError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class BashoEntity
 
 
   
+  # List Basho items matching the given filter.
+  #
+  # @param reqmatch [BashoListMatch, Hash, nil] match filter (any subset of Basho fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Basho>, Array] the matching Basho items; raises SumoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

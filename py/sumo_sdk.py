@@ -144,16 +144,23 @@ class SumoSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class SumoSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,40 +212,106 @@ class SumoSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def basho(self):
+        """Idiomatic facade: client.basho.list() / client.basho.load({"id": ...})."""
+        from entity.basho_entity import BashoEntity
+        cached = getattr(self, "_basho", None)
+        if cached is None:
+            cached = BashoEntity(self, None)
+            self._basho = cached
+        return cached
 
     def Basho(self, data=None):
+        # Deprecated: use client.basho instead.
         from entity.basho_entity import BashoEntity
         return BashoEntity(self, data)
 
 
+    @property
+    def kimarite(self):
+        """Idiomatic facade: client.kimarite.list() / client.kimarite.load({"id": ...})."""
+        from entity.kimarite_entity import KimariteEntity
+        cached = getattr(self, "_kimarite", None)
+        if cached is None:
+            cached = KimariteEntity(self, None)
+            self._kimarite = cached
+        return cached
+
     def Kimarite(self, data=None):
+        # Deprecated: use client.kimarite instead.
         from entity.kimarite_entity import KimariteEntity
         return KimariteEntity(self, data)
 
 
+    @property
+    def measurement(self):
+        """Idiomatic facade: client.measurement.list() / client.measurement.load({"id": ...})."""
+        from entity.measurement_entity import MeasurementEntity
+        cached = getattr(self, "_measurement", None)
+        if cached is None:
+            cached = MeasurementEntity(self, None)
+            self._measurement = cached
+        return cached
+
     def Measurement(self, data=None):
+        # Deprecated: use client.measurement instead.
         from entity.measurement_entity import MeasurementEntity
         return MeasurementEntity(self, data)
 
 
+    @property
+    def rank(self):
+        """Idiomatic facade: client.rank.list() / client.rank.load({"id": ...})."""
+        from entity.rank_entity import RankEntity
+        cached = getattr(self, "_rank", None)
+        if cached is None:
+            cached = RankEntity(self, None)
+            self._rank = cached
+        return cached
+
     def Rank(self, data=None):
+        # Deprecated: use client.rank instead.
         from entity.rank_entity import RankEntity
         return RankEntity(self, data)
 
 
+    @property
+    def rikishi(self):
+        """Idiomatic facade: client.rikishi.list() / client.rikishi.load({"id": ...})."""
+        from entity.rikishi_entity import RikishiEntity
+        cached = getattr(self, "_rikishi", None)
+        if cached is None:
+            cached = RikishiEntity(self, None)
+            self._rikishi = cached
+        return cached
+
     def Rikishi(self, data=None):
+        # Deprecated: use client.rikishi instead.
         from entity.rikishi_entity import RikishiEntity
         return RikishiEntity(self, data)
 
 
+    @property
+    def shikona(self):
+        """Idiomatic facade: client.shikona.list() / client.shikona.load({"id": ...})."""
+        from entity.shikona_entity import ShikonaEntity
+        cached = getattr(self, "_shikona", None)
+        if cached is None:
+            cached = ShikonaEntity(self, None)
+            self._shikona = cached
+        return cached
+
     def Shikona(self, data=None):
+        # Deprecated: use client.shikona instead.
         from entity.shikona_entity import ShikonaEntity
         return ShikonaEntity(self, data)
 

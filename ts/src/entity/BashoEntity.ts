@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Basho,
+  BashoLoadMatch,
+  BashoListMatch,
+} from '../SumoTypes'
 
 // TODO: needs Entity superclass
-class BashoEntity extends SumoEntityBase {
+class BashoEntity extends SumoEntityBase<Basho> {
 
   constructor(client: SumoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class BashoEntity extends SumoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: BashoLoadMatch, ctrl?: Control): Promise<Basho> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class BashoEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Basho> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: BashoListMatch, ctrl?: Control): Promise<Basho[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class BashoEntity extends SumoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Basho[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

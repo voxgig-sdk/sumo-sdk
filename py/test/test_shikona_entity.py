@@ -50,8 +50,7 @@ class TestShikonaEntity:
         shikona_ref01_ent = client.Shikona(None)
         shikona_ref01_match = {}
 
-        shikona_ref01_list_result, err = shikona_ref01_ent.list(shikona_ref01_match, None)
-        assert err is None
+        shikona_ref01_list_result = shikona_ref01_ent.list(shikona_ref01_match, None)
         assert isinstance(shikona_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _shikona_basic_setup(extra):
         "SUMO_TEST_SHIKONA_ENTID": idmap,
         "SUMO_TEST_LIVE": "FALSE",
         "SUMO_TEST_EXPLAIN": "FALSE",
-        "SUMO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _shikona_basic_setup(extra):
     if env.get("SUMO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SUMO_APIKEY"),
             },
             extra or {},
         ])

@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Sumo_types'
+
 
 class SumoSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class SumoSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class SumoSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue SumoError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = SumoHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class SumoSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,46 +198,88 @@ class SumoSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.basho.list / client.basho.load({ "id" => ... })
+  def basho
+    require_relative 'entity/basho_entity'
+    @basho ||= BashoEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.basho instead.
   def Basho(data = nil)
     require_relative 'entity/basho_entity'
     BashoEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.kimarite.list / client.kimarite.load({ "id" => ... })
+  def kimarite
+    require_relative 'entity/kimarite_entity'
+    @kimarite ||= KimariteEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.kimarite instead.
   def Kimarite(data = nil)
     require_relative 'entity/kimarite_entity'
     KimariteEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.measurement.list / client.measurement.load({ "id" => ... })
+  def measurement
+    require_relative 'entity/measurement_entity'
+    @measurement ||= MeasurementEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.measurement instead.
   def Measurement(data = nil)
     require_relative 'entity/measurement_entity'
     MeasurementEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.rank.list / client.rank.load({ "id" => ... })
+  def rank
+    require_relative 'entity/rank_entity'
+    @rank ||= RankEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.rank instead.
   def Rank(data = nil)
     require_relative 'entity/rank_entity'
     RankEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.rikishi.list / client.rikishi.load({ "id" => ... })
+  def rikishi
+    require_relative 'entity/rikishi_entity'
+    @rikishi ||= RikishiEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.rikishi instead.
   def Rikishi(data = nil)
     require_relative 'entity/rikishi_entity'
     RikishiEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.shikona.list / client.shikona.load({ "id" => ... })
+  def shikona
+    require_relative 'entity/shikona_entity'
+    @shikona ||= ShikonaEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.shikona instead.
   def Shikona(data = nil)
     require_relative 'entity/shikona_entity'
     ShikonaEntity.new(self, data)

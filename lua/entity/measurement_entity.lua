@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch MeasurementListMatch
+---@param ctrl? table
+---@return Measurement[]
+---@return string? err
 function MeasurementEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

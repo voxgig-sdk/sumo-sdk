@@ -1,7 +1,14 @@
 # Sumo SDK Rikishi entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from sumo_types import (
+    Rikishi,
+    RikishiLoadMatch,
+    RikishiListMatch,
+)
 
 
 class RikishiEntity:
@@ -44,7 +51,7 @@ class RikishiEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Rikishi:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class RikishiEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Rikishi:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: RikishiLoadMatch, ctrl=None) -> Rikishi:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class RikishiEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: RikishiListMatch, ctrl=None) -> list[Rikishi]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",
