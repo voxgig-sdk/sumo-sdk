@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/sumo-sdk/go=../sumo-sdk/go
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/sumo-sdk/go"
-    "github.com/voxgig-sdk/sumo-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List bashos
-
-```go
-    result, err := client.Basho(nil).List(nil, nil)
+    // List basho records — the value is the array of records itself.
+    bashos, err := client.Basho(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range bashos.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a basho
-
-```go
-    result, err = client.Basho(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single basho — the value is the loaded record.
+    basho, err := client.Basho(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(basho)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Basho(nil).Load(
+basho, err := client.Basho(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(basho) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -232,17 +221,24 @@ All entities implement the `SumoEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    basho, err := client.Basho(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // basho is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -394,13 +390,21 @@ Create an instance: `basho := client.Basho(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Basho(nil).Load(map[string]any{"id": "basho_id"}, nil)
+basho, err := client.Basho(nil).Load(map[string]any{"id": "basho_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(basho) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Basho(nil).List(nil, nil)
+bashos, err := client.Basho(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bashos) // the array of records
 ```
 
 
@@ -428,13 +432,21 @@ Create an instance: `kimarite := client.Kimarite(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Kimarite(nil).Load(map[string]any{"id": "kimarite_id"}, nil)
+kimarite, err := client.Kimarite(nil).Load(map[string]any{"id": "kimarite_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(kimarite) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Kimarite(nil).List(nil, nil)
+kimarites, err := client.Kimarite(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(kimarites) // the array of records
 ```
 
 
@@ -460,7 +472,11 @@ Create an instance: `measurement := client.Measurement(nil)`
 #### Example: List
 
 ```go
-results, err := client.Measurement(nil).List(nil, nil)
+measurements, err := client.Measurement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(measurements) // the array of records
 ```
 
 
@@ -486,7 +502,11 @@ Create an instance: `rank := client.Rank(nil)`
 #### Example: List
 
 ```go
-results, err := client.Rank(nil).List(nil, nil)
+ranks, err := client.Rank(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ranks) // the array of records
 ```
 
 
@@ -532,13 +552,21 @@ Create an instance: `rikishi := client.Rikishi(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Rikishi(nil).Load(map[string]any{"id": "rikishi_id"}, nil)
+rikishi, err := client.Rikishi(nil).Load(map[string]any{"id": "rikishi_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(rikishi) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Rikishi(nil).List(nil, nil)
+rikishis, err := client.Rikishi(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(rikishis) // the array of records
 ```
 
 
@@ -564,7 +592,11 @@ Create an instance: `shikona := client.Shikona(nil)`
 #### Example: List
 
 ```go
-results, err := client.Shikona(nil).List(nil, nil)
+shikonas, err := client.Shikona(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(shikonas) // the array of records
 ```
 
 

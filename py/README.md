@@ -31,24 +31,28 @@ from sumo_sdk import SumoSDK
 client = SumoSDK()
 ```
 
-### 2. List bashos
+### 2. List basho records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.basho.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    bashos = client.Basho().list({})
+    for basho in bashos:
+        print(basho)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a basho
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.basho.load({"id": "example_id"})
-    print(result)
+    basho = client.Basho().load({"id": "example_id"})
+    print(basho)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SumoSDK.test()
 
-result = client.basho.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+basho = client.Basho().load({"id": "test01"})
+# basho contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -334,7 +339,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.basho`
+Create an instance: `basho = client.Basho()`
 
 #### Operations
 
@@ -365,20 +370,20 @@ Create an instance: `const basho = client.basho`
 
 #### Example: Load
 
-```ts
-const basho = await client.basho.load({ id: 'basho_id' })
+```python
+basho = client.Basho().load({"id": "basho_id"})
 ```
 
 #### Example: List
 
-```ts
-const bashos = await client.basho.list()
+```python
+bashos = client.Basho().list({})
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.kimarite`
+Create an instance: `kimarite = client.Kimarite()`
 
 #### Operations
 
@@ -399,20 +404,20 @@ Create an instance: `const kimarite = client.kimarite`
 
 #### Example: Load
 
-```ts
-const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
+```python
+kimarite = client.Kimarite().load({"id": "kimarite_id"})
 ```
 
 #### Example: List
 
-```ts
-const kimarites = await client.kimarite.list()
+```python
+kimarites = client.Kimarite().list({})
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.measurement`
+Create an instance: `measurement = client.Measurement()`
 
 #### Operations
 
@@ -431,14 +436,14 @@ Create an instance: `const measurement = client.measurement`
 
 #### Example: List
 
-```ts
-const measurements = await client.measurement.list()
+```python
+measurements = client.Measurement().list({})
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.rank`
+Create an instance: `rank = client.Rank()`
 
 #### Operations
 
@@ -457,14 +462,14 @@ Create an instance: `const rank = client.rank`
 
 #### Example: List
 
-```ts
-const ranks = await client.rank.list()
+```python
+ranks = client.Rank().list({})
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.rikishi`
+Create an instance: `rikishi = client.Rikishi()`
 
 #### Operations
 
@@ -503,20 +508,20 @@ Create an instance: `const rikishi = client.rikishi`
 
 #### Example: Load
 
-```ts
-const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
+```python
+rikishi = client.Rikishi().load({"id": "rikishi_id"})
 ```
 
 #### Example: List
 
-```ts
-const rikishis = await client.rikishi.list()
+```python
+rikishis = client.Rikishi().list({})
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.shikona`
+Create an instance: `shikona = client.Shikona()`
 
 #### Operations
 
@@ -535,8 +540,8 @@ Create an instance: `const shikona = client.shikona`
 
 #### Example: List
 
-```ts
-const shikonas = await client.shikona.list()
+```python
+shikonas = client.Shikona().list({})
 ```
 
 
@@ -610,7 +615,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-basho = client.basho
+basho = client.Basho()
 basho.load({"id": "example_id"})
 
 # basho.data_get() now returns the loaded basho data

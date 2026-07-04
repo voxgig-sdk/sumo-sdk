@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:basho():list() / client:basho():load({ id = ... })
-function SumoSDK:basho(data)
+-- Idiomatic facade: client:Basho():list() / client:Basho():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Basho(data)
   local EntityMod = require("entity.basho_entity")
   if data == nil then
     if self._basho == nil then
@@ -256,15 +257,10 @@ function SumoSDK:basho(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:basho() instead.
-function SumoSDK:Basho(data)
-  local EntityMod = require("entity.basho_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:kimarite():list() / client:kimarite():load({ id = ... })
-function SumoSDK:kimarite(data)
+-- Idiomatic facade: client:Kimarite():list() / client:Kimarite():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Kimarite(data)
   local EntityMod = require("entity.kimarite_entity")
   if data == nil then
     if self._kimarite == nil then
@@ -275,15 +271,10 @@ function SumoSDK:kimarite(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:kimarite() instead.
-function SumoSDK:Kimarite(data)
-  local EntityMod = require("entity.kimarite_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:measurement():list() / client:measurement():load({ id = ... })
-function SumoSDK:measurement(data)
+-- Idiomatic facade: client:Measurement():list() / client:Measurement():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Measurement(data)
   local EntityMod = require("entity.measurement_entity")
   if data == nil then
     if self._measurement == nil then
@@ -294,15 +285,10 @@ function SumoSDK:measurement(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:measurement() instead.
-function SumoSDK:Measurement(data)
-  local EntityMod = require("entity.measurement_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rank():list() / client:rank():load({ id = ... })
-function SumoSDK:rank(data)
+-- Idiomatic facade: client:Rank():list() / client:Rank():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Rank(data)
   local EntityMod = require("entity.rank_entity")
   if data == nil then
     if self._rank == nil then
@@ -313,15 +299,10 @@ function SumoSDK:rank(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rank() instead.
-function SumoSDK:Rank(data)
-  local EntityMod = require("entity.rank_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rikishi():list() / client:rikishi():load({ id = ... })
-function SumoSDK:rikishi(data)
+-- Idiomatic facade: client:Rikishi():list() / client:Rikishi():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Rikishi(data)
   local EntityMod = require("entity.rikishi_entity")
   if data == nil then
     if self._rikishi == nil then
@@ -332,15 +313,10 @@ function SumoSDK:rikishi(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rikishi() instead.
-function SumoSDK:Rikishi(data)
-  local EntityMod = require("entity.rikishi_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:shikona():list() / client:shikona():load({ id = ... })
-function SumoSDK:shikona(data)
+-- Idiomatic facade: client:Shikona():list() / client:Shikona():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SumoSDK:Shikona(data)
   local EntityMod = require("entity.shikona_entity")
   if data == nil then
     if self._shikona == nil then
@@ -348,12 +324,6 @@ function SumoSDK:shikona(data)
     end
     return self._shikona
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:shikona() instead.
-function SumoSDK:Shikona(data)
-  local EntityMod = require("entity.shikona_entity")
   return EntityMod.new(self, data)
 end
 

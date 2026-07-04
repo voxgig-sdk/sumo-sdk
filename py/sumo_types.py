@@ -4,150 +4,139 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Basho:
-    end_date: Optional[str] = None
-    id: Optional[str] = None
-    kimarite: Optional[str] = None
-    match_number: Optional[int] = None
-    month: Optional[int] = None
-    rank: Optional[str] = None
-    rikishi1_id: Optional[str] = None
-    rikishi2_id: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    shikona: Optional[str] = None
-    side: Optional[str] = None
-    start_date: Optional[str] = None
-    venue: Optional[str] = None
-    winner_id: Optional[str] = None
-    year: Optional[int] = None
+class Basho(TypedDict, total=False):
+    end_date: str
+    id: str
+    kimarite: str
+    match_number: int
+    month: int
+    rank: str
+    rikishi1_id: str
+    rikishi2_id: str
+    rikishi_id: str
+    shikona: str
+    side: str
+    start_date: str
+    venue: str
+    winner_id: str
+    year: int
 
 
-@dataclass
-class BashoLoadMatch:
+class BashoLoadMatch(TypedDict):
     division: str
     id: str
 
 
-@dataclass
-class BashoListMatch:
+class BashoListMatch(TypedDict):
     basho_id: str
     day: int
     division: str
 
 
-@dataclass
-class Kimarite:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    english_name: Optional[str] = None
-    frequency: Optional[int] = None
-    name: Optional[str] = None
+class Kimarite(TypedDict, total=False):
+    category: str
+    description: str
+    english_name: str
+    frequency: int
+    name: str
 
 
-@dataclass
-class KimariteLoadMatch:
+class KimariteLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class KimariteListMatch:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    english_name: Optional[str] = None
-    frequency: Optional[int] = None
-    name: Optional[str] = None
+class KimariteListMatch(TypedDict, total=False):
+    category: str
+    description: str
+    english_name: str
+    frequency: int
+    name: str
 
 
-@dataclass
-class Measurement:
-    height: Optional[float] = None
-    recorded_date: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    weight: Optional[float] = None
+class Measurement(TypedDict, total=False):
+    height: float
+    recorded_date: str
+    rikishi_id: str
+    weight: float
 
 
-@dataclass
-class MeasurementListMatch:
-    height: Optional[float] = None
-    recorded_date: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    weight: Optional[float] = None
+class MeasurementListMatch(TypedDict, total=False):
+    height: float
+    recorded_date: str
+    rikishi_id: str
+    weight: float
 
 
-@dataclass
-class Rank:
-    division: Optional[str] = None
-    id: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
+class Rank(TypedDict, total=False):
+    division: str
+    id: str
+    level: int
+    name: str
 
 
-@dataclass
-class RankListMatch:
-    division: Optional[str] = None
-    id: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
+class RankListMatch(TypedDict, total=False):
+    division: str
+    id: str
+    level: int
+    name: str
 
 
-@dataclass
-class Rikishi:
-    basho_id: Optional[str] = None
-    birthdate: Optional[str] = None
-    birthplace: Optional[str] = None
-    championship: Optional[int] = None
-    current_rank: Optional[str] = None
-    day: Optional[int] = None
-    debut: Optional[str] = None
-    division: Optional[str] = None
-    height: Optional[float] = None
-    heya: Optional[str] = None
-    highest_rank: Optional[str] = None
-    id: Optional[str] = None
-    kimarite: Optional[str] = None
-    real_name: Optional[str] = None
-    rikishi1_id: Optional[str] = None
-    rikishi2_id: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    shikona: Optional[str] = None
-    total_loss: Optional[int] = None
-    total_win: Optional[int] = None
-    weight: Optional[float] = None
-    win_rate: Optional[float] = None
-    winner_id: Optional[str] = None
+class Rikishi(TypedDict, total=False):
+    basho_id: str
+    birthdate: str
+    birthplace: str
+    championship: int
+    current_rank: str
+    day: int
+    debut: str
+    division: str
+    height: float
+    heya: str
+    highest_rank: str
+    id: str
+    kimarite: str
+    real_name: str
+    rikishi1_id: str
+    rikishi2_id: str
+    rikishi_id: str
+    shikona: str
+    total_loss: int
+    total_win: int
+    weight: float
+    win_rate: float
+    winner_id: str
 
 
-@dataclass
-class RikishiLoadMatch:
+class RikishiLoadMatch(TypedDict):
     id: str
     opponent_id: str
 
 
-@dataclass
-class RikishiListMatch:
+class RikishiListMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Shikona:
-    end_date: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    shikona: Optional[str] = None
-    start_date: Optional[str] = None
+class Shikona(TypedDict, total=False):
+    end_date: str
+    rikishi_id: str
+    shikona: str
+    start_date: str
 
 
-@dataclass
-class ShikonaListMatch:
-    end_date: Optional[str] = None
-    rikishi_id: Optional[str] = None
-    shikona: Optional[str] = None
-    start_date: Optional[str] = None
-
+class ShikonaListMatch(TypedDict, total=False):
+    end_date: str
+    rikishi_id: str
+    shikona: str
+    start_date: str

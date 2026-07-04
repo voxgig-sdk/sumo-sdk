@@ -106,7 +106,7 @@ same parameters as `direct()`. Raises on error.
 ## BashoEntity
 
 ```ruby
-basho = client.basho
+basho = client.Basho
 ```
 
 ### Fields
@@ -136,7 +136,7 @@ basho = client.basho
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.basho.list(nil)
+results = client.Basho.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -144,7 +144,7 @@ results = client.basho.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.basho.load({ "id" => "basho_id" })
+result = client.Basho.load({ "id" => "basho_id" })
 ```
 
 ### Common Methods
@@ -180,7 +180,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```ruby
-kimarite = client.kimarite
+kimarite = client.Kimarite
 ```
 
 ### Fields
@@ -200,7 +200,7 @@ kimarite = client.kimarite
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.kimarite.list(nil)
+results = client.Kimarite.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -208,7 +208,7 @@ results = client.kimarite.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.kimarite.load({ "id" => "kimarite_id" })
+result = client.Kimarite.load({ "id" => "kimarite_id" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```ruby
-measurement = client.measurement
+measurement = client.Measurement
 ```
 
 ### Fields
@@ -263,7 +263,7 @@ measurement = client.measurement
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.measurement.list(nil)
+results = client.Measurement.list(nil)
 ```
 
 ### Common Methods
@@ -299,7 +299,7 @@ Return the entity name.
 ## RankEntity
 
 ```ruby
-rank = client.rank
+rank = client.Rank
 ```
 
 ### Fields
@@ -318,7 +318,7 @@ rank = client.rank
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.rank.list(nil)
+results = client.Rank.list(nil)
 ```
 
 ### Common Methods
@@ -354,7 +354,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```ruby
-rikishi = client.rikishi
+rikishi = client.Rikishi
 ```
 
 ### Fields
@@ -392,7 +392,7 @@ rikishi = client.rikishi
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.rikishi.list(nil)
+results = client.Rikishi.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -400,7 +400,7 @@ results = client.rikishi.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.rikishi.load({ "id" => "rikishi_id" })
+result = client.Rikishi.load({ "id" => "rikishi_id" })
 ```
 
 ### Common Methods
@@ -436,7 +436,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```ruby
-shikona = client.shikona
+shikona = client.Shikona
 ```
 
 ### Fields
@@ -455,7 +455,7 @@ shikona = client.shikona
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.shikona.list(nil)
+results = client.Shikona.list(nil)
 ```
 
 ### Common Methods

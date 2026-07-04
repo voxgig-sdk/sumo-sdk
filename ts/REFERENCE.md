@@ -169,7 +169,7 @@ Alias for `SumoSDK.test()`.
 ## BashoEntity
 
 ```ts
-const basho = client.basho
+const basho = client.Basho()
 ```
 
 ### Fields
@@ -199,7 +199,7 @@ const basho = client.basho
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.basho.list()
+const results = await client.Basho().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -207,7 +207,7 @@ const results = await client.basho.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.basho.load({ id: 'basho_id' })
+const result = await client.Basho().load({ id: 'basho_id' })
 ```
 
 ### Common Methods
@@ -241,7 +241,7 @@ Return a copy of the entity options.
 ## KimariteEntity
 
 ```ts
-const kimarite = client.kimarite
+const kimarite = client.Kimarite()
 ```
 
 ### Fields
@@ -261,7 +261,7 @@ const kimarite = client.kimarite
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.kimarite.list()
+const results = await client.Kimarite().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -269,7 +269,7 @@ const results = await client.kimarite.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.kimarite.load({ id: 'kimarite_id' })
+const result = await client.Kimarite().load({ id: 'kimarite_id' })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ Return a copy of the entity options.
 ## MeasurementEntity
 
 ```ts
-const measurement = client.measurement
+const measurement = client.Measurement()
 ```
 
 ### Fields
@@ -322,7 +322,7 @@ const measurement = client.measurement
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.measurement.list()
+const results = await client.Measurement().list()
 ```
 
 ### Common Methods
@@ -356,7 +356,7 @@ Return a copy of the entity options.
 ## RankEntity
 
 ```ts
-const rank = client.rank
+const rank = client.Rank()
 ```
 
 ### Fields
@@ -375,7 +375,7 @@ const rank = client.rank
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.rank.list()
+const results = await client.Rank().list()
 ```
 
 ### Common Methods
@@ -409,7 +409,7 @@ Return a copy of the entity options.
 ## RikishiEntity
 
 ```ts
-const rikishi = client.rikishi
+const rikishi = client.Rikishi()
 ```
 
 ### Fields
@@ -447,7 +447,7 @@ const rikishi = client.rikishi
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.rikishi.list()
+const results = await client.Rikishi().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -455,7 +455,7 @@ const results = await client.rikishi.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.rikishi.load({ id: 'rikishi_id' })
+const result = await client.Rikishi().load({ id: 'rikishi_id' })
 ```
 
 ### Common Methods
@@ -489,7 +489,7 @@ Return a copy of the entity options.
 ## ShikonaEntity
 
 ```ts
-const shikona = client.shikona
+const shikona = client.Shikona()
 ```
 
 ### Fields
@@ -508,7 +508,7 @@ const shikona = client.shikona
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.shikona.list()
+const results = await client.Shikona().list()
 ```
 
 ### Common Methods

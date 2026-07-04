@@ -208,78 +208,42 @@ class SumoSDK
   end
 
 
-  # Idiomatic facade: client.basho.list / client.basho.load({ "id" => ... })
-  def basho
-    require_relative 'entity/basho_entity'
-    @basho ||= BashoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.basho instead.
+  # Canonical facade: client.Basho.list / client.Basho.load({ "id" => ... })
   def Basho(data = nil)
     require_relative 'entity/basho_entity'
     BashoEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.kimarite.list / client.kimarite.load({ "id" => ... })
-  def kimarite
-    require_relative 'entity/kimarite_entity'
-    @kimarite ||= KimariteEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.kimarite instead.
+  # Canonical facade: client.Kimarite.list / client.Kimarite.load({ "id" => ... })
   def Kimarite(data = nil)
     require_relative 'entity/kimarite_entity'
     KimariteEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.measurement.list / client.measurement.load({ "id" => ... })
-  def measurement
-    require_relative 'entity/measurement_entity'
-    @measurement ||= MeasurementEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.measurement instead.
+  # Canonical facade: client.Measurement.list / client.Measurement.load({ "id" => ... })
   def Measurement(data = nil)
     require_relative 'entity/measurement_entity'
     MeasurementEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.rank.list / client.rank.load({ "id" => ... })
-  def rank
-    require_relative 'entity/rank_entity'
-    @rank ||= RankEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.rank instead.
+  # Canonical facade: client.Rank.list / client.Rank.load({ "id" => ... })
   def Rank(data = nil)
     require_relative 'entity/rank_entity'
     RankEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.rikishi.list / client.rikishi.load({ "id" => ... })
-  def rikishi
-    require_relative 'entity/rikishi_entity'
-    @rikishi ||= RikishiEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.rikishi instead.
+  # Canonical facade: client.Rikishi.list / client.Rikishi.load({ "id" => ... })
   def Rikishi(data = nil)
     require_relative 'entity/rikishi_entity'
     RikishiEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.shikona.list / client.shikona.load({ "id" => ... })
-  def shikona
-    require_relative 'entity/shikona_entity'
-    @shikona ||= ShikonaEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.shikona instead.
+  # Canonical facade: client.Shikona.list / client.Shikona.load({ "id" => ... })
   def Shikona(data = nil)
     require_relative 'entity/shikona_entity'
     ShikonaEntity.new(self, data)

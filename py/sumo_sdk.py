@@ -220,105 +220,45 @@ class SumoSDK:
         }
 
 
-    @property
-    def basho(self):
-        """Idiomatic facade: client.basho.list() / client.basho.load({"id": ...})."""
-        from entity.basho_entity import BashoEntity
-        cached = getattr(self, "_basho", None)
-        if cached is None:
-            cached = BashoEntity(self, None)
-            self._basho = cached
-        return cached
-
-    def Basho(self, data=None):
-        # Deprecated: use client.basho instead.
+    def Basho(self, data=None) -> "BashoEntity":
+        """Entity factory: client.Basho().list({}) / client.Basho().load({"id": ...})."""
         from entity.basho_entity import BashoEntity
         return BashoEntity(self, data)
 
 
-    @property
-    def kimarite(self):
-        """Idiomatic facade: client.kimarite.list() / client.kimarite.load({"id": ...})."""
-        from entity.kimarite_entity import KimariteEntity
-        cached = getattr(self, "_kimarite", None)
-        if cached is None:
-            cached = KimariteEntity(self, None)
-            self._kimarite = cached
-        return cached
-
-    def Kimarite(self, data=None):
-        # Deprecated: use client.kimarite instead.
+    def Kimarite(self, data=None) -> "KimariteEntity":
+        """Entity factory: client.Kimarite().list({}) / client.Kimarite().load({"id": ...})."""
         from entity.kimarite_entity import KimariteEntity
         return KimariteEntity(self, data)
 
 
-    @property
-    def measurement(self):
-        """Idiomatic facade: client.measurement.list() / client.measurement.load({"id": ...})."""
-        from entity.measurement_entity import MeasurementEntity
-        cached = getattr(self, "_measurement", None)
-        if cached is None:
-            cached = MeasurementEntity(self, None)
-            self._measurement = cached
-        return cached
-
-    def Measurement(self, data=None):
-        # Deprecated: use client.measurement instead.
+    def Measurement(self, data=None) -> "MeasurementEntity":
+        """Entity factory: client.Measurement().list({}) / client.Measurement().load({"id": ...})."""
         from entity.measurement_entity import MeasurementEntity
         return MeasurementEntity(self, data)
 
 
-    @property
-    def rank(self):
-        """Idiomatic facade: client.rank.list() / client.rank.load({"id": ...})."""
-        from entity.rank_entity import RankEntity
-        cached = getattr(self, "_rank", None)
-        if cached is None:
-            cached = RankEntity(self, None)
-            self._rank = cached
-        return cached
-
-    def Rank(self, data=None):
-        # Deprecated: use client.rank instead.
+    def Rank(self, data=None) -> "RankEntity":
+        """Entity factory: client.Rank().list({}) / client.Rank().load({"id": ...})."""
         from entity.rank_entity import RankEntity
         return RankEntity(self, data)
 
 
-    @property
-    def rikishi(self):
-        """Idiomatic facade: client.rikishi.list() / client.rikishi.load({"id": ...})."""
-        from entity.rikishi_entity import RikishiEntity
-        cached = getattr(self, "_rikishi", None)
-        if cached is None:
-            cached = RikishiEntity(self, None)
-            self._rikishi = cached
-        return cached
-
-    def Rikishi(self, data=None):
-        # Deprecated: use client.rikishi instead.
+    def Rikishi(self, data=None) -> "RikishiEntity":
+        """Entity factory: client.Rikishi().list({}) / client.Rikishi().load({"id": ...})."""
         from entity.rikishi_entity import RikishiEntity
         return RikishiEntity(self, data)
 
 
-    @property
-    def shikona(self):
-        """Idiomatic facade: client.shikona.list() / client.shikona.load({"id": ...})."""
-        from entity.shikona_entity import ShikonaEntity
-        cached = getattr(self, "_shikona", None)
-        if cached is None:
-            cached = ShikonaEntity(self, None)
-            self._shikona = cached
-        return cached
-
-    def Shikona(self, data=None):
-        # Deprecated: use client.shikona instead.
+    def Shikona(self, data=None) -> "ShikonaEntity":
+        """Entity factory: client.Shikona().list({}) / client.Shikona().load({"id": ...})."""
         from entity.shikona_entity import ShikonaEntity
         return ShikonaEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "SumoSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -338,3 +278,14 @@ class SumoSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.basho_entity import BashoEntity
+    from entity.kimarite_entity import KimariteEntity
+    from entity.measurement_entity import MeasurementEntity
+    from entity.rank_entity import RankEntity
+    from entity.rikishi_entity import RikishiEntity
+    from entity.shikona_entity import ShikonaEntity

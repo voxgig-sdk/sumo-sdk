@@ -233,10 +233,10 @@ class SumoSDK
 
     private $_basho = null;
 
-    // Idiomatic facade: $client->basho()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Basho() (PHP method
-    // names are case-insensitive).
-    public function basho($data = null)
+    // Canonical facade: $client->Basho()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->basho()
+    // resolves here too.
+    public function Basho($data = null)
     {
         require_once __DIR__ . '/entity/basho_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class SumoSDK
 
     private $_kimarite = null;
 
-    // Idiomatic facade: $client->kimarite()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Kimarite() (PHP method
-    // names are case-insensitive).
-    public function kimarite($data = null)
+    // Canonical facade: $client->Kimarite()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->kimarite()
+    // resolves here too.
+    public function Kimarite($data = null)
     {
         require_once __DIR__ . '/entity/kimarite_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class SumoSDK
 
     private $_measurement = null;
 
-    // Idiomatic facade: $client->measurement()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Measurement() (PHP method
-    // names are case-insensitive).
-    public function measurement($data = null)
+    // Canonical facade: $client->Measurement()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->measurement()
+    // resolves here too.
+    public function Measurement($data = null)
     {
         require_once __DIR__ . '/entity/measurement_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class SumoSDK
 
     private $_rank = null;
 
-    // Idiomatic facade: $client->rank()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Rank() (PHP method
-    // names are case-insensitive).
-    public function rank($data = null)
+    // Canonical facade: $client->Rank()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->rank()
+    // resolves here too.
+    public function Rank($data = null)
     {
         require_once __DIR__ . '/entity/rank_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class SumoSDK
 
     private $_rikishi = null;
 
-    // Idiomatic facade: $client->rikishi()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Rikishi() (PHP method
-    // names are case-insensitive).
-    public function rikishi($data = null)
+    // Canonical facade: $client->Rikishi()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->rikishi()
+    // resolves here too.
+    public function Rikishi($data = null)
     {
         require_once __DIR__ . '/entity/rikishi_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class SumoSDK
 
     private $_shikona = null;
 
-    // Idiomatic facade: $client->shikona()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Shikona() (PHP method
-    // names are case-insensitive).
-    public function shikona($data = null)
+    // Canonical facade: $client->Shikona()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->shikona()
+    // resolves here too.
+    public function Shikona($data = null)
     {
         require_once __DIR__ . '/entity/shikona_entity.php';
         if ($data === null) {

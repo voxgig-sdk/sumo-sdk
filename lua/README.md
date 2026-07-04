@@ -31,26 +31,26 @@ local sdk = require("sumo_sdk")
 local client = sdk.new()
 ```
 
-### 2. List bashos
+### 2. List basho records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:basho():list()
+local bashos, err = client:Basho():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(bashos) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a basho
 
 ```lua
-local result, err = client:basho():load({ id = "example_id" })
+local basho, err = client:Basho():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(basho)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:basho():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Basho():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -202,17 +202,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local basho, err = client:Basho():load({ id = "example_id" })
+    if err then error(err) end
+    -- basho is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -332,7 +337,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.basho`
+Create an instance: `local basho = client:Basho(nil)`
 
 #### Operations
 
@@ -363,20 +368,20 @@ Create an instance: `const basho = client.basho`
 
 #### Example: Load
 
-```ts
-const basho = await client.basho.load({ id: 'basho_id' })
+```lua
+local basho, err = client:Basho():load({ id = "basho_id" })
 ```
 
 #### Example: List
 
-```ts
-const bashos = await client.basho.list()
+```lua
+local bashos, err = client:Basho():list()
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.kimarite`
+Create an instance: `local kimarite = client:Kimarite(nil)`
 
 #### Operations
 
@@ -397,20 +402,20 @@ Create an instance: `const kimarite = client.kimarite`
 
 #### Example: Load
 
-```ts
-const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
+```lua
+local kimarite, err = client:Kimarite():load({ id = "kimarite_id" })
 ```
 
 #### Example: List
 
-```ts
-const kimarites = await client.kimarite.list()
+```lua
+local kimarites, err = client:Kimarite():list()
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.measurement`
+Create an instance: `local measurement = client:Measurement(nil)`
 
 #### Operations
 
@@ -429,14 +434,14 @@ Create an instance: `const measurement = client.measurement`
 
 #### Example: List
 
-```ts
-const measurements = await client.measurement.list()
+```lua
+local measurements, err = client:Measurement():list()
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.rank`
+Create an instance: `local rank = client:Rank(nil)`
 
 #### Operations
 
@@ -455,14 +460,14 @@ Create an instance: `const rank = client.rank`
 
 #### Example: List
 
-```ts
-const ranks = await client.rank.list()
+```lua
+local ranks, err = client:Rank():list()
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.rikishi`
+Create an instance: `local rikishi = client:Rikishi(nil)`
 
 #### Operations
 
@@ -501,20 +506,20 @@ Create an instance: `const rikishi = client.rikishi`
 
 #### Example: Load
 
-```ts
-const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
+```lua
+local rikishi, err = client:Rikishi():load({ id = "rikishi_id" })
 ```
 
 #### Example: List
 
-```ts
-const rikishis = await client.rikishi.list()
+```lua
+local rikishis, err = client:Rikishi():list()
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.shikona`
+Create an instance: `local shikona = client:Shikona(nil)`
 
 #### Operations
 
@@ -533,8 +538,8 @@ Create an instance: `const shikona = client.shikona`
 
 #### Example: List
 
-```ts
-const shikonas = await client.shikona.list()
+```lua
+local shikonas, err = client:Shikona():list()
 ```
 
 
@@ -609,7 +614,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local basho = client:basho()
+local basho = client:Basho()
 basho:load({ id = "example_id" })
 
 -- basho:data_get() now returns the loaded basho data

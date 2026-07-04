@@ -100,7 +100,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BashoEntity
 
 ```python
-basho = client.basho
+basho = client.Basho()
 ```
 
 ### Fields
@@ -130,7 +130,9 @@ basho = client.basho
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.basho.list({})
+results = client.Basho().list({})
+for basho in results:
+    print(basho)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -138,7 +140,7 @@ results = client.basho.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.basho.load({"id": "basho_id"})
+result = client.Basho().load({"id": "basho_id"})
 ```
 
 ### Common Methods
@@ -173,7 +175,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```python
-kimarite = client.kimarite
+kimarite = client.Kimarite()
 ```
 
 ### Fields
@@ -193,7 +195,9 @@ kimarite = client.kimarite
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.kimarite.list({})
+results = client.Kimarite().list({})
+for kimarite in results:
+    print(kimarite)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -201,7 +205,7 @@ results = client.kimarite.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.kimarite.load({"id": "kimarite_id"})
+result = client.Kimarite().load({"id": "kimarite_id"})
 ```
 
 ### Common Methods
@@ -236,7 +240,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```python
-measurement = client.measurement
+measurement = client.Measurement()
 ```
 
 ### Fields
@@ -255,7 +259,9 @@ measurement = client.measurement
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.measurement.list({})
+results = client.Measurement().list({})
+for measurement in results:
+    print(measurement)
 ```
 
 ### Common Methods
@@ -290,7 +296,7 @@ Return the entity name.
 ## RankEntity
 
 ```python
-rank = client.rank
+rank = client.Rank()
 ```
 
 ### Fields
@@ -309,7 +315,9 @@ rank = client.rank
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.rank.list({})
+results = client.Rank().list({})
+for rank in results:
+    print(rank)
 ```
 
 ### Common Methods
@@ -344,7 +352,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```python
-rikishi = client.rikishi
+rikishi = client.Rikishi()
 ```
 
 ### Fields
@@ -382,7 +390,9 @@ rikishi = client.rikishi
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.rikishi.list({})
+results = client.Rikishi().list({})
+for rikishi in results:
+    print(rikishi)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -390,7 +400,7 @@ results = client.rikishi.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.rikishi.load({"id": "rikishi_id"})
+result = client.Rikishi().load({"id": "rikishi_id"})
 ```
 
 ### Common Methods
@@ -425,7 +435,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```python
-shikona = client.shikona
+shikona = client.Shikona()
 ```
 
 ### Fields
@@ -444,7 +454,9 @@ shikona = client.shikona
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.shikona.list({})
+results = client.Shikona().list({})
+for shikona in results:
+    print(shikona)
 ```
 
 ### Common Methods

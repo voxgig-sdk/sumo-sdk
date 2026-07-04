@@ -103,7 +103,7 @@ same parameters as `direct()`.
 ## BashoEntity
 
 ```lua
-local basho = client:basho(nil)
+local basho = client:Basho(nil)
 ```
 
 ### Fields
@@ -133,7 +133,7 @@ local basho = client:basho(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:basho():list()
+local results, err = client:Basho():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -141,7 +141,7 @@ local results, err = client:basho():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:basho():load({ id = "basho_id" })
+local result, err = client:Basho():load({ id = "basho_id" })
 ```
 
 ### Common Methods
@@ -177,7 +177,7 @@ Return the entity name.
 ## KimariteEntity
 
 ```lua
-local kimarite = client:kimarite(nil)
+local kimarite = client:Kimarite(nil)
 ```
 
 ### Fields
@@ -197,7 +197,7 @@ local kimarite = client:kimarite(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:kimarite():list()
+local results, err = client:Kimarite():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -205,7 +205,7 @@ local results, err = client:kimarite():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:kimarite():load({ id = "kimarite_id" })
+local result, err = client:Kimarite():load({ id = "kimarite_id" })
 ```
 
 ### Common Methods
@@ -241,7 +241,7 @@ Return the entity name.
 ## MeasurementEntity
 
 ```lua
-local measurement = client:measurement(nil)
+local measurement = client:Measurement(nil)
 ```
 
 ### Fields
@@ -260,7 +260,7 @@ local measurement = client:measurement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:measurement():list()
+local results, err = client:Measurement():list()
 ```
 
 ### Common Methods
@@ -296,7 +296,7 @@ Return the entity name.
 ## RankEntity
 
 ```lua
-local rank = client:rank(nil)
+local rank = client:Rank(nil)
 ```
 
 ### Fields
@@ -315,7 +315,7 @@ local rank = client:rank(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rank():list()
+local results, err = client:Rank():list()
 ```
 
 ### Common Methods
@@ -351,7 +351,7 @@ Return the entity name.
 ## RikishiEntity
 
 ```lua
-local rikishi = client:rikishi(nil)
+local rikishi = client:Rikishi(nil)
 ```
 
 ### Fields
@@ -389,7 +389,7 @@ local rikishi = client:rikishi(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rikishi():list()
+local results, err = client:Rikishi():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -397,7 +397,7 @@ local results, err = client:rikishi():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:rikishi():load({ id = "rikishi_id" })
+local result, err = client:Rikishi():load({ id = "rikishi_id" })
 ```
 
 ### Common Methods
@@ -433,7 +433,7 @@ Return the entity name.
 ## ShikonaEntity
 
 ```lua
-local shikona = client:shikona(nil)
+local shikona = client:Shikona(nil)
 ```
 
 ### Fields
@@ -452,7 +452,7 @@ local shikona = client:shikona(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:shikona():list()
+local results, err = client:Shikona():list()
 ```
 
 ### Common Methods

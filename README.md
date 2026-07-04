@@ -26,9 +26,11 @@ import { SumoSDK } from '@voxgig-sdk/sumo'
 
 const client = new SumoSDK()
 
-// List all bashos
-const bashos = await client.basho.list()
-console.log(bashos.data)
+// List all bashos (returns Basho[])
+const bashos = await client.Basho().list()
+for (const basho of bashos) {
+  console.log(basho)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -88,12 +90,13 @@ from sumo_sdk import SumoSDK
 
 client = SumoSDK()
 
-# List all bashos
-bashos = client.basho.list()
-print(bashos)
+# List all bashos (returns a list, raises on error)
+bashos = client.Basho().list({})
+for basho in bashos:
+    print(basho)
 
-# Load a specific basho
-basho = client.basho.load({"id": "example_id"})
+# Load a specific basho (returns the record, raises on error)
+basho = client.Basho().load({"id": "example_id"})
 print(basho)
 ```
 
@@ -105,12 +108,12 @@ require_once 'sumo_sdk.php';
 
 $client = new SumoSDK();
 
-// List all bashos (throws on error)
-$bashos = $client->basho()->list();
+// List all bashos (returns an array; throws on error)
+$bashos = $client->Basho()->list();
 print_r($bashos);
 
-// Load a specific basho
-$basho = $client->basho()->load(["id" => "example_id"]);
+// Load a specific basho (returns the bare record; throws on error)
+$basho = $client->Basho()->load(["id" => "example_id"]);
 print_r($basho);
 ```
 
@@ -133,12 +136,12 @@ require_relative "Sumo_sdk"
 
 client = SumoSDK.new
 
-# List all bashos
-bashos = client.basho.list
+# List all bashos (returns an Array; raises on error)
+bashos = client.Basho.list
 puts bashos
 
-# Load a specific basho
-basho = client.basho.load({ "id" => "example_id" })
+# Load a specific basho (returns the bare record; raises on error)
+basho = client.Basho.load({ "id" => "example_id" })
 puts basho
 ```
 
@@ -150,11 +153,11 @@ local sdk = require("sumo_sdk")
 local client = sdk.new()
 
 -- List all bashos
-local bashos, err = client:basho():list()
+local bashos, err = client:Basho():list()
 print(bashos)
 
 -- Load a specific basho
-local basho, err = client:basho():load({ id = "example_id" })
+local basho, err = client:Basho():load({ id = "example_id" })
 print(basho)
 ```
 
@@ -167,22 +170,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SumoSDK.test()
-const result = await client.basho.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const basho = await client.Basho().load({ id: 'test01' })
+// basho is a bare Basho populated with mock data
+console.log(basho)
 ```
 
 ### Python
 
 ```python
 client = SumoSDK.test()
-result = client.basho.load({"id": "test01"})
+basho = client.Basho().load({"id": "test01"})
+print(basho)
 ```
 
 ### PHP
 
 ```php
-$client = SumoSDK::test();
-$result = $client->basho()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = SumoSDK::test([
+    "entity" => ["basho" => ["test01" => ["id" => "test01"]]],
+]);
+$basho = $client->Basho()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -197,15 +205,18 @@ result, err := client.Basho(nil).Load(
 ### Ruby
 
 ```ruby
-client = SumoSDK.test
-result = client.basho.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = SumoSDK.test({
+  "entity" => { "basho" => { "test01" => { "id" => "test01" } } },
+})
+basho = client.Basho.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:basho():load({ id = "test01" })
+local result, err = client:Basho():load({ id = "test01" })
 ```
 
 ## How it works
@@ -253,6 +264,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -28,16 +28,14 @@ require_relative "Sumo_sdk"
 client = SumoSDK.new
 ```
 
-### 2. List bashos
+### 2. List basho records
 
 ```ruby
 begin
-  result = client.basho.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Basho records — iterate directly.
+  bashos = client.Basho.list
+  bashos.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.basho.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Basho record (raises on error).
+  basho = client.Basho.load({ "id" => "example_id" })
+  puts basho
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = SumoSDK.test
+client = SumoSDK.test({
+  "entity" => { "basho" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.basho.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+basho = client.Basho.load({ "id" => "test01" })
+puts basho
 ```
 
 ### Use a custom fetch function
@@ -338,7 +341,7 @@ API path: `/api/shikonas`
 
 ### Basho
 
-Create an instance: `const basho = client.basho`
+Create an instance: `basho = client.Basho`
 
 #### Operations
 
@@ -369,20 +372,22 @@ Create an instance: `const basho = client.basho`
 
 #### Example: Load
 
-```ts
-const basho = await client.basho.load({ id: 'basho_id' })
+```ruby
+# load returns the bare Basho record (raises on error).
+basho = client.Basho.load({ "id" => "basho_id" })
 ```
 
 #### Example: List
 
-```ts
-const bashos = await client.basho.list()
+```ruby
+# list returns an Array of Basho records (raises on error).
+bashos = client.Basho.list
 ```
 
 
 ### Kimarite
 
-Create an instance: `const kimarite = client.kimarite`
+Create an instance: `kimarite = client.Kimarite`
 
 #### Operations
 
@@ -403,20 +408,22 @@ Create an instance: `const kimarite = client.kimarite`
 
 #### Example: Load
 
-```ts
-const kimarite = await client.kimarite.load({ id: 'kimarite_id' })
+```ruby
+# load returns the bare Kimarite record (raises on error).
+kimarite = client.Kimarite.load({ "id" => "kimarite_id" })
 ```
 
 #### Example: List
 
-```ts
-const kimarites = await client.kimarite.list()
+```ruby
+# list returns an Array of Kimarite records (raises on error).
+kimarites = client.Kimarite.list
 ```
 
 
 ### Measurement
 
-Create an instance: `const measurement = client.measurement`
+Create an instance: `measurement = client.Measurement`
 
 #### Operations
 
@@ -435,14 +442,15 @@ Create an instance: `const measurement = client.measurement`
 
 #### Example: List
 
-```ts
-const measurements = await client.measurement.list()
+```ruby
+# list returns an Array of Measurement records (raises on error).
+measurements = client.Measurement.list
 ```
 
 
 ### Rank
 
-Create an instance: `const rank = client.rank`
+Create an instance: `rank = client.Rank`
 
 #### Operations
 
@@ -461,14 +469,15 @@ Create an instance: `const rank = client.rank`
 
 #### Example: List
 
-```ts
-const ranks = await client.rank.list()
+```ruby
+# list returns an Array of Rank records (raises on error).
+ranks = client.Rank.list
 ```
 
 
 ### Rikishi
 
-Create an instance: `const rikishi = client.rikishi`
+Create an instance: `rikishi = client.Rikishi`
 
 #### Operations
 
@@ -507,20 +516,22 @@ Create an instance: `const rikishi = client.rikishi`
 
 #### Example: Load
 
-```ts
-const rikishi = await client.rikishi.load({ id: 'rikishi_id' })
+```ruby
+# load returns the bare Rikishi record (raises on error).
+rikishi = client.Rikishi.load({ "id" => "rikishi_id" })
 ```
 
 #### Example: List
 
-```ts
-const rikishis = await client.rikishi.list()
+```ruby
+# list returns an Array of Rikishi records (raises on error).
+rikishis = client.Rikishi.list
 ```
 
 
 ### Shikona
 
-Create an instance: `const shikona = client.shikona`
+Create an instance: `shikona = client.Shikona`
 
 #### Operations
 
@@ -539,8 +550,9 @@ Create an instance: `const shikona = client.shikona`
 
 #### Example: List
 
-```ts
-const shikonas = await client.shikona.list()
+```ruby
+# list returns an Array of Shikona records (raises on error).
+shikonas = client.Shikona.list
 ```
 
 
@@ -615,7 +627,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-basho = client.basho
+basho = client.Basho
 basho.load({ "id" => "example_id" })
 
 # basho.data_get now returns the loaded basho data
