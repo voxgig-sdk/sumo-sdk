@@ -107,30 +107,30 @@ basho = client.Basho()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `match_number` | ``$INTEGER`` | No |  |
-| `month` | ``$INTEGER`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `side` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `end_date` | `str` | No |  |
+| `id` | `str` | No |  |
+| `kimarite` | `str` | No |  |
+| `match_number` | `int` | No |  |
+| `month` | `int` | No |  |
+| `rank` | `str` | No |  |
+| `rikishi1_id` | `str` | No |  |
+| `rikishi2_id` | `str` | No |  |
+| `rikishi_id` | `str` | No |  |
+| `shikona` | `str` | No |  |
+| `side` | `str` | No |  |
+| `start_date` | `str` | No |  |
+| `venue` | `str` | No |  |
+| `winner_id` | `str` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Basho().list({})
+results = client.Basho().list()
 for basho in results:
     print(basho)
 ```
@@ -182,20 +182,20 @@ kimarite = client.Kimarite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `english_name` | ``$STRING`` | No |  |
-| `frequency` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `english_name` | `str` | No |  |
+| `frequency` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Kimarite().list({})
+results = client.Kimarite().list()
 for kimarite in results:
     print(kimarite)
 ```
@@ -247,19 +247,19 @@ measurement = client.Measurement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | ``$NUMBER`` | No |  |
-| `recorded_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
+| `height` | `float` | No |  |
+| `recorded_date` | `str` | No |  |
+| `rikishi_id` | `str` | No |  |
+| `weight` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Measurement().list({})
+results = client.Measurement().list()
 for measurement in results:
     print(measurement)
 ```
@@ -303,19 +303,19 @@ rank = client.Rank()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `division` | `str` | No |  |
+| `id` | `str` | No |  |
+| `level` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rank().list({})
+results = client.Rank().list()
 for rank in results:
     print(rank)
 ```
@@ -359,38 +359,38 @@ rikishi = client.Rikishi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | ``$STRING`` | No |  |
-| `birthdate` | ``$STRING`` | No |  |
-| `birthplace` | ``$STRING`` | No |  |
-| `championship` | ``$INTEGER`` | No |  |
-| `current_rank` | ``$STRING`` | No |  |
-| `day` | ``$INTEGER`` | No |  |
-| `debut` | ``$STRING`` | No |  |
-| `division` | ``$STRING`` | No |  |
-| `height` | ``$NUMBER`` | No |  |
-| `heya` | ``$STRING`` | No |  |
-| `highest_rank` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `real_name` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `total_loss` | ``$INTEGER`` | No |  |
-| `total_win` | ``$INTEGER`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
-| `win_rate` | ``$NUMBER`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
+| `basho_id` | `str` | No |  |
+| `birthdate` | `str` | No |  |
+| `birthplace` | `str` | No |  |
+| `championship` | `int` | No |  |
+| `current_rank` | `str` | No |  |
+| `day` | `int` | No |  |
+| `debut` | `str` | No |  |
+| `division` | `str` | No |  |
+| `height` | `float` | No |  |
+| `heya` | `str` | No |  |
+| `highest_rank` | `str` | No |  |
+| `id` | `str` | No |  |
+| `kimarite` | `str` | No |  |
+| `real_name` | `str` | No |  |
+| `rikishi1_id` | `str` | No |  |
+| `rikishi2_id` | `str` | No |  |
+| `rikishi_id` | `str` | No |  |
+| `shikona` | `str` | No |  |
+| `total_loss` | `int` | No |  |
+| `total_win` | `int` | No |  |
+| `weight` | `float` | No |  |
+| `win_rate` | `float` | No |  |
+| `winner_id` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rikishi().list({})
+results = client.Rikishi().list()
 for rikishi in results:
     print(rikishi)
 ```
@@ -442,19 +442,19 @@ shikona = client.Shikona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `str` | No |  |
+| `rikishi_id` | `str` | No |  |
+| `shikona` | `str` | No |  |
+| `start_date` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Shikona().list({})
+results = client.Shikona().list()
 for shikona in results:
     print(shikona)
 ```

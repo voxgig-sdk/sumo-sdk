@@ -63,7 +63,7 @@ class KimariteLoadMatch
     public string $id;
 }
 
-/** Match filter for Kimarite#list (any subset of Kimarite fields). */
+/** Request payload for Kimarite#list. */
 class KimariteListMatch
 {
     public ?string $category = null;
@@ -82,7 +82,7 @@ class Measurement
     public ?float $weight = null;
 }
 
-/** Match filter for Measurement#list (any subset of Measurement fields). */
+/** Request payload for Measurement#list. */
 class MeasurementListMatch
 {
     public ?float $height = null;
@@ -100,7 +100,7 @@ class Rank
     public ?string $name = null;
 }
 
-/** Match filter for Rank#list (any subset of Rank fields). */
+/** Request payload for Rank#list. */
 class RankListMatch
 {
     public ?string $division = null;
@@ -159,7 +159,7 @@ class Shikona
     public ?string $start_date = null;
 }
 
-/** Match filter for Shikona#list (any subset of Shikona fields). */
+/** Request payload for Shikona#list. */
 class ShikonaListMatch
 {
     public ?string $end_date = null;

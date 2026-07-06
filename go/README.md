@@ -4,6 +4,8 @@
 
 The Golang SDK for the Sumo API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Basho(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single basho — the value is the loaded record.
-    basho, err := client.Basho(nil).Load(map[string]any{"id": "example_id"}, nil)
+    basho, err := client.Basho(nil).Load(map[string]any{"id": "example"}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(basho)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+bashos, err := client.Basho(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = bashos
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-basho, err := client.Basho(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+basho, err := client.Basho(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(basho) // the loaded mock data
+fmt.Println(basho) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -211,9 +242,6 @@ All entities implement the `SumoEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -226,16 +254,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    basho, err := client.Basho(nil).Load(map[string]any{"id": "example_id"}, nil)
+    basho, err := client.Basho(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // basho is the loaded record
+    // basho is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -371,21 +399,21 @@ Create an instance: `basho := client.Basho(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `kimarite` | ``$STRING`` |  |
-| `match_number` | ``$INTEGER`` |  |
-| `month` | ``$INTEGER`` |  |
-| `rank` | ``$STRING`` |  |
-| `rikishi1_id` | ``$STRING`` |  |
-| `rikishi2_id` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `side` | ``$STRING`` |  |
-| `start_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `winner_id` | ``$STRING`` |  |
-| `year` | ``$INTEGER`` |  |
+| `end_date` | `string` |  |
+| `id` | `string` |  |
+| `kimarite` | `string` |  |
+| `match_number` | `int` |  |
+| `month` | `int` |  |
+| `rank` | `string` |  |
+| `rikishi1_id` | `string` |  |
+| `rikishi2_id` | `string` |  |
+| `rikishi_id` | `string` |  |
+| `shikona` | `string` |  |
+| `side` | `string` |  |
+| `start_date` | `string` |  |
+| `venue` | `string` |  |
+| `winner_id` | `string` |  |
+| `year` | `int` |  |
 
 #### Example: Load
 
@@ -423,11 +451,11 @@ Create an instance: `kimarite := client.Kimarite(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `english_name` | ``$STRING`` |  |
-| `frequency` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `english_name` | `string` |  |
+| `frequency` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -464,10 +492,10 @@ Create an instance: `measurement := client.Measurement(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `height` | ``$NUMBER`` |  |
-| `recorded_date` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `weight` | ``$NUMBER`` |  |
+| `height` | `float64` |  |
+| `recorded_date` | `string` |  |
+| `rikishi_id` | `string` |  |
+| `weight` | `float64` |  |
 
 #### Example: List
 
@@ -494,10 +522,10 @@ Create an instance: `rank := client.Rank(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `division` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `division` | `string` |  |
+| `id` | `string` |  |
+| `level` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -525,29 +553,29 @@ Create an instance: `rikishi := client.Rikishi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | ``$STRING`` |  |
-| `birthdate` | ``$STRING`` |  |
-| `birthplace` | ``$STRING`` |  |
-| `championship` | ``$INTEGER`` |  |
-| `current_rank` | ``$STRING`` |  |
-| `day` | ``$INTEGER`` |  |
-| `debut` | ``$STRING`` |  |
-| `division` | ``$STRING`` |  |
-| `height` | ``$NUMBER`` |  |
-| `heya` | ``$STRING`` |  |
-| `highest_rank` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `kimarite` | ``$STRING`` |  |
-| `real_name` | ``$STRING`` |  |
-| `rikishi1_id` | ``$STRING`` |  |
-| `rikishi2_id` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `total_loss` | ``$INTEGER`` |  |
-| `total_win` | ``$INTEGER`` |  |
-| `weight` | ``$NUMBER`` |  |
-| `win_rate` | ``$NUMBER`` |  |
-| `winner_id` | ``$STRING`` |  |
+| `basho_id` | `string` |  |
+| `birthdate` | `string` |  |
+| `birthplace` | `string` |  |
+| `championship` | `int` |  |
+| `current_rank` | `string` |  |
+| `day` | `int` |  |
+| `debut` | `string` |  |
+| `division` | `string` |  |
+| `height` | `float64` |  |
+| `heya` | `string` |  |
+| `highest_rank` | `string` |  |
+| `id` | `string` |  |
+| `kimarite` | `string` |  |
+| `real_name` | `string` |  |
+| `rikishi1_id` | `string` |  |
+| `rikishi2_id` | `string` |  |
+| `rikishi_id` | `string` |  |
+| `shikona` | `string` |  |
+| `total_loss` | `int` |  |
+| `total_win` | `int` |  |
+| `weight` | `float64` |  |
+| `win_rate` | `float64` |  |
+| `winner_id` | `string` |  |
 
 #### Example: Load
 
@@ -584,10 +612,10 @@ Create an instance: `shikona := client.Shikona(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `start_date` | ``$STRING`` |  |
+| `end_date` | `string` |  |
+| `rikishi_id` | `string` |  |
+| `shikona` | `string` |  |
+| `start_date` | `string` |  |
 
 #### Example: List
 
@@ -600,12 +628,16 @@ fmt.Println(shikonas) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -622,9 +654,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -665,14 +697,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 basho := client.Basho(nil)
-basho.Load(map[string]any{"id": "example_id"}, nil)
+basho.List(nil, nil)
 
-// basho.Data() now returns the loaded basho data
+// basho.Data() now returns the basho data from the last list
 // basho.Match() returns the last match criteria
 ```
 

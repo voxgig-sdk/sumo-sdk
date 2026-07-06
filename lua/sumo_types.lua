@@ -43,6 +43,11 @@
 ---@field id string
 
 ---@class KimariteListMatch
+---@field category? string
+---@field description? string
+---@field english_name? string
+---@field frequency? number
+---@field name? string
 
 ---@class Measurement
 ---@field height? number
@@ -51,6 +56,10 @@
 ---@field weight? number
 
 ---@class MeasurementListMatch
+---@field height? number
+---@field recorded_date? string
+---@field rikishi_id? string
+---@field weight? number
 
 ---@class Rank
 ---@field division? string
@@ -59,6 +68,10 @@
 ---@field name? string
 
 ---@class RankListMatch
+---@field division? string
+---@field id? string
+---@field level? number
+---@field name? string
 
 ---@class Rikishi
 ---@field basho_id? string
@@ -99,6 +112,10 @@
 ---@field start_date? string
 
 ---@class ShikonaListMatch
+---@field end_date? string
+---@field rikishi_id? string
+---@field shikona? string
+---@field start_date? string
 
 local M = {}
 

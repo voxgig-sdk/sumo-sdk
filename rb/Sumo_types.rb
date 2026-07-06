@@ -137,7 +137,7 @@ KimariteLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Kimarite#list (any subset of Kimarite fields).
+# Request payload for Kimarite#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -183,7 +183,7 @@ Measurement = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Measurement#list (any subset of Measurement fields).
+# Request payload for Measurement#list.
 #
 # @!attribute [rw] height
 #   @return [Float, nil]
@@ -225,7 +225,7 @@ Rank = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Rank#list (any subset of Rank fields).
+# Request payload for Rank#list.
 #
 # @!attribute [rw] division
 #   @return [String, nil]
@@ -386,7 +386,7 @@ Shikona = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Shikona#list (any subset of Shikona fields).
+# Request payload for Shikona#list.
 #
 # @!attribute [rw] end_date
 #   @return [String, nil]

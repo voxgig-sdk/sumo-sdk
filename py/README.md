@@ -4,6 +4,11 @@
 
 The Python SDK for the Sumo API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Basho()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    bashos = client.Basho().list({})
+    bashos = client.Basho().list()
     for basho in bashos:
         print(basho)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(basho)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    bashos = client.Basho().list()
+    print(bashos)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = SumoSDK.test()
 
 # Entity ops return the bare record and raise on error.
-basho = client.Basho().load({"id": "test01"})
+basho = client.Basho().list()
 # basho contains the mock response record
 ```
 
@@ -193,9 +229,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -345,28 +378,28 @@ Create an instance: `basho = client.Basho()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `kimarite` | ``$STRING`` |  |
-| `match_number` | ``$INTEGER`` |  |
-| `month` | ``$INTEGER`` |  |
-| `rank` | ``$STRING`` |  |
-| `rikishi1_id` | ``$STRING`` |  |
-| `rikishi2_id` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `side` | ``$STRING`` |  |
-| `start_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `winner_id` | ``$STRING`` |  |
-| `year` | ``$INTEGER`` |  |
+| `end_date` | `str` |  |
+| `id` | `str` |  |
+| `kimarite` | `str` |  |
+| `match_number` | `int` |  |
+| `month` | `int` |  |
+| `rank` | `str` |  |
+| `rikishi1_id` | `str` |  |
+| `rikishi2_id` | `str` |  |
+| `rikishi_id` | `str` |  |
+| `shikona` | `str` |  |
+| `side` | `str` |  |
+| `start_date` | `str` |  |
+| `venue` | `str` |  |
+| `winner_id` | `str` |  |
+| `year` | `int` |  |
 
 #### Example: Load
 
@@ -377,7 +410,7 @@ basho = client.Basho().load({"id": "basho_id"})
 #### Example: List
 
 ```python
-bashos = client.Basho().list({})
+bashos = client.Basho().list()
 ```
 
 
@@ -389,18 +422,18 @@ Create an instance: `kimarite = client.Kimarite()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `english_name` | ``$STRING`` |  |
-| `frequency` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `str` |  |
+| `description` | `str` |  |
+| `english_name` | `str` |  |
+| `frequency` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -411,7 +444,7 @@ kimarite = client.Kimarite().load({"id": "kimarite_id"})
 #### Example: List
 
 ```python
-kimarites = client.Kimarite().list({})
+kimarites = client.Kimarite().list()
 ```
 
 
@@ -423,21 +456,21 @@ Create an instance: `measurement = client.Measurement()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `height` | ``$NUMBER`` |  |
-| `recorded_date` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `weight` | ``$NUMBER`` |  |
+| `height` | `float` |  |
+| `recorded_date` | `str` |  |
+| `rikishi_id` | `str` |  |
+| `weight` | `float` |  |
 
 #### Example: List
 
 ```python
-measurements = client.Measurement().list({})
+measurements = client.Measurement().list()
 ```
 
 
@@ -449,21 +482,21 @@ Create an instance: `rank = client.Rank()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `division` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `division` | `str` |  |
+| `id` | `str` |  |
+| `level` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: List
 
 ```python
-ranks = client.Rank().list({})
+ranks = client.Rank().list()
 ```
 
 
@@ -475,36 +508,36 @@ Create an instance: `rikishi = client.Rikishi()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | ``$STRING`` |  |
-| `birthdate` | ``$STRING`` |  |
-| `birthplace` | ``$STRING`` |  |
-| `championship` | ``$INTEGER`` |  |
-| `current_rank` | ``$STRING`` |  |
-| `day` | ``$INTEGER`` |  |
-| `debut` | ``$STRING`` |  |
-| `division` | ``$STRING`` |  |
-| `height` | ``$NUMBER`` |  |
-| `heya` | ``$STRING`` |  |
-| `highest_rank` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `kimarite` | ``$STRING`` |  |
-| `real_name` | ``$STRING`` |  |
-| `rikishi1_id` | ``$STRING`` |  |
-| `rikishi2_id` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `total_loss` | ``$INTEGER`` |  |
-| `total_win` | ``$INTEGER`` |  |
-| `weight` | ``$NUMBER`` |  |
-| `win_rate` | ``$NUMBER`` |  |
-| `winner_id` | ``$STRING`` |  |
+| `basho_id` | `str` |  |
+| `birthdate` | `str` |  |
+| `birthplace` | `str` |  |
+| `championship` | `int` |  |
+| `current_rank` | `str` |  |
+| `day` | `int` |  |
+| `debut` | `str` |  |
+| `division` | `str` |  |
+| `height` | `float` |  |
+| `heya` | `str` |  |
+| `highest_rank` | `str` |  |
+| `id` | `str` |  |
+| `kimarite` | `str` |  |
+| `real_name` | `str` |  |
+| `rikishi1_id` | `str` |  |
+| `rikishi2_id` | `str` |  |
+| `rikishi_id` | `str` |  |
+| `shikona` | `str` |  |
+| `total_loss` | `int` |  |
+| `total_win` | `int` |  |
+| `weight` | `float` |  |
+| `win_rate` | `float` |  |
+| `winner_id` | `str` |  |
 
 #### Example: Load
 
@@ -515,7 +548,7 @@ rikishi = client.Rikishi().load({"id": "rikishi_id"})
 #### Example: List
 
 ```python
-rikishis = client.Rikishi().list({})
+rikishis = client.Rikishi().list()
 ```
 
 
@@ -527,30 +560,34 @@ Create an instance: `shikona = client.Shikona()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | ``$STRING`` |  |
-| `rikishi_id` | ``$STRING`` |  |
-| `shikona` | ``$STRING`` |  |
-| `start_date` | ``$STRING`` |  |
+| `end_date` | `str` |  |
+| `rikishi_id` | `str` |  |
+| `shikona` | `str` |  |
+| `start_date` | `str` |  |
 
 #### Example: List
 
 ```python
-shikonas = client.Shikona().list({})
+shikonas = client.Shikona().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -567,8 +604,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -611,14 +649,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 basho = client.Basho()
-basho.load({"id": "example_id"})
+basho.list()
 
-# basho.data_get() now returns the loaded basho data
+# basho.data_get() now returns the basho data from the last list
 # basho.match_get() returns the last match criteria
 ```
 

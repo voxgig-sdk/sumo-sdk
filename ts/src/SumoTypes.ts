@@ -46,7 +46,13 @@ export interface KimariteLoadMatch {
   id: string
 }
 
-export type KimariteListMatch = Partial<Kimarite>
+export interface KimariteListMatch {
+  category?: string
+  description?: string
+  english_name?: string
+  frequency?: number
+  name?: string
+}
 
 export interface Measurement {
   height?: number
@@ -55,7 +61,12 @@ export interface Measurement {
   weight?: number
 }
 
-export type MeasurementListMatch = Partial<Measurement>
+export interface MeasurementListMatch {
+  height?: number
+  recorded_date?: string
+  rikishi_id?: string
+  weight?: number
+}
 
 export interface Rank {
   division?: string
@@ -64,7 +75,12 @@ export interface Rank {
   name?: string
 }
 
-export type RankListMatch = Partial<Rank>
+export interface RankListMatch {
+  division?: string
+  id?: string
+  level?: number
+  name?: string
+}
 
 export interface Rikishi {
   basho_id?: string
@@ -108,5 +124,10 @@ export interface Shikona {
   start_date?: string
 }
 
-export type ShikonaListMatch = Partial<Shikona>
+export interface ShikonaListMatch {
+  end_date?: string
+  rikishi_id?: string
+  shikona?: string
+  start_date?: string
+}
 

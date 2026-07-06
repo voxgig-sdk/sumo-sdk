@@ -65,8 +65,13 @@ class RikishiEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: RikishiLoadMatch, ctrl=None) -> Rikishi:
+    def load(self, reqmatch=None, ctrl=None) -> Rikishi:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Rikishi().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class RikishiEntity:
 
 
     
-    def list(self, reqmatch: RikishiListMatch, ctrl=None) -> list[Rikishi]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Rikishi]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Rikishi().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

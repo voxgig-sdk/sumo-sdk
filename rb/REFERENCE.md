@@ -8,7 +8,7 @@ Complete API reference for the Sumo Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'sumo_sdk'
+require_relative 'Sumo_sdk'
 
 client = SumoSDK.new(options)
 ```
@@ -113,30 +113,30 @@ basho = client.Basho
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `match_number` | ``$INTEGER`` | No |  |
-| `month` | ``$INTEGER`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `side` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `end_date` | `String` | No |  |
+| `id` | `String` | No |  |
+| `kimarite` | `String` | No |  |
+| `match_number` | `Integer` | No |  |
+| `month` | `Integer` | No |  |
+| `rank` | `String` | No |  |
+| `rikishi1_id` | `String` | No |  |
+| `rikishi2_id` | `String` | No |  |
+| `rikishi_id` | `String` | No |  |
+| `shikona` | `String` | No |  |
+| `side` | `String` | No |  |
+| `start_date` | `String` | No |  |
+| `venue` | `String` | No |  |
+| `winner_id` | `String` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Basho.list(nil)
+results = client.Basho.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -187,20 +187,20 @@ kimarite = client.Kimarite
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `english_name` | ``$STRING`` | No |  |
-| `frequency` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `english_name` | `String` | No |  |
+| `frequency` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Kimarite.list(nil)
+results = client.Kimarite.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -251,19 +251,19 @@ measurement = client.Measurement
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | ``$NUMBER`` | No |  |
-| `recorded_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
+| `height` | `Float` | No |  |
+| `recorded_date` | `String` | No |  |
+| `rikishi_id` | `String` | No |  |
+| `weight` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Measurement.list(nil)
+results = client.Measurement.list
 ```
 
 ### Common Methods
@@ -306,19 +306,19 @@ rank = client.Rank
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `division` | `String` | No |  |
+| `id` | `String` | No |  |
+| `level` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Rank.list(nil)
+results = client.Rank.list
 ```
 
 ### Common Methods
@@ -361,38 +361,38 @@ rikishi = client.Rikishi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | ``$STRING`` | No |  |
-| `birthdate` | ``$STRING`` | No |  |
-| `birthplace` | ``$STRING`` | No |  |
-| `championship` | ``$INTEGER`` | No |  |
-| `current_rank` | ``$STRING`` | No |  |
-| `day` | ``$INTEGER`` | No |  |
-| `debut` | ``$STRING`` | No |  |
-| `division` | ``$STRING`` | No |  |
-| `height` | ``$NUMBER`` | No |  |
-| `heya` | ``$STRING`` | No |  |
-| `highest_rank` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `real_name` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `total_loss` | ``$INTEGER`` | No |  |
-| `total_win` | ``$INTEGER`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
-| `win_rate` | ``$NUMBER`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
+| `basho_id` | `String` | No |  |
+| `birthdate` | `String` | No |  |
+| `birthplace` | `String` | No |  |
+| `championship` | `Integer` | No |  |
+| `current_rank` | `String` | No |  |
+| `day` | `Integer` | No |  |
+| `debut` | `String` | No |  |
+| `division` | `String` | No |  |
+| `height` | `Float` | No |  |
+| `heya` | `String` | No |  |
+| `highest_rank` | `String` | No |  |
+| `id` | `String` | No |  |
+| `kimarite` | `String` | No |  |
+| `real_name` | `String` | No |  |
+| `rikishi1_id` | `String` | No |  |
+| `rikishi2_id` | `String` | No |  |
+| `rikishi_id` | `String` | No |  |
+| `shikona` | `String` | No |  |
+| `total_loss` | `Integer` | No |  |
+| `total_win` | `Integer` | No |  |
+| `weight` | `Float` | No |  |
+| `win_rate` | `Float` | No |  |
+| `winner_id` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Rikishi.list(nil)
+results = client.Rikishi.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -443,19 +443,19 @@ shikona = client.Shikona
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `String` | No |  |
+| `rikishi_id` | `String` | No |  |
+| `shikona` | `String` | No |  |
+| `start_date` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Shikona.list(nil)
+results = client.Shikona.list
 ```
 
 ### Common Methods

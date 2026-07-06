@@ -54,8 +54,7 @@ type KimariteLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// KimariteListMatch mirrors the kimarite fields as an all-optional match
-// filter (Go analog of Partial<Kimarite>).
+// KimariteListMatch is the typed request payload for Kimarite.ListTyped.
 type KimariteListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -72,8 +71,7 @@ type Measurement struct {
 	Weight *float64 `json:"weight,omitempty"`
 }
 
-// MeasurementListMatch mirrors the measurement fields as an all-optional match
-// filter (Go analog of Partial<Measurement>).
+// MeasurementListMatch is the typed request payload for Measurement.ListTyped.
 type MeasurementListMatch struct {
 	Height *float64 `json:"height,omitempty"`
 	RecordedDate *string `json:"recorded_date,omitempty"`
@@ -89,8 +87,7 @@ type Rank struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// RankListMatch mirrors the rank fields as an all-optional match
-// filter (Go analog of Partial<Rank>).
+// RankListMatch is the typed request payload for Rank.ListTyped.
 type RankListMatch struct {
 	Division *string `json:"division,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -144,8 +141,7 @@ type Shikona struct {
 	StartDate *string `json:"start_date,omitempty"`
 }
 
-// ShikonaListMatch mirrors the shikona fields as an all-optional match
-// filter (Go analog of Partial<Shikona>).
+// ShikonaListMatch is the typed request payload for Shikona.ListTyped.
 type ShikonaListMatch struct {
 	EndDate *string `json:"end_date,omitempty"`
 	RikishiId *string `json:"rikishi_id,omitempty"`

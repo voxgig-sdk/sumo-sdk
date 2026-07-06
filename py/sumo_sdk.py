@@ -221,37 +221,37 @@ class SumoSDK:
 
 
     def Basho(self, data=None) -> "BashoEntity":
-        """Entity factory: client.Basho().list({}) / client.Basho().load({"id": ...})."""
+        """Entity factory: client.Basho().list() / client.Basho().load({"id": ...})."""
         from entity.basho_entity import BashoEntity
         return BashoEntity(self, data)
 
 
     def Kimarite(self, data=None) -> "KimariteEntity":
-        """Entity factory: client.Kimarite().list({}) / client.Kimarite().load({"id": ...})."""
+        """Entity factory: client.Kimarite().list() / client.Kimarite().load({"id": ...})."""
         from entity.kimarite_entity import KimariteEntity
         return KimariteEntity(self, data)
 
 
     def Measurement(self, data=None) -> "MeasurementEntity":
-        """Entity factory: client.Measurement().list({}) / client.Measurement().load({"id": ...})."""
+        """Entity factory: client.Measurement().list() / client.Measurement().load({"id": ...})."""
         from entity.measurement_entity import MeasurementEntity
         return MeasurementEntity(self, data)
 
 
     def Rank(self, data=None) -> "RankEntity":
-        """Entity factory: client.Rank().list({}) / client.Rank().load({"id": ...})."""
+        """Entity factory: client.Rank().list() / client.Rank().load({"id": ...})."""
         from entity.rank_entity import RankEntity
         return RankEntity(self, data)
 
 
     def Rikishi(self, data=None) -> "RikishiEntity":
-        """Entity factory: client.Rikishi().list({}) / client.Rikishi().load({"id": ...})."""
+        """Entity factory: client.Rikishi().list() / client.Rikishi().load({"id": ...})."""
         from entity.rikishi_entity import RikishiEntity
         return RikishiEntity(self, data)
 
 
     def Shikona(self, data=None) -> "ShikonaEntity":
-        """Entity factory: client.Shikona().list({}) / client.Shikona().load({"id": ...})."""
+        """Entity factory: client.Shikona().list() / client.Shikona().load({"id": ...})."""
         from entity.shikona_entity import ShikonaEntity
         return ShikonaEntity(self, data)
 

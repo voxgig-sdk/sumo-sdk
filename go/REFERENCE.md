@@ -117,21 +117,21 @@ basho := client.Basho(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `match_number` | ``$INTEGER`` | No |  |
-| `month` | ``$INTEGER`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `side` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `end_date` | `string` | No |  |
+| `id` | `string` | No |  |
+| `kimarite` | `string` | No |  |
+| `match_number` | `int` | No |  |
+| `month` | `int` | No |  |
+| `rank` | `string` | No |  |
+| `rikishi1_id` | `string` | No |  |
+| `rikishi2_id` | `string` | No |  |
+| `rikishi_id` | `string` | No |  |
+| `shikona` | `string` | No |  |
+| `side` | `string` | No |  |
+| `start_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `winner_id` | `string` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
@@ -185,11 +185,11 @@ kimarite := client.Kimarite(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `english_name` | ``$STRING`` | No |  |
-| `frequency` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `english_name` | `string` | No |  |
+| `frequency` | `int` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -243,10 +243,10 @@ measurement := client.Measurement(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | ``$NUMBER`` | No |  |
-| `recorded_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
+| `height` | `float64` | No |  |
+| `recorded_date` | `string` | No |  |
+| `rikishi_id` | `string` | No |  |
+| `weight` | `float64` | No |  |
 
 ### Operations
 
@@ -292,10 +292,10 @@ rank := client.Rank(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `division` | `string` | No |  |
+| `id` | `string` | No |  |
+| `level` | `int` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -341,29 +341,29 @@ rikishi := client.Rikishi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | ``$STRING`` | No |  |
-| `birthdate` | ``$STRING`` | No |  |
-| `birthplace` | ``$STRING`` | No |  |
-| `championship` | ``$INTEGER`` | No |  |
-| `current_rank` | ``$STRING`` | No |  |
-| `day` | ``$INTEGER`` | No |  |
-| `debut` | ``$STRING`` | No |  |
-| `division` | ``$STRING`` | No |  |
-| `height` | ``$NUMBER`` | No |  |
-| `heya` | ``$STRING`` | No |  |
-| `highest_rank` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `kimarite` | ``$STRING`` | No |  |
-| `real_name` | ``$STRING`` | No |  |
-| `rikishi1_id` | ``$STRING`` | No |  |
-| `rikishi2_id` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `total_loss` | ``$INTEGER`` | No |  |
-| `total_win` | ``$INTEGER`` | No |  |
-| `weight` | ``$NUMBER`` | No |  |
-| `win_rate` | ``$NUMBER`` | No |  |
-| `winner_id` | ``$STRING`` | No |  |
+| `basho_id` | `string` | No |  |
+| `birthdate` | `string` | No |  |
+| `birthplace` | `string` | No |  |
+| `championship` | `int` | No |  |
+| `current_rank` | `string` | No |  |
+| `day` | `int` | No |  |
+| `debut` | `string` | No |  |
+| `division` | `string` | No |  |
+| `height` | `float64` | No |  |
+| `heya` | `string` | No |  |
+| `highest_rank` | `string` | No |  |
+| `id` | `string` | No |  |
+| `kimarite` | `string` | No |  |
+| `real_name` | `string` | No |  |
+| `rikishi1_id` | `string` | No |  |
+| `rikishi2_id` | `string` | No |  |
+| `rikishi_id` | `string` | No |  |
+| `shikona` | `string` | No |  |
+| `total_loss` | `int` | No |  |
+| `total_win` | `int` | No |  |
+| `weight` | `float64` | No |  |
+| `win_rate` | `float64` | No |  |
+| `winner_id` | `string` | No |  |
 
 ### Operations
 
@@ -417,10 +417,10 @@ shikona := client.Shikona(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `rikishi_id` | ``$STRING`` | No |  |
-| `shikona` | ``$STRING`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `string` | No |  |
+| `rikishi_id` | `string` | No |  |
+| `shikona` | `string` | No |  |
+| `start_date` | `string` | No |  |
 
 ### Operations
 
