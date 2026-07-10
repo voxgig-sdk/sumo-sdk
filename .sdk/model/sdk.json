@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1253,14 +1250,17 @@
           "url": "https://www.sumo-api.com/api-guide"
         },
         "description": "Free API for accessing sumo database including rikishi, basho, banzuke, torikumi, hoshitori, matches, and more. Explore sumo data, learn about sumo history, and check match results.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.sumo-api.com"
           }
         ],
+        "summary": "Free API for accessing sumo database including rikishi, basho, banzuke, torikumi, hoshitori, matches, and more.",
         "title": "Sumo API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://sumo-api.com"
       },
       "option": {},
       "target": {
@@ -1313,6 +1313,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1363,6 +1366,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

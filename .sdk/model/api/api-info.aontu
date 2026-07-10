@@ -15,9 +15,9 @@ main: {
           url: "https://www.sumo-api.com"
         }
       ]
+      summary: "Free API for accessing sumo database including rikishi, basho, banzuke, torikumi, hoshitori, matches, and more."
       title: "Sumo API"
       version: "1.0.0"
+      website: "https://sumo-api.com"
     }
   }
-}
-

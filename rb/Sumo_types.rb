@@ -76,7 +76,7 @@ Basho = Struct.new(
 # Request payload for Basho#load.
 #
 # @!attribute [rw] division
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
@@ -349,7 +349,7 @@ Rikishi = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] opponent_id
-#   @return [String]
+#   @return [String, nil]
 RikishiLoadMatch = Struct.new(
   :id,
   :opponent_id,
@@ -358,10 +358,98 @@ RikishiLoadMatch = Struct.new(
 
 # Request payload for Rikishi#list.
 #
+# @!attribute [rw] basho_id
+#   @return [String, nil]
+#
+# @!attribute [rw] birthdate
+#   @return [String, nil]
+#
+# @!attribute [rw] birthplace
+#   @return [String, nil]
+#
+# @!attribute [rw] championship
+#   @return [Integer, nil]
+#
+# @!attribute [rw] current_rank
+#   @return [String, nil]
+#
+# @!attribute [rw] day
+#   @return [Integer, nil]
+#
+# @!attribute [rw] debut
+#   @return [String, nil]
+#
+# @!attribute [rw] division
+#   @return [String, nil]
+#
+# @!attribute [rw] height
+#   @return [Float, nil]
+#
+# @!attribute [rw] heya
+#   @return [String, nil]
+#
+# @!attribute [rw] highest_rank
+#   @return [String, nil]
+#
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] kimarite
+#   @return [String, nil]
+#
+# @!attribute [rw] real_name
+#   @return [String, nil]
+#
+# @!attribute [rw] rikishi1_id
+#   @return [String, nil]
+#
+# @!attribute [rw] rikishi2_id
+#   @return [String, nil]
+#
+# @!attribute [rw] rikishi_id
+#   @return [String, nil]
+#
+# @!attribute [rw] shikona
+#   @return [String, nil]
+#
+# @!attribute [rw] total_loss
+#   @return [Integer, nil]
+#
+# @!attribute [rw] total_win
+#   @return [Integer, nil]
+#
+# @!attribute [rw] weight
+#   @return [Float, nil]
+#
+# @!attribute [rw] win_rate
+#   @return [Float, nil]
+#
+# @!attribute [rw] winner_id
+#   @return [String, nil]
 RikishiListMatch = Struct.new(
+  :basho_id,
+  :birthdate,
+  :birthplace,
+  :championship,
+  :current_rank,
+  :day,
+  :debut,
+  :division,
+  :height,
+  :heya,
+  :highest_rank,
   :id,
+  :kimarite,
+  :real_name,
+  :rikishi1_id,
+  :rikishi2_id,
+  :rikishi_id,
+  :shikona,
+  :total_loss,
+  :total_win,
+  :weight,
+  :win_rate,
+  :winner_id,
   keyword_init: true
 )
 

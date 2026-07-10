@@ -24,7 +24,7 @@
 ---@field year? number
 
 ---@class BashoLoadMatch
----@field division string
+---@field division? string
 ---@field id string
 
 ---@class BashoListMatch
@@ -100,10 +100,32 @@
 
 ---@class RikishiLoadMatch
 ---@field id string
----@field opponent_id string
+---@field opponent_id? string
 
 ---@class RikishiListMatch
----@field id string
+---@field basho_id? string
+---@field birthdate? string
+---@field birthplace? string
+---@field championship? number
+---@field current_rank? string
+---@field day? number
+---@field debut? string
+---@field division? string
+---@field height? number
+---@field heya? string
+---@field highest_rank? string
+---@field id? string
+---@field kimarite? string
+---@field real_name? string
+---@field rikishi1_id? string
+---@field rikishi2_id? string
+---@field rikishi_id? string
+---@field shikona? string
+---@field total_loss? number
+---@field total_win? number
+---@field weight? number
+---@field win_rate? number
+---@field winner_id? string
 
 ---@class Shikona
 ---@field end_date? string

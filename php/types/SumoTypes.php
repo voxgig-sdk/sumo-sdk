@@ -35,7 +35,7 @@ class Basho
 /** Request payload for Basho#load. */
 class BashoLoadMatch
 {
-    public string $division;
+    public ?string $division = null;
     public string $id;
 }
 
@@ -141,13 +141,35 @@ class Rikishi
 class RikishiLoadMatch
 {
     public string $id;
-    public string $opponent_id;
+    public ?string $opponent_id = null;
 }
 
 /** Request payload for Rikishi#list. */
 class RikishiListMatch
 {
-    public string $id;
+    public ?string $basho_id = null;
+    public ?string $birthdate = null;
+    public ?string $birthplace = null;
+    public ?int $championship = null;
+    public ?string $current_rank = null;
+    public ?int $day = null;
+    public ?string $debut = null;
+    public ?string $division = null;
+    public ?float $height = null;
+    public ?string $heya = null;
+    public ?string $highest_rank = null;
+    public ?string $id = null;
+    public ?string $kimarite = null;
+    public ?string $real_name = null;
+    public ?string $rikishi1_id = null;
+    public ?string $rikishi2_id = null;
+    public ?string $rikishi_id = null;
+    public ?string $shikona = null;
+    public ?int $total_loss = null;
+    public ?int $total_win = null;
+    public ?float $weight = null;
+    public ?float $win_rate = null;
+    public ?string $winner_id = null;
 }
 
 /** Shikona entity data model. */

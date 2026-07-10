@@ -111,6 +111,7 @@ same parameters as `Direct()`.
 
 ```go
 basho := client.Basho(nil)
+fmt.Println(basho.GetName()) // "basho"
 ```
 
 ### Fields
@@ -141,6 +142,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Basho(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -149,6 +154,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Basho(nil).Load(map[string]any{"id": "basho_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -179,6 +188,7 @@ Return the entity name.
 
 ```go
 kimarite := client.Kimarite(nil)
+fmt.Println(kimarite.GetName()) // "kimarite"
 ```
 
 ### Fields
@@ -199,6 +209,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Kimarite(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -207,6 +221,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Kimarite(nil).Load(map[string]any{"id": "kimarite_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -237,6 +255,7 @@ Return the entity name.
 
 ```go
 measurement := client.Measurement(nil)
+fmt.Println(measurement.GetName()) // "measurement"
 ```
 
 ### Fields
@@ -256,6 +275,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Measurement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -286,6 +309,7 @@ Return the entity name.
 
 ```go
 rank := client.Rank(nil)
+fmt.Println(rank.GetName()) // "rank"
 ```
 
 ### Fields
@@ -305,6 +329,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Rank(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -335,6 +363,7 @@ Return the entity name.
 
 ```go
 rikishi := client.Rikishi(nil)
+fmt.Println(rikishi.GetName()) // "rikishi"
 ```
 
 ### Fields
@@ -373,6 +402,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Rikishi(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -381,6 +414,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Rikishi(nil).Load(map[string]any{"id": "rikishi_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -411,6 +448,7 @@ Return the entity name.
 
 ```go
 shikona := client.Shikona(nil)
+fmt.Println(shikona.GetName()) // "shikona"
 ```
 
 ### Fields
@@ -430,6 +468,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Shikona(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

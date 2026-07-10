@@ -29,7 +29,7 @@ type Basho struct {
 
 // BashoLoadMatch is the typed request payload for Basho.LoadTyped.
 type BashoLoadMatch struct {
-	Division string `json:"division"`
+	Division *string `json:"division,omitempty"`
 	Id string `json:"id"`
 }
 
@@ -125,12 +125,34 @@ type Rikishi struct {
 // RikishiLoadMatch is the typed request payload for Rikishi.LoadTyped.
 type RikishiLoadMatch struct {
 	Id string `json:"id"`
-	OpponentId string `json:"opponent_id"`
+	OpponentId *string `json:"opponent_id,omitempty"`
 }
 
 // RikishiListMatch is the typed request payload for Rikishi.ListTyped.
 type RikishiListMatch struct {
-	Id string `json:"id"`
+	BashoId *string `json:"basho_id,omitempty"`
+	Birthdate *string `json:"birthdate,omitempty"`
+	Birthplace *string `json:"birthplace,omitempty"`
+	Championship *int `json:"championship,omitempty"`
+	CurrentRank *string `json:"current_rank,omitempty"`
+	Day *int `json:"day,omitempty"`
+	Debut *string `json:"debut,omitempty"`
+	Division *string `json:"division,omitempty"`
+	Height *float64 `json:"height,omitempty"`
+	Heya *string `json:"heya,omitempty"`
+	HighestRank *string `json:"highest_rank,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Kimarite *string `json:"kimarite,omitempty"`
+	RealName *string `json:"real_name,omitempty"`
+	Rikishi1Id *string `json:"rikishi1_id,omitempty"`
+	Rikishi2Id *string `json:"rikishi2_id,omitempty"`
+	RikishiId *string `json:"rikishi_id,omitempty"`
+	Shikona *string `json:"shikona,omitempty"`
+	TotalLoss *int `json:"total_loss,omitempty"`
+	TotalWin *int `json:"total_win,omitempty"`
+	Weight *float64 `json:"weight,omitempty"`
+	WinRate *float64 `json:"win_rate,omitempty"`
+	WinnerId *string `json:"winner_id,omitempty"`
 }
 
 // Shikona is the typed data model for the shikona entity.

@@ -34,9 +34,12 @@ class Basho(TypedDict, total=False):
     year: int
 
 
-class BashoLoadMatch(TypedDict):
-    division: str
+class BashoLoadMatchRequired(TypedDict):
     id: str
+
+
+class BashoLoadMatch(BashoLoadMatchRequired, total=False):
+    division: str
 
 
 class BashoListMatch(TypedDict):
@@ -119,13 +122,38 @@ class Rikishi(TypedDict, total=False):
     winner_id: str
 
 
-class RikishiLoadMatch(TypedDict):
+class RikishiLoadMatchRequired(TypedDict):
     id: str
+
+
+class RikishiLoadMatch(RikishiLoadMatchRequired, total=False):
     opponent_id: str
 
 
-class RikishiListMatch(TypedDict):
+class RikishiListMatch(TypedDict, total=False):
+    basho_id: str
+    birthdate: str
+    birthplace: str
+    championship: int
+    current_rank: str
+    day: int
+    debut: str
+    division: str
+    height: float
+    heya: str
+    highest_rank: str
     id: str
+    kimarite: str
+    real_name: str
+    rikishi1_id: str
+    rikishi2_id: str
+    rikishi_id: str
+    shikona: str
+    total_loss: int
+    total_win: int
+    weight: float
+    win_rate: float
+    winner_id: str
 
 
 class Shikona(TypedDict, total=False):

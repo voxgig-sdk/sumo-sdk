@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single basho — the value is the loaded record.
-    basho, err := client.Basho(nil).Load(map[string]any{"id": "example"}, nil)
+    basho, err := client.Basho(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

@@ -24,7 +24,7 @@ export interface Basho {
 }
 
 export interface BashoLoadMatch {
-  division: string
+  division?: string
   id: string
 }
 
@@ -110,11 +110,33 @@ export interface Rikishi {
 
 export interface RikishiLoadMatch {
   id: string
-  opponent_id: string
+  opponent_id?: string
 }
 
 export interface RikishiListMatch {
-  id: string
+  basho_id?: string
+  birthdate?: string
+  birthplace?: string
+  championship?: number
+  current_rank?: string
+  day?: number
+  debut?: string
+  division?: string
+  height?: number
+  heya?: string
+  highest_rank?: string
+  id?: string
+  kimarite?: string
+  real_name?: string
+  rikishi1_id?: string
+  rikishi2_id?: string
+  rikishi_id?: string
+  shikona?: string
+  total_loss?: number
+  total_win?: number
+  weight?: number
+  win_rate?: number
+  winner_id?: string
 }
 
 export interface Shikona {
