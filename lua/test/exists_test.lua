@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Sumo SDK exists test
 
 local sdk = require("sumo_sdk")
 
