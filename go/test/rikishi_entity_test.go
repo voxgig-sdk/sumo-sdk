@@ -128,7 +128,7 @@ func TestRikishiEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		rikishiRef01DataDt0LoadResult := core.ToMapAny(rikishiRef01DataDt0Loaded)
+		rikishiRef01DataDt0LoadResult := core.ToMapAny(entityData(rikishiRef01DataDt0Loaded))
 		if rikishiRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

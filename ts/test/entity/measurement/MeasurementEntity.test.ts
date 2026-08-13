@@ -63,7 +63,7 @@ describe('MeasurementEntity', async () => {
     const measurement_ref01_ent = client.Measurement()
     const measurement_ref01_match: any = {}
 
-    const measurement_ref01_list = await measurement_ref01_ent.list(measurement_ref01_match)
+    const measurement_ref01_list = (await measurement_ref01_ent.list(measurement_ref01_match)).map((e: any) => e.data())
 
 
   })

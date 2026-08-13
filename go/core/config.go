@@ -31,7 +31,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "end_date",
+						"name": "endDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -52,7 +52,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "match_number",
+						"name": "matchNumber",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 3,
@@ -73,21 +73,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi1_id",
+						"name": "rikishi1Id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi2_id",
+						"name": "rikishi2Id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi_id",
+						"name": "rikishiId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 8,
@@ -108,7 +108,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_date",
+						"name": "startDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 11,
@@ -122,7 +122,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "winner_id",
+						"name": "winnerId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 13,
@@ -174,6 +174,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
 								"parts": []any{
@@ -203,7 +204,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -233,6 +233,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}/banzuke/{division}",
 								"parts": []any{
@@ -274,6 +275,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}",
 								"parts": []any{
@@ -298,7 +300,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -331,7 +332,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "english_name",
+						"name": "englishName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -360,6 +361,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/kimarite",
 								"parts": []any{
@@ -374,7 +376,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -395,6 +396,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/kimarite/{kimarite}",
 								"parts": []any{
@@ -419,7 +421,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -437,14 +438,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "recorded_date",
+						"name": "recordedDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi_id",
+						"name": "rikishiId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -466,6 +467,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/measurements",
 								"parts": []any{
@@ -480,7 +482,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -527,6 +528,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ranks",
 								"parts": []any{
@@ -541,7 +543,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -552,7 +553,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "basho_id",
+						"name": "bashoId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -573,14 +574,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "championship",
+						"name": "championships",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "current_rank",
+						"name": "currentRank",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -622,7 +623,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "highest_rank",
+						"name": "highestRank",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 10,
@@ -643,28 +644,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "real_name",
+						"name": "realName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 13,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi1_id",
+						"name": "rikishi1Id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 14,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi2_id",
+						"name": "rikishi2Id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 15,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi_id",
+						"name": "rikishiId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 16,
@@ -678,14 +679,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "total_loss",
+						"name": "totalLosses",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 18,
 					},
 					map[string]any{
 						"active": true,
-						"name": "total_win",
+						"name": "totalWins",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 19,
@@ -699,14 +700,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "win_rate",
+						"name": "winRate",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 21,
 					},
 					map[string]any{
 						"active": true,
-						"name": "winner_id",
+						"name": "winnerId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 22,
@@ -732,6 +733,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/matches",
 								"parts": []any{
@@ -760,6 +762,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishis",
 								"parts": []any{
@@ -774,7 +777,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -804,6 +806,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
 								"parts": []any{
@@ -846,6 +849,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}",
 								"parts": []any{
@@ -883,6 +887,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/stats",
 								"parts": []any{
@@ -909,7 +914,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -924,14 +928,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "end_date",
+						"name": "endDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "rikishi_id",
+						"name": "rikishiId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
@@ -945,7 +949,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_date",
+						"name": "startDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -960,6 +964,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/shikonas",
 								"parts": []any{
@@ -974,7 +979,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

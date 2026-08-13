@@ -63,13 +63,13 @@ describe('RikishiEntity', async () => {
     const rikishi_ref01_ent = client.Rikishi()
     const rikishi_ref01_match: any = {}
 
-    const rikishi_ref01_list = await rikishi_ref01_ent.list(rikishi_ref01_match)
+    const rikishi_ref01_list = (await rikishi_ref01_ent.list(rikishi_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const rikishi_ref01_match_dt0: any = {}
     rikishi_ref01_match_dt0.id = rikishi_ref01_data.id
-    const rikishi_ref01_data_dt0 = await rikishi_ref01_ent.load(rikishi_ref01_match_dt0)
+    const rikishi_ref01_data_dt0 = (await rikishi_ref01_ent.load(rikishi_ref01_match_dt0)).data()
     assert(rikishi_ref01_data_dt0.id === rikishi_ref01_data.id)
 
 

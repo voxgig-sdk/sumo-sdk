@@ -11,12 +11,12 @@ main: kit: entity: measurement: {
       type: "`$NUMBER`"
     }
     {
-      name: "recorded_date"
+      name: "recordedDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi_id"
+      name: "rikishiId"
       req: false
       type: "`$STRING`"
     }

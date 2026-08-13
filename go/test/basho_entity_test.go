@@ -132,7 +132,7 @@ func TestBashoEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		bashoRef01DataDt0LoadResult := core.ToMapAny(bashoRef01DataDt0Loaded)
+		bashoRef01DataDt0LoadResult := core.ToMapAny(entityData(bashoRef01DataDt0Loaded))
 		if bashoRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

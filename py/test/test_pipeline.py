@@ -16,11 +16,11 @@
 import pytest
 
 from sumo_sdk import SumoSDK
-from core.error import SumoError
-from core.result import SumoResult
-from core.response import SumoResponse
-from core.spec import SumoSpec
-from feature.base_feature import SumoBaseFeature
+from sumo_sdk.core.error import SumoError
+from sumo_sdk.core.result import SumoResult
+from sumo_sdk.core.response import SumoResponse
+from sumo_sdk.core.spec import SumoSpec
+from sumo_sdk.feature.base_feature import SumoBaseFeature
 
 
 def _client():

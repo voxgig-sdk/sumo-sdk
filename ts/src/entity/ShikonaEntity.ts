@@ -37,7 +37,7 @@ class ShikonaEntity extends SumoEntityBase<Shikona> {
 
 
 
-  async list(this: any, reqmatch?: ShikonaListMatch, ctrl?: Control): Promise<Shikona[]> {
+  async list(this: any, reqmatch?: ShikonaListMatch, ctrl?: Control): Promise<ShikonaEntity[]> {
 
     const utility = this._utility
 

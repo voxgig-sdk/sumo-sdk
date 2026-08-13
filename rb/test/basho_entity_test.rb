@@ -91,7 +91,7 @@ class BashoEntityTest < Minitest::Test
       "id" => basho_ref01_data["id"],
     }
     basho_ref01_data_dt0_loaded = basho_ref01_ent.load(basho_ref01_match_dt0, nil)
-    basho_ref01_data_dt0_load_result = Helpers.to_map(basho_ref01_data_dt0_loaded)
+    basho_ref01_data_dt0_load_result = Helpers.to_map(basho_ref01_data_dt0_loaded.respond_to?(:data_get) ? basho_ref01_data_dt0_loaded.data_get : basho_ref01_data_dt0_loaded)
     assert !basho_ref01_data_dt0_load_result.nil?
     assert_equal basho_ref01_data_dt0_load_result["id"], basho_ref01_data["id"]
 

@@ -107,20 +107,20 @@ basho = client.Basho()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `str` | No |  |
+| `endDate` | `str` | No |  |
 | `id` | `str` | No |  |
 | `kimarite` | `str` | No |  |
-| `match_number` | `int` | No |  |
+| `matchNumber` | `int` | No |  |
 | `month` | `int` | No |  |
 | `rank` | `str` | No |  |
-| `rikishi1_id` | `str` | No |  |
-| `rikishi2_id` | `str` | No |  |
-| `rikishi_id` | `str` | No |  |
+| `rikishi1Id` | `str` | No |  |
+| `rikishi2Id` | `str` | No |  |
+| `rikishiId` | `str` | No |  |
 | `shikona` | `str` | No |  |
 | `side` | `str` | No |  |
-| `start_date` | `str` | No |  |
+| `startDate` | `str` | No |  |
 | `venue` | `str` | No |  |
-| `winner_id` | `str` | No |  |
+| `winnerId` | `str` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -130,7 +130,7 @@ basho = client.Basho()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Basho().list()
+results = client.Basho().list({"basho_id": "example", "day": 1, "division": "example"})
 for basho in results:
     print(basho)
 ```
@@ -184,7 +184,7 @@ kimarite = client.Kimarite()
 | --- | --- | --- | --- |
 | `category` | `str` | No |  |
 | `description` | `str` | No |  |
-| `english_name` | `str` | No |  |
+| `englishName` | `str` | No |  |
 | `frequency` | `int` | No |  |
 | `name` | `str` | No |  |
 
@@ -248,8 +248,8 @@ measurement = client.Measurement()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `height` | `float` | No |  |
-| `recorded_date` | `str` | No |  |
-| `rikishi_id` | `str` | No |  |
+| `recordedDate` | `str` | No |  |
+| `rikishiId` | `str` | No |  |
 | `weight` | `float` | No |  |
 
 ### Operations
@@ -359,29 +359,29 @@ rikishi = client.Rikishi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | `str` | No |  |
+| `bashoId` | `str` | No |  |
 | `birthdate` | `str` | No |  |
 | `birthplace` | `str` | No |  |
-| `championship` | `int` | No |  |
-| `current_rank` | `str` | No |  |
+| `championships` | `int` | No |  |
+| `currentRank` | `str` | No |  |
 | `day` | `int` | No |  |
 | `debut` | `str` | No |  |
 | `division` | `str` | No |  |
 | `height` | `float` | No |  |
 | `heya` | `str` | No |  |
-| `highest_rank` | `str` | No |  |
+| `highestRank` | `str` | No |  |
 | `id` | `str` | No |  |
 | `kimarite` | `str` | No |  |
-| `real_name` | `str` | No |  |
-| `rikishi1_id` | `str` | No |  |
-| `rikishi2_id` | `str` | No |  |
-| `rikishi_id` | `str` | No |  |
+| `realName` | `str` | No |  |
+| `rikishi1Id` | `str` | No |  |
+| `rikishi2Id` | `str` | No |  |
+| `rikishiId` | `str` | No |  |
 | `shikona` | `str` | No |  |
-| `total_loss` | `int` | No |  |
-| `total_win` | `int` | No |  |
+| `totalLosses` | `int` | No |  |
+| `totalWins` | `int` | No |  |
 | `weight` | `float` | No |  |
-| `win_rate` | `float` | No |  |
-| `winner_id` | `str` | No |  |
+| `winRate` | `float` | No |  |
+| `winnerId` | `str` | No |  |
 
 ### Operations
 
@@ -442,10 +442,10 @@ shikona = client.Shikona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `str` | No |  |
-| `rikishi_id` | `str` | No |  |
+| `endDate` | `str` | No |  |
+| `rikishiId` | `str` | No |  |
 | `shikona` | `str` | No |  |
-| `start_date` | `str` | No |  |
+| `startDate` | `str` | No |  |
 
 ### Operations
 

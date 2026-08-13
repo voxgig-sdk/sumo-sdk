@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ SumoUtility.registrar = ->(u) {
   u.prepare_params = SumoUtilities::PrepareParams
   u.prepare_path = SumoUtilities::PreparePath
   u.prepare_query = SumoUtilities::PrepareQuery
+  u.graphql_body = SumoUtilities::GraphqlBody
+  u.graphql_errors = SumoUtilities::GraphqlErrors
   u.result_basic = SumoUtilities::ResultBasic
   u.result_body = SumoUtilities::ResultBody
   u.result_headers = SumoUtilities::ResultHeaders

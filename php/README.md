@@ -38,7 +38,7 @@ try {
     // list() returns an array of Basho records — iterate directly.
     $bashos = $client->Basho()->list();
     foreach ($bashos as $item) {
-        echo $item["id"] . " " . $item["end_date"] . "\n";
+        echo $item["id"] . " " . $item["endDate"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Basho record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Basho record (throws on error).
     $basho = $client->Basho()->load(["id" => "example_id"]);
     print_r($basho);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $bashos = $client->Basho()->list();
+    $shikonas = $client->Shikona()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -132,17 +132,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = SumoSDK::test([
-    "entity" => ["basho" => ["test01" => ["id" => "test01"]]],
-]);
+$client = SumoSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$basho = $client->Basho()->list();
-print_r($basho);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$shikona = $client->Shikona()->list();
+print_r($shikona);
 ```
 
 ### Use a custom fetch function
@@ -245,7 +243,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,20 +265,20 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `kimarite` |  |
-| `match_number` |  |
+| `matchNumber` |  |
 | `month` |  |
 | `rank` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
 | `side` |  |
-| `start_date` |  |
+| `startDate` |  |
 | `venue` |  |
-| `winner_id` |  |
+| `winnerId` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -293,7 +291,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `english_name` |  |
+| `englishName` |  |
 | `frequency` |  |
 | `name` |  |
 
@@ -306,8 +304,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `height` |  |
-| `recorded_date` |  |
-| `rikishi_id` |  |
+| `recordedDate` |  |
+| `rikishiId` |  |
 | `weight` |  |
 
 Operations: List.
@@ -331,29 +329,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `basho_id` |  |
+| `bashoId` |  |
 | `birthdate` |  |
 | `birthplace` |  |
-| `championship` |  |
-| `current_rank` |  |
+| `championships` |  |
+| `currentRank` |  |
 | `day` |  |
 | `debut` |  |
 | `division` |  |
 | `height` |  |
 | `heya` |  |
-| `highest_rank` |  |
+| `highestRank` |  |
 | `id` |  |
 | `kimarite` |  |
-| `real_name` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `realName` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `total_loss` |  |
-| `total_win` |  |
+| `totalLosses` |  |
+| `totalWins` |  |
 | `weight` |  |
-| `win_rate` |  |
-| `winner_id` |  |
+| `winRate` |  |
+| `winnerId` |  |
 
 Operations: List, Load.
 
@@ -363,10 +361,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `rikishi_id` |  |
+| `endDate` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -392,26 +390,26 @@ Create an instance: `$basho = $client->Basho();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `match_number` | `int` |  |
+| `matchNumber` | `int` |  |
 | `month` | `int` |  |
 | `rank` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
 | `side` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 | `venue` | `string` |  |
-| `winner_id` | `string` |  |
+| `winnerId` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Basho record (throws on error).
+// load() returns the ENTITY — call data_get() for the Basho record (throws on error).
 $basho = $client->Basho()->load(["id" => "basho_id"]);
 ```
 
@@ -440,14 +438,14 @@ Create an instance: `$kimarite = $client->Kimarite();`
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `english_name` | `string` |  |
+| `englishName` | `string` |  |
 | `frequency` | `int` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Kimarite record (throws on error).
+// load() returns the ENTITY — call data_get() for the Kimarite record (throws on error).
 $kimarite = $client->Kimarite()->load(["id" => "kimarite_id"]);
 ```
 
@@ -474,8 +472,8 @@ Create an instance: `$measurement = $client->Measurement();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `float` |  |
-| `recorded_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `recordedDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `weight` | `float` |  |
 
 #### Example: List
@@ -528,34 +526,34 @@ Create an instance: `$rikishi = $client->Rikishi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `string` |  |
+| `bashoId` | `string` |  |
 | `birthdate` | `string` |  |
 | `birthplace` | `string` |  |
-| `championship` | `int` |  |
-| `current_rank` | `string` |  |
+| `championships` | `int` |  |
+| `currentRank` | `string` |  |
 | `day` | `int` |  |
 | `debut` | `string` |  |
 | `division` | `string` |  |
 | `height` | `float` |  |
 | `heya` | `string` |  |
-| `highest_rank` | `string` |  |
+| `highestRank` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `real_name` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `realName` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `total_loss` | `int` |  |
-| `total_win` | `int` |  |
+| `totalLosses` | `int` |  |
+| `totalWins` | `int` |  |
 | `weight` | `float` |  |
-| `win_rate` | `float` |  |
-| `winner_id` | `string` |  |
+| `winRate` | `float` |  |
+| `winnerId` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Rikishi record (throws on error).
+// load() returns the ENTITY — call data_get() for the Rikishi record (throws on error).
 $rikishi = $client->Rikishi()->load(["id" => "rikishi_id"]);
 ```
 
@@ -581,10 +579,10 @@ Create an instance: `$shikona = $client->Shikona();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `endDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -670,11 +668,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$basho = $client->Basho();
-$basho->list();
+$shikona = $client->Shikona();
+$shikona->list();
 
-// $basho->data_get() now returns the basho data from the last list
-// $basho->match_get() returns the last match criteria
+// $shikona->data_get() now returns the shikona data from the last list
+// $shikona->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

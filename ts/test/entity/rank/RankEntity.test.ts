@@ -63,7 +63,7 @@ describe('RankEntity', async () => {
     const rank_ref01_ent = client.Rank()
     const rank_ref01_match: any = {}
 
-    const rank_ref01_list = await rank_ref01_ent.list(rank_ref01_match)
+    const rank_ref01_list = (await rank_ref01_ent.list(rank_ref01_match)).map((e: any) => e.data())
 
 
   })

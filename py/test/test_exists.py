@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Sumo SDK exists test
 
 import pytest
 from sumo_sdk import SumoSDK

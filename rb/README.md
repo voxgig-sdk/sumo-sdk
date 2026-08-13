@@ -37,7 +37,7 @@ begin
   # list returns an Array of Basho records — iterate directly.
   bashos = client.Basho.list
   bashos.each do |item|
-    puts "#{item["id"]} #{item["end_date"]}"
+    puts "#{item["id"]} #{item["endDate"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Basho record (raises on error).
+  # load returns the ENTITY — call data_get for the Basho record (raises on error).
   basho = client.Basho.load({ "id" => "example_id" })
   puts basho
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  bashos = client.Basho.list()
+  shikonas = client.Shikona.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -126,17 +126,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = SumoSDK.test({
-  "entity" => { "basho" => { "test01" => { "id" => "test01" } } },
-})
+client = SumoSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-basho = client.Basho.list()
-puts basho
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+shikona = client.Shikona.list()
+puts shikona
 ```
 
 ### Use a custom fetch function
@@ -257,20 +255,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `kimarite` |  |
-| `match_number` |  |
+| `matchNumber` |  |
 | `month` |  |
 | `rank` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
 | `side` |  |
-| `start_date` |  |
+| `startDate` |  |
 | `venue` |  |
-| `winner_id` |  |
+| `winnerId` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -283,7 +281,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `english_name` |  |
+| `englishName` |  |
 | `frequency` |  |
 | `name` |  |
 
@@ -296,8 +294,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `height` |  |
-| `recorded_date` |  |
-| `rikishi_id` |  |
+| `recordedDate` |  |
+| `rikishiId` |  |
 | `weight` |  |
 
 Operations: List.
@@ -321,29 +319,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `basho_id` |  |
+| `bashoId` |  |
 | `birthdate` |  |
 | `birthplace` |  |
-| `championship` |  |
-| `current_rank` |  |
+| `championships` |  |
+| `currentRank` |  |
 | `day` |  |
 | `debut` |  |
 | `division` |  |
 | `height` |  |
 | `heya` |  |
-| `highest_rank` |  |
+| `highestRank` |  |
 | `id` |  |
 | `kimarite` |  |
-| `real_name` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `realName` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `total_loss` |  |
-| `total_win` |  |
+| `totalLosses` |  |
+| `totalWins` |  |
 | `weight` |  |
-| `win_rate` |  |
-| `winner_id` |  |
+| `winRate` |  |
+| `winnerId` |  |
 
 Operations: List, Load.
 
@@ -353,10 +351,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `rikishi_id` |  |
+| `endDate` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -382,26 +380,26 @@ Create an instance: `basho = client.Basho`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `String` |  |
+| `endDate` | `String` |  |
 | `id` | `String` |  |
 | `kimarite` | `String` |  |
-| `match_number` | `Integer` |  |
+| `matchNumber` | `Integer` |  |
 | `month` | `Integer` |  |
 | `rank` | `String` |  |
-| `rikishi1_id` | `String` |  |
-| `rikishi2_id` | `String` |  |
-| `rikishi_id` | `String` |  |
+| `rikishi1Id` | `String` |  |
+| `rikishi2Id` | `String` |  |
+| `rikishiId` | `String` |  |
 | `shikona` | `String` |  |
 | `side` | `String` |  |
-| `start_date` | `String` |  |
+| `startDate` | `String` |  |
 | `venue` | `String` |  |
-| `winner_id` | `String` |  |
+| `winnerId` | `String` |  |
 | `year` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Basho record (raises on error).
+# load returns the ENTITY — call data_get for the Basho record (raises on error).
 basho = client.Basho.load({ "id" => "basho_id" })
 ```
 
@@ -430,14 +428,14 @@ Create an instance: `kimarite = client.Kimarite`
 | --- | --- | --- |
 | `category` | `String` |  |
 | `description` | `String` |  |
-| `english_name` | `String` |  |
+| `englishName` | `String` |  |
 | `frequency` | `Integer` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Kimarite record (raises on error).
+# load returns the ENTITY — call data_get for the Kimarite record (raises on error).
 kimarite = client.Kimarite.load({ "id" => "kimarite_id" })
 ```
 
@@ -464,8 +462,8 @@ Create an instance: `measurement = client.Measurement`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `Float` |  |
-| `recorded_date` | `String` |  |
-| `rikishi_id` | `String` |  |
+| `recordedDate` | `String` |  |
+| `rikishiId` | `String` |  |
 | `weight` | `Float` |  |
 
 #### Example: List
@@ -518,34 +516,34 @@ Create an instance: `rikishi = client.Rikishi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `String` |  |
+| `bashoId` | `String` |  |
 | `birthdate` | `String` |  |
 | `birthplace` | `String` |  |
-| `championship` | `Integer` |  |
-| `current_rank` | `String` |  |
+| `championships` | `Integer` |  |
+| `currentRank` | `String` |  |
 | `day` | `Integer` |  |
 | `debut` | `String` |  |
 | `division` | `String` |  |
 | `height` | `Float` |  |
 | `heya` | `String` |  |
-| `highest_rank` | `String` |  |
+| `highestRank` | `String` |  |
 | `id` | `String` |  |
 | `kimarite` | `String` |  |
-| `real_name` | `String` |  |
-| `rikishi1_id` | `String` |  |
-| `rikishi2_id` | `String` |  |
-| `rikishi_id` | `String` |  |
+| `realName` | `String` |  |
+| `rikishi1Id` | `String` |  |
+| `rikishi2Id` | `String` |  |
+| `rikishiId` | `String` |  |
 | `shikona` | `String` |  |
-| `total_loss` | `Integer` |  |
-| `total_win` | `Integer` |  |
+| `totalLosses` | `Integer` |  |
+| `totalWins` | `Integer` |  |
 | `weight` | `Float` |  |
-| `win_rate` | `Float` |  |
-| `winner_id` | `String` |  |
+| `winRate` | `Float` |  |
+| `winnerId` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Rikishi record (raises on error).
+# load returns the ENTITY — call data_get for the Rikishi record (raises on error).
 rikishi = client.Rikishi.load({ "id" => "rikishi_id" })
 ```
 
@@ -571,10 +569,10 @@ Create an instance: `shikona = client.Shikona`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `String` |  |
-| `rikishi_id` | `String` |  |
+| `endDate` | `String` |  |
+| `rikishiId` | `String` |  |
 | `shikona` | `String` |  |
-| `start_date` | `String` |  |
+| `startDate` | `String` |  |
 
 #### Example: List
 
@@ -660,11 +658,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-basho = client.Basho
-basho.list()
+shikona = client.Shikona
+shikona.list()
 
-# basho.data_get now returns the basho data from the last list
-# basho.match_get returns the last match criteria
+# shikona.data_get now returns the shikona data from the last list
+# shikona.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

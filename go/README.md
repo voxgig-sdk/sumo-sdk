@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-bashos, err := client.Basho(nil).List(nil, nil)
+shikonas, err := client.Shikona(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = bashos
+_ = shikonas
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-basho, err := client.Basho(nil).List(
+shikona, err := client.Shikona(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(basho) // the returned mock data
+fmt.Println(shikona) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -274,20 +274,20 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"end_date"` |  |
+| `"endDate"` |  |
 | `"id"` |  |
 | `"kimarite"` |  |
-| `"match_number"` |  |
+| `"matchNumber"` |  |
 | `"month"` |  |
 | `"rank"` |  |
-| `"rikishi1_id"` |  |
-| `"rikishi2_id"` |  |
-| `"rikishi_id"` |  |
+| `"rikishi1Id"` |  |
+| `"rikishi2Id"` |  |
+| `"rikishiId"` |  |
 | `"shikona"` |  |
 | `"side"` |  |
-| `"start_date"` |  |
+| `"startDate"` |  |
 | `"venue"` |  |
-| `"winner_id"` |  |
+| `"winnerId"` |  |
 | `"year"` |  |
 
 Operations: List, Load.
@@ -300,7 +300,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `"category"` |  |
 | `"description"` |  |
-| `"english_name"` |  |
+| `"englishName"` |  |
 | `"frequency"` |  |
 | `"name"` |  |
 
@@ -313,8 +313,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `"height"` |  |
-| `"recorded_date"` |  |
-| `"rikishi_id"` |  |
+| `"recordedDate"` |  |
+| `"rikishiId"` |  |
 | `"weight"` |  |
 
 Operations: List.
@@ -338,29 +338,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `"basho_id"` |  |
+| `"bashoId"` |  |
 | `"birthdate"` |  |
 | `"birthplace"` |  |
-| `"championship"` |  |
-| `"current_rank"` |  |
+| `"championships"` |  |
+| `"currentRank"` |  |
 | `"day"` |  |
 | `"debut"` |  |
 | `"division"` |  |
 | `"height"` |  |
 | `"heya"` |  |
-| `"highest_rank"` |  |
+| `"highestRank"` |  |
 | `"id"` |  |
 | `"kimarite"` |  |
-| `"real_name"` |  |
-| `"rikishi1_id"` |  |
-| `"rikishi2_id"` |  |
-| `"rikishi_id"` |  |
+| `"realName"` |  |
+| `"rikishi1Id"` |  |
+| `"rikishi2Id"` |  |
+| `"rikishiId"` |  |
 | `"shikona"` |  |
-| `"total_loss"` |  |
-| `"total_win"` |  |
+| `"totalLosses"` |  |
+| `"totalWins"` |  |
 | `"weight"` |  |
-| `"win_rate"` |  |
-| `"winner_id"` |  |
+| `"winRate"` |  |
+| `"winnerId"` |  |
 
 Operations: List, Load.
 
@@ -370,10 +370,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `"end_date"` |  |
-| `"rikishi_id"` |  |
+| `"endDate"` |  |
+| `"rikishiId"` |  |
 | `"shikona"` |  |
-| `"start_date"` |  |
+| `"startDate"` |  |
 
 Operations: List.
 
@@ -399,20 +399,20 @@ Create an instance: `basho := client.Basho(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `match_number` | `int` |  |
+| `matchNumber` | `int` |  |
 | `month` | `int` |  |
 | `rank` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
 | `side` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 | `venue` | `string` |  |
-| `winner_id` | `string` |  |
+| `winnerId` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: Load
@@ -453,7 +453,7 @@ Create an instance: `kimarite := client.Kimarite(nil)`
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `english_name` | `string` |  |
+| `englishName` | `string` |  |
 | `frequency` | `int` |  |
 | `name` | `string` |  |
 
@@ -493,8 +493,8 @@ Create an instance: `measurement := client.Measurement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `float64` |  |
-| `recorded_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `recordedDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `weight` | `float64` |  |
 
 #### Example: List
@@ -553,29 +553,29 @@ Create an instance: `rikishi := client.Rikishi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `string` |  |
+| `bashoId` | `string` |  |
 | `birthdate` | `string` |  |
 | `birthplace` | `string` |  |
-| `championship` | `int` |  |
-| `current_rank` | `string` |  |
+| `championships` | `int` |  |
+| `currentRank` | `string` |  |
 | `day` | `int` |  |
 | `debut` | `string` |  |
 | `division` | `string` |  |
 | `height` | `float64` |  |
 | `heya` | `string` |  |
-| `highest_rank` | `string` |  |
+| `highestRank` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `real_name` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `realName` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `total_loss` | `int` |  |
-| `total_win` | `int` |  |
+| `totalLosses` | `int` |  |
+| `totalWins` | `int` |  |
 | `weight` | `float64` |  |
-| `win_rate` | `float64` |  |
-| `winner_id` | `string` |  |
+| `winRate` | `float64` |  |
+| `winnerId` | `string` |  |
 
 #### Example: Load
 
@@ -612,10 +612,10 @@ Create an instance: `shikona := client.Shikona(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `endDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -701,11 +701,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-basho := client.Basho(nil)
-basho.List(nil, nil)
+shikona := client.Shikona(nil)
+shikona.List(nil, nil)
 
-// basho.Data() now returns the basho data from the last list
-// basho.Match() returns the last match criteria
+// shikona.Data() now returns the shikona data from the last list
+// shikona.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

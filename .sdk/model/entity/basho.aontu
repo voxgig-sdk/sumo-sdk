@@ -6,7 +6,7 @@ main: kit: entity: basho: {
 
   fields: [
     {
-      name: "end_date"
+      name: "endDate"
       req: false
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: basho: {
       type: "`$STRING`"
     }
     {
-      name: "match_number"
+      name: "matchNumber"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,17 +36,17 @@ main: kit: entity: basho: {
       type: "`$STRING`"
     }
     {
-      name: "rikishi1_id"
+      name: "rikishi1Id"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi2_id"
+      name: "rikishi2Id"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi_id"
+      name: "rikishiId"
       req: false
       type: "`$STRING`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: basho: {
       type: "`$STRING`"
     }
     {
-      name: "start_date"
+      name: "startDate"
       req: false
       type: "`$STRING`"
     }
@@ -71,7 +71,7 @@ main: kit: entity: basho: {
       type: "`$STRING`"
     }
     {
-      name: "winner_id"
+      name: "winnerId"
       req: false
       type: "`$STRING`"
     }

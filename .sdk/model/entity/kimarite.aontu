@@ -16,7 +16,7 @@ main: kit: entity: kimarite: {
       type: "`$STRING`"
     }
     {
-      name: "english_name"
+      name: "englishName"
       req: false
       type: "`$STRING`"
     }

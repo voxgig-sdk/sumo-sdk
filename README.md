@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new SumoSDK()
-const items = await client.Basho().list()
+const items = await client.Basho().list({ basho_id: "example", day: 1, division: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SumoSDK.test()
-const bashos = await client.Basho().list()
-// bashos is an array of bare Basho records populated with mock data
-console.log(bashos)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SumoSDK.test({
+  entity: {
+    shikona: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const shikonas = await client.Shikona().list()
+// shikonas is an array of Shikona entities, populated with mock data
+// — call shikonas[0].data() for the record itself
+console.log(shikonas)
 ```
 
 ### Python
 
 ```python
 client = SumoSDK.test()
-bashos = client.Basho().list()
-print(bashos)
+shikonas = client.Shikona().list()
+print(shikonas)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(bashos)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = SumoSDK::test([
-    "entity" => ["basho" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["shikona" => ["test01" => []]],
 ]);
-$bashos = $client->Basho()->list();
+$shikonas = $client->Shikona()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Basho(nil).List(
+result, err := client.Shikona(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Basho(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = SumoSDK.test({
-  "entity" => { "basho" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "shikona" => { "test01" => {} } },
 })
-bashos = client.Basho.list()
+shikonas = client.Shikona.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Basho():list()
+local results, err = client:Shikona():list()
 ```
 
 ## Packages
@@ -110,8 +119,8 @@ import { SumoSDK } from '@voxgig-sdk/sumo'
 
 const client = new SumoSDK()
 
-// List all bashos (returns Basho[])
-const bashos = await client.Basho().list()
+// List all bashos (returns BashoEntity[] — .data() for the record)
+const bashos = await client.Basho().list({ basho_id: "example", day: 1, division: "example" })
 for (const basho of bashos) {
   console.log(basho)
 }
@@ -159,7 +168,7 @@ The API exposes 6 entities:
 | **Kimarite** | The Kimarite entity (list, load). | `/api/kimarite` |
 | **Measurement** | The Measurement entity (list). | `/api/measurements` |
 | **Rank** | The Rank entity (list). | `/api/ranks` |
-| **Rikishi** | The Rikishi entity (list, load). | `/api/rikishi/{rikishiId}/matches` |
+| **Rikishi** | The Rikishi entity (list, load). | `/api/rikishis` |
 | **Shikona** | The Shikona entity (list). | `/api/shikonas` |
 
 The operations available across these entities are **load**, **list** — see each entity's
@@ -175,7 +184,7 @@ from sumo_sdk import SumoSDK
 client = SumoSDK()
 
 # List all bashos (returns a list, raises on error)
-bashos = client.Basho().list()
+bashos = client.Basho().list({"basho_id": "example", "day": 1, "division": "example"})
 for basho in bashos:
     print(basho)
 
@@ -196,7 +205,7 @@ $client = new SumoSDK();
 $bashos = $client->Basho()->list();
 print_r($bashos);
 
-// Load a specific basho (returns the bare record; throws on error)
+// Load a specific basho (returns the ENTITY; call data_get() for the record; throws on error)
 $basho = $client->Basho()->load(["id" => "example_id"]);
 print_r($basho);
 ```
@@ -227,7 +236,7 @@ client = SumoSDK.new
 bashos = client.Basho.list
 puts bashos
 
-# Load a specific basho (returns the bare record; raises on error)
+# Load a specific basho (returns the ENTITY; call data_get for the record)
 basho = client.Basho.load({ "id" => "example_id" })
 puts basho
 ```
@@ -364,6 +373,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.sumo-api.com/api-guide](https://www.sumo-api.com/api-guide)
 

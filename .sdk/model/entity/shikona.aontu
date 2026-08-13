@@ -6,12 +6,12 @@ main: kit: entity: shikona: {
 
   fields: [
     {
-      name: "end_date"
+      name: "endDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi_id"
+      name: "rikishiId"
       req: false
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: shikona: {
       type: "`$STRING`"
     }
     {
-      name: "start_date"
+      name: "startDate"
       req: false
       type: "`$STRING`"
     }

@@ -37,7 +37,7 @@ class RankEntity extends SumoEntityBase<Rank> {
 
 
 
-  async list(this: any, reqmatch?: RankListMatch, ctrl?: Control): Promise<Rank[]> {
+  async list(this: any, reqmatch?: RankListMatch, ctrl?: Control): Promise<RankEntity[]> {
 
     const utility = this._utility
 

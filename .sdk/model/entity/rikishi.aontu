@@ -6,7 +6,7 @@ main: kit: entity: rikishi: {
 
   fields: [
     {
-      name: "basho_id"
+      name: "bashoId"
       req: false
       type: "`$STRING`"
     }
@@ -21,12 +21,12 @@ main: kit: entity: rikishi: {
       type: "`$STRING`"
     }
     {
-      name: "championship"
+      name: "championships"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "current_rank"
+      name: "currentRank"
       req: false
       type: "`$STRING`"
     }
@@ -56,7 +56,7 @@ main: kit: entity: rikishi: {
       type: "`$STRING`"
     }
     {
-      name: "highest_rank"
+      name: "highestRank"
       req: false
       type: "`$STRING`"
     }
@@ -71,22 +71,22 @@ main: kit: entity: rikishi: {
       type: "`$STRING`"
     }
     {
-      name: "real_name"
+      name: "realName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi1_id"
+      name: "rikishi1Id"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi2_id"
+      name: "rikishi2Id"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rikishi_id"
+      name: "rikishiId"
       req: false
       type: "`$STRING`"
     }
@@ -96,12 +96,12 @@ main: kit: entity: rikishi: {
       type: "`$STRING`"
     }
     {
-      name: "total_loss"
+      name: "totalLosses"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "total_win"
+      name: "totalWins"
       req: false
       type: "`$INTEGER`"
     }
@@ -111,12 +111,12 @@ main: kit: entity: rikishi: {
       type: "`$NUMBER`"
     }
     {
-      name: "win_rate"
+      name: "winRate"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "winner_id"
+      name: "winnerId"
       req: false
       type: "`$STRING`"
     }

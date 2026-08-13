@@ -6,20 +6,20 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Basho {
-  end_date?: string
+  endDate?: string
   id?: string
   kimarite?: string
-  match_number?: number
+  matchNumber?: number
   month?: number
   rank?: string
-  rikishi1_id?: string
-  rikishi2_id?: string
-  rikishi_id?: string
+  rikishi1Id?: string
+  rikishi2Id?: string
+  rikishiId?: string
   shikona?: string
   side?: string
-  start_date?: string
+  startDate?: string
   venue?: string
-  winner_id?: string
+  winnerId?: string
   year?: number
 }
 
@@ -37,7 +37,7 @@ export interface BashoListMatch {
 export interface Kimarite {
   category?: string
   description?: string
-  english_name?: string
+  englishName?: string
   frequency?: number
   name?: string
 }
@@ -49,22 +49,22 @@ export interface KimariteLoadMatch {
 export interface KimariteListMatch {
   category?: string
   description?: string
-  english_name?: string
+  englishName?: string
   frequency?: number
   name?: string
 }
 
 export interface Measurement {
   height?: number
-  recorded_date?: string
-  rikishi_id?: string
+  recordedDate?: string
+  rikishiId?: string
   weight?: number
 }
 
 export interface MeasurementListMatch {
   height?: number
-  recorded_date?: string
-  rikishi_id?: string
+  recordedDate?: string
+  rikishiId?: string
   weight?: number
 }
 
@@ -83,73 +83,85 @@ export interface RankListMatch {
 }
 
 export interface Rikishi {
-  basho_id?: string
+  bashoId?: string
   birthdate?: string
   birthplace?: string
-  championship?: number
-  current_rank?: string
+  championships?: number
+  currentRank?: string
   day?: number
   debut?: string
   division?: string
   height?: number
   heya?: string
-  highest_rank?: string
+  highestRank?: string
   id?: string
   kimarite?: string
-  real_name?: string
-  rikishi1_id?: string
-  rikishi2_id?: string
-  rikishi_id?: string
+  realName?: string
+  rikishi1Id?: string
+  rikishi2Id?: string
+  rikishiId?: string
   shikona?: string
-  total_loss?: number
-  total_win?: number
+  totalLosses?: number
+  totalWins?: number
   weight?: number
-  win_rate?: number
-  winner_id?: string
+  winRate?: number
+  winnerId?: string
 }
 
 export interface RikishiLoadMatch {
   id: string
   opponent_id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'stat'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface RikishiListMatch {
-  basho_id?: string
+  bashoId?: string
   birthdate?: string
   birthplace?: string
-  championship?: number
-  current_rank?: string
+  championships?: number
+  currentRank?: string
   day?: number
   debut?: string
   division?: string
   height?: number
   heya?: string
-  highest_rank?: string
+  highestRank?: string
   id?: string
   kimarite?: string
-  real_name?: string
-  rikishi1_id?: string
-  rikishi2_id?: string
-  rikishi_id?: string
+  realName?: string
+  rikishi1Id?: string
+  rikishi2Id?: string
+  rikishiId?: string
   shikona?: string
-  total_loss?: number
-  total_win?: number
+  totalLosses?: number
+  totalWins?: number
   weight?: number
-  win_rate?: number
-  winner_id?: string
+  winRate?: number
+  winnerId?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'match'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Shikona {
-  end_date?: string
-  rikishi_id?: string
+  endDate?: string
+  rikishiId?: string
   shikona?: string
-  start_date?: string
+  startDate?: string
 }
 
 export interface ShikonaListMatch {
-  end_date?: string
-  rikishi_id?: string
+  endDate?: string
+  rikishiId?: string
   shikona?: string
-  start_date?: string
+  startDate?: string
 }
 

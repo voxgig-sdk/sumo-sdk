@@ -35,10 +35,12 @@ const client = new SumoSDK()
 
 ### 2. List basho records
 
-`list()` resolves to an array of Basho objects — iterate it directly:
+`list()` resolves to an array of Basho ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
-const bashos = await client.Basho().list()
+const bashos = await client.Basho().list({ basho_id: "example", day: 1, division: "example" })
 
 for (const basho of bashos) {
   console.log(basho)
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const bashos = await client.Basho().list()
-  console.log(bashos)
+  const shikonas = await client.Shikona().list()
+  console.log(shikonas)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SumoSDK.test()
 
-const basho = await client.Basho().list()
-// basho is a bare entity populated with mock response data
-console.log(basho)
+const shikona = await client.Shikona().list()
+// shikona is the entity, populated with mock response data
+// — call shikona.data() for the record itself
+console.log(shikona)
 ```
 
 You can also use the instance method:
@@ -149,14 +152,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Basho()
+const entity = client.Shikona()
 
 // First call runs the operation and stores its result
 await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -304,20 +307,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `kimarite` |  |
-| `match_number` |  |
+| `matchNumber` |  |
 | `month` |  |
 | `rank` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
 | `side` |  |
-| `start_date` |  |
+| `startDate` |  |
 | `venue` |  |
-| `winner_id` |  |
+| `winnerId` |  |
 | `year` |  |
 
 Operations: list, load.
@@ -330,7 +333,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `english_name` |  |
+| `englishName` |  |
 | `frequency` |  |
 | `name` |  |
 
@@ -343,8 +346,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `height` |  |
-| `recorded_date` |  |
-| `rikishi_id` |  |
+| `recordedDate` |  |
+| `rikishiId` |  |
 | `weight` |  |
 
 Operations: list.
@@ -368,29 +371,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `basho_id` |  |
+| `bashoId` |  |
 | `birthdate` |  |
 | `birthplace` |  |
-| `championship` |  |
-| `current_rank` |  |
+| `championships` |  |
+| `currentRank` |  |
 | `day` |  |
 | `debut` |  |
 | `division` |  |
 | `height` |  |
 | `heya` |  |
-| `highest_rank` |  |
+| `highestRank` |  |
 | `id` |  |
 | `kimarite` |  |
-| `real_name` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `realName` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `total_loss` |  |
-| `total_win` |  |
+| `totalLosses` |  |
+| `totalWins` |  |
 | `weight` |  |
-| `win_rate` |  |
-| `winner_id` |  |
+| `winRate` |  |
+| `winnerId` |  |
 
 Operations: list, load.
 
@@ -400,10 +403,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `rikishi_id` |  |
+| `endDate` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: list.
 
@@ -429,20 +432,20 @@ Create an instance: `const basho = client.Basho()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `match_number` | `number` |  |
+| `matchNumber` | `number` |  |
 | `month` | `number` |  |
 | `rank` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
 | `side` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 | `venue` | `string` |  |
-| `winner_id` | `string` |  |
+| `winnerId` | `string` |  |
 | `year` | `number` |  |
 
 #### Example: Load
@@ -454,7 +457,7 @@ const basho = await client.Basho().load({ id: 'basho_id' })
 #### Example: List
 
 ```ts
-const bashos = await client.Basho().list()
+const bashos = await client.Basho().list({ basho_id: "example", day: 1, division: "example" })
 ```
 
 
@@ -475,7 +478,7 @@ Create an instance: `const kimarite = client.Kimarite()`
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `english_name` | `string` |  |
+| `englishName` | `string` |  |
 | `frequency` | `number` |  |
 | `name` | `string` |  |
 
@@ -507,8 +510,8 @@ Create an instance: `const measurement = client.Measurement()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `number` |  |
-| `recorded_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `recordedDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `weight` | `number` |  |
 
 #### Example: List
@@ -559,29 +562,29 @@ Create an instance: `const rikishi = client.Rikishi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `string` |  |
+| `bashoId` | `string` |  |
 | `birthdate` | `string` |  |
 | `birthplace` | `string` |  |
-| `championship` | `number` |  |
-| `current_rank` | `string` |  |
+| `championships` | `number` |  |
+| `currentRank` | `string` |  |
 | `day` | `number` |  |
 | `debut` | `string` |  |
 | `division` | `string` |  |
 | `height` | `number` |  |
 | `heya` | `string` |  |
-| `highest_rank` | `string` |  |
+| `highestRank` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `real_name` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `realName` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `total_loss` | `number` |  |
-| `total_win` | `number` |  |
+| `totalLosses` | `number` |  |
+| `totalWins` | `number` |  |
 | `weight` | `number` |  |
-| `win_rate` | `number` |  |
-| `winner_id` | `string` |  |
+| `winRate` | `number` |  |
+| `winnerId` | `string` |  |
 
 #### Example: Load
 
@@ -610,10 +613,10 @@ Create an instance: `const shikona = client.Shikona()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `endDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -691,11 +694,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const basho = client.Basho()
-await basho.list()
+const shikona = client.Shikona()
+await shikona.list()
 
-// basho.data() now returns the basho data from the last `list`
-// basho.match() returns the last match criteria
+// shikona.data() now returns the shikona data from the last `list`
+// shikona.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

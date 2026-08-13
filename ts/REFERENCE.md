@@ -176,20 +176,20 @@ const basho = client.Basho()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
+| `endDate` | `string` | No |  |
 | `id` | `string` | No |  |
 | `kimarite` | `string` | No |  |
-| `match_number` | `number` | No |  |
+| `matchNumber` | `number` | No |  |
 | `month` | `number` | No |  |
 | `rank` | `string` | No |  |
-| `rikishi1_id` | `string` | No |  |
-| `rikishi2_id` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `rikishi1Id` | `string` | No |  |
+| `rikishi2Id` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
 | `side` | `string` | No |  |
-| `start_date` | `string` | No |  |
+| `startDate` | `string` | No |  |
 | `venue` | `string` | No |  |
-| `winner_id` | `string` | No |  |
+| `winnerId` | `string` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -199,7 +199,7 @@ const basho = client.Basho()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Basho().list()
+const results = await client.Basho().list({ basho_id: "example", day: 1, division: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -250,7 +250,7 @@ const kimarite = client.Kimarite()
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
-| `english_name` | `string` | No |  |
+| `englishName` | `string` | No |  |
 | `frequency` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -311,8 +311,8 @@ const measurement = client.Measurement()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `height` | `number` | No |  |
-| `recorded_date` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `recordedDate` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `weight` | `number` | No |  |
 
 ### Operations
@@ -416,29 +416,50 @@ const rikishi = client.Rikishi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | `string` | No |  |
+| `bashoId` | `string` | No |  |
 | `birthdate` | `string` | No |  |
 | `birthplace` | `string` | No |  |
-| `championship` | `number` | No |  |
-| `current_rank` | `string` | No |  |
+| `championships` | `number` | No |  |
+| `currentRank` | `string` | No |  |
 | `day` | `number` | No |  |
 | `debut` | `string` | No |  |
 | `division` | `string` | No |  |
 | `height` | `number` | No |  |
 | `heya` | `string` | No |  |
-| `highest_rank` | `string` | No |  |
+| `highestRank` | `string` | No |  |
 | `id` | `string` | No |  |
 | `kimarite` | `string` | No |  |
-| `real_name` | `string` | No |  |
-| `rikishi1_id` | `string` | No |  |
-| `rikishi2_id` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `realName` | `string` | No |  |
+| `rikishi1Id` | `string` | No |  |
+| `rikishi2Id` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
-| `total_loss` | `number` | No |  |
-| `total_win` | `number` | No |  |
+| `totalLosses` | `number` | No |  |
+| `totalWins` | `number` | No |  |
 | `weight` | `number` | No |  |
-| `win_rate` | `number` | No |  |
-| `winner_id` | `string` | No |  |
+| `winRate` | `number` | No |  |
+| `winnerId` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `match` | `/api/rikishi/{rikishiId}/matches` | `client.Rikishi().list({ $action: 'match', ... })` |
+| `stat` | `/api/rikishi/{rikishiId}/stats` | `client.Rikishi().load({ $action: 'stat', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Rikishi record — check the API definition for its shape.
+
+```ts
+const result = await client.Rikishi().list({
+  $action: 'match',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -496,10 +517,10 @@ const shikona = client.Shikona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
-| `start_date` | `string` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 

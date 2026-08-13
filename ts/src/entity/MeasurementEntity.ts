@@ -37,7 +37,7 @@ class MeasurementEntity extends SumoEntityBase<Measurement> {
 
 
 
-  async list(this: any, reqmatch?: MeasurementListMatch, ctrl?: Control): Promise<Measurement[]> {
+  async list(this: any, reqmatch?: MeasurementListMatch, ctrl?: Control): Promise<MeasurementEntity[]> {
 
     const utility = this._utility
 

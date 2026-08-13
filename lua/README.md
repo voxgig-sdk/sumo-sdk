@@ -43,7 +43,7 @@ local bashos, err = client:Basho():list()
 if err then error(err) end
 
 for _, item in ipairs(bashos) do
-  print(item["id"], item["end_date"])
+  print(item["id"], item["endDate"])
 end
 ```
 
@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local bashos, err = client:Basho():list()
+local shikonas, err = client:Shikona():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Basho():list()
+local result, err = client:Shikona():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -246,20 +246,20 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `kimarite` |  |
-| `match_number` |  |
+| `matchNumber` |  |
 | `month` |  |
 | `rank` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
 | `side` |  |
-| `start_date` |  |
+| `startDate` |  |
 | `venue` |  |
-| `winner_id` |  |
+| `winnerId` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -272,7 +272,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `english_name` |  |
+| `englishName` |  |
 | `frequency` |  |
 | `name` |  |
 
@@ -285,8 +285,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `height` |  |
-| `recorded_date` |  |
-| `rikishi_id` |  |
+| `recordedDate` |  |
+| `rikishiId` |  |
 | `weight` |  |
 
 Operations: List.
@@ -310,29 +310,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `basho_id` |  |
+| `bashoId` |  |
 | `birthdate` |  |
 | `birthplace` |  |
-| `championship` |  |
-| `current_rank` |  |
+| `championships` |  |
+| `currentRank` |  |
 | `day` |  |
 | `debut` |  |
 | `division` |  |
 | `height` |  |
 | `heya` |  |
-| `highest_rank` |  |
+| `highestRank` |  |
 | `id` |  |
 | `kimarite` |  |
-| `real_name` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `realName` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `total_loss` |  |
-| `total_win` |  |
+| `totalLosses` |  |
+| `totalWins` |  |
 | `weight` |  |
-| `win_rate` |  |
-| `winner_id` |  |
+| `winRate` |  |
+| `winnerId` |  |
 
 Operations: List, Load.
 
@@ -342,10 +342,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `rikishi_id` |  |
+| `endDate` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -371,20 +371,20 @@ Create an instance: `local basho = client:Basho(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `match_number` | `number` |  |
+| `matchNumber` | `number` |  |
 | `month` | `number` |  |
 | `rank` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
 | `side` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 | `venue` | `string` |  |
-| `winner_id` | `string` |  |
+| `winnerId` | `string` |  |
 | `year` | `number` |  |
 
 #### Example: Load
@@ -417,7 +417,7 @@ Create an instance: `local kimarite = client:Kimarite(nil)`
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `english_name` | `string` |  |
+| `englishName` | `string` |  |
 | `frequency` | `number` |  |
 | `name` | `string` |  |
 
@@ -449,8 +449,8 @@ Create an instance: `local measurement = client:Measurement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `number` |  |
-| `recorded_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `recordedDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `weight` | `number` |  |
 
 #### Example: List
@@ -501,29 +501,29 @@ Create an instance: `local rikishi = client:Rikishi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `string` |  |
+| `bashoId` | `string` |  |
 | `birthdate` | `string` |  |
 | `birthplace` | `string` |  |
-| `championship` | `number` |  |
-| `current_rank` | `string` |  |
+| `championships` | `number` |  |
+| `currentRank` | `string` |  |
 | `day` | `number` |  |
 | `debut` | `string` |  |
 | `division` | `string` |  |
 | `height` | `number` |  |
 | `heya` | `string` |  |
-| `highest_rank` | `string` |  |
+| `highestRank` | `string` |  |
 | `id` | `string` |  |
 | `kimarite` | `string` |  |
-| `real_name` | `string` |  |
-| `rikishi1_id` | `string` |  |
-| `rikishi2_id` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `realName` | `string` |  |
+| `rikishi1Id` | `string` |  |
+| `rikishi2Id` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `total_loss` | `number` |  |
-| `total_win` | `number` |  |
+| `totalLosses` | `number` |  |
+| `totalWins` | `number` |  |
 | `weight` | `number` |  |
-| `win_rate` | `number` |  |
-| `winner_id` | `string` |  |
+| `winRate` | `number` |  |
+| `winnerId` | `string` |  |
 
 #### Example: Load
 
@@ -552,10 +552,10 @@ Create an instance: `local shikona = client:Shikona(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `rikishi_id` | `string` |  |
+| `endDate` | `string` |  |
+| `rikishiId` | `string` |  |
 | `shikona` | `string` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -640,11 +640,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local basho = client:Basho()
-basho:list()
+local shikona = client:Shikona()
+shikona:list()
 
--- basho:data_get() now returns the basho data from the last list
--- basho:match_get() returns the last match criteria
+-- shikona:data_get() now returns the shikona data from the last list
+-- shikona:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

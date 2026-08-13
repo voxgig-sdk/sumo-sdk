@@ -37,7 +37,7 @@ class SumoConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'end_date',
+              'name' => 'endDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -58,7 +58,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'match_number',
+              'name' => 'matchNumber',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -79,21 +79,21 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'rikishi1_id',
+              'name' => 'rikishi1Id',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 6,
             ],
             [
               'active' => true,
-              'name' => 'rikishi2_id',
+              'name' => 'rikishi2Id',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 7,
             ],
             [
               'active' => true,
-              'name' => 'rikishi_id',
+              'name' => 'rikishiId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 8,
@@ -114,7 +114,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'start_date',
+              'name' => 'startDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 11,
@@ -128,7 +128,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'winner_id',
+              'name' => 'winnerId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 13,
@@ -180,6 +180,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/basho/{bashoId}/torikumi/{division}/{day}',
                   'parts' => [
@@ -239,6 +240,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/basho/{bashoId}/banzuke/{division}',
                   'parts' => [
@@ -280,6 +282,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/basho/{bashoId}',
                   'parts' => [
@@ -337,7 +340,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'english_name',
+              'name' => 'englishName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -366,6 +369,7 @@ class SumoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/kimarite',
                   'parts' => [
@@ -401,6 +405,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/kimarite/{kimarite}',
                   'parts' => [
@@ -443,14 +448,14 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'recorded_date',
+              'name' => 'recordedDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'rikishi_id',
+              'name' => 'rikishiId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -472,6 +477,7 @@ class SumoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/measurements',
                   'parts' => [
@@ -533,6 +539,7 @@ class SumoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ranks',
                   'parts' => [
@@ -558,7 +565,7 @@ class SumoConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'basho_id',
+              'name' => 'bashoId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -579,14 +586,14 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'championship',
+              'name' => 'championships',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'current_rank',
+              'name' => 'currentRank',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -628,7 +635,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'highest_rank',
+              'name' => 'highestRank',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 10,
@@ -649,28 +656,28 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'real_name',
+              'name' => 'realName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 13,
             ],
             [
               'active' => true,
-              'name' => 'rikishi1_id',
+              'name' => 'rikishi1Id',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 14,
             ],
             [
               'active' => true,
-              'name' => 'rikishi2_id',
+              'name' => 'rikishi2Id',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 15,
             ],
             [
               'active' => true,
-              'name' => 'rikishi_id',
+              'name' => 'rikishiId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 16,
@@ -684,14 +691,14 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'total_loss',
+              'name' => 'totalLosses',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 18,
             ],
             [
               'active' => true,
-              'name' => 'total_win',
+              'name' => 'totalWins',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 19,
@@ -705,14 +712,14 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'win_rate',
+              'name' => 'winRate',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 21,
             ],
             [
               'active' => true,
-              'name' => 'winner_id',
+              'name' => 'winnerId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 22,
@@ -738,6 +745,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rikishi/{rikishiId}/matches',
                   'parts' => [
@@ -766,6 +774,7 @@ class SumoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rikishis',
                   'parts' => [
@@ -810,6 +819,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rikishi/{rikishiId}/matches/{opponentId}',
                   'parts' => [
@@ -852,6 +862,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rikishi/{rikishiId}',
                   'parts' => [
@@ -889,6 +900,7 @@ class SumoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rikishi/{rikishiId}/stats',
                   'parts' => [
@@ -930,14 +942,14 @@ class SumoConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'end_date',
+              'name' => 'endDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'rikishi_id',
+              'name' => 'rikishiId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -951,7 +963,7 @@ class SumoConfig
             ],
             [
               'active' => true,
-              'name' => 'start_date',
+              'name' => 'startDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -966,6 +978,7 @@ class SumoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/shikonas',
                   'parts' => [

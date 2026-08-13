@@ -97,7 +97,7 @@ describe("RikishiEntity", function()
     }
     local rikishi_ref01_data_dt0_loaded, err = rikishi_ref01_ent:load(rikishi_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local rikishi_ref01_data_dt0_load_result = helpers.to_map(rikishi_ref01_data_dt0_loaded)
+    local rikishi_ref01_data_dt0_load_result = helpers.to_map(type(rikishi_ref01_data_dt0_loaded) == 'table' and rikishi_ref01_data_dt0_loaded.data_get and rikishi_ref01_data_dt0_loaded:data_get() or rikishi_ref01_data_dt0_loaded)
     assert.is_not_nil(rikishi_ref01_data_dt0_load_result)
     assert.are.equal(rikishi_ref01_data_dt0_load_result["id"], rikishi_ref01_data["id"])
 

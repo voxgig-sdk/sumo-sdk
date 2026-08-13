@@ -87,7 +87,7 @@ class RikishiEntityTest < Minitest::Test
       "id" => rikishi_ref01_data["id"],
     }
     rikishi_ref01_data_dt0_loaded = rikishi_ref01_ent.load(rikishi_ref01_match_dt0, nil)
-    rikishi_ref01_data_dt0_load_result = Helpers.to_map(rikishi_ref01_data_dt0_loaded)
+    rikishi_ref01_data_dt0_load_result = Helpers.to_map(rikishi_ref01_data_dt0_loaded.respond_to?(:data_get) ? rikishi_ref01_data_dt0_loaded.data_get : rikishi_ref01_data_dt0_loaded)
     assert !rikishi_ref01_data_dt0_load_result.nil?
     assert_equal rikishi_ref01_data_dt0_load_result["id"], rikishi_ref01_data["id"]
 

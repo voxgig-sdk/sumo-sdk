@@ -15,20 +15,20 @@ declare(strict_types=1);
 /** Basho entity data model. */
 class Basho
 {
-    public ?string $end_date = null;
+    public ?string $endDate = null;
     public ?string $id = null;
     public ?string $kimarite = null;
-    public ?int $match_number = null;
+    public ?int $matchNumber = null;
     public ?int $month = null;
     public ?string $rank = null;
-    public ?string $rikishi1_id = null;
-    public ?string $rikishi2_id = null;
-    public ?string $rikishi_id = null;
+    public ?string $rikishi1Id = null;
+    public ?string $rikishi2Id = null;
+    public ?string $rikishiId = null;
     public ?string $shikona = null;
     public ?string $side = null;
-    public ?string $start_date = null;
+    public ?string $startDate = null;
     public ?string $venue = null;
-    public ?string $winner_id = null;
+    public ?string $winnerId = null;
     public ?int $year = null;
 }
 
@@ -52,7 +52,7 @@ class Kimarite
 {
     public ?string $category = null;
     public ?string $description = null;
-    public ?string $english_name = null;
+    public ?string $englishName = null;
     public ?int $frequency = null;
     public ?string $name = null;
 }
@@ -68,7 +68,7 @@ class KimariteListMatch
 {
     public ?string $category = null;
     public ?string $description = null;
-    public ?string $english_name = null;
+    public ?string $englishName = null;
     public ?int $frequency = null;
     public ?string $name = null;
 }
@@ -77,8 +77,8 @@ class KimariteListMatch
 class Measurement
 {
     public ?float $height = null;
-    public ?string $recorded_date = null;
-    public ?string $rikishi_id = null;
+    public ?string $recordedDate = null;
+    public ?string $rikishiId = null;
     public ?float $weight = null;
 }
 
@@ -86,8 +86,8 @@ class Measurement
 class MeasurementListMatch
 {
     public ?float $height = null;
-    public ?string $recorded_date = null;
-    public ?string $rikishi_id = null;
+    public ?string $recordedDate = null;
+    public ?string $rikishiId = null;
     public ?float $weight = null;
 }
 
@@ -112,29 +112,29 @@ class RankListMatch
 /** Rikishi entity data model. */
 class Rikishi
 {
-    public ?string $basho_id = null;
+    public ?string $bashoId = null;
     public ?string $birthdate = null;
     public ?string $birthplace = null;
-    public ?int $championship = null;
-    public ?string $current_rank = null;
+    public ?int $championships = null;
+    public ?string $currentRank = null;
     public ?int $day = null;
     public ?string $debut = null;
     public ?string $division = null;
     public ?float $height = null;
     public ?string $heya = null;
-    public ?string $highest_rank = null;
+    public ?string $highestRank = null;
     public ?string $id = null;
     public ?string $kimarite = null;
-    public ?string $real_name = null;
-    public ?string $rikishi1_id = null;
-    public ?string $rikishi2_id = null;
-    public ?string $rikishi_id = null;
+    public ?string $realName = null;
+    public ?string $rikishi1Id = null;
+    public ?string $rikishi2Id = null;
+    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?int $total_loss = null;
-    public ?int $total_win = null;
+    public ?int $totalLosses = null;
+    public ?int $totalWins = null;
     public ?float $weight = null;
-    public ?float $win_rate = null;
-    public ?string $winner_id = null;
+    public ?float $winRate = null;
+    public ?string $winnerId = null;
 }
 
 /** Request payload for Rikishi#load. */
@@ -147,46 +147,46 @@ class RikishiLoadMatch
 /** Request payload for Rikishi#list. */
 class RikishiListMatch
 {
-    public ?string $basho_id = null;
+    public ?string $bashoId = null;
     public ?string $birthdate = null;
     public ?string $birthplace = null;
-    public ?int $championship = null;
-    public ?string $current_rank = null;
+    public ?int $championships = null;
+    public ?string $currentRank = null;
     public ?int $day = null;
     public ?string $debut = null;
     public ?string $division = null;
     public ?float $height = null;
     public ?string $heya = null;
-    public ?string $highest_rank = null;
+    public ?string $highestRank = null;
     public ?string $id = null;
     public ?string $kimarite = null;
-    public ?string $real_name = null;
-    public ?string $rikishi1_id = null;
-    public ?string $rikishi2_id = null;
-    public ?string $rikishi_id = null;
+    public ?string $realName = null;
+    public ?string $rikishi1Id = null;
+    public ?string $rikishi2Id = null;
+    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?int $total_loss = null;
-    public ?int $total_win = null;
+    public ?int $totalLosses = null;
+    public ?int $totalWins = null;
     public ?float $weight = null;
-    public ?float $win_rate = null;
-    public ?string $winner_id = null;
+    public ?float $winRate = null;
+    public ?string $winnerId = null;
 }
 
 /** Shikona entity data model. */
 class Shikona
 {
-    public ?string $end_date = null;
-    public ?string $rikishi_id = null;
+    public ?string $endDate = null;
+    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?string $start_date = null;
+    public ?string $startDate = null;
 }
 
 /** Request payload for Shikona#list. */
 class ShikonaListMatch
 {
-    public ?string $end_date = null;
-    public ?string $rikishi_id = null;
+    public ?string $endDate = null;
+    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?string $start_date = null;
+    public ?string $startDate = null;
 }
 

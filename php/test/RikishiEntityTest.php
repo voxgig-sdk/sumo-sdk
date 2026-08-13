@@ -97,7 +97,7 @@ class RikishiEntityTest extends TestCase
             "id" => $rikishi_ref01_data["id"],
         ];
         $rikishi_ref01_data_dt0_loaded = $rikishi_ref01_ent->load($rikishi_ref01_match_dt0, null);
-        $rikishi_ref01_data_dt0_load_result = Helpers::to_map($rikishi_ref01_data_dt0_loaded);
+        $rikishi_ref01_data_dt0_load_result = Helpers::to_map(is_object($rikishi_ref01_data_dt0_loaded) && method_exists($rikishi_ref01_data_dt0_loaded, 'data_get') ? $rikishi_ref01_data_dt0_loaded->data_get() : $rikishi_ref01_data_dt0_loaded);
         $this->assertNotNull($rikishi_ref01_data_dt0_load_result);
         $this->assertEquals($rikishi_ref01_data_dt0_load_result["id"], $rikishi_ref01_data["id"]);
 

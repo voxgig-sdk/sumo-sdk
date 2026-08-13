@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "basho": {
           "active": true,
@@ -27,7 +32,7 @@
           "fields": [
             {
               "active": true,
-              "name": "end_date",
+              "name": "endDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -45,7 +50,7 @@
             },
             {
               "active": true,
-              "name": "match_number",
+              "name": "matchNumber",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -63,19 +68,19 @@
             },
             {
               "active": true,
-              "name": "rikishi1_id",
+              "name": "rikishi1Id",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi2_id",
+              "name": "rikishi2Id",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi_id",
+              "name": "rikishiId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -93,7 +98,7 @@
             },
             {
               "active": true,
-              "name": "start_date",
+              "name": "startDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -105,7 +110,7 @@
             },
             {
               "active": true,
-              "name": "winner_id",
+              "name": "winnerId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -156,6 +161,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
                   "parts": [
@@ -211,6 +217,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/banzuke/{division}",
                   "parts": [
@@ -250,6 +257,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}",
                   "parts": [
@@ -307,7 +315,7 @@
             },
             {
               "active": true,
-              "name": "english_name",
+              "name": "englishName",
               "req": false,
               "type": "`$STRING`"
             },
@@ -333,6 +341,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/kimarite",
                   "parts": [
@@ -365,6 +374,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/kimarite/{kimarite}",
                   "parts": [
@@ -408,13 +418,13 @@
             },
             {
               "active": true,
-              "name": "recorded_date",
+              "name": "recordedDate",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi_id",
+              "name": "rikishiId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -434,6 +444,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/measurements",
                   "parts": [
@@ -497,6 +508,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/ranks",
                   "parts": [
@@ -524,7 +536,7 @@
           "fields": [
             {
               "active": true,
-              "name": "basho_id",
+              "name": "bashoId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -542,13 +554,13 @@
             },
             {
               "active": true,
-              "name": "championship",
+              "name": "championships",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "current_rank",
+              "name": "currentRank",
               "req": false,
               "type": "`$STRING`"
             },
@@ -584,7 +596,7 @@
             },
             {
               "active": true,
-              "name": "highest_rank",
+              "name": "highestRank",
               "req": false,
               "type": "`$STRING`"
             },
@@ -602,25 +614,25 @@
             },
             {
               "active": true,
-              "name": "real_name",
+              "name": "realName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi1_id",
+              "name": "rikishi1Id",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi2_id",
+              "name": "rikishi2Id",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi_id",
+              "name": "rikishiId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -632,13 +644,13 @@
             },
             {
               "active": true,
-              "name": "total_loss",
+              "name": "totalLosses",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "total_win",
+              "name": "totalWins",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -650,13 +662,13 @@
             },
             {
               "active": true,
-              "name": "win_rate",
+              "name": "winRate",
               "req": false,
               "type": "`$NUMBER`"
             },
             {
               "active": true,
-              "name": "winner_id",
+              "name": "winnerId",
               "req": false,
               "type": "`$STRING`"
             }
@@ -685,6 +697,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/matches",
                   "parts": [
@@ -712,6 +725,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishis",
                   "parts": [
@@ -752,6 +766,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
                   "parts": [
@@ -792,6 +807,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}",
                   "parts": [
@@ -828,6 +844,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/stats",
                   "parts": [
@@ -871,13 +888,13 @@
           "fields": [
             {
               "active": true,
-              "name": "end_date",
+              "name": "endDate",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rikishi_id",
+              "name": "rikishiId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -889,7 +906,7 @@
             },
             {
               "active": true,
-              "name": "start_date",
+              "name": "startDate",
               "req": false,
               "type": "`$STRING`"
             }
@@ -903,6 +920,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/shikonas",
                   "parts": [
@@ -1263,18 +1281,41 @@
         "website": "https://sumo-api.com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1296,22 +1337,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1350,21 +1409,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1403,12 +1480,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1420,10 +1502,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1445,22 +1540,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1482,13 +1595,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1500,10 +1618,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1525,13 +1656,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1548,10 +1684,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1573,13 +1722,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1602,10 +1756,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "sumo"
+            "goversion": "",
+            "name": "sumo",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1627,9 +1794,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

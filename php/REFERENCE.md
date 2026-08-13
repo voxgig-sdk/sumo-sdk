@@ -112,20 +112,20 @@ $basho = $client->Basho();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
+| `endDate` | `string` | No |  |
 | `id` | `string` | No |  |
 | `kimarite` | `string` | No |  |
-| `match_number` | `int` | No |  |
+| `matchNumber` | `int` | No |  |
 | `month` | `int` | No |  |
 | `rank` | `string` | No |  |
-| `rikishi1_id` | `string` | No |  |
-| `rikishi2_id` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `rikishi1Id` | `string` | No |  |
+| `rikishi2Id` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
 | `side` | `string` | No |  |
-| `start_date` | `string` | No |  |
+| `startDate` | `string` | No |  |
 | `venue` | `string` | No |  |
-| `winner_id` | `string` | No |  |
+| `winnerId` | `string` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -188,7 +188,7 @@ $kimarite = $client->Kimarite();
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
-| `english_name` | `string` | No |  |
+| `englishName` | `string` | No |  |
 | `frequency` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -251,8 +251,8 @@ $measurement = $client->Measurement();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `height` | `float` | No |  |
-| `recorded_date` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `recordedDate` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `weight` | `float` | No |  |
 
 ### Operations
@@ -360,29 +360,29 @@ $rikishi = $client->Rikishi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | `string` | No |  |
+| `bashoId` | `string` | No |  |
 | `birthdate` | `string` | No |  |
 | `birthplace` | `string` | No |  |
-| `championship` | `int` | No |  |
-| `current_rank` | `string` | No |  |
+| `championships` | `int` | No |  |
+| `currentRank` | `string` | No |  |
 | `day` | `int` | No |  |
 | `debut` | `string` | No |  |
 | `division` | `string` | No |  |
 | `height` | `float` | No |  |
 | `heya` | `string` | No |  |
-| `highest_rank` | `string` | No |  |
+| `highestRank` | `string` | No |  |
 | `id` | `string` | No |  |
 | `kimarite` | `string` | No |  |
-| `real_name` | `string` | No |  |
-| `rikishi1_id` | `string` | No |  |
-| `rikishi2_id` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `realName` | `string` | No |  |
+| `rikishi1Id` | `string` | No |  |
+| `rikishi2Id` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
-| `total_loss` | `int` | No |  |
-| `total_win` | `int` | No |  |
+| `totalLosses` | `int` | No |  |
+| `totalWins` | `int` | No |  |
 | `weight` | `float` | No |  |
-| `win_rate` | `float` | No |  |
-| `winner_id` | `string` | No |  |
+| `winRate` | `float` | No |  |
+| `winnerId` | `string` | No |  |
 
 ### Operations
 
@@ -442,10 +442,10 @@ $shikona = $client->Shikona();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `rikishi_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `rikishiId` | `string` | No |  |
 | `shikona` | `string` | No |  |
-| `start_date` | `string` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 

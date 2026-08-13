@@ -63,7 +63,7 @@ describe('ShikonaEntity', async () => {
     const shikona_ref01_ent = client.Shikona()
     const shikona_ref01_match: any = {}
 
-    const shikona_ref01_list = await shikona_ref01_ent.list(shikona_ref01_match)
+    const shikona_ref01_list = (await shikona_ref01_ent.list(shikona_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -10,7 +10,7 @@
 
 # Basho entity data model.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -19,7 +19,7 @@
 # @!attribute [rw] kimarite
 #   @return [String, nil]
 #
-# @!attribute [rw] match_number
+# @!attribute [rw] matchNumber
 #   @return [Integer, nil]
 #
 # @!attribute [rw] month
@@ -28,13 +28,13 @@
 # @!attribute [rw] rank
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi1_id
+# @!attribute [rw] rikishi1Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi2_id
+# @!attribute [rw] rikishi2Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] shikona
@@ -43,32 +43,32 @@
 # @!attribute [rw] side
 #   @return [String, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
 #   @return [String, nil]
 #
-# @!attribute [rw] winner_id
+# @!attribute [rw] winnerId
 #   @return [String, nil]
 #
 # @!attribute [rw] year
 #   @return [Integer, nil]
 Basho = Struct.new(
-  :end_date,
+  :endDate,
   :id,
   :kimarite,
-  :match_number,
+  :matchNumber,
   :month,
   :rank,
-  :rikishi1_id,
-  :rikishi2_id,
-  :rikishi_id,
+  :rikishi1Id,
+  :rikishi2Id,
+  :rikishiId,
   :shikona,
   :side,
-  :start_date,
+  :startDate,
   :venue,
-  :winner_id,
+  :winnerId,
   :year,
   keyword_init: true
 )
@@ -111,7 +111,7 @@ BashoListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] english_name
+# @!attribute [rw] englishName
 #   @return [String, nil]
 #
 # @!attribute [rw] frequency
@@ -122,7 +122,7 @@ BashoListMatch = Struct.new(
 Kimarite = Struct.new(
   :category,
   :description,
-  :english_name,
+  :englishName,
   :frequency,
   :name,
   keyword_init: true
@@ -145,7 +145,7 @@ KimariteLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] english_name
+# @!attribute [rw] englishName
 #   @return [String, nil]
 #
 # @!attribute [rw] frequency
@@ -156,7 +156,7 @@ KimariteLoadMatch = Struct.new(
 KimariteListMatch = Struct.new(
   :category,
   :description,
-  :english_name,
+  :englishName,
   :frequency,
   :name,
   keyword_init: true
@@ -167,18 +167,18 @@ KimariteListMatch = Struct.new(
 # @!attribute [rw] height
 #   @return [Float, nil]
 #
-# @!attribute [rw] recorded_date
+# @!attribute [rw] recordedDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] weight
 #   @return [Float, nil]
 Measurement = Struct.new(
   :height,
-  :recorded_date,
-  :rikishi_id,
+  :recordedDate,
+  :rikishiId,
   :weight,
   keyword_init: true
 )
@@ -188,18 +188,18 @@ Measurement = Struct.new(
 # @!attribute [rw] height
 #   @return [Float, nil]
 #
-# @!attribute [rw] recorded_date
+# @!attribute [rw] recordedDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] weight
 #   @return [Float, nil]
 MeasurementListMatch = Struct.new(
   :height,
-  :recorded_date,
-  :rikishi_id,
+  :recordedDate,
+  :rikishiId,
   :weight,
   keyword_init: true
 )
@@ -248,7 +248,7 @@ RankListMatch = Struct.new(
 
 # Rikishi entity data model.
 #
-# @!attribute [rw] basho_id
+# @!attribute [rw] bashoId
 #   @return [String, nil]
 #
 # @!attribute [rw] birthdate
@@ -257,10 +257,10 @@ RankListMatch = Struct.new(
 # @!attribute [rw] birthplace
 #   @return [String, nil]
 #
-# @!attribute [rw] championship
+# @!attribute [rw] championships
 #   @return [Integer, nil]
 #
-# @!attribute [rw] current_rank
+# @!attribute [rw] currentRank
 #   @return [String, nil]
 #
 # @!attribute [rw] day
@@ -278,7 +278,7 @@ RankListMatch = Struct.new(
 # @!attribute [rw] heya
 #   @return [String, nil]
 #
-# @!attribute [rw] highest_rank
+# @!attribute [rw] highestRank
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -287,59 +287,59 @@ RankListMatch = Struct.new(
 # @!attribute [rw] kimarite
 #   @return [String, nil]
 #
-# @!attribute [rw] real_name
+# @!attribute [rw] realName
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi1_id
+# @!attribute [rw] rikishi1Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi2_id
+# @!attribute [rw] rikishi2Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] total_loss
+# @!attribute [rw] totalLosses
 #   @return [Integer, nil]
 #
-# @!attribute [rw] total_win
+# @!attribute [rw] totalWins
 #   @return [Integer, nil]
 #
 # @!attribute [rw] weight
 #   @return [Float, nil]
 #
-# @!attribute [rw] win_rate
+# @!attribute [rw] winRate
 #   @return [Float, nil]
 #
-# @!attribute [rw] winner_id
+# @!attribute [rw] winnerId
 #   @return [String, nil]
 Rikishi = Struct.new(
-  :basho_id,
+  :bashoId,
   :birthdate,
   :birthplace,
-  :championship,
-  :current_rank,
+  :championships,
+  :currentRank,
   :day,
   :debut,
   :division,
   :height,
   :heya,
-  :highest_rank,
+  :highestRank,
   :id,
   :kimarite,
-  :real_name,
-  :rikishi1_id,
-  :rikishi2_id,
-  :rikishi_id,
+  :realName,
+  :rikishi1Id,
+  :rikishi2Id,
+  :rikishiId,
   :shikona,
-  :total_loss,
-  :total_win,
+  :totalLosses,
+  :totalWins,
   :weight,
-  :win_rate,
-  :winner_id,
+  :winRate,
+  :winnerId,
   keyword_init: true
 )
 
@@ -358,7 +358,7 @@ RikishiLoadMatch = Struct.new(
 
 # Request payload for Rikishi#list.
 #
-# @!attribute [rw] basho_id
+# @!attribute [rw] bashoId
 #   @return [String, nil]
 #
 # @!attribute [rw] birthdate
@@ -367,10 +367,10 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] birthplace
 #   @return [String, nil]
 #
-# @!attribute [rw] championship
+# @!attribute [rw] championships
 #   @return [Integer, nil]
 #
-# @!attribute [rw] current_rank
+# @!attribute [rw] currentRank
 #   @return [String, nil]
 #
 # @!attribute [rw] day
@@ -388,7 +388,7 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] heya
 #   @return [String, nil]
 #
-# @!attribute [rw] highest_rank
+# @!attribute [rw] highestRank
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -397,101 +397,101 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] kimarite
 #   @return [String, nil]
 #
-# @!attribute [rw] real_name
+# @!attribute [rw] realName
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi1_id
+# @!attribute [rw] rikishi1Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi2_id
+# @!attribute [rw] rikishi2Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] total_loss
+# @!attribute [rw] totalLosses
 #   @return [Integer, nil]
 #
-# @!attribute [rw] total_win
+# @!attribute [rw] totalWins
 #   @return [Integer, nil]
 #
 # @!attribute [rw] weight
 #   @return [Float, nil]
 #
-# @!attribute [rw] win_rate
+# @!attribute [rw] winRate
 #   @return [Float, nil]
 #
-# @!attribute [rw] winner_id
+# @!attribute [rw] winnerId
 #   @return [String, nil]
 RikishiListMatch = Struct.new(
-  :basho_id,
+  :bashoId,
   :birthdate,
   :birthplace,
-  :championship,
-  :current_rank,
+  :championships,
+  :currentRank,
   :day,
   :debut,
   :division,
   :height,
   :heya,
-  :highest_rank,
+  :highestRank,
   :id,
   :kimarite,
-  :real_name,
-  :rikishi1_id,
-  :rikishi2_id,
-  :rikishi_id,
+  :realName,
+  :rikishi1Id,
+  :rikishi2Id,
+  :rikishiId,
   :shikona,
-  :total_loss,
-  :total_win,
+  :totalLosses,
+  :totalWins,
   :weight,
-  :win_rate,
-  :winner_id,
+  :winRate,
+  :winnerId,
   keyword_init: true
 )
 
 # Shikona entity data model.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 Shikona = Struct.new(
-  :end_date,
-  :rikishi_id,
+  :endDate,
+  :rikishiId,
   :shikona,
-  :start_date,
+  :startDate,
   keyword_init: true
 )
 
 # Request payload for Shikona#list.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishi_id
+# @!attribute [rw] rikishiId
 #   @return [String, nil]
 #
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 ShikonaListMatch = Struct.new(
-  :end_date,
-  :rikishi_id,
+  :endDate,
+  :rikishiId,
   :shikona,
-  :start_date,
+  :startDate,
   keyword_init: true
 )
 

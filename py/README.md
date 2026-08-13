@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    bashos = client.Basho().list()
+    bashos = client.Basho().list({"basho_id": "example", "day": 1, "division": "example"})
     for basho in bashos:
         print(basho)
 except Exception as err:
@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a basho
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    bashos = client.Basho().list()
-    print(bashos)
+    shikonas = client.Shikona().list()
+    print(shikonas)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SumoSDK.test()
 
-# Entity ops return the bare record and raise on error.
-basho = client.Basho().list()
-# basho contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+shikona = client.Shikona().list()
+# shikona contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -238,7 +239,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -260,20 +261,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `kimarite` |  |
-| `match_number` |  |
+| `matchNumber` |  |
 | `month` |  |
 | `rank` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
 | `side` |  |
-| `start_date` |  |
+| `startDate` |  |
 | `venue` |  |
-| `winner_id` |  |
+| `winnerId` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -286,7 +287,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `english_name` |  |
+| `englishName` |  |
 | `frequency` |  |
 | `name` |  |
 
@@ -299,8 +300,8 @@ API path: `/api/kimarite`
 | Field | Description |
 | --- | --- |
 | `height` |  |
-| `recorded_date` |  |
-| `rikishi_id` |  |
+| `recordedDate` |  |
+| `rikishiId` |  |
 | `weight` |  |
 
 Operations: List.
@@ -324,29 +325,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `basho_id` |  |
+| `bashoId` |  |
 | `birthdate` |  |
 | `birthplace` |  |
-| `championship` |  |
-| `current_rank` |  |
+| `championships` |  |
+| `currentRank` |  |
 | `day` |  |
 | `debut` |  |
 | `division` |  |
 | `height` |  |
 | `heya` |  |
-| `highest_rank` |  |
+| `highestRank` |  |
 | `id` |  |
 | `kimarite` |  |
-| `real_name` |  |
-| `rikishi1_id` |  |
-| `rikishi2_id` |  |
-| `rikishi_id` |  |
+| `realName` |  |
+| `rikishi1Id` |  |
+| `rikishi2Id` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `total_loss` |  |
-| `total_win` |  |
+| `totalLosses` |  |
+| `totalWins` |  |
 | `weight` |  |
-| `win_rate` |  |
-| `winner_id` |  |
+| `winRate` |  |
+| `winnerId` |  |
 
 Operations: List, Load.
 
@@ -356,10 +357,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `rikishi_id` |  |
+| `endDate` |  |
+| `rikishiId` |  |
 | `shikona` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -385,20 +386,20 @@ Create an instance: `basho = client.Basho()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `str` |  |
+| `endDate` | `str` |  |
 | `id` | `str` |  |
 | `kimarite` | `str` |  |
-| `match_number` | `int` |  |
+| `matchNumber` | `int` |  |
 | `month` | `int` |  |
 | `rank` | `str` |  |
-| `rikishi1_id` | `str` |  |
-| `rikishi2_id` | `str` |  |
-| `rikishi_id` | `str` |  |
+| `rikishi1Id` | `str` |  |
+| `rikishi2Id` | `str` |  |
+| `rikishiId` | `str` |  |
 | `shikona` | `str` |  |
 | `side` | `str` |  |
-| `start_date` | `str` |  |
+| `startDate` | `str` |  |
 | `venue` | `str` |  |
-| `winner_id` | `str` |  |
+| `winnerId` | `str` |  |
 | `year` | `int` |  |
 
 #### Example: Load
@@ -410,7 +411,7 @@ basho = client.Basho().load({"id": "basho_id"})
 #### Example: List
 
 ```python
-bashos = client.Basho().list()
+bashos = client.Basho().list({"basho_id": "example", "day": 1, "division": "example"})
 ```
 
 
@@ -431,7 +432,7 @@ Create an instance: `kimarite = client.Kimarite()`
 | --- | --- | --- |
 | `category` | `str` |  |
 | `description` | `str` |  |
-| `english_name` | `str` |  |
+| `englishName` | `str` |  |
 | `frequency` | `int` |  |
 | `name` | `str` |  |
 
@@ -463,8 +464,8 @@ Create an instance: `measurement = client.Measurement()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `height` | `float` |  |
-| `recorded_date` | `str` |  |
-| `rikishi_id` | `str` |  |
+| `recordedDate` | `str` |  |
+| `rikishiId` | `str` |  |
 | `weight` | `float` |  |
 
 #### Example: List
@@ -515,29 +516,29 @@ Create an instance: `rikishi = client.Rikishi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `basho_id` | `str` |  |
+| `bashoId` | `str` |  |
 | `birthdate` | `str` |  |
 | `birthplace` | `str` |  |
-| `championship` | `int` |  |
-| `current_rank` | `str` |  |
+| `championships` | `int` |  |
+| `currentRank` | `str` |  |
 | `day` | `int` |  |
 | `debut` | `str` |  |
 | `division` | `str` |  |
 | `height` | `float` |  |
 | `heya` | `str` |  |
-| `highest_rank` | `str` |  |
+| `highestRank` | `str` |  |
 | `id` | `str` |  |
 | `kimarite` | `str` |  |
-| `real_name` | `str` |  |
-| `rikishi1_id` | `str` |  |
-| `rikishi2_id` | `str` |  |
-| `rikishi_id` | `str` |  |
+| `realName` | `str` |  |
+| `rikishi1Id` | `str` |  |
+| `rikishi2Id` | `str` |  |
+| `rikishiId` | `str` |  |
 | `shikona` | `str` |  |
-| `total_loss` | `int` |  |
-| `total_win` | `int` |  |
+| `totalLosses` | `int` |  |
+| `totalWins` | `int` |  |
 | `weight` | `float` |  |
-| `win_rate` | `float` |  |
-| `winner_id` | `str` |  |
+| `winRate` | `float` |  |
+| `winnerId` | `str` |  |
 
 #### Example: Load
 
@@ -566,10 +567,10 @@ Create an instance: `shikona = client.Shikona()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `str` |  |
-| `rikishi_id` | `str` |  |
+| `endDate` | `str` |  |
+| `rikishiId` | `str` |  |
 | `shikona` | `str` |  |
-| `start_date` | `str` |  |
+| `startDate` | `str` |  |
 
 #### Example: List
 
@@ -653,11 +654,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-basho = client.Basho()
-basho.list()
+shikona = client.Shikona()
+shikona.list()
 
-# basho.data_get() now returns the basho data from the last list
-# basho.match_get() returns the last match criteria
+# shikona.data_get() now returns the shikona data from the last list
+# shikona.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

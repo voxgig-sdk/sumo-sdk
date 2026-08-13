@@ -101,7 +101,7 @@ describe("BashoEntity", function()
     }
     local basho_ref01_data_dt0_loaded, err = basho_ref01_ent:load(basho_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local basho_ref01_data_dt0_load_result = helpers.to_map(basho_ref01_data_dt0_loaded)
+    local basho_ref01_data_dt0_load_result = helpers.to_map(type(basho_ref01_data_dt0_loaded) == 'table' and basho_ref01_data_dt0_loaded.data_get and basho_ref01_data_dt0_loaded:data_get() or basho_ref01_data_dt0_loaded)
     assert.is_not_nil(basho_ref01_data_dt0_load_result)
     assert.are.equal(basho_ref01_data_dt0_load_result["id"], basho_ref01_data["id"])
 

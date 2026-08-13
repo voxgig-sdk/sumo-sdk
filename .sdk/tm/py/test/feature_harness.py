@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import SumoControl
-from core.error import SumoError
-from core.result import SumoResult
-from core.spec import SumoSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import SumoControl
+from projectname_sdk.core.error import SumoError
+from projectname_sdk.core.result import SumoResult
+from projectname_sdk.core.spec import SumoSpec
 
 
 # True when this SDK was generated with the named feature.

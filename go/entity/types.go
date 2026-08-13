@@ -6,24 +6,28 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/sumo-sdk/go/core"
+)
 
 // Basho is the typed data model for the basho entity.
 type Basho struct {
-	EndDate *string `json:"end_date,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Kimarite *string `json:"kimarite,omitempty"`
-	MatchNumber *int `json:"match_number,omitempty"`
+	MatchNumber *int `json:"matchNumber,omitempty"`
 	Month *int `json:"month,omitempty"`
 	Rank *string `json:"rank,omitempty"`
-	Rikishi1Id *string `json:"rikishi1_id,omitempty"`
-	Rikishi2Id *string `json:"rikishi2_id,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	Rikishi1Id *string `json:"rikishi1Id,omitempty"`
+	Rikishi2Id *string `json:"rikishi2Id,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
 	Side *string `json:"side,omitempty"`
-	StartDate *string `json:"start_date,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
-	WinnerId *string `json:"winner_id,omitempty"`
+	WinnerId *string `json:"winnerId,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -44,7 +48,7 @@ type BashoListMatch struct {
 type Kimarite struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
-	EnglishName *string `json:"english_name,omitempty"`
+	EnglishName *string `json:"englishName,omitempty"`
 	Frequency *int `json:"frequency,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -58,7 +62,7 @@ type KimariteLoadMatch struct {
 type KimariteListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
-	EnglishName *string `json:"english_name,omitempty"`
+	EnglishName *string `json:"englishName,omitempty"`
 	Frequency *int `json:"frequency,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -66,16 +70,16 @@ type KimariteListMatch struct {
 // Measurement is the typed data model for the measurement entity.
 type Measurement struct {
 	Height *float64 `json:"height,omitempty"`
-	RecordedDate *string `json:"recorded_date,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	RecordedDate *string `json:"recordedDate,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
 }
 
 // MeasurementListMatch is the typed request payload for Measurement.ListTyped.
 type MeasurementListMatch struct {
 	Height *float64 `json:"height,omitempty"`
-	RecordedDate *string `json:"recorded_date,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	RecordedDate *string `json:"recordedDate,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
 }
 
@@ -97,29 +101,29 @@ type RankListMatch struct {
 
 // Rikishi is the typed data model for the rikishi entity.
 type Rikishi struct {
-	BashoId *string `json:"basho_id,omitempty"`
+	BashoId *string `json:"bashoId,omitempty"`
 	Birthdate *string `json:"birthdate,omitempty"`
 	Birthplace *string `json:"birthplace,omitempty"`
-	Championship *int `json:"championship,omitempty"`
-	CurrentRank *string `json:"current_rank,omitempty"`
+	Championships *int `json:"championships,omitempty"`
+	CurrentRank *string `json:"currentRank,omitempty"`
 	Day *int `json:"day,omitempty"`
 	Debut *string `json:"debut,omitempty"`
 	Division *string `json:"division,omitempty"`
 	Height *float64 `json:"height,omitempty"`
 	Heya *string `json:"heya,omitempty"`
-	HighestRank *string `json:"highest_rank,omitempty"`
+	HighestRank *string `json:"highestRank,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Kimarite *string `json:"kimarite,omitempty"`
-	RealName *string `json:"real_name,omitempty"`
-	Rikishi1Id *string `json:"rikishi1_id,omitempty"`
-	Rikishi2Id *string `json:"rikishi2_id,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	RealName *string `json:"realName,omitempty"`
+	Rikishi1Id *string `json:"rikishi1Id,omitempty"`
+	Rikishi2Id *string `json:"rikishi2Id,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	TotalLoss *int `json:"total_loss,omitempty"`
-	TotalWin *int `json:"total_win,omitempty"`
+	TotalLosses *int `json:"totalLosses,omitempty"`
+	TotalWins *int `json:"totalWins,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
-	WinRate *float64 `json:"win_rate,omitempty"`
-	WinnerId *string `json:"winner_id,omitempty"`
+	WinRate *float64 `json:"winRate,omitempty"`
+	WinnerId *string `json:"winnerId,omitempty"`
 }
 
 // RikishiLoadMatch is the typed request payload for Rikishi.LoadTyped.
@@ -130,45 +134,45 @@ type RikishiLoadMatch struct {
 
 // RikishiListMatch is the typed request payload for Rikishi.ListTyped.
 type RikishiListMatch struct {
-	BashoId *string `json:"basho_id,omitempty"`
+	BashoId *string `json:"bashoId,omitempty"`
 	Birthdate *string `json:"birthdate,omitempty"`
 	Birthplace *string `json:"birthplace,omitempty"`
-	Championship *int `json:"championship,omitempty"`
-	CurrentRank *string `json:"current_rank,omitempty"`
+	Championships *int `json:"championships,omitempty"`
+	CurrentRank *string `json:"currentRank,omitempty"`
 	Day *int `json:"day,omitempty"`
 	Debut *string `json:"debut,omitempty"`
 	Division *string `json:"division,omitempty"`
 	Height *float64 `json:"height,omitempty"`
 	Heya *string `json:"heya,omitempty"`
-	HighestRank *string `json:"highest_rank,omitempty"`
+	HighestRank *string `json:"highestRank,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Kimarite *string `json:"kimarite,omitempty"`
-	RealName *string `json:"real_name,omitempty"`
-	Rikishi1Id *string `json:"rikishi1_id,omitempty"`
-	Rikishi2Id *string `json:"rikishi2_id,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	RealName *string `json:"realName,omitempty"`
+	Rikishi1Id *string `json:"rikishi1Id,omitempty"`
+	Rikishi2Id *string `json:"rikishi2Id,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	TotalLoss *int `json:"total_loss,omitempty"`
-	TotalWin *int `json:"total_win,omitempty"`
+	TotalLosses *int `json:"totalLosses,omitempty"`
+	TotalWins *int `json:"totalWins,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
-	WinRate *float64 `json:"win_rate,omitempty"`
-	WinnerId *string `json:"winner_id,omitempty"`
+	WinRate *float64 `json:"winRate,omitempty"`
+	WinnerId *string `json:"winnerId,omitempty"`
 }
 
 // Shikona is the typed data model for the shikona entity.
 type Shikona struct {
-	EndDate *string `json:"end_date,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	StartDate *string `json:"start_date,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
 }
 
 // ShikonaListMatch is the typed request payload for Shikona.ListTyped.
 type ShikonaListMatch struct {
-	EndDate *string `json:"end_date,omitempty"`
-	RikishiId *string `json:"rikishi_id,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
+	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	StartDate *string `json:"start_date,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -183,12 +187,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -200,12 +218,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

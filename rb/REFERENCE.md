@@ -113,20 +113,20 @@ basho = client.Basho
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `String` | No |  |
+| `endDate` | `String` | No |  |
 | `id` | `String` | No |  |
 | `kimarite` | `String` | No |  |
-| `match_number` | `Integer` | No |  |
+| `matchNumber` | `Integer` | No |  |
 | `month` | `Integer` | No |  |
 | `rank` | `String` | No |  |
-| `rikishi1_id` | `String` | No |  |
-| `rikishi2_id` | `String` | No |  |
-| `rikishi_id` | `String` | No |  |
+| `rikishi1Id` | `String` | No |  |
+| `rikishi2Id` | `String` | No |  |
+| `rikishiId` | `String` | No |  |
 | `shikona` | `String` | No |  |
 | `side` | `String` | No |  |
-| `start_date` | `String` | No |  |
+| `startDate` | `String` | No |  |
 | `venue` | `String` | No |  |
-| `winner_id` | `String` | No |  |
+| `winnerId` | `String` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations
@@ -189,7 +189,7 @@ kimarite = client.Kimarite
 | --- | --- | --- | --- |
 | `category` | `String` | No |  |
 | `description` | `String` | No |  |
-| `english_name` | `String` | No |  |
+| `englishName` | `String` | No |  |
 | `frequency` | `Integer` | No |  |
 | `name` | `String` | No |  |
 
@@ -252,8 +252,8 @@ measurement = client.Measurement
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `height` | `Float` | No |  |
-| `recorded_date` | `String` | No |  |
-| `rikishi_id` | `String` | No |  |
+| `recordedDate` | `String` | No |  |
+| `rikishiId` | `String` | No |  |
 | `weight` | `Float` | No |  |
 
 ### Operations
@@ -361,29 +361,29 @@ rikishi = client.Rikishi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `basho_id` | `String` | No |  |
+| `bashoId` | `String` | No |  |
 | `birthdate` | `String` | No |  |
 | `birthplace` | `String` | No |  |
-| `championship` | `Integer` | No |  |
-| `current_rank` | `String` | No |  |
+| `championships` | `Integer` | No |  |
+| `currentRank` | `String` | No |  |
 | `day` | `Integer` | No |  |
 | `debut` | `String` | No |  |
 | `division` | `String` | No |  |
 | `height` | `Float` | No |  |
 | `heya` | `String` | No |  |
-| `highest_rank` | `String` | No |  |
+| `highestRank` | `String` | No |  |
 | `id` | `String` | No |  |
 | `kimarite` | `String` | No |  |
-| `real_name` | `String` | No |  |
-| `rikishi1_id` | `String` | No |  |
-| `rikishi2_id` | `String` | No |  |
-| `rikishi_id` | `String` | No |  |
+| `realName` | `String` | No |  |
+| `rikishi1Id` | `String` | No |  |
+| `rikishi2Id` | `String` | No |  |
+| `rikishiId` | `String` | No |  |
 | `shikona` | `String` | No |  |
-| `total_loss` | `Integer` | No |  |
-| `total_win` | `Integer` | No |  |
+| `totalLosses` | `Integer` | No |  |
+| `totalWins` | `Integer` | No |  |
 | `weight` | `Float` | No |  |
-| `win_rate` | `Float` | No |  |
-| `winner_id` | `String` | No |  |
+| `winRate` | `Float` | No |  |
+| `winnerId` | `String` | No |  |
 
 ### Operations
 
@@ -443,10 +443,10 @@ shikona = client.Shikona
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `String` | No |  |
-| `rikishi_id` | `String` | No |  |
+| `endDate` | `String` | No |  |
+| `rikishiId` | `String` | No |  |
 | `shikona` | `String` | No |  |
-| `start_date` | `String` | No |  |
+| `startDate` | `String` | No |  |
 
 ### Operations
 

@@ -66,13 +66,13 @@ describe('BashoEntity', async () => {
     basho_ref01_match['day'] = setup.idmap['day01']
     basho_ref01_match['division'] = setup.idmap['division01']
 
-    const basho_ref01_list = await basho_ref01_ent.list(basho_ref01_match)
+    const basho_ref01_list = (await basho_ref01_ent.list(basho_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const basho_ref01_match_dt0: any = {}
     basho_ref01_match_dt0.id = basho_ref01_data.id
-    const basho_ref01_data_dt0 = await basho_ref01_ent.load(basho_ref01_match_dt0)
+    const basho_ref01_data_dt0 = (await basho_ref01_ent.load(basho_ref01_match_dt0)).data()
     assert(basho_ref01_data_dt0.id === basho_ref01_data.id)
 
 
