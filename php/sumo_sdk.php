@@ -40,7 +40,7 @@ class SumoSDK
         $utility = new SumoUtility();
         $this->_utility = $utility;
 
-        $config = SumoConfig::make_config();
+        $config = SumoConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

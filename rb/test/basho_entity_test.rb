@@ -33,7 +33,7 @@ class BashoEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = SumoConfig.make_config
+    cfg = SumoConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = SumoSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []

@@ -28,7 +28,7 @@ class SumoSDK
     utility = SumoUtility.new
     @_utility = utility
 
-    config = SumoConfig.make_config
+    config = SumoConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

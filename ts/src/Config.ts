@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://www.sumo-api.com',
+    base: "https://www.sumo-api.com",
 
     headers: {
       "content-type": "application/json"
@@ -70,109 +70,64 @@ class Config {
     "basho": {
       "fields": [
         {
-          "active": true,
           "name": "endDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "kimarite",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "matchNumber",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "month",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishi1Id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishi2Id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishiId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "shikona",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "side",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "startDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "venue",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "winnerId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "year",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 14
+          "type": "`$INTEGER`"
         }
       ],
       "name": "basho",
@@ -182,35 +137,28 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "basho_id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "day",
                     "orig": "day",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 1
+                    "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "division",
                     "orig": "division",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -240,37 +188,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "division",
                     "orig": "division",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -298,21 +239,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "basho_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -337,11 +274,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -359,39 +294,24 @@ class Config {
     "kimarite": {
       "fields": [
         {
-          "active": true,
           "name": "category",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "englishName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "frequency",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         }
       ],
       "name": "kimarite",
@@ -401,7 +321,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -414,28 +333,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "kimarite",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -460,11 +374,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -474,32 +386,20 @@ class Config {
     "measurement": {
       "fields": [
         {
-          "active": true,
           "name": "height",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "recordedDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishiId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "weight",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         }
       ],
       "name": "measurement",
@@ -509,7 +409,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -522,11 +421,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -536,32 +433,20 @@ class Config {
     "rank": {
       "fields": [
         {
-          "active": true,
           "name": "division",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "level",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "rank",
@@ -571,7 +456,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -584,11 +468,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -598,165 +480,96 @@ class Config {
     "rikishi": {
       "fields": [
         {
-          "active": true,
           "name": "bashoId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "birthdate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "birthplace",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "championships",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "currentRank",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "day",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "debut",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "division",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "height",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 8
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "heya",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "highestRank",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "kimarite",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "realName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishi1Id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishi2Id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishiId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "shikona",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "totalLosses",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 18
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "totalWins",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 19
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "weight",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 20
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "winRate",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 21
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "winnerId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 22
+          "type": "`$STRING`"
         }
       ],
       "name": "rikishi",
@@ -766,11 +579,9 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "rikishi_id",
@@ -802,11 +613,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -819,37 +628,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "opponent_id",
                     "orig": "opponent_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -878,21 +680,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "rikishi_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -917,15 +715,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "rikishi_id",
@@ -957,11 +752,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -975,32 +768,20 @@ class Config {
     "shikona": {
       "fields": [
         {
-          "active": true,
           "name": "endDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rikishiId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "shikona",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "startDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "shikona",
@@ -1010,7 +791,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1023,11 +803,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

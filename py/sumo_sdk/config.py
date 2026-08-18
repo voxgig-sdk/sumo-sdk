@@ -1,7 +1,30 @@
 # Sumo SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "Sumo",
@@ -31,109 +54,64 @@ def make_config():
       "basho": {
         "fields": [
           {
-            "active": True,
             "name": "endDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "kimarite",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "matchNumber",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "month",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "rank",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "rikishi1Id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "rikishi2Id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "rikishiId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "shikona",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "side",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "startDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "venue",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "winnerId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "year",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 14,
           },
         ],
         "name": "basho",
@@ -143,35 +121,28 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "basho_id",
                       "orig": "basho_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "day",
                       "orig": "day",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 1,
                     },
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "division",
                       "orig": "division",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 2,
                     },
                   ],
                 },
@@ -202,36 +173,29 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "division",
                       "orig": "division",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "basho_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                 },
@@ -260,20 +224,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "basho_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -299,10 +259,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -320,39 +278,24 @@ def make_config():
       "kimarite": {
         "fields": [
           {
-            "active": True,
             "name": "category",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "englishName",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "frequency",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
         ],
         "name": "kimarite",
@@ -362,7 +305,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -376,27 +318,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "kimarite",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -422,10 +359,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -435,32 +370,20 @@ def make_config():
       "measurement": {
         "fields": [
           {
-            "active": True,
             "name": "height",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "recordedDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "rikishiId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "weight",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 3,
           },
         ],
         "name": "measurement",
@@ -470,7 +393,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -484,10 +406,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -497,32 +417,20 @@ def make_config():
       "rank": {
         "fields": [
           {
-            "active": True,
             "name": "division",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "level",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
         ],
         "name": "rank",
@@ -532,7 +440,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -546,10 +453,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -559,165 +464,96 @@ def make_config():
       "rikishi": {
         "fields": [
           {
-            "active": True,
             "name": "bashoId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "birthdate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "birthplace",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "championships",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "currentRank",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "day",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "debut",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "division",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "height",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "heya",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "highestRank",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "kimarite",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "realName",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "rikishi1Id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "rikishi2Id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "rikishiId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "shikona",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "totalLosses",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "totalWins",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "weight",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 20,
           },
           {
-            "active": True,
             "name": "winRate",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 21,
           },
           {
-            "active": True,
             "name": "winnerId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 22,
           },
         ],
         "name": "rikishi",
@@ -727,11 +563,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "rikishi_id",
@@ -764,10 +598,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -781,36 +613,29 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "rikishi_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "opponent_id",
                       "orig": "opponent_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                 },
@@ -840,20 +665,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "rikishi_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -879,14 +700,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "rikishi_id",
@@ -919,10 +737,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -936,32 +752,20 @@ def make_config():
       "shikona": {
         "fields": [
           {
-            "active": True,
             "name": "endDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "rikishiId",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "shikona",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "startDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
         ],
         "name": "shikona",
@@ -971,7 +775,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -985,10 +788,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {

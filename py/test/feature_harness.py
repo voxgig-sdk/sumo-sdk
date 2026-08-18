@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from sumo_sdk.config import make_config
+from sumo_sdk.config import shared_config
 from sumo_sdk.features import _make_feature
 from sumo_sdk.core.control import SumoControl
 from sumo_sdk.core.error import SumoError
@@ -24,7 +24,7 @@ from sumo_sdk.core.spec import SumoSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

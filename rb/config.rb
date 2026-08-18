@@ -1,6 +1,20 @@
 # Sumo SDK configuration
 
 module SumoConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -31,109 +45,64 @@ module SumoConfig
         "basho" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "endDate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "kimarite",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "matchNumber",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "month",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "rank",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "rikishi1Id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "rikishi2Id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "rikishiId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "shikona",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "side",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "startDate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
             {
-              "active" => true,
               "name" => "venue",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 12,
             },
             {
-              "active" => true,
               "name" => "winnerId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 13,
             },
             {
-              "active" => true,
               "name" => "year",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 14,
             },
           ],
           "name" => "basho",
@@ -143,35 +112,28 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "basho_id",
                         "orig" => "basho_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "day",
                         "orig" => "day",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "index$" => 1,
                       },
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "division",
                         "orig" => "division",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 2,
                       },
                     ],
                   },
@@ -202,36 +164,29 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "division",
                         "orig" => "division",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "basho_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 1,
                       },
                     ],
                   },
@@ -260,20 +215,16 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "basho_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -299,10 +250,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -320,39 +269,24 @@ module SumoConfig
         "kimarite" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "category",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "description",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "englishName",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "frequency",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
           ],
           "name" => "kimarite",
@@ -362,7 +296,6 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -376,27 +309,22 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "kimarite",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -422,10 +350,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -435,32 +361,20 @@ module SumoConfig
         "measurement" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "height",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "recordedDate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "rikishiId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "weight",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 3,
             },
           ],
           "name" => "measurement",
@@ -470,7 +384,6 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -484,10 +397,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -497,32 +408,20 @@ module SumoConfig
         "rank" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "division",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "level",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
           ],
           "name" => "rank",
@@ -532,7 +431,6 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -546,10 +444,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -559,165 +455,96 @@ module SumoConfig
         "rikishi" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "bashoId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "birthdate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "birthplace",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "championships",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "currentRank",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "day",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "debut",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "division",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "height",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "heya",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "highestRank",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
             {
-              "active" => true,
               "name" => "kimarite",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 12,
             },
             {
-              "active" => true,
               "name" => "realName",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 13,
             },
             {
-              "active" => true,
               "name" => "rikishi1Id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 14,
             },
             {
-              "active" => true,
               "name" => "rikishi2Id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 15,
             },
             {
-              "active" => true,
               "name" => "rikishiId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 16,
             },
             {
-              "active" => true,
               "name" => "shikona",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 17,
             },
             {
-              "active" => true,
               "name" => "totalLosses",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 18,
             },
             {
-              "active" => true,
               "name" => "totalWins",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 19,
             },
             {
-              "active" => true,
               "name" => "weight",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 20,
             },
             {
-              "active" => true,
               "name" => "winRate",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 21,
             },
             {
-              "active" => true,
               "name" => "winnerId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 22,
             },
           ],
           "name" => "rikishi",
@@ -727,11 +554,9 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "rikishi_id",
@@ -764,10 +589,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -781,36 +604,29 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "rikishi_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "opponent_id",
                         "orig" => "opponent_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 1,
                       },
                     ],
                   },
@@ -840,20 +656,16 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "rikishi_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -879,14 +691,11 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "rikishi_id",
@@ -919,10 +728,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -936,32 +743,20 @@ module SumoConfig
         "shikona" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "endDate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "rikishiId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "shikona",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "startDate",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
           ],
           "name" => "shikona",
@@ -971,7 +766,6 @@ module SumoConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -985,10 +779,8 @@ module SumoConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

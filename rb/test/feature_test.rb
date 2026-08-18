@@ -15,7 +15,7 @@ require_relative "../Sumo_sdk"
 module SumoFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = SumoConfig.make_config["feature"]
+    f = SumoConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

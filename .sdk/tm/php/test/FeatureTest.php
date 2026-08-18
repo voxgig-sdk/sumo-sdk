@@ -149,7 +149,7 @@ class FtHarness
     public static function hasFeature(string $name): bool
     {
         if (self::$feature_config === null) {
-            $config = SumoConfig::make_config();
+            $config = SumoConfig::shared_config();
             $f = $config['feature'] ?? [];
             self::$feature_config = is_array($f) ? $f : [];
         }
