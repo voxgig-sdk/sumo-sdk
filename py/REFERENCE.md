@@ -107,21 +107,21 @@ basho = client.Basho()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `str` | No |  |
-| `id` | `str` | No |  |
-| `kimarite` | `str` | No |  |
-| `matchNumber` | `int` | No |  |
-| `month` | `int` | No |  |
-| `rank` | `str` | No |  |
-| `rikishi1Id` | `str` | No |  |
-| `rikishi2Id` | `str` | No |  |
-| `rikishiId` | `str` | No |  |
-| `shikona` | `str` | No |  |
-| `side` | `str` | No |  |
-| `startDate` | `str` | No |  |
-| `venue` | `str` | No |  |
-| `winnerId` | `str` | No |  |
-| `year` | `int` | No |  |
+| `endDate` | `str` | No | End date of the tournament |
+| `id` | `str` | No | Unique identifier for the basho |
+| `kimarite` | `str` | No | Winning technique used (if match completed) |
+| `matchNumber` | `int` | No | Match number in the day's schedule |
+| `month` | `int` | No | Month of the tournament |
+| `rank` | `str` | No | Rank in the banzuke |
+| `rikishi1Id` | `str` | No | First rikishi identifier |
+| `rikishi2Id` | `str` | No | Second rikishi identifier |
+| `rikishiId` | `str` | No | Unique identifier for the rikishi |
+| `shikona` | `str` | No | Ring name of the rikishi |
+| `side` | `str` | No | Side of the banzuke (east or west) |
+| `startDate` | `str` | No | Start date of the tournament |
+| `venue` | `str` | No | Tournament venue |
+| `winnerId` | `str` | No | Winner rikishi identifier (if match completed) |
+| `year` | `int` | No | Year of the tournament |
 
 ### Operations
 
@@ -182,11 +182,11 @@ kimarite = client.Kimarite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | No |  |
-| `description` | `str` | No |  |
-| `englishName` | `str` | No |  |
-| `frequency` | `int` | No |  |
-| `name` | `str` | No |  |
+| `category` | `str` | No | Category of the technique |
+| `description` | `str` | No | Detailed description of the technique |
+| `englishName` | `str` | No | English translation of the technique name |
+| `frequency` | `int` | No | Number of times this technique has been used |
+| `name` | `str` | No | Name of the kimarite technique |
 
 ### Operations
 
@@ -247,10 +247,10 @@ measurement = client.Measurement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | `float` | No |  |
-| `recordedDate` | `str` | No |  |
-| `rikishiId` | `str` | No |  |
-| `weight` | `float` | No |  |
+| `height` | `float` | No | Height in centimeters |
+| `recordedDate` | `str` | No | Date when measurement was recorded |
+| `rikishiId` | `str` | No | Unique identifier for the rikishi |
+| `weight` | `float` | No | Weight in kilograms |
 
 ### Operations
 
@@ -303,10 +303,10 @@ rank = client.Rank()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | `str` | No |  |
-| `id` | `str` | No |  |
-| `level` | `int` | No |  |
-| `name` | `str` | No |  |
+| `division` | `str` | No | Division the rank belongs to |
+| `id` | `str` | No | Unique identifier for the rank |
+| `level` | `int` | No | Hierarchical level of the rank |
+| `name` | `str` | No | Name of the rank |
 
 ### Operations
 
@@ -359,29 +359,29 @@ rikishi = client.Rikishi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bashoId` | `str` | No |  |
-| `birthdate` | `str` | No |  |
-| `birthplace` | `str` | No |  |
-| `championships` | `int` | No |  |
-| `currentRank` | `str` | No |  |
-| `day` | `int` | No |  |
-| `debut` | `str` | No |  |
-| `division` | `str` | No |  |
-| `height` | `float` | No |  |
-| `heya` | `str` | No |  |
-| `highestRank` | `str` | No |  |
-| `id` | `str` | No |  |
-| `kimarite` | `str` | No |  |
-| `realName` | `str` | No |  |
-| `rikishi1Id` | `str` | No |  |
-| `rikishi2Id` | `str` | No |  |
-| `rikishiId` | `str` | No |  |
-| `shikona` | `str` | No |  |
-| `totalLosses` | `int` | No |  |
-| `totalWins` | `int` | No |  |
-| `weight` | `float` | No |  |
-| `winRate` | `float` | No |  |
-| `winnerId` | `str` | No |  |
+| `bashoId` | `str` | No | Identifier of the basho where match took place |
+| `birthdate` | `str` | No | Date of birth |
+| `birthplace` | `str` | No | Birthplace of the rikishi |
+| `championships` | `int` | No | Number of championships won |
+| `currentRank` | `str` | No | Current rank of the rikishi |
+| `day` | `int` | No | Day of the tournament |
+| `debut` | `str` | No | Debut date or basho |
+| `division` | `str` | No | Division of the match |
+| `height` | `float` | No | Height in centimeters |
+| `heya` | `str` | No | Stable (heya) the rikishi belongs to |
+| `highestRank` | `str` | No | Highest rank achieved |
+| `id` | `str` | No | Unique identifier for the match |
+| `kimarite` | `str` | No | Winning technique used |
+| `realName` | `str` | No | Real name of the rikishi |
+| `rikishi1Id` | `str` | No | First rikishi identifier |
+| `rikishi2Id` | `str` | No | Second rikishi identifier |
+| `rikishiId` | `str` | No | Unique identifier for the rikishi |
+| `shikona` | `str` | No | Ring name of the rikishi |
+| `totalLosses` | `int` | No | Total number of losses |
+| `totalWins` | `int` | No | Total number of wins |
+| `weight` | `float` | No | Weight in kilograms |
+| `winRate` | `float` | No | Win rate percentage |
+| `winnerId` | `str` | No | Winner rikishi identifier |
 
 ### Operations
 
@@ -442,10 +442,10 @@ shikona = client.Shikona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `str` | No |  |
-| `rikishiId` | `str` | No |  |
-| `shikona` | `str` | No |  |
-| `startDate` | `str` | No |  |
+| `endDate` | `str` | No | Date when rikishi stopped using this shikona |
+| `rikishiId` | `str` | No | Identifier of the rikishi using this shikona |
+| `shikona` | `str` | No | Ring name (shikona) |
+| `startDate` | `str` | No | Date when rikishi started using this shikona |
 
 ### Operations
 

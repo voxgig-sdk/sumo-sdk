@@ -1,0 +1,57 @@
+# Entity: shikona
+
+main: kit: entity: shikona: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "endDate"
+      req: false
+      short: "Date when rikishi stopped using this shikona"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishiId"
+      req: false
+      short: "Identifier of the rikishi using this shikona"
+      type: "`$STRING`"
+    }
+    {
+      name: "shikona"
+      req: false
+      short: "Ring name (shikona)"
+      type: "`$STRING`"
+    }
+    {
+      name: "startDate"
+      req: false
+      short: "Date when rikishi started using this shikona"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "shikona"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/shikonas"
+          parts: [
+            "api"
+            "shikonas"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

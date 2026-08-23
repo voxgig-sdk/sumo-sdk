@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Sumo",
+			"slug": "sumo",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -38,62 +41,77 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endDate",
+						"short": "End date of the tournament",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the basho",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "kimarite",
+						"short": "Winning technique used (if match completed)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "matchNumber",
+						"short": "Match number in the day's schedule",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "month",
+						"short": "Month of the tournament",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank",
+						"short": "Rank in the banzuke",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishi1Id",
+						"short": "First rikishi identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishi2Id",
+						"short": "Second rikishi identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishiId",
+						"short": "Unique identifier for the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "shikona",
+						"short": "Ring name of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "side",
+						"short": "Side of the banzuke (east or west)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "startDate",
+						"short": "Start date of the tournament",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "venue",
+						"short": "Tournament venue",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "winnerId",
+						"short": "Winner rikishi identifier (if match completed)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Year of the tournament",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -262,22 +280,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "category",
+						"short": "Category of the technique",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the technique",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "englishName",
+						"short": "English translation of the technique name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "frequency",
+						"short": "Number of times this technique has been used",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the kimarite technique",
 						"type": "`$STRING`",
 					},
 				},
@@ -354,18 +377,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "height",
+						"short": "Height in centimeters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "recordedDate",
+						"short": "Date when measurement was recorded",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishiId",
+						"short": "Unique identifier for the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "weight",
+						"short": "Weight in kilograms",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -401,18 +428,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "division",
+						"short": "Division the rank belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the rank",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "level",
+						"short": "Hierarchical level of the rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the rank",
 						"type": "`$STRING`",
 					},
 				},
@@ -448,94 +479,117 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "bashoId",
+						"short": "Identifier of the basho where match took place",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "birthdate",
+						"short": "Date of birth",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "birthplace",
+						"short": "Birthplace of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "championships",
+						"short": "Number of championships won",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "currentRank",
+						"short": "Current rank of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "day",
+						"short": "Day of the tournament",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "debut",
+						"short": "Debut date or basho",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "division",
+						"short": "Division of the match",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "height",
+						"short": "Height in centimeters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "heya",
+						"short": "Stable (heya) the rikishi belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "highestRank",
+						"short": "Highest rank achieved",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the match",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "kimarite",
+						"short": "Winning technique used",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "realName",
+						"short": "Real name of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishi1Id",
+						"short": "First rikishi identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishi2Id",
+						"short": "Second rikishi identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishiId",
+						"short": "Unique identifier for the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "shikona",
+						"short": "Ring name of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "totalLosses",
+						"short": "Total number of losses",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "totalWins",
+						"short": "Total number of wins",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "weight",
+						"short": "Weight in kilograms",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "winRate",
+						"short": "Win rate percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "winnerId",
+						"short": "Winner rikishi identifier",
 						"type": "`$STRING`",
 					},
 				},
@@ -736,18 +790,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endDate",
+						"short": "Date when rikishi stopped using this shikona",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rikishiId",
+						"short": "Identifier of the rikishi using this shikona",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "shikona",
+						"short": "Ring name (shikona)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "startDate",
+						"short": "Date when rikishi started using this shikona",
 						"type": "`$STRING`",
 					},
 				},

@@ -113,21 +113,21 @@ basho = client.Basho
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `String` | No |  |
-| `id` | `String` | No |  |
-| `kimarite` | `String` | No |  |
-| `matchNumber` | `Integer` | No |  |
-| `month` | `Integer` | No |  |
-| `rank` | `String` | No |  |
-| `rikishi1Id` | `String` | No |  |
-| `rikishi2Id` | `String` | No |  |
-| `rikishiId` | `String` | No |  |
-| `shikona` | `String` | No |  |
-| `side` | `String` | No |  |
-| `startDate` | `String` | No |  |
-| `venue` | `String` | No |  |
-| `winnerId` | `String` | No |  |
-| `year` | `Integer` | No |  |
+| `endDate` | `String` | No | End date of the tournament |
+| `id` | `String` | No | Unique identifier for the basho |
+| `kimarite` | `String` | No | Winning technique used (if match completed) |
+| `matchNumber` | `Integer` | No | Match number in the day's schedule |
+| `month` | `Integer` | No | Month of the tournament |
+| `rank` | `String` | No | Rank in the banzuke |
+| `rikishi1Id` | `String` | No | First rikishi identifier |
+| `rikishi2Id` | `String` | No | Second rikishi identifier |
+| `rikishiId` | `String` | No | Unique identifier for the rikishi |
+| `shikona` | `String` | No | Ring name of the rikishi |
+| `side` | `String` | No | Side of the banzuke (east or west) |
+| `startDate` | `String` | No | Start date of the tournament |
+| `venue` | `String` | No | Tournament venue |
+| `winnerId` | `String` | No | Winner rikishi identifier (if match completed) |
+| `year` | `Integer` | No | Year of the tournament |
 
 ### Operations
 
@@ -187,11 +187,11 @@ kimarite = client.Kimarite
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | No |  |
-| `description` | `String` | No |  |
-| `englishName` | `String` | No |  |
-| `frequency` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `category` | `String` | No | Category of the technique |
+| `description` | `String` | No | Detailed description of the technique |
+| `englishName` | `String` | No | English translation of the technique name |
+| `frequency` | `Integer` | No | Number of times this technique has been used |
+| `name` | `String` | No | Name of the kimarite technique |
 
 ### Operations
 
@@ -251,10 +251,10 @@ measurement = client.Measurement
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | `Float` | No |  |
-| `recordedDate` | `String` | No |  |
-| `rikishiId` | `String` | No |  |
-| `weight` | `Float` | No |  |
+| `height` | `Float` | No | Height in centimeters |
+| `recordedDate` | `String` | No | Date when measurement was recorded |
+| `rikishiId` | `String` | No | Unique identifier for the rikishi |
+| `weight` | `Float` | No | Weight in kilograms |
 
 ### Operations
 
@@ -306,10 +306,10 @@ rank = client.Rank
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | `String` | No |  |
-| `id` | `String` | No |  |
-| `level` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `division` | `String` | No | Division the rank belongs to |
+| `id` | `String` | No | Unique identifier for the rank |
+| `level` | `Integer` | No | Hierarchical level of the rank |
+| `name` | `String` | No | Name of the rank |
 
 ### Operations
 
@@ -361,29 +361,29 @@ rikishi = client.Rikishi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bashoId` | `String` | No |  |
-| `birthdate` | `String` | No |  |
-| `birthplace` | `String` | No |  |
-| `championships` | `Integer` | No |  |
-| `currentRank` | `String` | No |  |
-| `day` | `Integer` | No |  |
-| `debut` | `String` | No |  |
-| `division` | `String` | No |  |
-| `height` | `Float` | No |  |
-| `heya` | `String` | No |  |
-| `highestRank` | `String` | No |  |
-| `id` | `String` | No |  |
-| `kimarite` | `String` | No |  |
-| `realName` | `String` | No |  |
-| `rikishi1Id` | `String` | No |  |
-| `rikishi2Id` | `String` | No |  |
-| `rikishiId` | `String` | No |  |
-| `shikona` | `String` | No |  |
-| `totalLosses` | `Integer` | No |  |
-| `totalWins` | `Integer` | No |  |
-| `weight` | `Float` | No |  |
-| `winRate` | `Float` | No |  |
-| `winnerId` | `String` | No |  |
+| `bashoId` | `String` | No | Identifier of the basho where match took place |
+| `birthdate` | `String` | No | Date of birth |
+| `birthplace` | `String` | No | Birthplace of the rikishi |
+| `championships` | `Integer` | No | Number of championships won |
+| `currentRank` | `String` | No | Current rank of the rikishi |
+| `day` | `Integer` | No | Day of the tournament |
+| `debut` | `String` | No | Debut date or basho |
+| `division` | `String` | No | Division of the match |
+| `height` | `Float` | No | Height in centimeters |
+| `heya` | `String` | No | Stable (heya) the rikishi belongs to |
+| `highestRank` | `String` | No | Highest rank achieved |
+| `id` | `String` | No | Unique identifier for the match |
+| `kimarite` | `String` | No | Winning technique used |
+| `realName` | `String` | No | Real name of the rikishi |
+| `rikishi1Id` | `String` | No | First rikishi identifier |
+| `rikishi2Id` | `String` | No | Second rikishi identifier |
+| `rikishiId` | `String` | No | Unique identifier for the rikishi |
+| `shikona` | `String` | No | Ring name of the rikishi |
+| `totalLosses` | `Integer` | No | Total number of losses |
+| `totalWins` | `Integer` | No | Total number of wins |
+| `weight` | `Float` | No | Weight in kilograms |
+| `winRate` | `Float` | No | Win rate percentage |
+| `winnerId` | `String` | No | Winner rikishi identifier |
 
 ### Operations
 
@@ -443,10 +443,10 @@ shikona = client.Shikona
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `String` | No |  |
-| `rikishiId` | `String` | No |  |
-| `shikona` | `String` | No |  |
-| `startDate` | `String` | No |  |
+| `endDate` | `String` | No | Date when rikishi stopped using this shikona |
+| `rikishiId` | `String` | No | Identifier of the rikishi using this shikona |
+| `shikona` | `String` | No | Ring name (shikona) |
+| `startDate` | `String` | No | Date when rikishi started using this shikona |
 
 ### Operations
 

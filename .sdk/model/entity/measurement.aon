@@ -1,0 +1,57 @@
+# Entity: measurement
+
+main: kit: entity: measurement: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "height"
+      req: false
+      short: "Height in centimeters"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "recordedDate"
+      req: false
+      short: "Date when measurement was recorded"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishiId"
+      req: false
+      short: "Unique identifier for the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "weight"
+      req: false
+      short: "Weight in kilograms"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "measurement"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/measurements"
+          parts: [
+            "api"
+            "measurements"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

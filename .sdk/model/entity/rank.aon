@@ -1,0 +1,62 @@
+# Entity: rank
+
+main: kit: entity: rank: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "division"
+      req: false
+      short: "Division the rank belongs to"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the rank"
+      type: "`$STRING`"
+    }
+    {
+      name: "level"
+      req: false
+      short: "Hierarchical level of the rank"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the rank"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "rank"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/ranks"
+          parts: [
+            "api"
+            "ranks"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

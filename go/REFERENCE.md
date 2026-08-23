@@ -118,21 +118,21 @@ fmt.Println(basho.GetName()) // "basho"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `id` | `string` | No |  |
-| `kimarite` | `string` | No |  |
-| `matchNumber` | `int` | No |  |
-| `month` | `int` | No |  |
-| `rank` | `string` | No |  |
-| `rikishi1Id` | `string` | No |  |
-| `rikishi2Id` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `side` | `string` | No |  |
-| `startDate` | `string` | No |  |
-| `venue` | `string` | No |  |
-| `winnerId` | `string` | No |  |
-| `year` | `int` | No |  |
+| `endDate` | `string` | No | End date of the tournament |
+| `id` | `string` | No | Unique identifier for the basho |
+| `kimarite` | `string` | No | Winning technique used (if match completed) |
+| `matchNumber` | `int` | No | Match number in the day's schedule |
+| `month` | `int` | No | Month of the tournament |
+| `rank` | `string` | No | Rank in the banzuke |
+| `rikishi1Id` | `string` | No | First rikishi identifier |
+| `rikishi2Id` | `string` | No | Second rikishi identifier |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `shikona` | `string` | No | Ring name of the rikishi |
+| `side` | `string` | No | Side of the banzuke (east or west) |
+| `startDate` | `string` | No | Start date of the tournament |
+| `venue` | `string` | No | Tournament venue |
+| `winnerId` | `string` | No | Winner rikishi identifier (if match completed) |
+| `year` | `int` | No | Year of the tournament |
 
 ### Operations
 
@@ -195,11 +195,11 @@ fmt.Println(kimarite.GetName()) // "kimarite"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `englishName` | `string` | No |  |
-| `frequency` | `int` | No |  |
-| `name` | `string` | No |  |
+| `category` | `string` | No | Category of the technique |
+| `description` | `string` | No | Detailed description of the technique |
+| `englishName` | `string` | No | English translation of the technique name |
+| `frequency` | `int` | No | Number of times this technique has been used |
+| `name` | `string` | No | Name of the kimarite technique |
 
 ### Operations
 
@@ -262,10 +262,10 @@ fmt.Println(measurement.GetName()) // "measurement"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | `float64` | No |  |
-| `recordedDate` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `weight` | `float64` | No |  |
+| `height` | `float64` | No | Height in centimeters |
+| `recordedDate` | `string` | No | Date when measurement was recorded |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `weight` | `float64` | No | Weight in kilograms |
 
 ### Operations
 
@@ -316,10 +316,10 @@ fmt.Println(rank.GetName()) // "rank"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | `string` | No |  |
-| `id` | `string` | No |  |
-| `level` | `int` | No |  |
-| `name` | `string` | No |  |
+| `division` | `string` | No | Division the rank belongs to |
+| `id` | `string` | No | Unique identifier for the rank |
+| `level` | `int` | No | Hierarchical level of the rank |
+| `name` | `string` | No | Name of the rank |
 
 ### Operations
 
@@ -370,29 +370,29 @@ fmt.Println(rikishi.GetName()) // "rikishi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bashoId` | `string` | No |  |
-| `birthdate` | `string` | No |  |
-| `birthplace` | `string` | No |  |
-| `championships` | `int` | No |  |
-| `currentRank` | `string` | No |  |
-| `day` | `int` | No |  |
-| `debut` | `string` | No |  |
-| `division` | `string` | No |  |
-| `height` | `float64` | No |  |
-| `heya` | `string` | No |  |
-| `highestRank` | `string` | No |  |
-| `id` | `string` | No |  |
-| `kimarite` | `string` | No |  |
-| `realName` | `string` | No |  |
-| `rikishi1Id` | `string` | No |  |
-| `rikishi2Id` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `totalLosses` | `int` | No |  |
-| `totalWins` | `int` | No |  |
-| `weight` | `float64` | No |  |
-| `winRate` | `float64` | No |  |
-| `winnerId` | `string` | No |  |
+| `bashoId` | `string` | No | Identifier of the basho where match took place |
+| `birthdate` | `string` | No | Date of birth |
+| `birthplace` | `string` | No | Birthplace of the rikishi |
+| `championships` | `int` | No | Number of championships won |
+| `currentRank` | `string` | No | Current rank of the rikishi |
+| `day` | `int` | No | Day of the tournament |
+| `debut` | `string` | No | Debut date or basho |
+| `division` | `string` | No | Division of the match |
+| `height` | `float64` | No | Height in centimeters |
+| `heya` | `string` | No | Stable (heya) the rikishi belongs to |
+| `highestRank` | `string` | No | Highest rank achieved |
+| `id` | `string` | No | Unique identifier for the match |
+| `kimarite` | `string` | No | Winning technique used |
+| `realName` | `string` | No | Real name of the rikishi |
+| `rikishi1Id` | `string` | No | First rikishi identifier |
+| `rikishi2Id` | `string` | No | Second rikishi identifier |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `shikona` | `string` | No | Ring name of the rikishi |
+| `totalLosses` | `int` | No | Total number of losses |
+| `totalWins` | `int` | No | Total number of wins |
+| `weight` | `float64` | No | Weight in kilograms |
+| `winRate` | `float64` | No | Win rate percentage |
+| `winnerId` | `string` | No | Winner rikishi identifier |
 
 ### Operations
 
@@ -455,10 +455,10 @@ fmt.Println(shikona.GetName()) // "shikona"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `startDate` | `string` | No |  |
+| `endDate` | `string` | No | Date when rikishi stopped using this shikona |
+| `rikishiId` | `string` | No | Identifier of the rikishi using this shikona |
+| `shikona` | `string` | No | Ring name (shikona) |
+| `startDate` | `string` | No | Date when rikishi started using this shikona |
 
 ### Operations
 

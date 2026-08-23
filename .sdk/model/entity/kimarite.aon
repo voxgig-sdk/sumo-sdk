@@ -1,0 +1,102 @@
+# Entity: kimarite
+
+main: kit: entity: kimarite: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "category"
+      req: false
+      short: "Category of the technique"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Detailed description of the technique"
+      type: "`$STRING`"
+    }
+    {
+      name: "englishName"
+      req: false
+      short: "English translation of the technique name"
+      type: "`$STRING`"
+    }
+    {
+      name: "frequency"
+      req: false
+      short: "Number of times this technique has been used"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the kimarite technique"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "kimarite"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/kimarite"
+          parts: [
+            "api"
+            "kimarite"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "kimarite"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/kimarite/{kimarite}"
+          parts: [
+            "api"
+            "kimarite"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              kimarite: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

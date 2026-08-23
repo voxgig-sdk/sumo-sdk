@@ -36,90 +36,105 @@
               "active": true,
               "name": "endDate",
               "req": false,
+              "short": "End date of the tournament",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the basho",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "kimarite",
               "req": false,
+              "short": "Winning technique used (if match completed)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "matchNumber",
               "req": false,
+              "short": "Match number in the day's schedule",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "month",
               "req": false,
+              "short": "Month of the tournament",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "rank",
               "req": false,
+              "short": "Rank in the banzuke",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishi1Id",
               "req": false,
+              "short": "First rikishi identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishi2Id",
               "req": false,
+              "short": "Second rikishi identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishiId",
               "req": false,
+              "short": "Unique identifier for the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "shikona",
               "req": false,
+              "short": "Ring name of the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "side",
               "req": false,
+              "short": "Side of the banzuke (east or west)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "startDate",
               "req": false,
+              "short": "Start date of the tournament",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venue",
               "req": false,
+              "short": "Tournament venue",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "winnerId",
               "req": false,
+              "short": "Winner rikishi identifier (if match completed)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "Year of the tournament",
               "type": "`$INTEGER`"
             }
           ],
@@ -307,30 +322,35 @@
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of the technique",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the technique",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "englishName",
               "req": false,
+              "short": "English translation of the technique name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "frequency",
               "req": false,
+              "short": "Number of times this technique has been used",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the kimarite technique",
               "type": "`$STRING`"
             }
           ],
@@ -416,24 +436,28 @@
               "active": true,
               "name": "height",
               "req": false,
+              "short": "Height in centimeters",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "recordedDate",
               "req": false,
+              "short": "Date when measurement was recorded",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishiId",
               "req": false,
+              "short": "Unique identifier for the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "weight",
               "req": false,
+              "short": "Weight in kilograms",
               "type": "`$NUMBER`"
             }
           ],
@@ -476,24 +500,28 @@
               "active": true,
               "name": "division",
               "req": false,
+              "short": "Division the rank belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the rank",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "level",
               "req": false,
+              "short": "Hierarchical level of the rank",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the rank",
               "type": "`$STRING`"
             }
           ],
@@ -540,138 +568,161 @@
               "active": true,
               "name": "bashoId",
               "req": false,
+              "short": "Identifier of the basho where match took place",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "birthdate",
               "req": false,
+              "short": "Date of birth",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "birthplace",
               "req": false,
+              "short": "Birthplace of the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "championships",
               "req": false,
+              "short": "Number of championships won",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "currentRank",
               "req": false,
+              "short": "Current rank of the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "day",
               "req": false,
+              "short": "Day of the tournament",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "debut",
               "req": false,
+              "short": "Debut date or basho",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "division",
               "req": false,
+              "short": "Division of the match",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "height",
               "req": false,
+              "short": "Height in centimeters",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "heya",
               "req": false,
+              "short": "Stable (heya) the rikishi belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "highestRank",
               "req": false,
+              "short": "Highest rank achieved",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the match",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "kimarite",
               "req": false,
+              "short": "Winning technique used",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "realName",
               "req": false,
+              "short": "Real name of the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishi1Id",
               "req": false,
+              "short": "First rikishi identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishi2Id",
               "req": false,
+              "short": "Second rikishi identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishiId",
               "req": false,
+              "short": "Unique identifier for the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "shikona",
               "req": false,
+              "short": "Ring name of the rikishi",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "totalLosses",
               "req": false,
+              "short": "Total number of losses",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "totalWins",
               "req": false,
+              "short": "Total number of wins",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "weight",
               "req": false,
+              "short": "Weight in kilograms",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "winRate",
               "req": false,
+              "short": "Win rate percentage",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "winnerId",
               "req": false,
+              "short": "Winner rikishi identifier",
               "type": "`$STRING`"
             }
           ],
@@ -892,24 +943,28 @@
               "active": true,
               "name": "endDate",
               "req": false,
+              "short": "Date when rikishi stopped using this shikona",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rikishiId",
               "req": false,
+              "short": "Identifier of the rikishi using this shikona",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "shikona",
               "req": false,
+              "short": "Ring name (shikona)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "startDate",
               "req": false,
+              "short": "Date when rikishi started using this shikona",
               "type": "`$STRING`"
             }
           ],

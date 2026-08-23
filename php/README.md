@@ -265,21 +265,21 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `id` |  |
-| `kimarite` |  |
-| `matchNumber` |  |
-| `month` |  |
-| `rank` |  |
-| `rikishi1Id` |  |
-| `rikishi2Id` |  |
-| `rikishiId` |  |
-| `shikona` |  |
-| `side` |  |
-| `startDate` |  |
-| `venue` |  |
-| `winnerId` |  |
-| `year` |  |
+| `endDate` | End date of the tournament |
+| `id` | Unique identifier for the basho |
+| `kimarite` | Winning technique used (if match completed) |
+| `matchNumber` | Match number in the day's schedule |
+| `month` | Month of the tournament |
+| `rank` | Rank in the banzuke |
+| `rikishi1Id` | First rikishi identifier |
+| `rikishi2Id` | Second rikishi identifier |
+| `rikishiId` | Unique identifier for the rikishi |
+| `shikona` | Ring name of the rikishi |
+| `side` | Side of the banzuke (east or west) |
+| `startDate` | Start date of the tournament |
+| `venue` | Tournament venue |
+| `winnerId` | Winner rikishi identifier (if match completed) |
+| `year` | Year of the tournament |
 
 Operations: List, Load.
 
@@ -289,11 +289,11 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `description` |  |
-| `englishName` |  |
-| `frequency` |  |
-| `name` |  |
+| `category` | Category of the technique |
+| `description` | Detailed description of the technique |
+| `englishName` | English translation of the technique name |
+| `frequency` | Number of times this technique has been used |
+| `name` | Name of the kimarite technique |
 
 Operations: List, Load.
 
@@ -303,10 +303,10 @@ API path: `/api/kimarite`
 
 | Field | Description |
 | --- | --- |
-| `height` |  |
-| `recordedDate` |  |
-| `rikishiId` |  |
-| `weight` |  |
+| `height` | Height in centimeters |
+| `recordedDate` | Date when measurement was recorded |
+| `rikishiId` | Unique identifier for the rikishi |
+| `weight` | Weight in kilograms |
 
 Operations: List.
 
@@ -316,10 +316,10 @@ API path: `/api/measurements`
 
 | Field | Description |
 | --- | --- |
-| `division` |  |
-| `id` |  |
-| `level` |  |
-| `name` |  |
+| `division` | Division the rank belongs to |
+| `id` | Unique identifier for the rank |
+| `level` | Hierarchical level of the rank |
+| `name` | Name of the rank |
 
 Operations: List.
 
@@ -329,29 +329,29 @@ API path: `/api/ranks`
 
 | Field | Description |
 | --- | --- |
-| `bashoId` |  |
-| `birthdate` |  |
-| `birthplace` |  |
-| `championships` |  |
-| `currentRank` |  |
-| `day` |  |
-| `debut` |  |
-| `division` |  |
-| `height` |  |
-| `heya` |  |
-| `highestRank` |  |
-| `id` |  |
-| `kimarite` |  |
-| `realName` |  |
-| `rikishi1Id` |  |
-| `rikishi2Id` |  |
-| `rikishiId` |  |
-| `shikona` |  |
-| `totalLosses` |  |
-| `totalWins` |  |
-| `weight` |  |
-| `winRate` |  |
-| `winnerId` |  |
+| `bashoId` | Identifier of the basho where match took place |
+| `birthdate` | Date of birth |
+| `birthplace` | Birthplace of the rikishi |
+| `championships` | Number of championships won |
+| `currentRank` | Current rank of the rikishi |
+| `day` | Day of the tournament |
+| `debut` | Debut date or basho |
+| `division` | Division of the match |
+| `height` | Height in centimeters |
+| `heya` | Stable (heya) the rikishi belongs to |
+| `highestRank` | Highest rank achieved |
+| `id` | Unique identifier for the match |
+| `kimarite` | Winning technique used |
+| `realName` | Real name of the rikishi |
+| `rikishi1Id` | First rikishi identifier |
+| `rikishi2Id` | Second rikishi identifier |
+| `rikishiId` | Unique identifier for the rikishi |
+| `shikona` | Ring name of the rikishi |
+| `totalLosses` | Total number of losses |
+| `totalWins` | Total number of wins |
+| `weight` | Weight in kilograms |
+| `winRate` | Win rate percentage |
+| `winnerId` | Winner rikishi identifier |
 
 Operations: List, Load.
 
@@ -361,10 +361,10 @@ API path: `/api/rikishi/{rikishiId}/matches`
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `rikishiId` |  |
-| `shikona` |  |
-| `startDate` |  |
+| `endDate` | Date when rikishi stopped using this shikona |
+| `rikishiId` | Identifier of the rikishi using this shikona |
+| `shikona` | Ring name (shikona) |
+| `startDate` | Date when rikishi started using this shikona |
 
 Operations: List.
 
@@ -390,21 +390,21 @@ Create an instance: `$basho = $client->Basho();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `string` |  |
-| `id` | `string` |  |
-| `kimarite` | `string` |  |
-| `matchNumber` | `int` |  |
-| `month` | `int` |  |
-| `rank` | `string` |  |
-| `rikishi1Id` | `string` |  |
-| `rikishi2Id` | `string` |  |
-| `rikishiId` | `string` |  |
-| `shikona` | `string` |  |
-| `side` | `string` |  |
-| `startDate` | `string` |  |
-| `venue` | `string` |  |
-| `winnerId` | `string` |  |
-| `year` | `int` |  |
+| `endDate` | `string` | End date of the tournament |
+| `id` | `string` | Unique identifier for the basho |
+| `kimarite` | `string` | Winning technique used (if match completed) |
+| `matchNumber` | `int` | Match number in the day's schedule |
+| `month` | `int` | Month of the tournament |
+| `rank` | `string` | Rank in the banzuke |
+| `rikishi1Id` | `string` | First rikishi identifier |
+| `rikishi2Id` | `string` | Second rikishi identifier |
+| `rikishiId` | `string` | Unique identifier for the rikishi |
+| `shikona` | `string` | Ring name of the rikishi |
+| `side` | `string` | Side of the banzuke (east or west) |
+| `startDate` | `string` | Start date of the tournament |
+| `venue` | `string` | Tournament venue |
+| `winnerId` | `string` | Winner rikishi identifier (if match completed) |
+| `year` | `int` | Year of the tournament |
 
 #### Example: Load
 
@@ -436,11 +436,11 @@ Create an instance: `$kimarite = $client->Kimarite();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `englishName` | `string` |  |
-| `frequency` | `int` |  |
-| `name` | `string` |  |
+| `category` | `string` | Category of the technique |
+| `description` | `string` | Detailed description of the technique |
+| `englishName` | `string` | English translation of the technique name |
+| `frequency` | `int` | Number of times this technique has been used |
+| `name` | `string` | Name of the kimarite technique |
 
 #### Example: Load
 
@@ -471,10 +471,10 @@ Create an instance: `$measurement = $client->Measurement();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `height` | `float` |  |
-| `recordedDate` | `string` |  |
-| `rikishiId` | `string` |  |
-| `weight` | `float` |  |
+| `height` | `float` | Height in centimeters |
+| `recordedDate` | `string` | Date when measurement was recorded |
+| `rikishiId` | `string` | Unique identifier for the rikishi |
+| `weight` | `float` | Weight in kilograms |
 
 #### Example: List
 
@@ -498,10 +498,10 @@ Create an instance: `$rank = $client->Rank();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `division` | `string` |  |
-| `id` | `string` |  |
-| `level` | `int` |  |
-| `name` | `string` |  |
+| `division` | `string` | Division the rank belongs to |
+| `id` | `string` | Unique identifier for the rank |
+| `level` | `int` | Hierarchical level of the rank |
+| `name` | `string` | Name of the rank |
 
 #### Example: List
 
@@ -526,29 +526,29 @@ Create an instance: `$rikishi = $client->Rikishi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bashoId` | `string` |  |
-| `birthdate` | `string` |  |
-| `birthplace` | `string` |  |
-| `championships` | `int` |  |
-| `currentRank` | `string` |  |
-| `day` | `int` |  |
-| `debut` | `string` |  |
-| `division` | `string` |  |
-| `height` | `float` |  |
-| `heya` | `string` |  |
-| `highestRank` | `string` |  |
-| `id` | `string` |  |
-| `kimarite` | `string` |  |
-| `realName` | `string` |  |
-| `rikishi1Id` | `string` |  |
-| `rikishi2Id` | `string` |  |
-| `rikishiId` | `string` |  |
-| `shikona` | `string` |  |
-| `totalLosses` | `int` |  |
-| `totalWins` | `int` |  |
-| `weight` | `float` |  |
-| `winRate` | `float` |  |
-| `winnerId` | `string` |  |
+| `bashoId` | `string` | Identifier of the basho where match took place |
+| `birthdate` | `string` | Date of birth |
+| `birthplace` | `string` | Birthplace of the rikishi |
+| `championships` | `int` | Number of championships won |
+| `currentRank` | `string` | Current rank of the rikishi |
+| `day` | `int` | Day of the tournament |
+| `debut` | `string` | Debut date or basho |
+| `division` | `string` | Division of the match |
+| `height` | `float` | Height in centimeters |
+| `heya` | `string` | Stable (heya) the rikishi belongs to |
+| `highestRank` | `string` | Highest rank achieved |
+| `id` | `string` | Unique identifier for the match |
+| `kimarite` | `string` | Winning technique used |
+| `realName` | `string` | Real name of the rikishi |
+| `rikishi1Id` | `string` | First rikishi identifier |
+| `rikishi2Id` | `string` | Second rikishi identifier |
+| `rikishiId` | `string` | Unique identifier for the rikishi |
+| `shikona` | `string` | Ring name of the rikishi |
+| `totalLosses` | `int` | Total number of losses |
+| `totalWins` | `int` | Total number of wins |
+| `weight` | `float` | Weight in kilograms |
+| `winRate` | `float` | Win rate percentage |
+| `winnerId` | `string` | Winner rikishi identifier |
 
 #### Example: Load
 
@@ -579,10 +579,10 @@ Create an instance: `$shikona = $client->Shikona();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `string` |  |
-| `rikishiId` | `string` |  |
-| `shikona` | `string` |  |
-| `startDate` | `string` |  |
+| `endDate` | `string` | Date when rikishi stopped using this shikona |
+| `rikishiId` | `string` | Identifier of the rikishi using this shikona |
+| `shikona` | `string` | Ring name (shikona) |
+| `startDate` | `string` | Date when rikishi started using this shikona |
 
 #### Example: List
 

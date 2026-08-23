@@ -176,21 +176,21 @@ const basho = client.Basho()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `id` | `string` | No |  |
-| `kimarite` | `string` | No |  |
-| `matchNumber` | `number` | No |  |
-| `month` | `number` | No |  |
-| `rank` | `string` | No |  |
-| `rikishi1Id` | `string` | No |  |
-| `rikishi2Id` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `side` | `string` | No |  |
-| `startDate` | `string` | No |  |
-| `venue` | `string` | No |  |
-| `winnerId` | `string` | No |  |
-| `year` | `number` | No |  |
+| `endDate` | `string` | No | End date of the tournament |
+| `id` | `string` | No | Unique identifier for the basho |
+| `kimarite` | `string` | No | Winning technique used (if match completed) |
+| `matchNumber` | `number` | No | Match number in the day's schedule |
+| `month` | `number` | No | Month of the tournament |
+| `rank` | `string` | No | Rank in the banzuke |
+| `rikishi1Id` | `string` | No | First rikishi identifier |
+| `rikishi2Id` | `string` | No | Second rikishi identifier |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `shikona` | `string` | No | Ring name of the rikishi |
+| `side` | `string` | No | Side of the banzuke (east or west) |
+| `startDate` | `string` | No | Start date of the tournament |
+| `venue` | `string` | No | Tournament venue |
+| `winnerId` | `string` | No | Winner rikishi identifier (if match completed) |
+| `year` | `number` | No | Year of the tournament |
 
 ### Operations
 
@@ -248,11 +248,11 @@ const kimarite = client.Kimarite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `englishName` | `string` | No |  |
-| `frequency` | `number` | No |  |
-| `name` | `string` | No |  |
+| `category` | `string` | No | Category of the technique |
+| `description` | `string` | No | Detailed description of the technique |
+| `englishName` | `string` | No | English translation of the technique name |
+| `frequency` | `number` | No | Number of times this technique has been used |
+| `name` | `string` | No | Name of the kimarite technique |
 
 ### Operations
 
@@ -310,10 +310,10 @@ const measurement = client.Measurement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `height` | `number` | No |  |
-| `recordedDate` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `weight` | `number` | No |  |
+| `height` | `number` | No | Height in centimeters |
+| `recordedDate` | `string` | No | Date when measurement was recorded |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `weight` | `number` | No | Weight in kilograms |
 
 ### Operations
 
@@ -363,10 +363,10 @@ const rank = client.Rank()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `division` | `string` | No |  |
-| `id` | `string` | No |  |
-| `level` | `number` | No |  |
-| `name` | `string` | No |  |
+| `division` | `string` | No | Division the rank belongs to |
+| `id` | `string` | No | Unique identifier for the rank |
+| `level` | `number` | No | Hierarchical level of the rank |
+| `name` | `string` | No | Name of the rank |
 
 ### Operations
 
@@ -416,29 +416,29 @@ const rikishi = client.Rikishi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bashoId` | `string` | No |  |
-| `birthdate` | `string` | No |  |
-| `birthplace` | `string` | No |  |
-| `championships` | `number` | No |  |
-| `currentRank` | `string` | No |  |
-| `day` | `number` | No |  |
-| `debut` | `string` | No |  |
-| `division` | `string` | No |  |
-| `height` | `number` | No |  |
-| `heya` | `string` | No |  |
-| `highestRank` | `string` | No |  |
-| `id` | `string` | No |  |
-| `kimarite` | `string` | No |  |
-| `realName` | `string` | No |  |
-| `rikishi1Id` | `string` | No |  |
-| `rikishi2Id` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `totalLosses` | `number` | No |  |
-| `totalWins` | `number` | No |  |
-| `weight` | `number` | No |  |
-| `winRate` | `number` | No |  |
-| `winnerId` | `string` | No |  |
+| `bashoId` | `string` | No | Identifier of the basho where match took place |
+| `birthdate` | `string` | No | Date of birth |
+| `birthplace` | `string` | No | Birthplace of the rikishi |
+| `championships` | `number` | No | Number of championships won |
+| `currentRank` | `string` | No | Current rank of the rikishi |
+| `day` | `number` | No | Day of the tournament |
+| `debut` | `string` | No | Debut date or basho |
+| `division` | `string` | No | Division of the match |
+| `height` | `number` | No | Height in centimeters |
+| `heya` | `string` | No | Stable (heya) the rikishi belongs to |
+| `highestRank` | `string` | No | Highest rank achieved |
+| `id` | `string` | No | Unique identifier for the match |
+| `kimarite` | `string` | No | Winning technique used |
+| `realName` | `string` | No | Real name of the rikishi |
+| `rikishi1Id` | `string` | No | First rikishi identifier |
+| `rikishi2Id` | `string` | No | Second rikishi identifier |
+| `rikishiId` | `string` | No | Unique identifier for the rikishi |
+| `shikona` | `string` | No | Ring name of the rikishi |
+| `totalLosses` | `number` | No | Total number of losses |
+| `totalWins` | `number` | No | Total number of wins |
+| `weight` | `number` | No | Weight in kilograms |
+| `winRate` | `number` | No | Win rate percentage |
+| `winnerId` | `string` | No | Winner rikishi identifier |
 
 ### Actions
 
@@ -517,10 +517,10 @@ const shikona = client.Shikona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `rikishiId` | `string` | No |  |
-| `shikona` | `string` | No |  |
-| `startDate` | `string` | No |  |
+| `endDate` | `string` | No | Date when rikishi stopped using this shikona |
+| `rikishiId` | `string` | No | Identifier of the rikishi using this shikona |
+| `shikona` | `string` | No | Ring name (shikona) |
+| `startDate` | `string` | No | Date when rikishi started using this shikona |
 
 ### Operations
 

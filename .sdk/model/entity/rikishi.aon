@@ -1,0 +1,340 @@
+# Entity: rikishi
+
+main: kit: entity: rikishi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "bashoId"
+      req: false
+      short: "Identifier of the basho where match took place"
+      type: "`$STRING`"
+    }
+    {
+      name: "birthdate"
+      req: false
+      short: "Date of birth"
+      type: "`$STRING`"
+    }
+    {
+      name: "birthplace"
+      req: false
+      short: "Birthplace of the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "championships"
+      req: false
+      short: "Number of championships won"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "currentRank"
+      req: false
+      short: "Current rank of the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "day"
+      req: false
+      short: "Day of the tournament"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "debut"
+      req: false
+      short: "Debut date or basho"
+      type: "`$STRING`"
+    }
+    {
+      name: "division"
+      req: false
+      short: "Division of the match"
+      type: "`$STRING`"
+    }
+    {
+      name: "height"
+      req: false
+      short: "Height in centimeters"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "heya"
+      req: false
+      short: "Stable (heya) the rikishi belongs to"
+      type: "`$STRING`"
+    }
+    {
+      name: "highestRank"
+      req: false
+      short: "Highest rank achieved"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the match"
+      type: "`$STRING`"
+    }
+    {
+      name: "kimarite"
+      req: false
+      short: "Winning technique used"
+      type: "`$STRING`"
+    }
+    {
+      name: "realName"
+      req: false
+      short: "Real name of the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi1Id"
+      req: false
+      short: "First rikishi identifier"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi2Id"
+      req: false
+      short: "Second rikishi identifier"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishiId"
+      req: false
+      short: "Unique identifier for the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "shikona"
+      req: false
+      short: "Ring name of the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "totalLosses"
+      req: false
+      short: "Total number of losses"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "totalWins"
+      req: false
+      short: "Total number of wins"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "weight"
+      req: false
+      short: "Weight in kilograms"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "winRate"
+      req: false
+      short: "Win rate percentage"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "winnerId"
+      req: false
+      short: "Winner rikishi identifier"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "rikishi"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "rikishi_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/rikishi/{rikishiId}/matches"
+          parts: [
+            "api"
+            "rikishi"
+            "{id}"
+            "matches"
+          ]
+          rename: {
+            param: {
+              rikishiId: "id"
+            }
+          }
+          select: {
+            "$action": "match"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/api/rikishis"
+          parts: [
+            "api"
+            "rikishis"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "rikishi_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "opponent_id"
+                orig: "opponent_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/rikishi/{rikishiId}/matches/{opponentId}"
+          parts: [
+            "api"
+            "rikishi"
+            "{id}"
+            "matches"
+            "{opponent_id}"
+          ]
+          rename: {
+            param: {
+              opponentId: "opponent_id"
+              rikishiId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+              "opponent_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "rikishi_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/rikishi/{rikishiId}"
+          parts: [
+            "api"
+            "rikishi"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              rikishiId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "rikishi_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/rikishi/{rikishiId}/stats"
+          parts: [
+            "api"
+            "rikishi"
+            "{id}"
+            "stats"
+          ]
+          rename: {
+            param: {
+              rikishiId: "id"
+            }
+          }
+          select: {
+            "$action": "stat"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "match"
+      ]
+    ]
+  }
+
+
+
+}

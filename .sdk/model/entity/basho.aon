@@ -1,0 +1,264 @@
+# Entity: basho
+
+main: kit: entity: basho: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "endDate"
+      req: false
+      short: "End date of the tournament"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the basho"
+      type: "`$STRING`"
+    }
+    {
+      name: "kimarite"
+      req: false
+      short: "Winning technique used (if match completed)"
+      type: "`$STRING`"
+    }
+    {
+      name: "matchNumber"
+      req: false
+      short: "Match number in the day's schedule"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "month"
+      req: false
+      short: "Month of the tournament"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank"
+      req: false
+      short: "Rank in the banzuke"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi1Id"
+      req: false
+      short: "First rikishi identifier"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishi2Id"
+      req: false
+      short: "Second rikishi identifier"
+      type: "`$STRING`"
+    }
+    {
+      name: "rikishiId"
+      req: false
+      short: "Unique identifier for the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "shikona"
+      req: false
+      short: "Ring name of the rikishi"
+      type: "`$STRING`"
+    }
+    {
+      name: "side"
+      req: false
+      short: "Side of the banzuke (east or west)"
+      type: "`$STRING`"
+    }
+    {
+      name: "startDate"
+      req: false
+      short: "Start date of the tournament"
+      type: "`$STRING`"
+    }
+    {
+      name: "venue"
+      req: false
+      short: "Tournament venue"
+      type: "`$STRING`"
+    }
+    {
+      name: "winnerId"
+      req: false
+      short: "Winner rikishi identifier (if match completed)"
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      short: "Year of the tournament"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "basho"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "basho_id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "day"
+                orig: "day"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "division"
+                orig: "division"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}/torikumi/{division}/{day}"
+          parts: [
+            "api"
+            "basho"
+            "{basho_id}"
+            "torikumi"
+            "{division}"
+            "{day}"
+          ]
+          rename: {
+            param: {
+              bashoId: "basho_id"
+            }
+          }
+          select: {
+            exist: [
+              "basho_id"
+              "day"
+              "division"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "division"
+                orig: "division"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}/banzuke/{division}"
+          parts: [
+            "api"
+            "basho"
+            "{id}"
+            "banzuke"
+            "{division}"
+          ]
+          rename: {
+            param: {
+              bashoId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "division"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "basho_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/basho/{bashoId}"
+          parts: [
+            "api"
+            "basho"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              bashoId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "banzuke"
+      ]
+      [
+        "basho"
+        "torikumi"
+      ]
+    ]
+  }
+
+
+
+}
