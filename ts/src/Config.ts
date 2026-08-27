@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -338,6 +339,10 @@ class Config {
           "name": "frequency",
           "short": "Number of times this technique has been used",
           "type": "`$INTEGER`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "name",

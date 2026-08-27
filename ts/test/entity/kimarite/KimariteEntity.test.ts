@@ -66,6 +66,12 @@ describe('KimariteEntity', async () => {
     const kimarite_ref01_list = (await kimarite_ref01_ent.list(kimarite_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const kimarite_ref01_match_dt0: any = {}
+    kimarite_ref01_match_dt0.id = kimarite_ref01_data.id
+    const kimarite_ref01_data_dt0 = (await kimarite_ref01_ent.load(kimarite_ref01_match_dt0)).data()
+    assert(kimarite_ref01_data_dt0.id === kimarite_ref01_data.id)
+
 
   })
 })

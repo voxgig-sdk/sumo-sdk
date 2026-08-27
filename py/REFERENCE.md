@@ -186,6 +186,7 @@ kimarite = client.Kimarite()
 | `description` | `str` | No | Detailed description of the technique |
 | `englishName` | `str` | No | English translation of the technique name |
 | `frequency` | `int` | No | Number of times this technique has been used |
+| `id` | `str` | No |  |
 | `name` | `str` | No | Name of the kimarite technique |
 
 ### Operations

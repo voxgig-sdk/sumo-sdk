@@ -121,13 +121,19 @@ func TestKimariteEntity(t *testing.T) {
 		}
 
 		// LOAD
-		kimariteRef01MatchDt0 := map[string]any{}
+		kimariteRef01MatchDt0 := map[string]any{
+			"id": kimariteRef01Data["id"],
+		}
 		kimariteRef01DataDt0Loaded, err := kimariteRef01Ent.Load(kimariteRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if kimariteRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		kimariteRef01DataDt0LoadResult := core.ToMapAny(entityData(kimariteRef01DataDt0Loaded))
+		if kimariteRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if kimariteRef01DataDt0LoadResult["id"] != kimariteRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

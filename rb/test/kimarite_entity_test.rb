@@ -83,9 +83,13 @@ class KimariteEntityTest < Minitest::Test
     assert kimarite_ref01_list_result.is_a?(Array)
 
     # LOAD
-    kimarite_ref01_match_dt0 = {}
+    kimarite_ref01_match_dt0 = {
+      "id" => kimarite_ref01_data["id"],
+    }
     kimarite_ref01_data_dt0_loaded = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, nil)
-    assert !kimarite_ref01_data_dt0_loaded.nil?
+    kimarite_ref01_data_dt0_load_result = Helpers.to_map(kimarite_ref01_data_dt0_loaded.respond_to?(:data_get) ? kimarite_ref01_data_dt0_loaded.data_get : kimarite_ref01_data_dt0_loaded)
+    assert !kimarite_ref01_data_dt0_load_result.nil?
+    assert_equal kimarite_ref01_data_dt0_load_result["id"], kimarite_ref01_data["id"]
 
   end
 end

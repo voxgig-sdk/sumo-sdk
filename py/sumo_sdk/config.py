@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -314,6 +315,10 @@ def make_config():
             "name": "frequency",
             "short": "Number of times this technique has been used",
             "type": "`$INTEGER`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "name",

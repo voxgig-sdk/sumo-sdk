@@ -293,6 +293,7 @@ API path: `/api/basho/{bashoId}/torikumi/{division}/{day}`
 | `description` | Detailed description of the technique |
 | `englishName` | English translation of the technique name |
 | `frequency` | Number of times this technique has been used |
+| `id` |  |
 | `name` | Name of the kimarite technique |
 
 Operations: List, Load.
@@ -440,6 +441,7 @@ Create an instance: `$kimarite = $client->Kimarite();`
 | `description` | `string` | Detailed description of the technique |
 | `englishName` | `string` | English translation of the technique name |
 | `frequency` | `int` | Number of times this technique has been used |
+| `id` | `string` |  |
 | `name` | `string` | Name of the kimarite technique |
 
 #### Example: Load

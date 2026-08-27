@@ -54,6 +54,7 @@ class Kimarite
     public ?string $description = null;
     public ?string $englishName = null;
     public ?int $frequency = null;
+    public ?string $id = null;
     public ?string $name = null;
 }
 
@@ -70,6 +71,7 @@ class KimariteListMatch
     public ?string $description = null;
     public ?string $englishName = null;
     public ?int $frequency = null;
+    public ?string $id = null;
     public ?string $name = null;
 }
 

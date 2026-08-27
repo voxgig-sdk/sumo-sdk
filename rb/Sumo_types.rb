@@ -117,6 +117,9 @@ BashoListMatch = Struct.new(
 # @!attribute [rw] frequency
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 Kimarite = Struct.new(
@@ -124,6 +127,7 @@ Kimarite = Struct.new(
   :description,
   :englishName,
   :frequency,
+  :id,
   :name,
   keyword_init: true
 )
@@ -151,6 +155,9 @@ KimariteLoadMatch = Struct.new(
 # @!attribute [rw] frequency
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 KimariteListMatch = Struct.new(
@@ -158,6 +165,7 @@ KimariteListMatch = Struct.new(
   :description,
   :englishName,
   :frequency,
+  :id,
   :name,
   keyword_init: true
 )

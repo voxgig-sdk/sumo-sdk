@@ -53,6 +53,7 @@ class Kimarite(TypedDict, total=False):
     description: str
     englishName: str
     frequency: int
+    id: str
     name: str
 
 
@@ -65,6 +66,7 @@ class KimariteListMatch(TypedDict, total=False):
     description: str
     englishName: str
     frequency: int
+    id: str
     name: str
 
 

@@ -93,9 +93,13 @@ class KimariteEntityTest extends TestCase
         $this->assertIsArray($kimarite_ref01_list_result);
 
         // LOAD
-        $kimarite_ref01_match_dt0 = [];
+        $kimarite_ref01_match_dt0 = [
+            "id" => $kimarite_ref01_data["id"],
+        ];
         $kimarite_ref01_data_dt0_loaded = $kimarite_ref01_ent->load($kimarite_ref01_match_dt0, null);
-        $this->assertNotNull($kimarite_ref01_data_dt0_loaded);
+        $kimarite_ref01_data_dt0_load_result = Helpers::to_map(is_object($kimarite_ref01_data_dt0_loaded) && method_exists($kimarite_ref01_data_dt0_loaded, 'data_get') ? $kimarite_ref01_data_dt0_loaded->data_get() : $kimarite_ref01_data_dt0_loaded);
+        $this->assertNotNull($kimarite_ref01_data_dt0_load_result);
+        $this->assertEquals($kimarite_ref01_data_dt0_load_result["id"], $kimarite_ref01_data["id"]);
 
     }
 }

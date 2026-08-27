@@ -28,6 +28,7 @@ module SumoConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -305,6 +306,10 @@ module SumoConfig
               "name" => "frequency",
               "short" => "Number of times this technique has been used",
               "type" => "`$INTEGER`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "name",

@@ -199,6 +199,7 @@ fmt.Println(kimarite.GetName()) // "kimarite"
 | `description` | `string` | No | Detailed description of the technique |
 | `englishName` | `string` | No | English translation of the technique name |
 | `frequency` | `int` | No | Number of times this technique has been used |
+| `id` | `string` | No |  |
 | `name` | `string` | No | Name of the kimarite technique |
 
 ### Operations

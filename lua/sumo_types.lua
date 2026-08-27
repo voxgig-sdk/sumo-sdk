@@ -37,6 +37,7 @@
 ---@field description? string
 ---@field englishName? string
 ---@field frequency? number
+---@field id? string
 ---@field name? string
 
 ---@class KimariteLoadMatch
@@ -47,6 +48,7 @@
 ---@field description? string
 ---@field englishName? string
 ---@field frequency? number
+---@field id? string
 ---@field name? string
 
 ---@class Measurement

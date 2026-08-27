@@ -2,39 +2,39 @@
   "existing": {
     "kimarite": {
       "KIMARITE00": {
-        "category": "s32",
-        "description": "s33",
-        "englishName": "s34",
-        "frequency": "s35",
-        "name": "s36",
-        "id": "KIMARITE00"
+        "category": "s3c",
+        "description": "s3d",
+        "englishName": "s3e",
+        "frequency": "s3f",
+        "id": "KIMARITE00",
+        "name": "s41"
       },
       "KIMARITE01": {
-        "category": "s64",
-        "description": "s65",
-        "englishName": "s66",
-        "frequency": "s67",
-        "name": "s68",
-        "id": "KIMARITE01"
+        "category": "s78",
+        "description": "s79",
+        "englishName": "s7a",
+        "frequency": "s7b",
+        "id": "KIMARITE01",
+        "name": "s7d"
       },
       "KIMARITE02": {
-        "category": "s96",
-        "description": "s97",
-        "englishName": "s98",
-        "frequency": "s99",
-        "name": "s9a",
-        "id": "KIMARITE02"
+        "category": "sb4",
+        "description": "sb5",
+        "englishName": "sb6",
+        "frequency": "sb7",
+        "id": "KIMARITE02",
+        "name": "sb9"
       }
     }
   },
   "new": {
     "kimarite": {
       "kimarite_ref01": {
-        "category": "sc8",
-        "description": "sc9",
-        "englishName": "sca",
-        "frequency": "scb",
-        "name": "scc"
+        "category": "sf0",
+        "description": "sf1",
+        "englishName": "sf2",
+        "frequency": "sf3",
+        "name": "sf5"
       }
     }
   }

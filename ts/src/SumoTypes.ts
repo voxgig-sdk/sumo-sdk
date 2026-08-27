@@ -39,6 +39,7 @@ export interface Kimarite {
   description?: string
   englishName?: string
   frequency?: number
+  id?: string
   name?: string
 }
 
@@ -51,6 +52,7 @@ export interface KimariteListMatch {
   description?: string
   englishName?: string
   frequency?: number
+  id?: string
   name?: string
 }
 

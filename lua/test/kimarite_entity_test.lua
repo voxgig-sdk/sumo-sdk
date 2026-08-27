@@ -92,10 +92,14 @@ describe("KimariteEntity", function()
     assert.is_table(kimarite_ref01_list_result)
 
     -- LOAD
-    local kimarite_ref01_match_dt0 = {}
+    local kimarite_ref01_match_dt0 = {
+      id = kimarite_ref01_data["id"],
+    }
     local kimarite_ref01_data_dt0_loaded, err = kimarite_ref01_ent:load(kimarite_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(kimarite_ref01_data_dt0_loaded)
+    local kimarite_ref01_data_dt0_load_result = helpers.to_map(type(kimarite_ref01_data_dt0_loaded) == 'table' and kimarite_ref01_data_dt0_loaded.data_get and kimarite_ref01_data_dt0_loaded:data_get() or kimarite_ref01_data_dt0_loaded)
+    assert.is_not_nil(kimarite_ref01_data_dt0_load_result)
+    assert.are.equal(kimarite_ref01_data_dt0_load_result["id"], kimarite_ref01_data["id"])
 
   end)
 end)

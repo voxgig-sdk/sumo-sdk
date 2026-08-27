@@ -50,6 +50,7 @@ type Kimarite struct {
 	Description *string `json:"description,omitempty"`
 	EnglishName *string `json:"englishName,omitempty"`
 	Frequency *int `json:"frequency,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -64,6 +65,7 @@ type KimariteListMatch struct {
 	Description *string `json:"description,omitempty"`
 	EnglishName *string `json:"englishName,omitempty"`
 	Frequency *int `json:"frequency,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 

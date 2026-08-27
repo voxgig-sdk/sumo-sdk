@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -293,6 +294,10 @@ local function make_config()
             ["name"] = "frequency",
             ["short"] = "Number of times this technique has been used",
             ["type"] = "`$INTEGER`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",

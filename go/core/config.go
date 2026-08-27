@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -297,6 +298,10 @@ func MakeConfig() map[string]any {
 						"name": "frequency",
 						"short": "Number of times this technique has been used",
 						"type": "`$INTEGER`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",

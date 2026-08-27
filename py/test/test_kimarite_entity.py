@@ -88,9 +88,13 @@ class TestKimariteEntity:
         assert isinstance(kimarite_ref01_list_result, list)
 
         # LOAD
-        kimarite_ref01_match_dt0 = {}
+        kimarite_ref01_match_dt0 = {
+            "id": kimarite_ref01_data["id"],
+        }
         kimarite_ref01_data_dt0_loaded = kimarite_ref01_ent.load(kimarite_ref01_match_dt0, None)
-        assert kimarite_ref01_data_dt0_loaded is not None
+        kimarite_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(kimarite_ref01_data_dt0_loaded))
+        assert kimarite_ref01_data_dt0_load_result is not None
+        assert kimarite_ref01_data_dt0_load_result["id"] == kimarite_ref01_data["id"]
 
 
 

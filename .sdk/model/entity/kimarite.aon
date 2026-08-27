@@ -30,12 +30,22 @@ main: kit: entity: kimarite: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "name"
       req: false
       short: "Name of the kimarite technique"
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "kimarite"
   op: {
