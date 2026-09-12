@@ -34,6 +34,7 @@
           "fields": [
             {
               "active": true,
+              "format": "date",
               "name": "endDate",
               "req": false,
               "short": "End date of the tournament",
@@ -111,6 +112,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "startDate",
               "req": false,
               "short": "Start date of the tournament",
@@ -181,19 +183,31 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
-                  "parts": [
-                    "api",
-                    "basho",
-                    "{basho_id}",
-                    "torikumi",
-                    "{division}",
-                    "{day}"
-                  ],
                   "rename": {
                     "param": {
                       "bashoId": "basho_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "basho"
+                    },
+                    {
+                      "var": "basho_id"
+                    },
+                    {
+                      "lit": "torikumi"
+                    },
+                    {
+                      "var": "division"
+                    },
+                    {
+                      "var": "day"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "basho_id",
@@ -237,18 +251,28 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/banzuke/{division}",
-                  "parts": [
-                    "api",
-                    "basho",
-                    "{id}",
-                    "banzuke",
-                    "{division}"
-                  ],
                   "rename": {
                     "param": {
                       "bashoId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "basho"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "banzuke"
+                    },
+                    {
+                      "var": "division"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "division",
@@ -277,16 +301,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}",
-                  "parts": [
-                    "api",
-                    "basho",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "bashoId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "basho"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -376,9 +406,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/kimarite",
-                  "parts": [
-                    "api",
-                    "kimarite"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "kimarite"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -409,16 +443,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/kimarite/{kimarite}",
-                  "parts": [
-                    "api",
-                    "kimarite",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "kimarite": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "kimarite"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -451,6 +491,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "recordedDate",
               "req": false,
               "short": "Date when measurement was recorded",
@@ -483,9 +524,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/measurements",
-                  "parts": [
-                    "api",
-                    "measurements"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "measurements"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -551,9 +596,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ranks",
-                  "parts": [
-                    "api",
-                    "ranks"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ranks"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -583,6 +632,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "birthdate",
               "req": false,
               "short": "Date of birth",
@@ -723,6 +773,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "winRate",
               "req": false,
               "short": "Win rate percentage",
@@ -763,17 +814,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/matches",
-                  "parts": [
-                    "api",
-                    "rikishi",
-                    "{id}",
-                    "matches"
-                  ],
                   "rename": {
                     "param": {
                       "rikishiId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rikishi"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "matches"
+                    }
+                  ],
                   "select": {
                     "$action": "match",
                     "exist": [
@@ -791,9 +850,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishis",
-                  "parts": [
-                    "api",
-                    "rikishis"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rikishis"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -832,19 +895,29 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
-                  "parts": [
-                    "api",
-                    "rikishi",
-                    "{id}",
-                    "matches",
-                    "{opponent_id}"
-                  ],
                   "rename": {
                     "param": {
                       "opponentId": "opponent_id",
                       "rikishiId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rikishi"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "matches"
+                    },
+                    {
+                      "var": "opponent_id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id",
@@ -873,16 +946,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}",
-                  "parts": [
-                    "api",
-                    "rikishi",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "rikishiId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rikishi"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -910,17 +989,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/stats",
-                  "parts": [
-                    "api",
-                    "rikishi",
-                    "{id}",
-                    "stats"
-                  ],
                   "rename": {
                     "param": {
                       "rikishiId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rikishi"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "stats"
+                    }
+                  ],
                   "select": {
                     "$action": "stat",
                     "exist": [
@@ -951,6 +1038,7 @@
           "fields": [
             {
               "active": true,
+              "format": "date",
               "name": "endDate",
               "req": false,
               "short": "Date when rikishi stopped using this shikona",
@@ -972,6 +1060,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "startDate",
               "req": false,
               "short": "Date when rikishi started using this shikona",
@@ -990,9 +1079,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/shikonas",
-                  "parts": [
-                    "api",
-                    "shikonas"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "shikonas"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1072,8 +1165,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1391,6 +1487,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1416,6 +1515,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1467,6 +1570,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1491,6 +1595,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1542,6 +1647,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1566,6 +1672,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1606,6 +1713,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1631,6 +1741,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1665,6 +1778,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1690,6 +1806,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1730,6 +1849,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1755,6 +1877,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1800,6 +1925,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1825,6 +1953,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1842,11 +1973,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1875,6 +2001,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1899,6 +2028,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

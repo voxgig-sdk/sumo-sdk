@@ -98,7 +98,7 @@ func TestKimariteEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		kimariteRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.kimarite", setup.data)))
+		kimariteRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.kimarite")))
 		var kimariteRef01Data map[string]any
 		if len(kimariteRef01DataRaw) > 0 {
 			kimariteRef01Data = core.ToMapAny(kimariteRef01DataRaw[0][1])
@@ -163,7 +163,7 @@ func kimariteBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"kimarite01", "kimarite02", "kimarite03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -191,10 +191,22 @@ func kimariteBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SUMO_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSumoSDK(core.ToMapAny(mergedOpts))
 	}

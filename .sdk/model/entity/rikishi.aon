@@ -12,6 +12,7 @@ main: kit: entity: rikishi: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "birthdate"
       req: false
       short: "Date of birth"
@@ -132,6 +133,7 @@ main: kit: entity: rikishi: {
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "winRate"
       req: false
       short: "Win rate percentage"
@@ -169,17 +171,25 @@ main: kit: entity: rikishi: {
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/matches"
-          parts: [
-            "api"
-            "rikishi"
-            "{id}"
-            "matches"
-          ]
           rename: {
             param: {
               rikishiId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rikishi"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "matches"
+            }
+          ]
           select: {
             "$action": "match"
             exist: [
@@ -194,9 +204,13 @@ main: kit: entity: rikishi: {
         {
           method: "GET"
           orig: "/api/rikishis"
-          parts: [
-            "api"
-            "rikishis"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rikishis"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -229,19 +243,29 @@ main: kit: entity: rikishi: {
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/matches/{opponentId}"
-          parts: [
-            "api"
-            "rikishi"
-            "{id}"
-            "matches"
-            "{opponent_id}"
-          ]
           rename: {
             param: {
               opponentId: "opponent_id"
               rikishiId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rikishi"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "matches"
+            }
+            {
+              var: "opponent_id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -267,16 +291,22 @@ main: kit: entity: rikishi: {
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}"
-          parts: [
-            "api"
-            "rikishi"
-            "{id}"
-          ]
           rename: {
             param: {
               rikishiId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rikishi"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -301,17 +331,25 @@ main: kit: entity: rikishi: {
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/stats"
-          parts: [
-            "api"
-            "rikishi"
-            "{id}"
-            "stats"
-          ]
           rename: {
             param: {
               rikishiId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rikishi"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "stats"
+            }
+          ]
           select: {
             "$action": "stat"
             exist: [

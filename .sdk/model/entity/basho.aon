@@ -6,6 +6,7 @@ main: kit: entity: basho: {
 
   fields: [
     {
+      format: "date"
       name: "endDate"
       req: false
       short: "End date of the tournament"
@@ -72,6 +73,7 @@ main: kit: entity: basho: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "startDate"
       req: false
       short: "Start date of the tournament"
@@ -135,19 +137,31 @@ main: kit: entity: basho: {
           }
           method: "GET"
           orig: "/api/basho/{bashoId}/torikumi/{division}/{day}"
-          parts: [
-            "api"
-            "basho"
-            "{basho_id}"
-            "torikumi"
-            "{division}"
-            "{day}"
-          ]
           rename: {
             param: {
               bashoId: "basho_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "basho"
+            }
+            {
+              var: "basho_id"
+            }
+            {
+              lit: "torikumi"
+            }
+            {
+              var: "division"
+            }
+            {
+              var: "day"
+            }
+          ]
           select: {
             exist: [
               "basho_id"
@@ -186,18 +200,28 @@ main: kit: entity: basho: {
           }
           method: "GET"
           orig: "/api/basho/{bashoId}/banzuke/{division}"
-          parts: [
-            "api"
-            "basho"
-            "{id}"
-            "banzuke"
-            "{division}"
-          ]
           rename: {
             param: {
               bashoId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "basho"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "banzuke"
+            }
+            {
+              var: "division"
+            }
+          ]
           select: {
             exist: [
               "division"
@@ -223,16 +247,22 @@ main: kit: entity: basho: {
           }
           method: "GET"
           orig: "/api/basho/{bashoId}"
-          parts: [
-            "api"
-            "basho"
-            "{id}"
-          ]
           rename: {
             param: {
               bashoId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "basho"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

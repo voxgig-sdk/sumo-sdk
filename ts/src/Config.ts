@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -82,6 +93,7 @@ class Config {
     "basho": {
       "fields": [
         {
+          "format": "date",
           "name": "endDate",
           "short": "End date of the tournament",
           "type": "`$STRING`"
@@ -137,6 +149,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "startDate",
           "short": "Start date of the tournament",
           "type": "`$STRING`"
@@ -157,6 +170,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "basho",
       "op": {
         "list": {
@@ -192,19 +209,31 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
-              "parts": [
-                "api",
-                "basho",
-                "{basho_id}",
-                "torikumi",
-                "{division}",
-                "{day}"
-              ],
               "rename": {
                 "param": {
                   "bashoId": "basho_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "basho"
+                },
+                {
+                  "var": "basho_id"
+                },
+                {
+                  "lit": "torikumi"
+                },
+                {
+                  "var": "division"
+                },
+                {
+                  "var": "day"
+                }
+              ],
               "select": {
                 "exist": [
                   "basho_id",
@@ -215,7 +244,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "basho",
+                "{basho_id}",
+                "torikumi",
+                "{division}",
+                "{day}"
+              ]
             }
           ]
         },
@@ -245,18 +282,28 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/basho/{bashoId}/banzuke/{division}",
-              "parts": [
-                "api",
-                "basho",
-                "{id}",
-                "banzuke",
-                "{division}"
-              ],
               "rename": {
                 "param": {
                   "bashoId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "basho"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "banzuke"
+                },
+                {
+                  "var": "division"
+                }
+              ],
               "select": {
                 "exist": [
                   "division",
@@ -266,7 +313,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "basho",
+                "{id}",
+                "banzuke",
+                "{division}"
+              ]
             },
             {
               "args": {
@@ -283,16 +337,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/basho/{bashoId}",
-              "parts": [
-                "api",
-                "basho",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "bashoId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "basho"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -301,7 +361,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "basho",
+                "{id}"
+              ]
             }
           ]
         }
@@ -350,6 +415,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "kimarite",
       "op": {
         "list": {
@@ -361,15 +430,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/kimarite",
-              "parts": [
-                "api",
-                "kimarite"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "kimarite"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "kimarite"
+              ]
             }
           ]
         },
@@ -392,16 +469,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/kimarite/{kimarite}",
-              "parts": [
-                "api",
-                "kimarite",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "kimarite": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "kimarite"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -410,7 +493,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "kimarite",
+                "{id}"
+              ]
             }
           ]
         }
@@ -427,6 +515,7 @@ class Config {
           "type": "`$NUMBER`"
         },
         {
+          "format": "date",
           "name": "recordedDate",
           "short": "Date when measurement was recorded",
           "type": "`$STRING`"
@@ -453,15 +542,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/measurements",
-              "parts": [
-                "api",
-                "measurements"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "measurements"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "measurements"
+              ]
             }
           ]
         }
@@ -493,6 +590,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "rank",
       "op": {
         "list": {
@@ -504,15 +605,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ranks",
-              "parts": [
-                "api",
-                "ranks"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ranks"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ranks"
+              ]
             }
           ]
         }
@@ -529,6 +638,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "birthdate",
           "short": "Date of birth",
           "type": "`$STRING`"
@@ -629,6 +739,7 @@ class Config {
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "winRate",
           "short": "Win rate percentage",
           "type": "`$NUMBER`"
@@ -639,6 +750,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "rikishi",
       "op": {
         "list": {
@@ -660,17 +775,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/rikishi/{rikishiId}/matches",
-              "parts": [
-                "api",
-                "rikishi",
-                "{id}",
-                "matches"
-              ],
               "rename": {
                 "param": {
                   "rikishiId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rikishi"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "matches"
+                }
+              ],
               "select": {
                 "$action": "match",
                 "exist": [
@@ -680,22 +803,36 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rikishi",
+                "{id}",
+                "matches"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/rikishis",
-              "parts": [
-                "api",
-                "rikishis"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rikishis"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rikishis"
+              ]
             }
           ]
         },
@@ -725,19 +862,29 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
-              "parts": [
-                "api",
-                "rikishi",
-                "{id}",
-                "matches",
-                "{opponent_id}"
-              ],
               "rename": {
                 "param": {
                   "opponentId": "opponent_id",
                   "rikishiId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rikishi"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "matches"
+                },
+                {
+                  "var": "opponent_id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id",
@@ -747,7 +894,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rikishi",
+                "{id}",
+                "matches",
+                "{opponent_id}"
+              ]
             },
             {
               "args": {
@@ -764,16 +918,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/rikishi/{rikishiId}",
-              "parts": [
-                "api",
-                "rikishi",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "rikishiId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rikishi"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -782,7 +942,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rikishi",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -799,17 +964,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/rikishi/{rikishiId}/stats",
-              "parts": [
-                "api",
-                "rikishi",
-                "{id}",
-                "stats"
-              ],
               "rename": {
                 "param": {
                   "rikishiId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rikishi"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "stats"
+                }
+              ],
               "select": {
                 "$action": "stat",
                 "exist": [
@@ -819,7 +992,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rikishi",
+                "{id}",
+                "stats"
+              ]
             }
           ]
         }
@@ -835,6 +1014,7 @@ class Config {
     "shikona": {
       "fields": [
         {
+          "format": "date",
           "name": "endDate",
           "short": "Date when rikishi stopped using this shikona",
           "type": "`$STRING`"
@@ -850,6 +1030,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "startDate",
           "short": "Date when rikishi started using this shikona",
           "type": "`$STRING`"
@@ -866,15 +1047,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/shikonas",
-              "parts": [
-                "api",
-                "shikonas"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "shikonas"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "shikonas"
+              ]
             }
           ]
         }
@@ -890,6 +1079,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

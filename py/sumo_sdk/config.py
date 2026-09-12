@@ -1,6 +1,14 @@
 # Sumo SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -58,6 +66,7 @@ def make_config():
       "basho": {
         "fields": [
           {
+            "format": "date",
             "name": "endDate",
             "short": "End date of the tournament",
             "type": "`$STRING`",
@@ -113,6 +122,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "startDate",
             "short": "Start date of the tournament",
             "type": "`$STRING`",
@@ -133,6 +143,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "basho",
         "op": {
           "list": {
@@ -168,19 +182,31 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
-                "parts": [
-                  "api",
-                  "basho",
-                  "{basho_id}",
-                  "torikumi",
-                  "{division}",
-                  "{day}",
-                ],
                 "rename": {
                   "param": {
                     "bashoId": "basho_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "basho",
+                  },
+                  {
+                    "var": "basho_id",
+                  },
+                  {
+                    "lit": "torikumi",
+                  },
+                  {
+                    "var": "division",
+                  },
+                  {
+                    "var": "day",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "basho_id",
@@ -192,6 +218,14 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "basho",
+                  "{basho_id}",
+                  "torikumi",
+                  "{division}",
+                  "{day}",
+                ],
               },
             ],
           },
@@ -221,18 +255,28 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/basho/{bashoId}/banzuke/{division}",
-                "parts": [
-                  "api",
-                  "basho",
-                  "{id}",
-                  "banzuke",
-                  "{division}",
-                ],
                 "rename": {
                   "param": {
                     "bashoId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "basho",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "banzuke",
+                  },
+                  {
+                    "var": "division",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "division",
@@ -243,6 +287,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "basho",
+                  "{id}",
+                  "banzuke",
+                  "{division}",
+                ],
               },
               {
                 "args": {
@@ -259,16 +310,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/basho/{bashoId}",
-                "parts": [
-                  "api",
-                  "basho",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "bashoId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "basho",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -278,6 +335,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "basho",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -326,6 +388,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "kimarite",
         "op": {
           "list": {
@@ -337,15 +403,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/kimarite",
-                "parts": [
-                  "api",
-                  "kimarite",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "kimarite",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "kimarite",
+                ],
               },
             ],
           },
@@ -368,16 +442,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/kimarite/{kimarite}",
-                "parts": [
-                  "api",
-                  "kimarite",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "kimarite": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "kimarite",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -387,6 +467,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "kimarite",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -403,6 +488,7 @@ def make_config():
             "type": "`$NUMBER`",
           },
           {
+            "format": "date",
             "name": "recordedDate",
             "short": "Date when measurement was recorded",
             "type": "`$STRING`",
@@ -429,15 +515,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/measurements",
-                "parts": [
-                  "api",
-                  "measurements",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "measurements",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "measurements",
+                ],
               },
             ],
           },
@@ -469,6 +563,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "rank",
         "op": {
           "list": {
@@ -480,15 +578,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ranks",
-                "parts": [
-                  "api",
-                  "ranks",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ranks",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ranks",
+                ],
               },
             ],
           },
@@ -505,6 +611,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "birthdate",
             "short": "Date of birth",
             "type": "`$STRING`",
@@ -605,6 +712,7 @@ def make_config():
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "winRate",
             "short": "Win rate percentage",
             "type": "`$NUMBER`",
@@ -615,6 +723,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "rikishi",
         "op": {
           "list": {
@@ -636,17 +748,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rikishi/{rikishiId}/matches",
-                "parts": [
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "matches",
-                ],
                 "rename": {
                   "param": {
                     "rikishiId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rikishi",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "matches",
+                  },
+                ],
                 "select": {
                   "$action": "match",
                   "exist": [
@@ -657,21 +777,35 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "matches",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rikishis",
-                "parts": [
-                  "api",
-                  "rikishis",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rikishis",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rikishis",
+                ],
               },
             ],
           },
@@ -701,19 +835,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
-                "parts": [
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "matches",
-                  "{opponent_id}",
-                ],
                 "rename": {
                   "param": {
                     "opponentId": "opponent_id",
                     "rikishiId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rikishi",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "matches",
+                  },
+                  {
+                    "var": "opponent_id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -724,6 +868,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "matches",
+                  "{opponent_id}",
+                ],
               },
               {
                 "args": {
@@ -740,16 +891,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rikishi/{rikishiId}",
-                "parts": [
-                  "api",
-                  "rikishi",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "rikishiId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rikishi",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -759,6 +916,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rikishi",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -775,17 +937,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rikishi/{rikishiId}/stats",
-                "parts": [
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "stats",
-                ],
                 "rename": {
                   "param": {
                     "rikishiId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rikishi",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "stats",
+                  },
+                ],
                 "select": {
                   "$action": "stat",
                   "exist": [
@@ -796,6 +966,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "stats",
+                ],
               },
             ],
           },
@@ -811,6 +987,7 @@ def make_config():
       "shikona": {
         "fields": [
           {
+            "format": "date",
             "name": "endDate",
             "short": "Date when rikishi stopped using this shikona",
             "type": "`$STRING`",
@@ -826,6 +1003,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "startDate",
             "short": "Date when rikishi started using this shikona",
             "type": "`$STRING`",
@@ -842,15 +1020,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/shikonas",
-                "parts": [
-                  "api",
-                  "shikonas",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "shikonas",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "shikonas",
+                ],
               },
             ],
           },

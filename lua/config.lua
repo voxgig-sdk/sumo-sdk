@@ -37,6 +37,7 @@ local function make_config()
       ["basho"] = {
         ["fields"] = {
           {
+            ["format"] = "date",
             ["name"] = "endDate",
             ["short"] = "End date of the tournament",
             ["type"] = "`$STRING`",
@@ -92,6 +93,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "startDate",
             ["short"] = "Start date of the tournament",
             ["type"] = "`$STRING`",
@@ -111,6 +113,10 @@ local function make_config()
             ["short"] = "Year of the tournament",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "basho",
         ["op"] = {
@@ -147,17 +153,29 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/basho/{bashoId}/torikumi/{division}/{day}",
-                ["parts"] = {
-                  "api",
-                  "basho",
-                  "{basho_id}",
-                  "torikumi",
-                  "{division}",
-                  "{day}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["bashoId"] = "basho_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "basho",
+                  },
+                  {
+                    ["var"] = "basho_id",
+                  },
+                  {
+                    ["lit"] = "torikumi",
+                  },
+                  {
+                    ["var"] = "division",
+                  },
+                  {
+                    ["var"] = "day",
                   },
                 },
                 ["select"] = {
@@ -170,6 +188,14 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "basho",
+                  "{basho_id}",
+                  "torikumi",
+                  "{division}",
+                  "{day}",
                 },
               },
             },
@@ -200,16 +226,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/basho/{bashoId}/banzuke/{division}",
-                ["parts"] = {
-                  "api",
-                  "basho",
-                  "{id}",
-                  "banzuke",
-                  "{division}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["bashoId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "basho",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "banzuke",
+                  },
+                  {
+                    ["var"] = "division",
                   },
                 },
                 ["select"] = {
@@ -221,6 +257,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "basho",
+                  "{id}",
+                  "banzuke",
+                  "{division}",
                 },
               },
               {
@@ -238,14 +281,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/basho/{bashoId}",
-                ["parts"] = {
-                  "api",
-                  "basho",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["bashoId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "basho",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -256,6 +305,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "basho",
+                  "{id}",
                 },
               },
             },
@@ -305,6 +359,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "kimarite",
         ["op"] = {
           ["list"] = {
@@ -316,14 +374,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/kimarite",
-                ["parts"] = {
-                  "api",
-                  "kimarite",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "kimarite",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "kimarite",
                 },
               },
             },
@@ -347,14 +413,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/kimarite/{kimarite}",
-                ["parts"] = {
-                  "api",
-                  "kimarite",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["kimarite"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "kimarite",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -365,6 +437,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "kimarite",
+                  "{id}",
                 },
               },
             },
@@ -382,6 +459,7 @@ local function make_config()
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "date",
             ["name"] = "recordedDate",
             ["short"] = "Date when measurement was recorded",
             ["type"] = "`$STRING`",
@@ -408,14 +486,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/measurements",
-                ["parts"] = {
-                  "api",
-                  "measurements",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "measurements",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "measurements",
                 },
               },
             },
@@ -448,6 +534,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "rank",
         ["op"] = {
           ["list"] = {
@@ -459,14 +549,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ranks",
-                ["parts"] = {
-                  "api",
-                  "ranks",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "ranks",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "ranks",
                 },
               },
             },
@@ -484,6 +582,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "birthdate",
             ["short"] = "Date of birth",
             ["type"] = "`$STRING`",
@@ -584,6 +683,7 @@ local function make_config()
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "winRate",
             ["short"] = "Win rate percentage",
             ["type"] = "`$NUMBER`",
@@ -593,6 +693,10 @@ local function make_config()
             ["short"] = "Winner rikishi identifier",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "rikishi",
         ["op"] = {
@@ -615,15 +719,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rikishi/{rikishiId}/matches",
-                ["parts"] = {
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "matches",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["rikishiId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "rikishi",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "matches",
                   },
                 },
                 ["select"] = {
@@ -636,20 +748,34 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "matches",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rikishis",
-                ["parts"] = {
-                  "api",
-                  "rikishis",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "rikishis",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "rikishis",
                 },
               },
             },
@@ -680,17 +806,27 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rikishi/{rikishiId}/matches/{opponentId}",
-                ["parts"] = {
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "matches",
-                  "{opponent_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["opponentId"] = "opponent_id",
                     ["rikishiId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "rikishi",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "matches",
+                  },
+                  {
+                    ["var"] = "opponent_id",
                   },
                 },
                 ["select"] = {
@@ -702,6 +838,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "matches",
+                  "{opponent_id}",
                 },
               },
               {
@@ -719,14 +862,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rikishi/{rikishiId}",
-                ["parts"] = {
-                  "api",
-                  "rikishi",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["rikishiId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "rikishi",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -737,6 +886,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "rikishi",
+                  "{id}",
                 },
               },
               {
@@ -754,15 +908,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rikishi/{rikishiId}/stats",
-                ["parts"] = {
-                  "api",
-                  "rikishi",
-                  "{id}",
-                  "stats",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["rikishiId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "rikishi",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "stats",
                   },
                 },
                 ["select"] = {
@@ -774,6 +936,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "rikishi",
+                  "{id}",
+                  "stats",
                 },
               },
             },
@@ -790,6 +958,7 @@ local function make_config()
       ["shikona"] = {
         ["fields"] = {
           {
+            ["format"] = "date",
             ["name"] = "endDate",
             ["short"] = "Date when rikishi stopped using this shikona",
             ["type"] = "`$STRING`",
@@ -805,6 +974,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "startDate",
             ["short"] = "Date when rikishi started using this shikona",
             ["type"] = "`$STRING`",
@@ -821,14 +991,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/shikonas",
-                ["parts"] = {
-                  "api",
-                  "shikonas",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "shikonas",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "shikonas",
                 },
               },
             },

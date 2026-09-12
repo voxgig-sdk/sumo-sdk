@@ -6,6 +6,7 @@ main: kit: entity: shikona: {
 
   fields: [
     {
+      format: "date"
       name: "endDate"
       req: false
       short: "Date when rikishi stopped using this shikona"
@@ -24,6 +25,7 @@ main: kit: entity: shikona: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "startDate"
       req: false
       short: "Date when rikishi started using this shikona"
@@ -39,9 +41,13 @@ main: kit: entity: shikona: {
         {
           method: "GET"
           orig: "/api/shikonas"
-          parts: [
-            "api"
-            "shikonas"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "shikonas"
+            }
           ]
           transform: {
             req: "`reqdata`"

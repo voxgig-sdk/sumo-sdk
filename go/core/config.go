@@ -41,6 +41,7 @@ func MakeConfig() map[string]any {
 			"basho": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date",
 						"name": "endDate",
 						"short": "End date of the tournament",
 						"type": "`$STRING`",
@@ -96,6 +97,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "startDate",
 						"short": "Start date of the tournament",
 						"type": "`$STRING`",
@@ -115,6 +117,10 @@ func MakeConfig() map[string]any {
 						"short": "Year of the tournament",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "basho",
 				"op": map[string]any{
@@ -151,17 +157,29 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
-								"parts": []any{
-									"api",
-									"basho",
-									"{basho_id}",
-									"torikumi",
-									"{division}",
-									"{day}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"bashoId": "basho_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "basho",
+									},
+									map[string]any{
+										"var": "basho_id",
+									},
+									map[string]any{
+										"lit": "torikumi",
+									},
+									map[string]any{
+										"var": "division",
+									},
+									map[string]any{
+										"var": "day",
 									},
 								},
 								"select": map[string]any{
@@ -174,6 +192,14 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"basho",
+									"{basho_id}",
+									"torikumi",
+									"{division}",
+									"{day}",
 								},
 							},
 						},
@@ -204,16 +230,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}/banzuke/{division}",
-								"parts": []any{
-									"api",
-									"basho",
-									"{id}",
-									"banzuke",
-									"{division}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"bashoId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "basho",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "banzuke",
+									},
+									map[string]any{
+										"var": "division",
 									},
 								},
 								"select": map[string]any{
@@ -225,6 +261,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"basho",
+									"{id}",
+									"banzuke",
+									"{division}",
 								},
 							},
 							map[string]any{
@@ -242,14 +285,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/basho/{bashoId}",
-								"parts": []any{
-									"api",
-									"basho",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"bashoId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "basho",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -260,6 +309,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"basho",
+									"{id}",
 								},
 							},
 						},
@@ -309,6 +363,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "kimarite",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -320,14 +378,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/kimarite",
-								"parts": []any{
-									"api",
-									"kimarite",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "kimarite",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"kimarite",
 								},
 							},
 						},
@@ -351,14 +417,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/kimarite/{kimarite}",
-								"parts": []any{
-									"api",
-									"kimarite",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"kimarite": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "kimarite",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -369,6 +441,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"kimarite",
+									"{id}",
 								},
 							},
 						},
@@ -386,6 +463,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "recordedDate",
 						"short": "Date when measurement was recorded",
 						"type": "`$STRING`",
@@ -412,14 +490,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/measurements",
-								"parts": []any{
-									"api",
-									"measurements",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "measurements",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"measurements",
 								},
 							},
 						},
@@ -452,6 +538,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "rank",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -463,14 +553,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ranks",
-								"parts": []any{
-									"api",
-									"ranks",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "ranks",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"ranks",
 								},
 							},
 						},
@@ -488,6 +586,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "birthdate",
 						"short": "Date of birth",
 						"type": "`$STRING`",
@@ -588,6 +687,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "winRate",
 						"short": "Win rate percentage",
 						"type": "`$NUMBER`",
@@ -597,6 +697,10 @@ func MakeConfig() map[string]any {
 						"short": "Winner rikishi identifier",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "rikishi",
 				"op": map[string]any{
@@ -619,15 +723,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/matches",
-								"parts": []any{
-									"api",
-									"rikishi",
-									"{id}",
-									"matches",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"rikishiId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "rikishi",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "matches",
 									},
 								},
 								"select": map[string]any{
@@ -640,20 +752,34 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"api",
+									"rikishi",
+									"{id}",
+									"matches",
+								},
 							},
 							map[string]any{
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishis",
-								"parts": []any{
-									"api",
-									"rikishis",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "rikishis",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"rikishis",
 								},
 							},
 						},
@@ -684,17 +810,27 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/matches/{opponentId}",
-								"parts": []any{
-									"api",
-									"rikishi",
-									"{id}",
-									"matches",
-									"{opponent_id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"opponentId": "opponent_id",
 										"rikishiId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "rikishi",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "matches",
+									},
+									map[string]any{
+										"var": "opponent_id",
 									},
 								},
 								"select": map[string]any{
@@ -706,6 +842,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"rikishi",
+									"{id}",
+									"matches",
+									"{opponent_id}",
 								},
 							},
 							map[string]any{
@@ -723,14 +866,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}",
-								"parts": []any{
-									"api",
-									"rikishi",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"rikishiId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "rikishi",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -741,6 +890,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"rikishi",
+									"{id}",
 								},
 							},
 							map[string]any{
@@ -758,15 +912,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/rikishi/{rikishiId}/stats",
-								"parts": []any{
-									"api",
-									"rikishi",
-									"{id}",
-									"stats",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"rikishiId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "rikishi",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "stats",
 									},
 								},
 								"select": map[string]any{
@@ -778,6 +940,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"rikishi",
+									"{id}",
+									"stats",
 								},
 							},
 						},
@@ -794,6 +962,7 @@ func MakeConfig() map[string]any {
 			"shikona": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date",
 						"name": "endDate",
 						"short": "Date when rikishi stopped using this shikona",
 						"type": "`$STRING`",
@@ -809,6 +978,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "startDate",
 						"short": "Date when rikishi started using this shikona",
 						"type": "`$STRING`",
@@ -825,14 +995,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/shikonas",
-								"parts": []any{
-									"api",
-									"shikonas",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "shikonas",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"shikonas",
 								},
 							},
 						},
@@ -844,6 +1022,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

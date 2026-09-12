@@ -55,9 +55,13 @@ main: kit: entity: kimarite: {
         {
           method: "GET"
           orig: "/api/kimarite"
-          parts: [
-            "api"
-            "kimarite"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "kimarite"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -83,16 +87,22 @@ main: kit: entity: kimarite: {
           }
           method: "GET"
           orig: "/api/kimarite/{kimarite}"
-          parts: [
-            "api"
-            "kimarite"
-            "{id}"
-          ]
           rename: {
             param: {
               kimarite: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "kimarite"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

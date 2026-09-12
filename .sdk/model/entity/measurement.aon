@@ -12,6 +12,7 @@ main: kit: entity: measurement: {
       type: "`$NUMBER`"
     }
     {
+      format: "date"
       name: "recordedDate"
       req: false
       short: "Date when measurement was recorded"
@@ -39,9 +40,13 @@ main: kit: entity: measurement: {
         {
           method: "GET"
           orig: "/api/measurements"
-          parts: [
-            "api"
-            "measurements"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "measurements"
+            }
           ]
           transform: {
             req: "`reqdata`"
