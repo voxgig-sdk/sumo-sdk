@@ -105,7 +105,7 @@ local results, err = client:Shikona():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
+| TypeScript | `@voxgig-sdk/sumo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
 | Python | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
 | PHP | `voxgig-sdk/sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/sumo-sdk/go` | `go get github.com/voxgig-sdk/sumo-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Shikona():list()
 ### TypeScript
 
 ```ts
-import { SumoSDK } from '@voxgig-sdk/sumo'
+import { SumoSDK } from '@voxgig-sdk/sumo-sdk'
 
 const client = new SumoSDK()
 

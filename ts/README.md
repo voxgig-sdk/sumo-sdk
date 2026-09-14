@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SumoSDK } from '@voxgig-sdk/sumo'
+import { SumoSDK } from '@voxgig-sdk/sumo-sdk'
 
 const client = new SumoSDK()
 ```
@@ -709,7 +709,7 @@ sumo/
 Import the SDK from the package root:
 
 ```ts
-import { SumoSDK } from '@voxgig-sdk/sumo'
+import { SumoSDK } from '@voxgig-sdk/sumo-sdk'
 ```
 
 ### Entity state
