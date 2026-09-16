@@ -169,6 +169,12 @@ main: kit: entity: rikishi: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/rikishi/{rikishiId}/matches"
+            json: "{\"operationId\":\"getRikishiMatches\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bashoId\":{\"description\":\"Identifier of the basho where match took place\",\"type\":\"string\"},\"day\":{\"description\":\"Day of the tournament\",\"type\":\"integer\"},\"division\":{\"description\":\"Division of the match\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the match\",\"type\":\"string\"},\"kimarite\":{\"description\":\"Winning technique used\",\"type\":\"string\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with match history\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/matches"
           rename: {
@@ -202,6 +208,12 @@ main: kit: entity: rikishi: {
           }
         }
         {
+          contract: {
+            id: "GET /api/rikishis"
+            json: "{\"operationId\":\"getRikishis\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"currentRank\":{\"description\":\"Current rank of the rikishi\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of rikishi\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/rikishis"
           segments: [
@@ -240,6 +252,12 @@ main: kit: entity: rikishi: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/rikishi/{rikishiId}/matches/{opponentId}"
+            json: "{\"operationId\":\"getRikishiMatchesAgainstOpponent\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Unique identifier of the opponent rikishi\",\"in\":\"path\",\"name\":\"opponentId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bashoId\":{\"description\":\"Identifier of the basho where match took place\",\"type\":\"string\"},\"day\":{\"description\":\"Day of the tournament\",\"type\":\"integer\"},\"division\":{\"description\":\"Division of the match\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the match\",\"type\":\"string\"},\"kimarite\":{\"description\":\"Winning technique used\",\"type\":\"string\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with match history between two rikishi\"},\"404\":{\"description\":\"Rikishi or opponent not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/matches/{opponentId}"
@@ -289,6 +307,12 @@ main: kit: entity: rikishi: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/rikishi/{rikishiId}"
+            json: "{\"operationId\":\"getRikishiById\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"birthdate\":{\"description\":\"Date of birth\",\"format\":\"date\",\"type\":\"string\"},\"birthplace\":{\"description\":\"Birthplace of the rikishi\",\"type\":\"string\"},\"currentRank\":{\"description\":\"Current rank of the rikishi\",\"type\":\"string\"},\"debut\":{\"description\":\"Debut date or basho\",\"type\":\"string\"},\"height\":{\"description\":\"Height in centimeters\",\"type\":\"number\"},\"heya\":{\"description\":\"Stable (heya) the rikishi belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"realName\":{\"description\":\"Real name of the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"},\"weight\":{\"description\":\"Weight in kilograms\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with rikishi details\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}"
           rename: {
@@ -328,6 +352,12 @@ main: kit: entity: rikishi: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/rikishi/{rikishiId}/stats"
+            json: "{\"operationId\":\"getRikishiStats\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"championships\":{\"description\":\"Number of championships won\",\"type\":\"integer\"},\"highestRank\":{\"description\":\"Highest rank achieved\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"totalLosses\":{\"description\":\"Total number of losses\",\"type\":\"integer\"},\"totalWins\":{\"description\":\"Total number of wins\",\"type\":\"integer\"},\"winRate\":{\"description\":\"Win rate percentage\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with rikishi statistics\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/rikishi/{rikishiId}/stats"

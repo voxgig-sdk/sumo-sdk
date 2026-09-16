@@ -4,19 +4,19 @@
       "RANK00": {
         "division": "s28",
         "id": "RANK00",
-        "level": "s2a",
+        "level": 42,
         "name": "s2b"
       },
       "RANK01": {
         "division": "s50",
         "id": "RANK01",
-        "level": "s52",
+        "level": 82,
         "name": "s53"
       },
       "RANK02": {
         "division": "s78",
         "id": "RANK02",
-        "level": "s7a",
+        "level": 122,
         "name": "s7b"
       }
     }
@@ -25,8 +25,55 @@
     "rank": {
       "rank_ref01": {
         "division": "sa0",
-        "level": "sa2",
+        "level": 162,
         "name": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/ranks": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRanks",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "division": {
+                        "description": "Division the rank belongs to",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the rank",
+                        "type": "string"
+                      },
+                      "level": {
+                        "description": "Hierarchical level of the rank",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the rank",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of ranks"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

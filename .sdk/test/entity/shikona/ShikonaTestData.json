@@ -30,5 +30,54 @@
         "startDate": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /api/shikonas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getShikonas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "endDate": {
+                        "description": "Date when rikishi stopped using this shikona",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "rikishiId": {
+                        "description": "Identifier of the rikishi using this shikona",
+                        "type": "string"
+                      },
+                      "shikona": {
+                        "description": "Ring name (shikona)",
+                        "type": "string"
+                      },
+                      "startDate": {
+                        "description": "Date when rikishi started using this shikona",
+                        "format": "date",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of shikonas"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

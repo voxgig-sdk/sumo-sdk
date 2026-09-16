@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Sumo SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class SumoFeatures
@@ -14,8 +17,14 @@ class SumoFeatures
         switch ($name) {
             case "base":
                 return new SumoBaseFeature();
+            case "ratelimit":
+                return new SumoRatelimitFeature();
+            case "retry":
+                return new SumoRetryFeature();
             case "test":
                 return new SumoTestFeature();
+            case "timeout":
+                return new SumoTimeoutFeature();
             default:
                 return new SumoBaseFeature();
         }
@@ -31,7 +40,10 @@ class SumoFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

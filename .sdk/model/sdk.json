@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "basho": {
           "active": true,
@@ -180,6 +244,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/basho/{bashoId}/torikumi/{division}/{day}",
+                    "json": "{\"operationId\":\"getBashoTorikumi\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Sumo division (e.g., makuuchi, juryo, makushita)\",\"in\":\"path\",\"name\":\"division\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Day of the tournament (typically 1-15)\",\"in\":\"path\",\"name\":\"day\",\"required\":true,\"schema\":{\"maximum\":15,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"kimarite\":{\"description\":\"Winning technique used (if match completed)\",\"type\":\"string\"},\"matchNumber\":{\"description\":\"Match number in the day's schedule\",\"type\":\"integer\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier (if match completed)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with torikumi schedule\"},\"404\":{\"description\":\"Basho, division, or day not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/torikumi/{division}/{day}",
@@ -248,6 +318,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/basho/{bashoId}/banzuke/{division}",
+                    "json": "{\"operationId\":\"getBashoBanzuke\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Sumo division (e.g., makuuchi, juryo, makushita)\",\"in\":\"path\",\"name\":\"division\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"rank\":{\"description\":\"Rank in the banzuke\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"},\"side\":{\"description\":\"Side of the banzuke (east or west)\",\"enum\":[\"east\",\"west\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with banzuke rankings\"},\"404\":{\"description\":\"Basho or division not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/basho/{bashoId}/banzuke/{division}",
@@ -297,6 +373,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/basho/{bashoId}",
+                    "json": "{\"operationId\":\"getBashoById\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"endDate\":{\"description\":\"End date of the tournament\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the basho\",\"type\":\"string\"},\"month\":{\"description\":\"Month of the tournament\",\"type\":\"integer\"},\"startDate\":{\"description\":\"Start date of the tournament\",\"format\":\"date\",\"type\":\"string\"},\"venue\":{\"description\":\"Tournament venue\",\"type\":\"string\"},\"year\":{\"description\":\"Year of the tournament\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with basho details\"},\"404\":{\"description\":\"Basho not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -403,6 +485,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/kimarite",
+                    "json": "{\"operationId\":\"getKimarite\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the technique\",\"type\":\"string\"},\"englishName\":{\"description\":\"English translation of the technique name\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the kimarite technique\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of kimarite\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/kimarite",
@@ -439,6 +527,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/kimarite/{kimarite}",
+                    "json": "{\"operationId\":\"getKimariteByName\",\"parameters\":[{\"description\":\"Name of the kimarite technique\",\"in\":\"path\",\"name\":\"kimarite\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"category\":{\"description\":\"Category of the technique\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the technique\",\"type\":\"string\"},\"englishName\":{\"description\":\"English translation of the technique name\",\"type\":\"string\"},\"frequency\":{\"description\":\"Number of times this technique has been used\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the kimarite technique\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with kimarite details\"},\"404\":{\"description\":\"Kimarite not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -521,6 +615,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/measurements",
+                    "json": "{\"operationId\":\"getMeasurements\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"height\":{\"description\":\"Height in centimeters\",\"type\":\"number\"},\"recordedDate\":{\"description\":\"Date when measurement was recorded\",\"format\":\"date\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"weight\":{\"description\":\"Weight in kilograms\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with measurements data\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/measurements",
@@ -593,6 +693,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/ranks",
+                    "json": "{\"operationId\":\"getRanks\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"division\":{\"description\":\"Division the rank belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rank\",\"type\":\"string\"},\"level\":{\"description\":\"Hierarchical level of the rank\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the rank\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of ranks\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ranks",
@@ -811,6 +917,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/rikishi/{rikishiId}/matches",
+                    "json": "{\"operationId\":\"getRikishiMatches\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bashoId\":{\"description\":\"Identifier of the basho where match took place\",\"type\":\"string\"},\"day\":{\"description\":\"Day of the tournament\",\"type\":\"integer\"},\"division\":{\"description\":\"Division of the match\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the match\",\"type\":\"string\"},\"kimarite\":{\"description\":\"Winning technique used\",\"type\":\"string\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with match history\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}/matches",
@@ -847,6 +959,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/rikishis",
+                    "json": "{\"operationId\":\"getRikishis\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"currentRank\":{\"description\":\"Current rank of the rikishi\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of rikishi\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishis",
@@ -891,6 +1009,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/rikishi/{rikishiId}/matches/{opponentId}",
+                    "json": "{\"operationId\":\"getRikishiMatchesAgainstOpponent\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Unique identifier of the opponent rikishi\",\"in\":\"path\",\"name\":\"opponentId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bashoId\":{\"description\":\"Identifier of the basho where match took place\",\"type\":\"string\"},\"day\":{\"description\":\"Day of the tournament\",\"type\":\"integer\"},\"division\":{\"description\":\"Division of the match\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the match\",\"type\":\"string\"},\"kimarite\":{\"description\":\"Winning technique used\",\"type\":\"string\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with match history between two rikishi\"},\"404\":{\"description\":\"Rikishi or opponent not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -943,6 +1067,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/rikishi/{rikishiId}",
+                    "json": "{\"operationId\":\"getRikishiById\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"birthdate\":{\"description\":\"Date of birth\",\"format\":\"date\",\"type\":\"string\"},\"birthplace\":{\"description\":\"Birthplace of the rikishi\",\"type\":\"string\"},\"currentRank\":{\"description\":\"Current rank of the rikishi\",\"type\":\"string\"},\"debut\":{\"description\":\"Debut date or basho\",\"type\":\"string\"},\"height\":{\"description\":\"Height in centimeters\",\"type\":\"number\"},\"heya\":{\"description\":\"Stable (heya) the rikishi belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"realName\":{\"description\":\"Real name of the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"},\"weight\":{\"description\":\"Weight in kilograms\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with rikishi details\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rikishi/{rikishiId}",
@@ -985,6 +1115,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/rikishi/{rikishiId}/stats",
+                    "json": "{\"operationId\":\"getRikishiStats\",\"parameters\":[{\"description\":\"Unique identifier of the rikishi\",\"in\":\"path\",\"name\":\"rikishiId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"championships\":{\"description\":\"Number of championships won\",\"type\":\"integer\"},\"highestRank\":{\"description\":\"Highest rank achieved\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"totalLosses\":{\"description\":\"Total number of losses\",\"type\":\"integer\"},\"totalWins\":{\"description\":\"Total number of wins\",\"type\":\"integer\"},\"winRate\":{\"description\":\"Win rate percentage\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with rikishi statistics\"},\"404\":{\"description\":\"Rikishi not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1076,6 +1212,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/shikonas",
+                    "json": "{\"operationId\":\"getShikonas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"endDate\":{\"description\":\"Date when rikishi stopped using this shikona\",\"format\":\"date\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Identifier of the rikishi using this shikona\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name (shikona)\",\"type\":\"string\"},\"startDate\":{\"description\":\"Date when rikishi started using this shikona\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of shikonas\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/shikonas",
@@ -1102,13 +1244,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1198,6 +1550,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1448,6 +1896,48 @@
         "website": "https://sumo-api.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2002,6 +2492,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2043,7 +2534,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

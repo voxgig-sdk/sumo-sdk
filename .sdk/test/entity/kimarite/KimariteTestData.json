@@ -5,7 +5,7 @@
         "category": "s3c",
         "description": "s3d",
         "englishName": "s3e",
-        "frequency": "s3f",
+        "frequency": 63,
         "id": "KIMARITE00",
         "name": "s41"
       },
@@ -13,7 +13,7 @@
         "category": "s78",
         "description": "s79",
         "englishName": "s7a",
-        "frequency": "s7b",
+        "frequency": 123,
         "id": "KIMARITE01",
         "name": "s7d"
       },
@@ -21,7 +21,7 @@
         "category": "sb4",
         "description": "sb5",
         "englishName": "sb6",
-        "frequency": "sb7",
+        "frequency": 183,
         "id": "KIMARITE02",
         "name": "sb9"
       }
@@ -33,8 +33,110 @@
         "category": "sf0",
         "description": "sf1",
         "englishName": "sf2",
-        "frequency": "sf3",
+        "frequency": 243,
         "name": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/kimarite": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getKimarite",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "category": {
+                        "description": "Category of the technique",
+                        "type": "string"
+                      },
+                      "englishName": {
+                        "description": "English translation of the technique name",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name of the kimarite technique",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of kimarite"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/kimarite/{kimarite}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getKimariteByName",
+        "parameters": [
+          {
+            "description": "Name of the kimarite technique",
+            "in": "path",
+            "name": "kimarite",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "category": {
+                      "description": "Category of the technique",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Detailed description of the technique",
+                      "type": "string"
+                    },
+                    "englishName": {
+                      "description": "English translation of the technique name",
+                      "type": "string"
+                    },
+                    "frequency": {
+                      "description": "Number of times this technique has been used",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the kimarite technique",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with kimarite details"
+          },
+          "404": {
+            "description": "Kimarite not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

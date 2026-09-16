@@ -39,6 +39,12 @@ main: kit: entity: shikona: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/shikonas"
+            json: "{\"operationId\":\"getShikonas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"endDate\":{\"description\":\"Date when rikishi stopped using this shikona\",\"format\":\"date\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Identifier of the rikishi using this shikona\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name (shikona)\",\"type\":\"string\"},\"startDate\":{\"description\":\"Date when rikishi started using this shikona\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of shikonas\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/shikonas"
           segments: [

@@ -135,6 +135,12 @@ main: kit: entity: basho: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/basho/{bashoId}/torikumi/{division}/{day}"
+            json: "{\"operationId\":\"getBashoTorikumi\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Sumo division (e.g., makuuchi, juryo, makushita)\",\"in\":\"path\",\"name\":\"division\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Day of the tournament (typically 1-15)\",\"in\":\"path\",\"name\":\"day\",\"required\":true,\"schema\":{\"maximum\":15,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"kimarite\":{\"description\":\"Winning technique used (if match completed)\",\"type\":\"string\"},\"matchNumber\":{\"description\":\"Match number in the day's schedule\",\"type\":\"integer\"},\"rikishi1Id\":{\"description\":\"First rikishi identifier\",\"type\":\"string\"},\"rikishi2Id\":{\"description\":\"Second rikishi identifier\",\"type\":\"string\"},\"winnerId\":{\"description\":\"Winner rikishi identifier (if match completed)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with torikumi schedule\"},\"404\":{\"description\":\"Basho, division, or day not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/basho/{bashoId}/torikumi/{division}/{day}"
           rename: {
@@ -198,6 +204,12 @@ main: kit: entity: basho: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/basho/{bashoId}/banzuke/{division}"
+            json: "{\"operationId\":\"getBashoBanzuke\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Sumo division (e.g., makuuchi, juryo, makushita)\",\"in\":\"path\",\"name\":\"division\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"rank\":{\"description\":\"Rank in the banzuke\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"shikona\":{\"description\":\"Ring name of the rikishi\",\"type\":\"string\"},\"side\":{\"description\":\"Side of the banzuke (east or west)\",\"enum\":[\"east\",\"west\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with banzuke rankings\"},\"404\":{\"description\":\"Basho or division not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/basho/{bashoId}/banzuke/{division}"
           rename: {
@@ -244,6 +256,12 @@ main: kit: entity: basho: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/basho/{bashoId}"
+            json: "{\"operationId\":\"getBashoById\",\"parameters\":[{\"description\":\"Unique identifier of the basho tournament\",\"in\":\"path\",\"name\":\"bashoId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"endDate\":{\"description\":\"End date of the tournament\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the basho\",\"type\":\"string\"},\"month\":{\"description\":\"Month of the tournament\",\"type\":\"integer\"},\"startDate\":{\"description\":\"Start date of the tournament\",\"format\":\"date\",\"type\":\"string\"},\"venue\":{\"description\":\"Tournament venue\",\"type\":\"string\"},\"year\":{\"description\":\"Year of the tournament\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with basho details\"},\"404\":{\"description\":\"Basho not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/basho/{bashoId}"

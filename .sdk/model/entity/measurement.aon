@@ -38,6 +38,12 @@ main: kit: entity: measurement: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/measurements"
+            json: "{\"operationId\":\"getMeasurements\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"height\":{\"description\":\"Height in centimeters\",\"type\":\"number\"},\"recordedDate\":{\"description\":\"Date when measurement was recorded\",\"format\":\"date\",\"type\":\"string\"},\"rikishiId\":{\"description\":\"Unique identifier for the rikishi\",\"type\":\"string\"},\"weight\":{\"description\":\"Weight in kilograms\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with measurements data\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/measurements"
           segments: [

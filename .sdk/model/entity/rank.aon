@@ -42,6 +42,12 @@ main: kit: entity: rank: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/ranks"
+            json: "{\"operationId\":\"getRanks\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"division\":{\"description\":\"Division the rank belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the rank\",\"type\":\"string\"},\"level\":{\"description\":\"Hierarchical level of the rank\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the rank\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of ranks\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/ranks"
           segments: [

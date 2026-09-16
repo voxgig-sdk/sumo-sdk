@@ -53,6 +53,12 @@ main: kit: entity: kimarite: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/kimarite"
+            json: "{\"operationId\":\"getKimarite\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the technique\",\"type\":\"string\"},\"englishName\":{\"description\":\"English translation of the technique name\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the kimarite technique\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of kimarite\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/kimarite"
           segments: [
@@ -84,6 +90,12 @@ main: kit: entity: kimarite: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/kimarite/{kimarite}"
+            json: "{\"operationId\":\"getKimariteByName\",\"parameters\":[{\"description\":\"Name of the kimarite technique\",\"in\":\"path\",\"name\":\"kimarite\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"category\":{\"description\":\"Category of the technique\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the technique\",\"type\":\"string\"},\"englishName\":{\"description\":\"English translation of the technique name\",\"type\":\"string\"},\"frequency\":{\"description\":\"Number of times this technique has been used\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the kimarite technique\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with kimarite details\"},\"404\":{\"description\":\"Kimarite not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/kimarite/{kimarite}"
