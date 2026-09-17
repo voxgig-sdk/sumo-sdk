@@ -374,25 +374,19 @@ fmt.Println(rikishi.GetName()) // "rikishi"
 | `bashoId` | `string` | No | Identifier of the basho where match took place |
 | `birthdate` | `string` | No | Date of birth |
 | `birthplace` | `string` | No | Birthplace of the rikishi |
-| `championships` | `int` | No | Number of championships won |
 | `currentRank` | `string` | No | Current rank of the rikishi |
 | `day` | `int` | No | Day of the tournament |
 | `debut` | `string` | No | Debut date or basho |
 | `division` | `string` | No | Division of the match |
 | `height` | `float64` | No | Height in centimeters |
 | `heya` | `string` | No | Stable (heya) the rikishi belongs to |
-| `highestRank` | `string` | No | Highest rank achieved |
 | `id` | `string` | No | Unique identifier for the match |
 | `kimarite` | `string` | No | Winning technique used |
 | `realName` | `string` | No | Real name of the rikishi |
 | `rikishi1Id` | `string` | No | First rikishi identifier |
 | `rikishi2Id` | `string` | No | Second rikishi identifier |
-| `rikishiId` | `string` | No | Unique identifier for the rikishi |
 | `shikona` | `string` | No | Ring name of the rikishi |
-| `totalLosses` | `int` | No | Total number of losses |
-| `totalWins` | `int` | No | Total number of wins |
 | `weight` | `float64` | No | Weight in kilograms |
-| `winRate` | `float64` | No | Win rate percentage |
 | `winnerId` | `string` | No | Winner rikishi identifier |
 
 ### Operations

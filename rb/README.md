@@ -323,25 +323,19 @@ API path: `/api/ranks`
 | `bashoId` | Identifier of the basho where match took place |
 | `birthdate` | Date of birth |
 | `birthplace` | Birthplace of the rikishi |
-| `championships` | Number of championships won |
 | `currentRank` | Current rank of the rikishi |
 | `day` | Day of the tournament |
 | `debut` | Debut date or basho |
 | `division` | Division of the match |
 | `height` | Height in centimeters |
 | `heya` | Stable (heya) the rikishi belongs to |
-| `highestRank` | Highest rank achieved |
 | `id` | Unique identifier for the match |
 | `kimarite` | Winning technique used |
 | `realName` | Real name of the rikishi |
 | `rikishi1Id` | First rikishi identifier |
 | `rikishi2Id` | Second rikishi identifier |
-| `rikishiId` | Unique identifier for the rikishi |
 | `shikona` | Ring name of the rikishi |
-| `totalLosses` | Total number of losses |
-| `totalWins` | Total number of wins |
 | `weight` | Weight in kilograms |
-| `winRate` | Win rate percentage |
 | `winnerId` | Winner rikishi identifier |
 
 Operations: List, Load.
@@ -521,25 +515,19 @@ Create an instance: `rikishi = client.Rikishi`
 | `bashoId` | `String` | Identifier of the basho where match took place |
 | `birthdate` | `String` | Date of birth |
 | `birthplace` | `String` | Birthplace of the rikishi |
-| `championships` | `Integer` | Number of championships won |
 | `currentRank` | `String` | Current rank of the rikishi |
 | `day` | `Integer` | Day of the tournament |
 | `debut` | `String` | Debut date or basho |
 | `division` | `String` | Division of the match |
 | `height` | `Float` | Height in centimeters |
 | `heya` | `String` | Stable (heya) the rikishi belongs to |
-| `highestRank` | `String` | Highest rank achieved |
 | `id` | `String` | Unique identifier for the match |
 | `kimarite` | `String` | Winning technique used |
 | `realName` | `String` | Real name of the rikishi |
 | `rikishi1Id` | `String` | First rikishi identifier |
 | `rikishi2Id` | `String` | Second rikishi identifier |
-| `rikishiId` | `String` | Unique identifier for the rikishi |
 | `shikona` | `String` | Ring name of the rikishi |
-| `totalLosses` | `Integer` | Total number of losses |
-| `totalWins` | `Integer` | Total number of wins |
 | `weight` | `Float` | Weight in kilograms |
-| `winRate` | `Float` | Win rate percentage |
 | `winnerId` | `String` | Winner rikishi identifier |
 
 #### Example: Load
@@ -726,6 +714,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── Sumo_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

@@ -1,8 +1,8 @@
 # Entity Models
 
-@"basho.aon"
-@"kimarite.aon"
-@"measurement.aon"
-@"rank.aon"
-@"rikishi.aon"
-@"shikona.aon"
+@"./basho.aon"
+@"./kimarite.aon"
+@"./measurement.aon"
+@"./rank.aon"
+@"./rikishi.aon"
+@"./shikona.aon"

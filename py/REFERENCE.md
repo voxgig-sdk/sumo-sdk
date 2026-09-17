@@ -363,25 +363,19 @@ rikishi = client.Rikishi()
 | `bashoId` | `str` | No | Identifier of the basho where match took place |
 | `birthdate` | `str` | No | Date of birth |
 | `birthplace` | `str` | No | Birthplace of the rikishi |
-| `championships` | `int` | No | Number of championships won |
 | `currentRank` | `str` | No | Current rank of the rikishi |
 | `day` | `int` | No | Day of the tournament |
 | `debut` | `str` | No | Debut date or basho |
 | `division` | `str` | No | Division of the match |
 | `height` | `float` | No | Height in centimeters |
 | `heya` | `str` | No | Stable (heya) the rikishi belongs to |
-| `highestRank` | `str` | No | Highest rank achieved |
 | `id` | `str` | No | Unique identifier for the match |
 | `kimarite` | `str` | No | Winning technique used |
 | `realName` | `str` | No | Real name of the rikishi |
 | `rikishi1Id` | `str` | No | First rikishi identifier |
 | `rikishi2Id` | `str` | No | Second rikishi identifier |
-| `rikishiId` | `str` | No | Unique identifier for the rikishi |
 | `shikona` | `str` | No | Ring name of the rikishi |
-| `totalLosses` | `int` | No | Total number of losses |
-| `totalWins` | `int` | No | Total number of wins |
 | `weight` | `float` | No | Weight in kilograms |
-| `winRate` | `float` | No | Win rate percentage |
 | `winnerId` | `str` | No | Winner rikishi identifier |
 
 ### Operations

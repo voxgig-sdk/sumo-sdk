@@ -329,25 +329,19 @@ API path: `/api/ranks`
 | `bashoId` | Identifier of the basho where match took place |
 | `birthdate` | Date of birth |
 | `birthplace` | Birthplace of the rikishi |
-| `championships` | Number of championships won |
 | `currentRank` | Current rank of the rikishi |
 | `day` | Day of the tournament |
 | `debut` | Debut date or basho |
 | `division` | Division of the match |
 | `height` | Height in centimeters |
 | `heya` | Stable (heya) the rikishi belongs to |
-| `highestRank` | Highest rank achieved |
 | `id` | Unique identifier for the match |
 | `kimarite` | Winning technique used |
 | `realName` | Real name of the rikishi |
 | `rikishi1Id` | First rikishi identifier |
 | `rikishi2Id` | Second rikishi identifier |
-| `rikishiId` | Unique identifier for the rikishi |
 | `shikona` | Ring name of the rikishi |
-| `totalLosses` | Total number of losses |
-| `totalWins` | Total number of wins |
 | `weight` | Weight in kilograms |
-| `winRate` | Win rate percentage |
 | `winnerId` | Winner rikishi identifier |
 
 Operations: List, Load.
@@ -521,25 +515,19 @@ Create an instance: `rikishi = client.Rikishi()`
 | `bashoId` | `str` | Identifier of the basho where match took place |
 | `birthdate` | `str` | Date of birth |
 | `birthplace` | `str` | Birthplace of the rikishi |
-| `championships` | `int` | Number of championships won |
 | `currentRank` | `str` | Current rank of the rikishi |
 | `day` | `int` | Day of the tournament |
 | `debut` | `str` | Debut date or basho |
 | `division` | `str` | Division of the match |
 | `height` | `float` | Height in centimeters |
 | `heya` | `str` | Stable (heya) the rikishi belongs to |
-| `highestRank` | `str` | Highest rank achieved |
 | `id` | `str` | Unique identifier for the match |
 | `kimarite` | `str` | Winning technique used |
 | `realName` | `str` | Real name of the rikishi |
 | `rikishi1Id` | `str` | First rikishi identifier |
 | `rikishi2Id` | `str` | Second rikishi identifier |
-| `rikishiId` | `str` | Unique identifier for the rikishi |
 | `shikona` | `str` | Ring name of the rikishi |
-| `totalLosses` | `int` | Total number of losses |
-| `totalWins` | `int` | Total number of wins |
 | `weight` | `float` | Weight in kilograms |
-| `winRate` | `float` | Win rate percentage |
 | `winnerId` | `str` | Winner rikishi identifier |
 
 #### Example: Load
@@ -723,6 +711,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── sumo_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

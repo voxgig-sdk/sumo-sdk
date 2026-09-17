@@ -676,11 +676,6 @@ def make_config():
             "type": "`$STRING`",
           },
           {
-            "name": "championships",
-            "short": "Number of championships won",
-            "type": "`$INTEGER`",
-          },
-          {
             "name": "currentRank",
             "short": "Current rank of the rikishi",
             "type": "`$STRING`",
@@ -711,11 +706,6 @@ def make_config():
             "type": "`$STRING`",
           },
           {
-            "name": "highestRank",
-            "short": "Highest rank achieved",
-            "type": "`$STRING`",
-          },
-          {
             "name": "id",
             "short": "Unique identifier for the match",
             "type": "`$STRING`",
@@ -741,34 +731,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
-            "name": "rikishiId",
-            "short": "Unique identifier for the rikishi",
-            "type": "`$STRING`",
-          },
-          {
             "name": "shikona",
             "short": "Ring name of the rikishi",
             "type": "`$STRING`",
           },
           {
-            "name": "totalLosses",
-            "short": "Total number of losses",
-            "type": "`$INTEGER`",
-          },
-          {
-            "name": "totalWins",
-            "short": "Total number of wins",
-            "type": "`$INTEGER`",
-          },
-          {
             "name": "weight",
             "short": "Weight in kilograms",
-            "type": "`$NUMBER`",
-          },
-          {
-            "format": "float",
-            "name": "winRate",
-            "short": "Win rate percentage",
             "type": "`$NUMBER`",
           },
           {

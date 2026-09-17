@@ -265,9 +265,6 @@ RankListMatch = Struct.new(
 # @!attribute [rw] birthplace
 #   @return [String, nil]
 #
-# @!attribute [rw] championships
-#   @return [Integer, nil]
-#
 # @!attribute [rw] currentRank
 #   @return [String, nil]
 #
@@ -286,9 +283,6 @@ RankListMatch = Struct.new(
 # @!attribute [rw] heya
 #   @return [String, nil]
 #
-# @!attribute [rw] highestRank
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
@@ -304,22 +298,10 @@ RankListMatch = Struct.new(
 # @!attribute [rw] rikishi2Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishiId
-#   @return [String, nil]
-#
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] totalLosses
-#   @return [Integer, nil]
-#
-# @!attribute [rw] totalWins
-#   @return [Integer, nil]
-#
 # @!attribute [rw] weight
-#   @return [Float, nil]
-#
-# @!attribute [rw] winRate
 #   @return [Float, nil]
 #
 # @!attribute [rw] winnerId
@@ -328,25 +310,19 @@ Rikishi = Struct.new(
   :bashoId,
   :birthdate,
   :birthplace,
-  :championships,
   :currentRank,
   :day,
   :debut,
   :division,
   :height,
   :heya,
-  :highestRank,
   :id,
   :kimarite,
   :realName,
   :rikishi1Id,
   :rikishi2Id,
-  :rikishiId,
   :shikona,
-  :totalLosses,
-  :totalWins,
   :weight,
-  :winRate,
   :winnerId,
   keyword_init: true
 )
@@ -375,9 +351,6 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] birthplace
 #   @return [String, nil]
 #
-# @!attribute [rw] championships
-#   @return [Integer, nil]
-#
 # @!attribute [rw] currentRank
 #   @return [String, nil]
 #
@@ -396,9 +369,6 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] heya
 #   @return [String, nil]
 #
-# @!attribute [rw] highestRank
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
@@ -414,22 +384,10 @@ RikishiLoadMatch = Struct.new(
 # @!attribute [rw] rikishi2Id
 #   @return [String, nil]
 #
-# @!attribute [rw] rikishiId
-#   @return [String, nil]
-#
 # @!attribute [rw] shikona
 #   @return [String, nil]
 #
-# @!attribute [rw] totalLosses
-#   @return [Integer, nil]
-#
-# @!attribute [rw] totalWins
-#   @return [Integer, nil]
-#
 # @!attribute [rw] weight
-#   @return [Float, nil]
-#
-# @!attribute [rw] winRate
 #   @return [Float, nil]
 #
 # @!attribute [rw] winnerId
@@ -438,25 +396,19 @@ RikishiListMatch = Struct.new(
   :bashoId,
   :birthdate,
   :birthplace,
-  :championships,
   :currentRank,
   :day,
   :debut,
   :division,
   :height,
   :heya,
-  :highestRank,
   :id,
   :kimarite,
   :realName,
   :rikishi1Id,
   :rikishi2Id,
-  :rikishiId,
   :shikona,
-  :totalLosses,
-  :totalWins,
   :weight,
-  :winRate,
   :winnerId,
   keyword_init: true
 )

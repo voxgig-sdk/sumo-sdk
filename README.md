@@ -105,12 +105,12 @@ local results, err = client:Shikona():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/sumo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
-| Python | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
-| PHP | `voxgig-sdk/sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
+| TypeScript | `@voxgig-sdk/sumo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/tags) |
+| Python | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/tags) |
+| PHP | `voxgig-sdk/sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/sumo-sdk/go` | `go get github.com/voxgig-sdk/sumo-sdk/go@latest` |
-| Ruby | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
-| Lua | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/releases) |
+| Ruby | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/tags) |
+| Lua | `voxgig-sdk-sumo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/sumo-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/sumo-sdk/go-cli` | `go install github.com/voxgig-sdk/sumo-sdk/go-cli/cmd/sumo@latest` |
 | Go MCP server | `github.com/voxgig-sdk/sumo-sdk/go-mcp` | `go get github.com/voxgig-sdk/sumo-sdk/go-mcp@latest` |
 

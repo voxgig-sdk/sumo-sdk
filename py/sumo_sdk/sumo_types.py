@@ -102,25 +102,19 @@ class Rikishi(TypedDict, total=False):
     bashoId: str
     birthdate: str
     birthplace: str
-    championships: int
     currentRank: str
     day: int
     debut: str
     division: str
     height: float
     heya: str
-    highestRank: str
     id: str
     kimarite: str
     realName: str
     rikishi1Id: str
     rikishi2Id: str
-    rikishiId: str
     shikona: str
-    totalLosses: int
-    totalWins: int
     weight: float
-    winRate: float
     winnerId: str
 
 
@@ -136,25 +130,19 @@ class RikishiListMatch(TypedDict, total=False):
     bashoId: str
     birthdate: str
     birthplace: str
-    championships: int
     currentRank: str
     day: int
     debut: str
     division: str
     height: float
     heya: str
-    highestRank: str
     id: str
     kimarite: str
     realName: str
     rikishi1Id: str
     rikishi2Id: str
-    rikishiId: str
     shikona: str
-    totalLosses: int
-    totalWins: int
     weight: float
-    winRate: float
     winnerId: str
 
 

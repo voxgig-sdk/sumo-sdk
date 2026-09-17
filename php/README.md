@@ -138,13 +138,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = SumoSDK::test([
-    "entity" => ["basho" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["rikishi" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$basho = $client->Basho()->list();
-print_r(array_map(fn($item) => $item->data_get(), $basho));
+$rikishi = $client->Rikishi()->list();
+print_r(array_map(fn($item) => $item->data_get(), $rikishi));
 ```
 
 ### Use a custom fetch function
@@ -337,25 +337,19 @@ API path: `/api/ranks`
 | `bashoId` | Identifier of the basho where match took place |
 | `birthdate` | Date of birth |
 | `birthplace` | Birthplace of the rikishi |
-| `championships` | Number of championships won |
 | `currentRank` | Current rank of the rikishi |
 | `day` | Day of the tournament |
 | `debut` | Debut date or basho |
 | `division` | Division of the match |
 | `height` | Height in centimeters |
 | `heya` | Stable (heya) the rikishi belongs to |
-| `highestRank` | Highest rank achieved |
 | `id` | Unique identifier for the match |
 | `kimarite` | Winning technique used |
 | `realName` | Real name of the rikishi |
 | `rikishi1Id` | First rikishi identifier |
 | `rikishi2Id` | Second rikishi identifier |
-| `rikishiId` | Unique identifier for the rikishi |
 | `shikona` | Ring name of the rikishi |
-| `totalLosses` | Total number of losses |
-| `totalWins` | Total number of wins |
 | `weight` | Weight in kilograms |
-| `winRate` | Win rate percentage |
 | `winnerId` | Winner rikishi identifier |
 
 Operations: List, Load.
@@ -535,25 +529,19 @@ Create an instance: `$rikishi = $client->Rikishi();`
 | `bashoId` | `string` | Identifier of the basho where match took place |
 | `birthdate` | `string` | Date of birth |
 | `birthplace` | `string` | Birthplace of the rikishi |
-| `championships` | `int` | Number of championships won |
 | `currentRank` | `string` | Current rank of the rikishi |
 | `day` | `int` | Day of the tournament |
 | `debut` | `string` | Debut date or basho |
 | `division` | `string` | Division of the match |
 | `height` | `float` | Height in centimeters |
 | `heya` | `string` | Stable (heya) the rikishi belongs to |
-| `highestRank` | `string` | Highest rank achieved |
 | `id` | `string` | Unique identifier for the match |
 | `kimarite` | `string` | Winning technique used |
 | `realName` | `string` | Real name of the rikishi |
 | `rikishi1Id` | `string` | First rikishi identifier |
 | `rikishi2Id` | `string` | Second rikishi identifier |
-| `rikishiId` | `string` | Unique identifier for the rikishi |
 | `shikona` | `string` | Ring name of the rikishi |
-| `totalLosses` | `int` | Total number of losses |
-| `totalWins` | `int` | Total number of wins |
 | `weight` | `float` | Weight in kilograms |
-| `winRate` | `float` | Win rate percentage |
 | `winnerId` | `string` | Winner rikishi identifier |
 
 #### Example: Load
@@ -740,6 +728,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── sumo_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations

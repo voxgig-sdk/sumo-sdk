@@ -117,25 +117,19 @@ class Rikishi
     public ?string $bashoId = null;
     public ?string $birthdate = null;
     public ?string $birthplace = null;
-    public ?int $championships = null;
     public ?string $currentRank = null;
     public ?int $day = null;
     public ?string $debut = null;
     public ?string $division = null;
     public ?float $height = null;
     public ?string $heya = null;
-    public ?string $highestRank = null;
     public ?string $id = null;
     public ?string $kimarite = null;
     public ?string $realName = null;
     public ?string $rikishi1Id = null;
     public ?string $rikishi2Id = null;
-    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?int $totalLosses = null;
-    public ?int $totalWins = null;
     public ?float $weight = null;
-    public ?float $winRate = null;
     public ?string $winnerId = null;
 }
 
@@ -152,25 +146,19 @@ class RikishiListMatch
     public ?string $bashoId = null;
     public ?string $birthdate = null;
     public ?string $birthplace = null;
-    public ?int $championships = null;
     public ?string $currentRank = null;
     public ?int $day = null;
     public ?string $debut = null;
     public ?string $division = null;
     public ?float $height = null;
     public ?string $heya = null;
-    public ?string $highestRank = null;
     public ?string $id = null;
     public ?string $kimarite = null;
     public ?string $realName = null;
     public ?string $rikishi1Id = null;
     public ?string $rikishi2Id = null;
-    public ?string $rikishiId = null;
     public ?string $shikona = null;
-    public ?int $totalLosses = null;
-    public ?int $totalWins = null;
     public ?float $weight = null;
-    public ?float $winRate = null;
     public ?string $winnerId = null;
 }
 

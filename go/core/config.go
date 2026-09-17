@@ -651,11 +651,6 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "championships",
-						"short": "Number of championships won",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
 						"name": "currentRank",
 						"short": "Current rank of the rikishi",
 						"type": "`$STRING`",
@@ -686,11 +681,6 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "highestRank",
-						"short": "Highest rank achieved",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "id",
 						"short": "Unique identifier for the match",
 						"type": "`$STRING`",
@@ -716,34 +706,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "rikishiId",
-						"short": "Unique identifier for the rikishi",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "shikona",
 						"short": "Ring name of the rikishi",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "totalLosses",
-						"short": "Total number of losses",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "totalWins",
-						"short": "Total number of wins",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
 						"name": "weight",
 						"short": "Weight in kilograms",
-						"type": "`$NUMBER`",
-					},
-					map[string]any{
-						"format": "float",
-						"name": "winRate",
-						"short": "Win rate percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{

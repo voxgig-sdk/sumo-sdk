@@ -106,25 +106,19 @@ type Rikishi struct {
 	BashoId *string `json:"bashoId,omitempty"`
 	Birthdate *string `json:"birthdate,omitempty"`
 	Birthplace *string `json:"birthplace,omitempty"`
-	Championships *int `json:"championships,omitempty"`
 	CurrentRank *string `json:"currentRank,omitempty"`
 	Day *int `json:"day,omitempty"`
 	Debut *string `json:"debut,omitempty"`
 	Division *string `json:"division,omitempty"`
 	Height *float64 `json:"height,omitempty"`
 	Heya *string `json:"heya,omitempty"`
-	HighestRank *string `json:"highestRank,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Kimarite *string `json:"kimarite,omitempty"`
 	RealName *string `json:"realName,omitempty"`
 	Rikishi1Id *string `json:"rikishi1Id,omitempty"`
 	Rikishi2Id *string `json:"rikishi2Id,omitempty"`
-	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	TotalLosses *int `json:"totalLosses,omitempty"`
-	TotalWins *int `json:"totalWins,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
-	WinRate *float64 `json:"winRate,omitempty"`
 	WinnerId *string `json:"winnerId,omitempty"`
 }
 
@@ -139,25 +133,19 @@ type RikishiListMatch struct {
 	BashoId *string `json:"bashoId,omitempty"`
 	Birthdate *string `json:"birthdate,omitempty"`
 	Birthplace *string `json:"birthplace,omitempty"`
-	Championships *int `json:"championships,omitempty"`
 	CurrentRank *string `json:"currentRank,omitempty"`
 	Day *int `json:"day,omitempty"`
 	Debut *string `json:"debut,omitempty"`
 	Division *string `json:"division,omitempty"`
 	Height *float64 `json:"height,omitempty"`
 	Heya *string `json:"heya,omitempty"`
-	HighestRank *string `json:"highestRank,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Kimarite *string `json:"kimarite,omitempty"`
 	RealName *string `json:"realName,omitempty"`
 	Rikishi1Id *string `json:"rikishi1Id,omitempty"`
 	Rikishi2Id *string `json:"rikishi2Id,omitempty"`
-	RikishiId *string `json:"rikishiId,omitempty"`
 	Shikona *string `json:"shikona,omitempty"`
-	TotalLosses *int `json:"totalLosses,omitempty"`
-	TotalWins *int `json:"totalWins,omitempty"`
 	Weight *float64 `json:"weight,omitempty"`
-	WinRate *float64 `json:"winRate,omitempty"`
 	WinnerId *string `json:"winnerId,omitempty"`
 }
 
